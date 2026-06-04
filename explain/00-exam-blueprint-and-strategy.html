@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Blueprint &amp; Strategy — CT-GenAI</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="explain-styles.css">
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="01-foundations.html">Chapter 1 →</a>
+  <span class="crumb">CT-GenAI · Blueprint</span>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">Start here</span>
+  <h1>Exam Blueprint &amp; Study Strategy</h1>
+  <p class="meta">ISTQB® Certified Tester, Specialist Level — Testing with Generative AI (CT-GenAI) v1.0</p>
+
+  <div class="card">
+    <h2>Exam facts</h2>
+    <table class="kv">
+      <tr><td>Questions</td><td><b>40</b> multiple choice</td></tr>
+      <tr><td>Points</td><td><b>46</b> (most = 1 pt; the six K3 “apply” questions = 2 pts)</td></tr>
+      <tr><td>Pass mark</td><td><b>65 % → ≥ 30 points</b></td></tr>
+      <tr><td>Time</td><td><b>60 minutes</b> (75–90 if English is not your native language)</td></tr>
+      <tr><td>Cognitive levels</td><td>K1 (recall), K2 (understand), <b>K3 (apply)</b></td></tr>
+      <tr><td>Prerequisite</td><td><b>ISTQB Foundation Level (CTFL)</b> certificate required</td></tr>
+      <tr><td>Not examinable</td><td>Introduction, Hands-on Objectives (HO/Hx), Appendices, reference contents</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Exam blueprint — how the 40 questions map</h2>
+    <p>The real exam puts roughly <b>one question per Learning Objective (LO)</b>, in syllabus order. The <b>six 2-point questions are the K3 “apply” LOs</b> (2.2.1–2.2.5 and 3.1.2).</p>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>Chapter</th><th>Teaching min</th><th>~Exam weight</th><th>K-levels</th><th>2-pt (K3) LOs</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Foundations</td><td>100</td><td>~12 %</td><td>K1, K2</td><td>—</td></tr>
+        <tr><td><b>2 · Prompt Engineering</b></td><td><b>365</b></td><td><b>~35 % (16 pts)</b></td><td>K2, <b>K3</b></td><td>2.2.1–2.2.5</td></tr>
+        <tr><td>3 · Managing Risks</td><td>160</td><td>~24 % (11 pts)</td><td>K1, K2, <b>K3</b></td><td>3.1.2</td></tr>
+        <tr><td>4 · Test Infrastructure</td><td>110</td><td>~11 % (5 pts)</td><td>K2</td><td>—</td></tr>
+        <tr><td>5 · Deployment</td><td>80</td><td>~15 % (7 pts)</td><td>K1, K2</td><td>—</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout key"><b>Chapter 2 alone is ~⅓ of all points and holds 5 of the 6 two-pointers.</b> It is the single highest-leverage chapter — master it first.</div>
+  </div>
+
+  <div class="card">
+    <h2>How the questions are phrased</h2>
+    <ul>
+      <li><b>Matching</b> — match items 1–4 to descriptions A–D (you pick the mapping a/b/c/d).</li>
+      <li><b>“BEST explains / BEST describes / BEST suited”</b> — several options are plausible; pick the strongest.</li>
+      <li><b>“Which is INCORRECT”</b> — three options are true, one is false (the false one is the answer). Read carefully.</li>
+      <li><b>“Select TWO”</b> — multi-answer; you must get both.</li>
+      <li><b>Scenario K3</b> — given a testing situation, choose the right technique / sequence / prompt. These are the 2-pointers.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Answer-technique tips</h2>
+    <ol>
+      <li><b>K3 prompt questions</b> — map the scenario to the right technique:
+        <ul>
+          <li><i>complex task, needs step-by-step checking</i> → <b>prompt chaining</b></li>
+          <li><i>repetitive / fixed output format, examples available</i> → <b>few-shot prompting</b></li>
+          <li><i>flexible/new task, or you don’t know how to word it</i> → <b>meta prompting</b></li>
+          <li><i>no examples, rely on model knowledge</i> → <b>zero-shot</b></li>
+        </ul>
+      </li>
+      <li><b>“INCORRECT” questions</b> — flip your thinking: you’re hunting the <i>false</i> statement.</li>
+      <li>On “BEST” questions, eliminate options that are <i>true but off-topic</i> — the answer must address the <i>specific</i> goal in the stem.</li>
+      <li>Watch for distractors that <b>swap definitions</b> (e.g., calling chaining “providing examples”).</li>
+      <li>Recurring vs. non-recurring cost, privacy vs. security, monitoring vs. control, hallucination vs. reasoning error vs. bias — these <b>paired distinctions</b> recur.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>A 2-week plan (adjust to your timeline)</h2>
+    <ul>
+      <li><b>Days 1–2:</b> Chapter 1 summary + flashcards (terms). Foundations make everything click.</li>
+      <li><b>Days 3–6:</b> Chapter 2 — read twice; practice the 6-component prompt; drill the technique-selection table until automatic.</li>
+      <li><b>Days 7–8:</b> Chapter 3 — memorize the paired definitions and mitigation lists.</li>
+      <li><b>Day 9:</b> Chapters 4 &amp; 5 — vocabulary recall (RAG, agents, fine-tuning, LLMOps, shadow AI, adoption phases, roles).</li>
+      <li><b>Day 10:</b> Take <b>Official ISTQB Exam A</b> timed → review every wrong answer against the chapter summary.</li>
+      <li><b>Days 11–12:</b> Re-study weak chapters; take <b>Practice Exam B</b> timed.</li>
+      <li><b>Day 13:</b> Re-take both, aim ≥ 85 %. Re-read flashcards.</li>
+      <li><b>Day 14:</b> Light review only. Rest.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>The 2-point LOs — drill these hardest</h2>
+    <ul>
+      <li><b>2.2.1 (K3)</b> apply GenAI to test analysis (generate/prioritize conditions, coverage)</li>
+      <li><b>2.2.2 (K3)</b> functional test-case generation from user stories</li>
+      <li><b>2.2.3 (K3)</b> automated regression (keyword-driven, self-healing, reporting)</li>
+      <li><b>2.2.4 (K3)</b> test monitoring &amp; control</li>
+      <li><b>2.2.5 (K3)</b> choose the right prompting technique</li>
+      <li><b>3.1.2 (K3)</b> identify hallucinations / reasoning errors / biases in output</li>
+    </ul>
+  </div>
+
+  <div class="pager">
+    <span class="spacer"></span>
+    <a class="next" href="01-foundations.html"><div class="dir">Next →</div><div class="ttl">1 · Foundations of Generative AI</div></a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CT-GenAI Flashcards</title>
+<script src="../theme.js"></script>
+<style>
+:root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--soft:#f1f5f9;--flag:#7c3aed;--flagbg:#ede9fe;}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);
+  background:linear-gradient(180deg,#0f172a,#13233f 220px,#eef2f7 220px,#eef2f7);min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:26px 18px 70px}
+.head{color:#fff;margin-bottom:18px}
+.badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:600;font-size:.78rem;padding:5px 12px;border-radius:999px}
+h1{margin:.5rem 0 .2rem;font-size:1.6rem}
+.sub{opacity:.85;font-size:.92rem}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:#fff;border-radius:14px;
+  box-shadow:0 8px 24px rgba(15,23,42,.06);padding:14px;margin-bottom:16px}
+select,button{font:inherit;border-radius:9px;border:1px solid var(--line);padding:8px 12px;background:#fff;cursor:pointer}
+button.primary{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:600}
+button.primary:hover{background:var(--brand2)}
+.counter{margin-left:auto;color:var(--muted);font-size:.88rem;font-variant-numeric:tabular-nums}
+.card{background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(15,23,42,.10);min-height:300px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:40px 34px;cursor:pointer;position:relative;user-select:none}
+.chip{position:absolute;top:14px;left:16px;font-size:.72rem;background:var(--soft);color:var(--muted);padding:3px 10px;border-radius:999px}
+.side-label{position:absolute;top:14px;right:16px;font-size:.72rem;color:var(--brand);font-weight:700;letter-spacing:.04em}
+.term{font-size:1.5rem;font-weight:700;color:#0f172a}
+.def{font-size:1.05rem;color:#334155;line-height:1.6}
+.hint{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:var(--muted);font-size:.78rem}
+.navrow{display:flex;gap:10px;margin-top:16px}
+.navrow button{flex:1;padding:12px}
+.kbd{font-size:.8rem;color:#fff;opacity:.7;text-align:center;margin-top:14px}
+.progress{height:6px;background:#cbd5e1;border-radius:999px;margin-top:14px;overflow:hidden}
+.progress > div{height:100%;background:var(--brand);width:0}
+.home-fab{position:fixed;left:18px;bottom:18px;z-index:1000;display:inline-flex;align-items:center;gap:8px;
+  background:var(--brand);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;
+  padding:11px 16px;border-radius:999px;box-shadow:0 6px 20px rgba(15,23,42,.28);transition:background .15s,transform .08s}
+.home-fab:hover{background:var(--brand2);transform:translateY(-1px)}
+@media(max-width:880px){.home-fab{left:12px;bottom:12px;padding:10px 14px}}
+/* dark mode */
+:root[data-theme="dark"]{--ink:#e2e8f0;--muted:#94a3b8;--line:#334155;--soft:#0f1b2e}
+[data-theme="dark"] body{background:#0b1424}
+[data-theme="dark"] .controls,[data-theme="dark"] .card{background:#1b2738}
+[data-theme="dark"] select,[data-theme="dark"] button{background:#243246;color:#e2e8f0;border-color:#334155}
+[data-theme="dark"] button.primary{background:var(--brand);color:#fff}
+[data-theme="dark"] .term{color:#f1f5f9}
+[data-theme="dark"] .def{color:#cbd5e1}
+[data-theme="dark"] .chip{background:#0f1b2e;color:#94a3b8}
+[data-theme="dark"] .progress{background:#334155}
+</style>
+</head>
+<body>
+<a href="../index.html" class="home-fab" title="Back to Study Hub" aria-label="Back to Study Hub">🏠 Home</a>
+<div class="wrap">
+  <div class="head">
+    <span class="badge">CT-GenAI · Flashcards</span>
+    <h1>Key Terms &amp; Concepts</h1>
+    <div class="sub">Tap the card (or press Space) to flip. Use ← → to move. Great for the K1/K2 recall questions.</div>
+  </div>
+
+  <div class="controls">
+    <label>Chapter:
+      <select id="chapter">
+        <option value="all">All chapters</option>
+        <option value="1">1 · Foundations</option>
+        <option value="2">2 · Prompt Engineering</option>
+        <option value="3">3 · Managing Risks</option>
+        <option value="4">4 · Test Infrastructure</option>
+        <option value="5">5 · Deployment</option>
+      </select>
+    </label>
+    <button id="shuffle">🔀 Shuffle</button>
+    <button class="primary" id="flip">Flip</button>
+    <span class="counter" id="counter">0 / 0</span>
+  </div>
+
+  <div class="card" id="card">
+    <span class="chip" id="chip"></span>
+    <span class="side-label" id="sideLabel">TERM</span>
+    <div id="face" class="term"></div>
+    <div class="hint">click to flip</div>
+  </div>
+
+  <div class="navrow">
+    <button id="prev">◀ Previous</button>
+    <button id="next">Next ▶</button>
+  </div>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="kbd">Keys: ← prev · → next · Space flip</div>
+</div>
+
+<script>
+const CARDS = [
+  // ---- Chapter 1 ----
+  ["Symbolic AI","Rule-based system using symbols and logical rules to mimic human decision-making.",1],
+  ["Classical machine learning","Data-driven approach requiring data preparation, manual feature selection, and model training (e.g., defect categorization).",1],
+  ["Deep learning","Neural networks that automatically learn features from data, without manual feature definition.",1],
+  ["Generative AI","Uses deep-learning techniques to create new content (text, images, code) by mimicking training-data patterns.",1],
+  ["LLM","Large Language Model — GenAI model pre-trained on huge text datasets, based on the generative pre-trained transformer.",1],
+  ["SLM","Small Language Model — fewer parameters; lightweight, focused, less resource-intensive.",1],
+  ["Tokenization","Breaking text into smaller units (tokens: char/sub-word/word) — the building blocks the model reads.",1],
+  ["Embeddings","Numerical vector representations of tokens encoding semantic/contextual meaning; similar meanings sit close in vector space.",1],
+  ["Transformer","Neural-network architecture; at inference it predicts the next token from learned relationships. Output is plausible, not necessarily correct.",1],
+  ["Context window","Amount of preceding text (in tokens) the model can consider at once. Exceeding it forces the model to discard earlier info.",1],
+  ["Non-deterministic behavior","Same input can yield different outputs, due to probabilistic inference and hyper-parameters.",1],
+  ["Foundation LLM","General-purpose model trained on vast diverse data; flexible but usually needs further adaptation.",1],
+  ["Instruction-tuned LLM","Foundation model fine-tuned on prompt→response pairs; follows instructions/formats well (e.g., Gherkin).",1],
+  ["Reasoning LLM","Extends instruction-tuned with logical inference, multi-step problem-solving, chain-of-thought; for high-cognitive-load tasks.",1],
+  ["Multimodal LLM","Processes multiple modalities (text, image, audio, video).",1],
+  ["Vision-language model (VLM)","A subset of multimodal LLMs integrating visual + textual data (captioning, visual Q&A, text-image consistency).",1],
+  ["AI chatbot","Conversational interface for ad hoc test tasks, exploration, clarification, onboarding.",1],
+  ["LLM-powered testing application","LLM integrated via API into test tools for well-defined, automated, scalable tasks.",1],
+  // ---- Chapter 2 ----
+  ["Six prompt components","Role · Context · Instruction · Input data · Constraints · Output format.",2],
+  ["Role (prompt)","The persona/perspective the model adopts (e.g., 'Act as a test analyst').",2],
+  ["Context (prompt)","Background about the test object/functionality.",2],
+  ["Instruction (prompt)","The directive — what task to perform (clear, imperative).",2],
+  ["Input data (prompt)","Material to process: user stories, acceptance criteria, screenshots, code, logs, existing cases.",2],
+  ["Constraints (prompt)","Restrictions / special considerations on how to apply the instruction.",2],
+  ["Output format (prompt)","Expected structure/format of the response (e.g., a markdown table).",2],
+  ["Prompt chaining","Break a task into intermediate steps (multiple prompts), checking/refining each before the next. Best for complex tasks needing precision + verification.",2],
+  ["Few-shot prompting","Provide examples in the prompt. Best for repetitive / fixed-format output (Gherkin, keyword-driven, fixed reports).",2],
+  ["Zero-shot / one-shot","Zero-shot = no example (rely on model knowledge); one-shot = one example.",2],
+  ["Meta prompting","The LLM generates/refines its own prompt; tester evaluates & refines — pairing with the AI. Best for flexible/new tasks.",2],
+  ["System prompt","Developer/tester-defined, usually hidden, constant for the session; sets behavior/rules. May hold role, context, constraints.",2],
+  ["User prompt","The visible input that changes each interaction; explicit instructions + context + output format.",2],
+  ["Self-healing tests","GenAI auto-adjusts scripts to handle minor UI/API changes (e.g., dynamic locators) → fewer false failures.",2],
+  ["Keyword-driven automation","Pre-defined keywords represent common test steps; GenAI maps keywords to cases and generates scripts.",2],
+  ["Test monitoring (GenAI)","Analyze trends, predict risk, alert on deviations; dashboards, NL summaries, completion reports.",2],
+  ["Test control (GenAI)","Act on data: reprioritize tests, adjust schedules, reallocate resources to high-priority areas.",2],
+  ["Accuracy (metric)","Overall correctness of output vs expert cases/requirements/standards.",2],
+  ["Precision (metric)","Correctness with respect to a specific objective (e.g., correctly identifying anomalies).",2],
+  ["Recall (metric)","Ability to find all relevant instances (e.g., covering valid AND invalid equivalence partitions).",2],
+  ["Diversity (metric)","Wide range of inputs/scenarios and edge cases; avoids repetition.",2],
+  ["Execution success rate","Proportion of generated cases/scripts that run without syntax/format errors.",2],
+  ["A/B testing of prompts","Create multiple prompt versions and compare results against predefined metrics.",2],
+  ["Output analysis","Examine AI output for inaccuracies/inconsistencies to diagnose why it went wrong → refine the prompt.",2],
+  // ---- Chapter 3 ----
+  ["Hallucination","Output that is factually incorrect or irrelevant to the task (e.g., inventing non-existent acceptance criteria).",3],
+  ["Reasoning error","Misinterpreting logical structures (cause-effect, conditional, multi-step); LLMs pattern-match, not truly reason.",3],
+  ["Bias (LLM)","Output favoring certain info/perspectives, arising from skewed training data.",3],
+  ["Temperature","Inference parameter controlling randomness; lowering it narrows the probability distribution → more consistent (less creative) output.",3],
+  ["Random seed","Setting a seed reproduces the same pseudo-random sequence → improves reproducibility (its value high/low is irrelevant).",3],
+  ["Data exfiltration","Attack: requests designed to extract confidential training data (e.g., overlong prompts leaking snippets).",3],
+  ["Request manipulation","Attack: introducing data that disrupts output (e.g., doctored images luring the AI into a wrong context).",3],
+  ["Data poisoning","Attack: manipulating training data (e.g., injecting fake evaluations/falsified results).",3],
+  ["Malicious code generation","Attack: manipulating the LLM to generate backdoors/external command calls during use.",3],
+  ["Data minimization","Privacy mitigation: process only the necessary, non-sensitive data.",3],
+  ["Anonymization / pseudonymization","Privacy mitigation: mask or replace sensitive info with non-identifiable data.",3],
+  ["ISO/IEC 42001:2023","Standard: requirements for managing AI systems within an organization.",3],
+  ["ISO/IEC 23053:2022","Standard: framework for AI systems using ML — data quality, transparency, fault tolerance.",3],
+  ["EU AI Act","Regulation: legal framework classifying AI applications by risk level (transparency, accountability, bias mitigation).",3],
+  ["NIST AI RMF","Framework (US): guidelines for managing AI risks — fairness, transparency, security.",3],
+  // ---- Chapter 4 ----
+  ["LLM-powered test infrastructure","System integrating an LLM into testing; front-end + back-end + external data sources + the LLM.",4],
+  ["Back-end (role)","Handles authentication, data retrieval, prompt preparation, LLM interaction, and post-processing of output.",4],
+  ["Vector database","Stores embeddings for semantic similarity-based retrieval of related content.",4],
+  ["RAG","Retrieval-Augmented Generation — augments the LLM with retrieved external data for grounded, accurate responses. Does not retrain the model.",4],
+  ["RAG preprocessing","Chunk documents (≈256–512 tokens) → clean → encode to embeddings → store in a vector DB.",4],
+  ["RAG query steps","1) Retrieval by semantic similarity; 2) Generation combining retrieved chunks + LLM knowledge.",4],
+  ["LLM-powered agent","GenAI app that can 'act' by invoking predefined functions ('tools') to interact with external systems.",4],
+  ["Autonomous vs semi-autonomous agent","Autonomous = minimal human intervention; semi-autonomous = periodic human oversight (use for critical tasks).",4],
+  ["Orchestration","Coordinating multiple specialized agents in a multi-agent architecture.",4],
+  ["Fine-tuning","Further training a pre-trained LLM/SLM on a targeted dataset to specialize it for a domain/task.",4],
+  ["Overfitting","Fine-tuning risk: model becomes too specialized to training data → poor performance on unseen data.",4],
+  ["Opacity","Lack of transparency in how a model makes decisions → complicates debugging/validation.",4],
+  ["LLMOps","Large Language Model Operations — practices/tools to develop, deploy, and maintain LLMs in production (lifecycle, privacy, security, cost).",4],
+  // ---- Chapter 5 ----
+  ["Shadow AI","Use of unapproved AI tools → security/privacy weaknesses, compliance issues, vague IP risks.",5],
+  ["GenAI strategy aspects","Measurable objectives, right LLM selection, data quality, training, task-specific metrics, process guidelines/quality gates.",5],
+  ["LLM selection criteria","Model performance, fine-tuning potential, recurring cost, community & support.",5],
+  ["Recurring vs non-recurring cost","Recurring = licensing + operational/compute. A one-off PoC is non-recurring (a common distractor).",5],
+  ["Adoption phases","1) Discovery, 2) Initiation & usage definition, 3) Utilization & iteration (can run in parallel per use case).",5],
+  ["Tester skills (GenAI)","Prompt engineering, context windows, assessing LLM capabilities, evaluating testware, data sanitization, risk mitigation.",5],
+  ["Prompt pattern","A reusable template for crafting effective prompts → consistent, reliable outputs (shared via communities of practice).",5],
+  ["Tester role evolution","From manual test design → AI-assisted specialist: guide/verify AI testware, refine prompts, maintain prompt libraries.",5],
+  ["Test manager role evolution","AI-based test strategy, AI risk management, AI governance, balancing human+AI, coordinating hybrid people+agent teams.",5],
+];
+
+let deck = [], idx = 0, showingTerm = true;
+const card=document.getElementById('card'), face=document.getElementById('face'),
+  chip=document.getElementById('chip'), sideLabel=document.getElementById('sideLabel'),
+  counter=document.getElementById('counter'), bar=document.getElementById('bar');
+
+function build(){
+  const ch=document.getElementById('chapter').value;
+  deck = CARDS.filter(c=>ch==='all'||String(c[2])===ch);
+  idx=0; showingTerm=true; render();
+}
+function render(){
+  if(!deck.length){face.textContent='No cards';return;}
+  const c=deck[idx];
+  chip.textContent='Chapter '+c[2];
+  sideLabel.textContent=showingTerm?'TERM':'DEFINITION';
+  face.className=showingTerm?'term':'def';
+  face.textContent=showingTerm?c[0]:c[1];
+  counter.textContent=(idx+1)+' / '+deck.length;
+  bar.style.width=((idx+1)/deck.length*100)+'%';
+}
+function flip(){showingTerm=!showingTerm;render();}
+function next(){idx=(idx+1)%deck.length;showingTerm=true;render();}
+function prev(){idx=(idx-1+deck.length)%deck.length;showingTerm=true;render();}
+function shuffle(){for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}idx=0;showingTerm=true;render();}
+
+card.onclick=flip;
+document.getElementById('flip').onclick=flip;
+document.getElementById('next').onclick=next;
+document.getElementById('prev').onclick=prev;
+document.getElementById('shuffle').onclick=shuffle;
+document.getElementById('chapter').onchange=build;
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight')next();
+  else if(e.key==='ArrowLeft')prev();
+  else if(e.key===' '){e.preventDefault();flip();}
+});
+build();
+</script>
+</body>
+</html>

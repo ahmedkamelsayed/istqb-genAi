@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 5 · Deployment — CT-GenAI</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="explain-styles.css">
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="04-test-infrastructure.html">← Chapter 4</a>
+  <a href="../exams/official-istqb-exam-A.html">Take Exam A →</a>
+  <span class="crumb">Chapter 5</span>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">Chapter 5 · ~15 % (7 pts) · K1–K2</span>
+  <h1>Deploying &amp; Integrating Generative AI in Test Organizations</h1>
+  <p class="meta">≈80 minutes · mostly recall &amp; understand</p>
+
+  <div class="card">
+    <h2>5.1.1 (K1) Risks of Shadow AI</h2>
+    <p><b>Shadow AI</b> = use of <b>unapproved/unsanctioned</b> AI tools. Risks:</p>
+    <ul>
+      <li><b>Information security &amp; data privacy weaknesses</b> — personal tools lack robust security → breaches.</li>
+      <li><b>Compliance &amp; regulatory issues</b> — unapproved tools → non-compliance → legal consequences.</li>
+      <li><b>Vague intellectual property</b> — unclear licensing → IP disputes (esp. with copyrighted data).</li>
+    </ul>
+    <div class="callout key">A clear GenAI strategy/roadmap helps <b>avoid</b> shadow AI.</div>
+  </div>
+
+  <div class="card">
+    <h2>5.1.2 (K2) Key aspects of a GenAI strategy for testing</h2>
+    <ul>
+      <li><b>Define measurable test objectives</b> — increase productivity, shorten cycles, improve quality.</li>
+      <li><b>Select the right LLMs</b> aligned to objectives; <b>compatible with existing test infrastructure/tools</b>, scalable.</li>
+      <li><b>Data quality</b> — accurate, relevant, secure input. <i>High-quality</i> data matters more than <i>maximum</i> data.</li>
+      <li><b>Training programs</b> — technical <b>and ethical</b> skills.</li>
+      <li><b>Collect task-specific metrics</b> (see 2.3.1).</li>
+      <li><b>Process guidelines</b> — rules for sensitive data, <b>transparency</b> (label AI-generated content), <b>quality gates</b> reviewing generated testware.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>5.1.3 (K2) Selecting LLMs/SLMs — the four key criteria</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Criterion</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><b>Model performance</b></td><td>Evaluate against the <b>organization’s own benchmarks</b> for the target tasks (2.3.1 metrics).</td></tr>
+        <tr><td><b>Fine-tuning potential</b></td><td>Can/should it be fine-tuned with domain data for better accuracy?</td></tr>
+        <tr><td><b>Recurring cost</b></td><td>Licensing <b>+ operational/compute</b> costs fit the budget. <i>(A one-off PoC is non-recurring — distractor.)</i></td></tr>
+        <tr><td><b>Community &amp; support</b></td><td>Active community + good documentation for implementation/troubleshooting.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">Few benchmarks target <i>software-test</i> tasks specifically; also weigh functional capabilities (multimodal, reasoning), technical features (context window), licensing (commercial vs open source).</div>
+  </div>
+
+  <div class="card">
+    <h2>5.1.4 (K1) Three phases of adopting GenAI</h2>
+    <ol>
+      <li><b>Discovery</b> — awareness &amp; capability building: train teams, provide LLM access, experiment with initial use cases (build confidence).</li>
+      <li><b>Initiation and usage definition</b> — identify &amp; <b>prioritize practical use cases</b>; evaluate infrastructure; develop expertise; align with org needs.</li>
+      <li><b>Utilization and iteration</b> — full integration; continuous monitoring, measurement, and management for sustainable, scalable benefits.</li>
+    </ol>
+    <div class="callout key">Phases can run <b>in parallel</b> for different use cases. Address early concerns (e.g., <b>fear of job displacement</b>).</div>
+  </div>
+
+  <div class="card">
+    <h2>5.2.1 (K2) Essential skills &amp; knowledge for testers</h2>
+    <ul>
+      <li>Master <b>prompt engineering</b>; understand <b>context windows</b>; develop <b>test review</b> methods.</li>
+      <li>Combine <b>domain + test expertise</b> with AI skills to evaluate LLM-driven testing.</li>
+      <li>Key competencies: <b>assess LLM capabilities</b>, prompt-refinement, <b>evaluate AI-generated testware</b>.</li>
+      <li>Know GenAI <b>risks + mitigations</b>; understand <b>data-security implications</b> of sharing testware; apply <b>data sanitization</b> + privacy-preserving prompting.</li>
+      <li><b>Environmental awareness</b> — right-size models, optimize usage, balance automation vs cost/energy.</li>
+    </ul>
+    <div class="callout no">❌ Testers can’t <i>prevent</i> hallucinations (intrinsic) — they <b>identify &amp; mitigate</b>. Building the LLM is an <b>AI-developer</b> skill, not a tester skill.</div>
+  </div>
+
+  <div class="card">
+    <h2>5.2.2 (K1) Building GenAI capabilities in teams</h2>
+    <ul>
+      <li><b>Hands-on, gradual</b> learning: guided exercises, <b>peer learning</b>, knowledge sharing — <b>not</b> a “big-bang” rollout or purely theoretical courses.</li>
+      <li>Progress from basic prompt creation → focused, test-specific techniques.</li>
+      <li><b>Prompt pattern</b> = a <b>reusable template</b> for effective prompts → consistent, reliable output.</li>
+      <li><b>Communities of practice</b> share <b>prompt-pattern libraries</b> and lessons learned → continuous improvement.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>5.2.3 (K1) Evolving roles &amp; responsibilities</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Role</th><th>Shifts to…</th></tr></thead>
+      <tbody>
+        <tr><td><b>Testers</b></td><td><b>AI-assisted test specialists</b> — combine test techniques with <b>guiding &amp; verifying AI-generated testware</b>, <b>prompt refinement</b>, maintaining <b>test-specific prompt libraries</b>.</td></tr>
+        <tr><td><b>Test managers</b></td><td><b>AI-based test strategy</b>, <b>AI-based risk management</b>, monitoring/controlling AI-based processes, <b>AI governance</b>, balancing human + AI, and <b>coordinating hybrid teams of people + GenAI agents</b>.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">Managers keep their <b>management</b> focus (not deep model internals); testers, not managers, refine prompts; neither relies <i>solely</i> on AI.</div>
+  </div>
+
+  <div class="pager">
+    <a href="04-test-infrastructure.html"><div class="dir">← Previous</div><div class="ttl">4 · Test Infrastructure</div></a>
+    <a class="next" href="../exams/official-istqb-exam-A.html"><div class="dir">Ready? →</div><div class="ttl">Take Official Exam A</div></a>
+  </div>
+</div>
+</body>
+</html>

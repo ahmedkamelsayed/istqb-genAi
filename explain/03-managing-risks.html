@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 3 · Managing Risks — CT-GenAI</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="explain-styles.css">
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="02-prompt-engineering.html">← Chapter 2</a>
+  <a href="04-test-infrastructure.html">Chapter 4 →</a>
+  <span class="crumb">Chapter 3</span>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">Chapter 3 · ~24 % (11 pts) · K1–K3</span>
+  <h1>Managing Risks of Generative AI in Software Testing</h1>
+  <p class="meta">≈160 minutes · includes the 2-pt K3 LO 3.1.2</p>
+
+  <div class="card">
+    <h2>3.1.1 (K1) The three core defects — know these cold</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Defect</th><th>Definition</th><th>Test-task example</th></tr></thead>
+      <tbody>
+        <tr><td><b>Hallucination</b></td><td>Output that is <b>factually incorrect or irrelevant</b> to the task.</td><td>Inventing fictitious cases, non-existent acceptance criteria, broken scripts.</td></tr>
+        <tr><td><b>Reasoning error</b></td><td><b>Misinterpreting logical structures</b> (cause-effect, conditional, multi-step). LLMs pattern-match, not truly reason.</td><td>Wrong conclusions in planning / prioritization / math.</td></tr>
+        <tr><td><b>Bias</b></td><td>Output favoring certain info/perspectives, <b>from skewed training data</b>.</td><td>English-only perspectives; skewed synthetic data or criteria.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">All three stem from the <b>training data</b> + <b>transformer limitations</b>. Non-determinism makes them hard to “fix” — they can reappear in another conversation.</div>
+  </div>
+
+  <div class="card">
+    <h2>3.1.2 (K3) Identifying them in LLM output</h2>
+    <p><b>Hallucination detection:</b> cross-verification (vs docs/requirements/known behavior) · domain-expert consultation · consistency checks.</p>
+    <p><b>Reasoning-error detection:</b> logical validation (coherence/structure review) · <b>output testing</b> (run the generated cases/scripts).</p>
+    <p><b>Bias detection:</b> review whether generated testware (e.g., synthetic data) is <b>fairly/accurately represented</b> vs the test strategy · check for underrepresented test types (e.g., non-functional).</p>
+    <div class="callout key">Exam cue: invented feature not in the brief → <b>hallucination</b>; skewed locale/representation → <b>bias</b>; broken conditional logic → <b>reasoning error</b>. Detection depth depends on the <b>risk level</b> of the task.</div>
+  </div>
+
+  <div class="card">
+    <h2>3.1.3 (K2) Mitigating hallucinations, reasoning errors &amp; biases</h2>
+    <ul>
+      <li><b>Provide complete context</b> in the prompt.</li>
+      <li><b>Divide prompts into manageable segments</b> (prompt chaining) + verify each step → catch reasoning errors early.</li>
+      <li><b>Use clear, interpretable data formats</b> (avoid ambiguity).</li>
+      <li><b>Select the appropriate model</b> for the task.</li>
+      <li><b>Compare results across models.</b></li>
+      <li>(Ch 4 adds <b>RAG</b> and <b>fine-tuning</b> as complementary improvements.)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>3.1.4 (K1) Mitigating non-deterministic behavior</h2>
+    <p>Full reproducibility isn’t guaranteed, but:</p>
+    <ul>
+      <li><b>Lower the temperature</b> → narrows the probability distribution at inference → more consistent output (but less creative/diverse).</li>
+      <li><b>Set a random seed</b> → same pseudo-random sequence → improves reproducibility (value high/low is irrelevant).</li>
+      <li><b>Automate output verification</b> for structured, consistent evaluation.</li>
+    </ul>
+    <div class="callout warn">⚠️ Temperature &amp; seed act at <b>inference</b>. <i>Learning rate</i> is a <b>training</b> setting — a classic distractor.</div>
+  </div>
+
+  <div class="card">
+    <h2>3.2.1 (K2) Privacy concerns vs. security risks</h2>
+    <p><b>Privacy concerns:</b></p>
+    <ul>
+      <li><b>Unintentional data exposure</b> — outputs accidentally reveal sensitive info.</li>
+      <li><b>Lack of control over data usage</b> — tools store/process data without consent.</li>
+      <li><b>Compliance risks</b> — e.g., violating <b>GDPR</b> → legal disputes.</li>
+    </ul>
+    <p><b>Security risks:</b> vulnerable LLM-powered infrastructure (breaches, unauthorized access) · manipulative attacks altering behavior/extracting info · malicious input misleading the LLM.</p>
+  </div>
+
+  <div class="card">
+    <h2>3.2.2 (K2) Attack vectors — match each to its example</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Attack vector</th><th>Description</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>Data exfiltration</b></td><td>Requests designed to <b>extract confidential training data</b>.</td><td>Overlong prompts exceeding the context window → leaks training-data snippets / API keys.</td></tr>
+        <tr><td><b>Request manipulation</b></td><td>Introducing data that <b>disrupts output</b>.</td><td>Doctored images luring the AI into a wrong context → hallucinated criteria / ignored UI defects.</td></tr>
+        <tr><td><b>Data poisoning</b></td><td><b>Manipulating training data</b>.</td><td>Injecting fake evaluations / falsified results into the training/fine-tuning set.</td></tr>
+        <tr><td><b>Malicious code generation</b></td><td>Manipulating the LLM to <b>generate backdoors</b> during use.</td><td>Code that opens a channel to a malicious IP.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>3.2.3 (K2) Mitigation strategies</h2>
+    <ul>
+      <li><b>Data minimization</b> — process only necessary, non-sensitive data.</li>
+      <li><b>Anonymization / pseudonymization</b> — mask/replace sensitive data.</li>
+      <li><b>Secure storage &amp; transmission</b> — encryption + access controls.</li>
+      <li><b>Resource training</b> — policies for responsible/ethical GenAI use.</li>
+      <li><b>Systematic human review</b> · <b>compare with another LLM</b> · <b>choose a secure environment</b> (commercial secure offering → secure cloud → in-house for highest control) · <b>regular security audits</b> · <b>stay current</b> with best practices.</li>
+    </ul>
+    <div class="callout key">Involve senior <b>Security Engineers, Legal, CTO, CISO</b>. GDPR doesn’t ban GenAI but limits lawfulness/purpose of data collection/processing/storage.</div>
+  </div>
+
+  <div class="card">
+    <h2>3.3.1 (K2) Energy consumption &amp; CO₂</h2>
+    <ul>
+      <li>Training/running LLMs is compute-intensive; usage raises load on devices, networks, data centers.</li>
+      <li><b>Image generation ≫ text generation</b> in energy (one image ≈ charging a phone; text ≈ a small %).</li>
+      <li>Energy &amp; CO₂ are typically <b>correlated</b>. GenAI search uses <b>more</b> energy than traditional search.</li>
+      <li>A single text gen seems negligible, but <b>cumulative impact across millions of users is significant</b>.</li>
+      <li>Mitigation: <b>limit unnecessary interactions</b>, right-size the model.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>3.4.1 (K1) Regulations, standards &amp; frameworks</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Name</th><th>Type</th><th>Relevance to GenAI testing</th></tr></thead>
+      <tbody>
+        <tr><td><b>ISO/IEC 42001:2023</b></td><td>Standard</td><td>Requirements for <b>managing AI systems</b> in an org → consistency/reliability.</td></tr>
+        <tr><td><b>ISO/IEC 23053:2022</b></td><td>Standard</td><td>Framework for AI systems using ML → data quality, transparency, fault tolerance.</td></tr>
+        <tr><td><b>EU AI Act</b></td><td>Regulation</td><td>Legal framework; <b>classifies AI by risk level</b>; transparency, accountability, bias mitigation.</td></tr>
+        <tr><td><b>NIST AI RMF</b> (US)</td><td>Framework</td><td>Managing AI risks — fairness, transparency, security.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout no">❌ Distractors: ISO/IEC 25010 (product quality) and 29119-2/-3 (test process/docs) are <b>not</b> GenAI-specific.</div>
+  </div>
+
+  <div class="pager">
+    <a href="02-prompt-engineering.html"><div class="dir">← Previous</div><div class="ttl">2 · Prompt Engineering</div></a>
+    <a class="next" href="04-test-infrastructure.html"><div class="dir">Next →</div><div class="ttl">4 · Test Infrastructure</div></a>
+  </div>
+</div>
+</body>
+</html>

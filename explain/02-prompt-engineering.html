@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 2 · Prompt Engineering — CT-GenAI</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="explain-styles.css">
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="01-foundations.html">← Chapter 1</a>
+  <a href="03-managing-risks.html">Chapter 3 →</a>
+  <span class="crumb">Chapter 2</span>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">Chapter 2 · ~35 % (16 pts) · K2–K3 · highest weight</span>
+  <h1>Prompt Engineering for Effective Software Testing</h1>
+  <p class="meta">≈365 minutes · holds 5 of the 6 two-point K3 questions — the most important chapter</p>
+
+  <div class="card">
+    <h2>2.1.1 (K2) The six-component prompt structure</h2>
+    <p>Memorize all six and be able to classify a given line into the right one (the exam tests this directly):</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Component</th><th>What it is</th><th>Example phrase</th></tr></thead>
+      <tbody>
+        <tr><td><b>Role</b></td><td>Persona/perspective the model should adopt.</td><td>“Act as a test automation engineer.”</td></tr>
+        <tr><td><b>Context</b></td><td>Background about the test object / functionality.</td><td>“You are testing a password-reset feature.”</td></tr>
+        <tr><td><b>Instruction</b></td><td>The directive — <i>what task to perform</i> (clear, imperative).</td><td>“Generate test conditions from the requirements.”</td></tr>
+        <tr><td><b>Input data</b></td><td>Material to process: user stories, criteria, screenshots, code, logs, existing cases.</td><td>“Use the attached raw test results / these reports &amp; logs.”</td></tr>
+        <tr><td><b>Constraints</b></td><td>Restrictions / special considerations on <i>how</i> to apply instructions.</td><td>“Use Given-When-Then; exclude out-of-scope features.”</td></tr>
+        <tr><td><b>Output format</b></td><td>Expected structure/format of the response.</td><td>“Provide a markdown table with columns ID, type, severity.”</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">Exam trick: a line listing <b>data sources</b> = Input data. A line saying <b>how to present</b> results = Output format. A line <b>restricting</b> the work = Constraints. The <b>persona</b> = Role.</div>
+  </div>
+
+  <div class="card">
+    <h2>2.1.2 (K2) Three core prompting techniques</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Technique</th><th>What it does</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td><b>Prompt chaining</b></td><td>Break a task into <b>intermediate steps (multiple prompts)</b>; check/refine each before the next.</td><td>Complex tasks needing <b>precision + human verification</b> per step.</td></tr>
+        <tr><td><b>Few-shot prompting</b></td><td>Provide <b>examples</b>. (zero-shot = none; one-shot = 1; few-shot = several.)</td><td><b>Repetitive / fixed-format</b> output (Gherkin, keyword-driven, fixed reports).</td></tr>
+        <tr><td><b>Meta prompting</b></td><td>The LLM <b>generates/refines its own prompt</b>; tester evaluates — a form of <b>pairing</b> with the AI.</td><td><b>Flexible/dynamic</b> tasks; crafting prompts for <b>new</b> tasks; when unsure how to word it.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">🔑 Techniques <b>combine</b>: meta-prompt to draft → add examples (few-shot) → split into checked steps (chaining).</div>
+  </div>
+
+  <div class="card">
+    <h2>2.1.3 (K2) System prompt vs. user prompt</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th></th><th>System prompt</th><th>User prompt</th></tr></thead>
+      <tbody>
+        <tr><td><b>Set by</b></td><td>Developer/tester</td><td>The chatbot user</td></tr>
+        <tr><td><b>Visibility</b></td><td>Usually <b>hidden / not editable</b></td><td><b>Visible</b>, the immediate input</td></tr>
+        <tr><td><b>Lifetime</b></td><td><b>Constant</b> for the session; sets rules/behavior</td><td><b>Changes each interaction</b></td></tr>
+        <tr><td><b>May contain</b></td><td>Role, context, constraints, general instructions</td><td>Explicit instructions + context + output format</td></tr>
+      </tbody>
+    </table></div>
+    <p>The LLM answers by considering <b>both</b> together.</p>
+  </div>
+
+  <div class="card">
+    <h2>2.2 Applying techniques to test tasks (K3 — the 2-pointers)</h2>
+
+    <h3>2.2.1 (K3) Test analysis</h3>
+    <p>GenAI can: identify defects in the test basis · generate test conditions from requirements/user stories · <b>prioritize by risk</b> (likelihood × impact, regulatory, user-facing, history) · <b>coverage analysis</b> (map requirements↔conditions) · suggest techniques (BVA, EP).</p>
+    <p>Typical <b>chaining</b> order on <b>un-reviewed</b> requirements: <i>detect ambiguities → derive conditions → prioritize by risk → coverage</i>. On <b>already-reviewed/stable</b> requirements: skip defect detection.</p>
+
+    <h3>2.2.2 (K3) Test design &amp; implementation</h3>
+    <p>Test case generation (preconditions, inputs, expected results, coverage) · <b>synthetic, privacy-preserving test data</b> · automated script generation · execution scheduling/prioritization.</p>
+    <p>Pattern: structured prompt to generate → <b>coverage table</b> verifying each acceptance criterion → <b>meta-prompt</b> to build end-to-end procedures. Use <b>few-shot</b> for <b>Gherkin</b> (Given-When-Then) cases.</p>
+
+    <h3>2.2.3 (K3) Automated regression testing</h3>
+    <p>Grows each release → ideal for automation in <b>CI/CD</b>. GenAI helps with:</p>
+    <ul>
+      <li><b>Keyword-driven</b> script implementation (map keywords → steps).</li>
+      <li><b>Impact analysis</b> → target high-risk areas.</li>
+      <li><b>Self-healing / adaptive tests</b> → auto-adjust to minor UI/API changes (e.g., dynamic locators) → fewer false failures.</li>
+      <li><b>Automated reporting &amp; insights</b>, <b>defect reporting + root-cause</b> (logs, screenshots, env data).</li>
+    </ul>
+    <p>GUI tests break on UI change; API tests on changed request/response/endpoints/auth → GenAI adapts scripts &amp; data. <b>Always review output by risk.</b></p>
+
+    <h3>2.2.4 (K3) Test monitoring &amp; control</h3>
+    <ul>
+      <li><b>Monitoring</b> = analyze trends, predict risk, alert on deviations; metrics visualization/reporting, NL summaries, dashboards, completion reports.</li>
+      <li><b>Control</b> = act on the data: <b>reprioritize tests, adjust schedules, reallocate resources</b> to high-priority areas.</li>
+    </ul>
+    <div class="callout key">Exam distinction: dashboards/summaries = <b>monitoring/reporting</b>; reprioritizing &amp; reallocating = <b>control</b>.</div>
+
+    <h3>2.2.5 (K3) Choosing the technique — the decision table</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Task characteristic</th><th>Technique</th></tr></thead>
+      <tbody>
+        <tr><td>Complex, needs precision + per-step human check</td><td><b>Prompt chaining</b></td></tr>
+        <tr><td>Repetitive / specific constrained output format</td><td><b>Few-shot prompting</b></td></tr>
+        <tr><td>Flexible/dynamic, or crafting a prompt for a new task</td><td><b>Meta prompting</b></td></tr>
+        <tr><td>No examples, just rely on model knowledge</td><td><b>Zero-shot</b></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>2.3 Evaluate results &amp; refine prompts</h2>
+
+    <h3>2.3.1 (K2) Metrics for GenAI results on test tasks</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Metric</th><th>Measures</th></tr></thead>
+      <tbody>
+        <tr><td><b>Accuracy</b></td><td>Overall correctness vs expert cases/requirements/standards.</td></tr>
+        <tr><td><b>Precision</b></td><td>Correctness w.r.t. a <b>specific objective</b> (e.g., correctly identifying anomalies).</td></tr>
+        <tr><td><b>Recall</b></td><td>Ability to find <b>all relevant</b> instances (e.g., covering valid <b>and invalid equivalence partitions</b>).</td></tr>
+        <tr><td><b>Relevance &amp; contextual fit</b></td><td>Output is applicable/appropriate for context &amp; domain.</td></tr>
+        <tr><td><b>Diversity</b></td><td>Wide range of inputs/scenarios, edge cases; avoids repetition.</td></tr>
+        <tr><td><b>Execution success rate</b></td><td>% of generated cases/scripts that run without syntax/format errors.</td></tr>
+        <tr><td><b>Time efficiency</b></td><td>Time saved vs manual effort.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">Because GenAI is non-deterministic, base metrics on <b>statistically relevant</b> data. Pair metrics to the goal (e.g., <b>diversity</b> for edge cases + <b>execution success rate</b> for API scripts).</div>
+
+    <h3>2.3.2 (K2) Techniques to evaluate &amp; refine prompts</h3>
+    <ul>
+      <li><b>Iterative prompt modification</b> — start with a base prompt, refine gradually.</li>
+      <li><b>A/B testing of prompts</b> — compare versions against predefined metrics.</li>
+      <li><b>Output analysis</b> — examine output for inaccuracies → diagnose <i>why</i> it went wrong (best for “why are results wrong?”).</li>
+      <li><b>Integrate user feedback</b> — testers’ input on usefulness/clarity.</li>
+      <li><b>Adjust prompt length &amp; specificity</b> — more context helps sometimes; shorter helps generalization other times.</li>
+    </ul>
+    <div class="callout key">🔑 Share <b>prompt libraries</b> across the team to standardize quality.</div>
+  </div>
+
+  <div class="pager">
+    <a href="01-foundations.html"><div class="dir">← Previous</div><div class="ttl">1 · Foundations</div></a>
+    <a class="next" href="03-managing-risks.html"><div class="dir">Next →</div><div class="ttl">3 · Managing Risks</div></a>
+  </div>
+</div>
+</body>
+</html>

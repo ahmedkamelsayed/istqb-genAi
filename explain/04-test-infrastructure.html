@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 4 · Test Infrastructure — CT-GenAI</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="explain-styles.css">
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="03-managing-risks.html">← Chapter 3</a>
+  <a href="05-deployment.html">Chapter 5 →</a>
+  <span class="crumb">Chapter 4</span>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">Chapter 4 · ~11 % (5 pts) · all K2</span>
+  <h1>LLM-Powered Test Infrastructure for Software Testing</h1>
+  <p class="meta">≈110 minutes · understand/explain only</p>
+
+  <div class="card">
+    <h2>4.1.1 (K2) Architecture of an LLM-powered test infrastructure</h2>
+    <p>A system that <b>integrates an LLM into the testing process</b> (vs. a chatbot that only chats). Multi-component design:</p>
+    <ul>
+      <li><b>Front-end</b> — the UI where testers input queries/commands.</li>
+      <li><b>Back-end</b> — handles <b>authentication, data retrieval, prompt preparation, LLM interaction</b>, and <b>post-processing</b>. <b>Combines user input with retrieved structured + semantically-similar data to build the prompt.</b> ← exam favorite</li>
+      <li><b>LLM</b> — third-party (via API) or in-house; a <b>smart processing component</b> that reasons over context (not just a server).</li>
+      <li><b>Data sources:</b> <b>relational databases</b> (structured data like test cases) + <b>vector databases</b> (semantic retrieval via embeddings).</li>
+    </ul>
+    <p>How it surpasses a rule-based chatbot:</p>
+    <ol>
+      <li>The LLM <b>reasons</b> based on test products (not scripted replies).</li>
+      <li>Generates insights <b>dynamically from context</b> (requirements, code, results).</li>
+      <li>Back end <b>integrates multiple data sources</b>.</li>
+      <li><b>Post-processing</b> aligns raw output with test conditions before display.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>4.1.2 (K2) Retrieval-Augmented Generation (RAG)</h2>
+    <p>Enhances an LLM by <b>incorporating external data sources</b> into generation → more relevant/accurate, <b>grounded</b> responses.</p>
+    <h3>Preprocessing (build the knowledge base)</h3>
+    <ol>
+      <li><b>Break</b> large documents into <b>chunks</b> (≈256–512 tokens) → focused retrieval, fits context window.</li>
+      <li><b>Clean/process</b> each chunk.</li>
+      <li><b>Encode</b> chunks into <b>embeddings</b> and <b>store in a vector database</b>.</li>
+    </ol>
+    <h3>At query time (two-step)</h3>
+    <ol>
+      <li><b>Retrieval</b> — encode the query, retrieve relevant chunks by <b>semantic similarity</b>.</li>
+      <li><b>Generation</b> — feed retrieved chunks to the LLM → response combining its knowledge + retrieved data.</li>
+    </ol>
+    <div class="callout key">In testing: lets infrastructure pull <b>enterprise data</b> (databases, docs, repos) in real time so analysis/design align with the <b>latest specs</b>. Best with <b>targeted</b> queries, not “retrieve everything”. RAG does <b>not retrain</b> the model.</div>
+  </div>
+
+  <div class="card">
+    <h2>4.1.3 (K2) LLM-powered agents</h2>
+    <p>Specialized GenAI apps that can <b>“act”</b> by invoking predefined functions called <b>“tools”</b> to interact with external systems — beyond chatbots’ Q&amp;A.</p>
+    <ul>
+      <li><b>Autonomous agents</b> — operate independently, minimal human intervention (rules, RL, adaptive feedback).</li>
+      <li><b>Semi-autonomous agents</b> — periodic <b>human oversight</b> to meet goals.</li>
+      <li><b>Multi-agent architecture</b> — several specialized agents collaborate; coordinating them = <b>orchestration</b>.</li>
+    </ul>
+    <div class="callout key">Agents enhance <b>both efficiency and quality</b> by operating with <b>varying levels of human interaction</b>. But they share LLM risks → mitigate with <b>automated verification</b> and use <b>semi-autonomous</b> agents for critical tasks. Verification is <b>never eliminated</b>.</div>
+  </div>
+
+  <div class="card">
+    <h2>4.2.1 (K2) Fine-tuning LLMs/SLMs</h2>
+    <p>Adapt a <b>pre-trained</b> model to a specific task/domain by <b>further training on a targeted dataset</b> → learns domain knowledge/vocabulary; more accurate for the use case.</p>
+    <ul>
+      <li>Works on <b>SLMs</b> too → high task performance with <b>less compute</b> than LLMs.</li>
+      <li>Example: fine-tune on the org’s user stories + test cases → output in the org’s format/terminology.</li>
+    </ul>
+    <p><b>Challenges:</b></p>
+    <ul>
+      <li>Avoid <b>biased/inaccurate</b> results → need <b>high-quality, task-specific</b> data.</li>
+      <li>Mitigate <b>overfitting</b> (too specialized → poor on unseen data).</li>
+      <li>Address <b>opacity</b> (lack of transparency in decisions) → complicates debugging/validation.</li>
+      <li>Manage <b>significant compute</b> (esp. for LLMs).</li>
+    </ul>
+    <div class="callout warn">⚠️ Misconception/distractor: fine-tuning does <b>not</b> “replace general knowledge” and does <b>not</b> eliminate overfitting.</div>
+  </div>
+
+  <div class="card">
+    <h2>4.2.2 (K2) LLMOps</h2>
+    <p><b>Large Language Model Operations</b> = practices/tools/processes to streamline <b>development, deployment, and maintenance</b> of LLMs in production — managing them across the <b>lifecycle</b> incl. <b>privacy, security, cost</b>.</p>
+    <p>Three ways to use GenAI in testing (not mutually exclusive — can run in parallel):</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Approach</th><th>Key considerations</th></tr></thead>
+      <tbody>
+        <tr><td><b>AI chatbot</b></td><td>Privacy/security + cost; LLM-as-a-Service vs in-house open-source for control.</td></tr>
+        <tr><td><b>Test tool with GenAI</b></td><td>Same + evaluate vendor’s data-security/performance assurances; cost-benefit + risk.</td></tr>
+        <tr><td><b>In-house GenAI test tool</b></td><td><b>Most control</b> of privacy/security; plan compute, storage, staff costs; needs expertise + validation/maintenance.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">All can incorporate <b>RAG</b> and <b>fine-tuning</b>. LLMOps does <b>not</b> aim to eliminate human oversight or restrict use to chatbots.</div>
+  </div>
+
+  <div class="pager">
+    <a href="03-managing-risks.html"><div class="dir">← Previous</div><div class="ttl">3 · Managing Risks</div></a>
+    <a class="next" href="05-deployment.html"><div class="dir">Next →</div><div class="ttl">5 · Deployment</div></a>
+  </div>
+</div>
+</body>
+</html>

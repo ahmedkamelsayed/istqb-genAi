@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch 1 · Foundations — CT-GenAI</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="explain-styles.css">
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="00-exam-blueprint-and-strategy.html">← Blueprint</a>
+  <a href="02-prompt-engineering.html">Chapter 2 →</a>
+  <span class="crumb">Chapter 1</span>
+</nav>
+<div class="wrap">
+  <span class="eyebrow">Chapter 1 · ~12 % · K1–K2</span>
+  <h1>Introduction to Generative AI for Software Testing</h1>
+  <p class="meta">≈100 minutes of teaching · recall &amp; understand only (no K3)</p>
+
+  <div class="card">
+    <h2>1.1.1 (K1) The AI spectrum — the four types</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Type</th><th>Definition</th><th>Test example</th></tr></thead>
+      <tbody>
+        <tr><td><b>Symbolic AI</b></td><td>Rule-based system using symbols + logical rules to mimic human decisions.</td><td>Hand-coded decision rules.</td></tr>
+        <tr><td><b>Classical machine learning</b></td><td>Data-driven; needs <b>data prep, manual feature selection, model training</b>.</td><td>Defect categorization, predicting problem areas.</td></tr>
+        <tr><td><b>Deep learning</b></td><td>Neural networks that <b>automatically learn features</b> (no manual feature selection).</td><td>Finding patterns in images/audio/text.</td></tr>
+        <tr><td><b>Generative AI</b></td><td>Uses <b>deep learning</b> to <b>create new content</b> (text, images, code) by mimicking training patterns.</td><td>LLMs writing test cases/scripts.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">🔑 Key advantage of GenAI for testing: <b>pre-trained</b> models apply directly to test tasks — <b>no extra training phase needed</b> (but it carries risks, see Ch 3).</div>
+  </div>
+
+  <div class="card">
+    <h2>1.1.2 (K2) Basics of GenAI &amp; LLMs</h2>
+    <ul>
+      <li><b>LLM</b> = GenAI model pre-trained on huge text datasets, based on the <b>generative pre-trained transformer</b>.</li>
+      <li><b>SLM (Small Language Model)</b> = fewer parameters; lightweight, focused, less resource-intensive.</li>
+      <li><b>Tokenization</b> = breaking text into <b>tokens</b> (char / sub-word / word) — the <i>building blocks</i> the model reads. (Don’t confuse with embeddings.)</li>
+      <li><b>Embeddings</b> = numerical <b>vector</b> representations of tokens encoding semantic meaning; <b>similar meanings sit close</b> in vector space → retains context &amp; coherence.</li>
+      <li><b>Transformer</b> = the neural-network architecture; during <b>inference</b> it <b>predicts the next token</b>. Output is <b>statistically plausible — but plausible ≠ correct.</b></li>
+      <li><b>Non-deterministic behavior</b> = same input can give different outputs, due to <b>probabilistic inference + hyper-parameters</b>.</li>
+      <li><b>Context window</b> = preceding text (in <b>tokens</b>) the model can consider at once. Bigger = better long-passage coherence but more compute; exceeding it → model <b>discards earlier info</b>.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>1.1.3 (K2) Foundation vs. Instruction-tuned vs. Reasoning LLMs</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Model</th><th>What it is</th><th>Strength</th></tr></thead>
+      <tbody>
+        <tr><td><b>Foundation</b></td><td>General-purpose, trained on vast diverse data.</td><td>Flexible, but usually needs <b>further adaptation</b>.</td></tr>
+        <tr><td><b>Instruction-tuned</b></td><td>Foundation model fine-tuned on prompt→response pairs.</td><td><b>Follows instructions / formats</b> well (e.g., Gherkin). Aka “non-reasoning”.</td></tr>
+        <tr><td><b>Reasoning</b></td><td>Adds structured cognition: logical inference, multi-step, chain-of-thought.</td><td><b>High-cognitive-load tasks</b> (effort estimation, prioritization with dependencies).</td></tr>
+      </tbody>
+    </table></div>
+    <p>For testing, both <b>instruction-tuned</b> and <b>reasoning</b> LLMs are used — choice depends on task complexity.</p>
+  </div>
+
+  <div class="card">
+    <h2>1.1.4 (K2) Multimodal LLMs &amp; Vision-Language Models (VLMs)</h2>
+    <ul>
+      <li><b>Multimodal LLM</b> = processes multiple modalities (text, image, sound, video); images → embeddings via VLMs.</li>
+      <li><b>VLM</b> = a <b>subset of multimodal LLMs</b> integrating <b>visual + textual</b> info (captioning, visual Q&amp;A, text-vs-image consistency).</li>
+      <li><b>In testing:</b> analyze <b>screenshots / GUI wireframes</b> against textual descriptions (defect reports, user stories) → spot <b>visual discrepancies</b>, generate richer cases → more coverage.</li>
+    </ul>
+    <div class="callout warn">⚠️ Remember the direction: <b>VLM ⊂ Multimodal LLM</b> (not the reverse, not interchangeable).</div>
+  </div>
+
+  <div class="card">
+    <h2>1.2.1 (K2) Key LLM capabilities for test tasks</h2>
+    <ul>
+      <li><b>Requirements analysis &amp; improvement</b> — flag ambiguities, inconsistencies, missing info; raise clarifying questions.</li>
+      <li><b>Test case creation support</b> — suggest cases &amp; objectives from requirements/user stories.</li>
+      <li><b>Test oracle generation</b> — produce <b>expected results</b>.</li>
+      <li><b>Test data generation</b> — datasets, boundary values, combinations.</li>
+      <li><b>Test automation support</b> — generate/improve scripts, suggest techniques.</li>
+      <li><b>Test result analysis</b> — summaries; classify anomalies by <b>severity/priority</b>.</li>
+      <li><b>Testware creation</b> — test plans, test/defect reports, kept updated.</li>
+    </ul>
+    <div class="callout no">❌ Not LLM capabilities: executing all scripts unattended, doing exploratory testing (human, intuitive), generating deployable application code.</div>
+  </div>
+
+  <div class="card">
+    <h2>1.2.2 (K2) AI chatbots vs. LLM-powered testing applications</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th></th><th>AI Chatbot</th><th>LLM-powered testing application</th></tr></thead>
+      <tbody>
+        <tr><td><b>Interface</b></td><td>Conversational, natural language</td><td>Integrated via <b>API</b> into test tools</td></tr>
+        <tr><td><b>Best for</b></td><td><b>Ad hoc</b> tasks, exploration, clarification, onboarding</td><td>Well-defined, <b>automated, scalable</b> tasks</td></tr>
+        <tr><td><b>Strength</b></td><td>Fast feedback, accessible to non-technical</td><td>Customization, scale, can host <b>AI agents</b> (Ch 4)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout key">🔑 Either way, success depends on <b>strong prompt engineering</b> (Ch 2).</div>
+  </div>
+
+  <div class="pager">
+    <a href="00-exam-blueprint-and-strategy.html"><div class="dir">← Previous</div><div class="ttl">Exam Blueprint &amp; Strategy</div></a>
+    <a class="next" href="02-prompt-engineering.html"><div class="dir">Next →</div><div class="ttl">2 · Prompt Engineering</div></a>
+  </div>
+</div>
+</body>
+</html>
