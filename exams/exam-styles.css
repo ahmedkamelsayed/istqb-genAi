@@ -183,6 +183,24 @@ b{color:#0f172a}
   .facts,.result-tiles{grid-template-columns:repeat(2,1fr)}
   .ch-name{width:120px}
 }
+@media(max-width:560px){
+  #exam-root{padding:20px 13px 90px}
+  .topbar{padding:10px 12px;gap:8px}
+  /* keep the title on one line; the full title is in the page anyway */
+  .topbar-title{font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .topbar-right{gap:8px;flex:none}
+  .timer{font-size:1.05rem;padding:4px 10px}
+  .btn-finish{white-space:nowrap;padding:9px 14px;font-size:.85rem}
+  .start-screen{padding:24px 18px}
+  .main{padding:20px 16px}
+  .nav-grid{grid-template-columns:repeat(8,1fr)}
+  .q-stem pre,.rev-stem pre{font-size:.78rem}
+  .review-controls{gap:6px}
+  .rc-retry{margin-left:0;width:100%;order:5}
+  /* compact icon-only Home button so it doesn't cover content */
+  .home-fab{font-size:0;width:44px;height:44px;padding:0;border-radius:50%;justify-content:center}
+  .home-fab .ico{font-size:1.15rem}
+}
 
 /* =========================== DARK MODE =========================== */
 :root[data-theme="dark"]{
