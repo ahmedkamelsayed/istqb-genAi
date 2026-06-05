@@ -417,10 +417,6 @@
       "<span><i class='lg seen'></i>Seen, blank</span>" +
       "<span><i class='lg flagged'></i>Flagged</span>";
     side.appendChild(legend);
-
-    var fin = el("button", "btn btn-finish wide", "Finish exam");
-    fin.onclick = function () { confirmFinish(); };
-    side.appendChild(fin);
   }
 
   // =========================================================================
