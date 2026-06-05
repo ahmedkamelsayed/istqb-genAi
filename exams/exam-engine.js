@@ -29,6 +29,8 @@
     remaining: DURATION
   };
   var timerHandle = null;
+  var paused = false;
+  var firedWarnings = {};
 
   // ---- persistence --------------------------------------------------------
   function save() {
@@ -176,6 +178,7 @@
       if (EXAM.shuffleOptions) { buildOrder(); applyOrder(); }
     }
     state.started = true;
+    paused = false;
     save();
     startTimer();
     renderExam();
@@ -184,12 +187,29 @@
   // =========================================================================
   //  TIMER
   // =========================================================================
+  // warnings already passed (given the current remaining) should not fire
+  function initWarnings() {
+    firedWarnings = {};
+    [600, 300, 60].forEach(function (s) { if (state.remaining <= s) firedWarnings[s] = true; });
+  }
+  function notifyThresholds() {
+    [[600, "⏰ 10 minutes remaining"], [300, "⏰ 5 minutes remaining"], [60, "⏰ 1 minute remaining — finish up!"]]
+      .forEach(function (w) {
+        if (state.remaining <= w[0] && !firedWarnings[w[0]]) {
+          firedWarnings[w[0]] = true;
+          toast(w[1], w[0] <= 60 ? "danger" : "warn");
+        }
+      });
+  }
   function startTimer() {
     if (timerHandle) clearInterval(timerHandle);
+    initWarnings();
     timerHandle = setInterval(function () {
       if (state.finished) { clearInterval(timerHandle); return; }
+      if (paused) return;                 // clock is frozen while paused
       state.remaining--;
       updateTimerDisplay();
+      notifyThresholds();
       if (state.remaining % 5 === 0) save();
       if (state.remaining <= 0) {
         clearInterval(timerHandle);
@@ -201,8 +221,58 @@
     var t = document.getElementById("timer");
     if (!t) return;
     t.textContent = fmtTime(Math.max(0, state.remaining));
-    t.classList.toggle("warn", state.remaining <= 300);
+    t.classList.toggle("warn", state.remaining <= 300 && state.remaining > 60);
     t.classList.toggle("danger", state.remaining <= 60);
+  }
+
+  // ---- toast notifications ------------------------------------------------
+  function toast(msg, kind) {
+    var t = el("div", "exam-toast " + (kind || ""), msg);
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add("show"); });
+    setTimeout(function () {
+      t.classList.remove("show");
+      setTimeout(function () { if (t.parentNode) t.parentNode.removeChild(t); }, 400);
+    }, 4500);
+  }
+
+  // ---- pause / resume -----------------------------------------------------
+  function togglePause() {
+    if (state.finished) return;
+    paused = !paused;
+    var layout = document.querySelector(".layout");
+    var btn = document.querySelector(".btn-pause");
+    var timer = document.getElementById("timer");
+    if (paused) {
+      if (layout) layout.classList.add("blurred");
+      if (timer) timer.classList.add("paused");
+      if (btn) { btn.innerHTML = "▶ Resume"; btn.classList.add("resuming"); }
+      showPauseOverlay();
+      save();
+    } else {
+      if (layout) layout.classList.remove("blurred");
+      if (timer) timer.classList.remove("paused");
+      if (btn) { btn.innerHTML = "⏸ Pause"; btn.classList.remove("resuming"); }
+      hidePauseOverlay();
+    }
+  }
+  function showPauseOverlay() {
+    if (document.getElementById("pause-overlay")) return;
+    var ov = el("div", "pause-overlay"); ov.id = "pause-overlay";
+    var card = el("div", "pause-card");
+    card.appendChild(el("div", "pause-ico", "⏸"));
+    card.appendChild(el("h2", null, "Exam paused"));
+    card.appendChild(el("p", null, "The timer is stopped and the question is hidden. Take a breather."));
+    card.appendChild(el("div", "pause-time", "Time remaining: " + fmtTime(Math.max(0, state.remaining))));
+    var rb = el("button", "btn btn-primary", "▶ Resume exam");
+    rb.onclick = function () { togglePause(); };
+    card.appendChild(rb);
+    ov.appendChild(card);
+    root.appendChild(ov);
+  }
+  function hidePauseOverlay() {
+    var o = document.getElementById("pause-overlay");
+    if (o && o.parentNode) o.parentNode.removeChild(o);
   }
 
   // =========================================================================
@@ -215,6 +285,9 @@
     var right = el("div", "topbar-right");
     var timer = el("div", "timer", fmtTime(state.remaining)); timer.id = "timer";
     right.appendChild(timer);
+    var pauseBtn = el("button", "btn btn-pause", paused ? "▶ Resume" : "⏸ Pause");
+    pauseBtn.onclick = function () { togglePause(); };
+    right.appendChild(pauseBtn);
     var finishBtn = el("button", "btn btn-finish", "Finish exam");
     finishBtn.onclick = function () { confirmFinish(); };
     right.appendChild(finishBtn);
@@ -362,6 +435,8 @@
 
   function finishExam(auto) {
     state.finished = true;
+    paused = false;
+    hidePauseOverlay();
     if (timerHandle) clearInterval(timerHandle);
     save();
     renderResults(auto);
