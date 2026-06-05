@@ -185,12 +185,12 @@ b{color:#0f172a}
 }
 @media(max-width:560px){
   #exam-root{padding:20px 13px 90px}
-  .topbar{padding:10px 12px;gap:8px}
+  .topbar{padding:10px 12px;gap:8px;margin:-20px -13px 16px}
   /* keep the title on one line; the full title is in the page anyway */
   .topbar-title{font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
   .topbar-right{gap:8px;flex:none}
   .timer{font-size:1.05rem;padding:4px 10px}
-  .btn-finish{white-space:nowrap;padding:9px 14px;font-size:.85rem}
+  .btn-finish,.btn-pause{white-space:nowrap;padding:8px 11px;font-size:.82rem}
   .start-screen{padding:24px 18px}
   .main{padding:20px 16px}
   .nav-grid{grid-template-columns:repeat(8,1fr)}
@@ -201,6 +201,27 @@ b{color:#0f172a}
   .home-fab{font-size:0;width:44px;height:44px;padding:0;border-radius:50%;justify-content:center}
   .home-fab .ico{font-size:1.15rem}
 }
+
+/* ---------- pause + toast ---------- */
+.btn-pause{background:#fff;border:1px solid rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.14)}
+.btn-pause:hover{background:rgba(255,255,255,.26)}
+.timer.paused{opacity:.55}
+.layout.blurred{filter:blur(7px);pointer-events:none;user-select:none;transition:filter .2s}
+.pause-overlay{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;
+  background:rgba(15,23,42,.5);backdrop-filter:blur(2px);animation:fadein .2s ease}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.pause-card{background:var(--panel);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.4);
+  padding:30px 34px;text-align:center;max-width:340px;margin:16px}
+.pause-ico{font-size:2.6rem;line-height:1}
+.pause-card h2{margin:.5rem 0 .2rem;color:#0f172a;font-size:1.3rem}
+.pause-card p{margin:.2rem 0 1rem;color:var(--muted);font-size:.92rem}
+.pause-time{font-weight:700;color:var(--brand);margin-bottom:18px;font-variant-numeric:tabular-nums;font-size:1.05rem}
+.exam-toast{position:fixed;left:50%;top:16px;transform:translate(-50%,-24px);z-index:1200;
+  background:#0f172a;color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.95rem;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transition:opacity .35s,transform .35s;pointer-events:none;max-width:90vw;text-align:center}
+.exam-toast.show{opacity:1;transform:translate(-50%,0)}
+.exam-toast.warn{background:#b45309}
+.exam-toast.danger{background:#b91c1c}
 
 /* =========================== DARK MODE =========================== */
 :root[data-theme="dark"]{
@@ -229,3 +250,4 @@ b{color:#0f172a}
 [data-theme="dark"] .rev-opt.wrong-pick{background:#3a1518}
 [data-theme="dark"] .ro-why{color:#cbd5e1;border-top-color:#334155}
 [data-theme="dark"] .rev-note{background:#2a2208;border-color:#5c4a12;color:#fcd34d}
+[data-theme="dark"] .pause-card h2{color:#f1f5f9}
