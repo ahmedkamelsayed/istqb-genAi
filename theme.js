@@ -10,12 +10,13 @@
     else document.documentElement.removeAttribute("data-theme");
   }
 
-  // resolve initial theme: saved choice → OS preference → light
+  // resolve initial theme: saved choice → light (default)
+  // Light is the default for first-time visitors; dark only applies if the
+  // user has explicitly toggled it (stored in localStorage).
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) {}
   if (saved !== "dark" && saved !== "light") {
-    try { saved = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light"; }
-    catch (e) { saved = "light"; }
+    saved = "light";
   }
   apply(saved);
 
