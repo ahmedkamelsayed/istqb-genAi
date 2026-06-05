@@ -67,8 +67,18 @@ td code{font-size:.85em}
 .pager .spacer{flex:1;background:transparent;border:none;box-shadow:none;pointer-events:none}
 
 @media(max-width:640px){
-  .card{padding:18px 16px}
-  h1{font-size:1.5rem}
+  .wrap{padding:20px 13px 90px}
+  .card{padding:16px 13px}
+  h1{font-size:1.4rem}
+  h2{font-size:1.12rem}
+  /* top nav: let it wrap neatly and drop the redundant breadcrumb */
+  .topnav{gap:6px 10px;padding:10px 12px;flex-wrap:wrap}
+  .topnav a{font-size:.8rem}
+  .topnav .crumb{display:none}
+  /* tables: smaller text + framed, clearly-scrollable container */
+  .tablewrap{border:1px solid var(--line);border-radius:10px;-webkit-overflow-scrolling:touch}
+  table{font-size:.8rem}
+  th,td{padding:7px 9px}
 }
 
 /* =========================== DARK MODE =========================== */
