@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5 Exam — Deploying GenAI in Test Orgs (CT-GenAI)</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="exam-styles.css">
+</head>
+<body>
+<a href="../index.html" class="home-fab" title="Back to Study Hub" aria-label="Back to Study Hub"><span class="ico">🏠</span> Home</a>
+<div id="exam-root"></div>
+<script>
+window.EXAM = {
+  id: "chapter-5",
+  title: "Chapter 5 Exam — Deploying & Integrating GenAI in Test Organizations",
+  source: "21 original questions on Chapter 5 learning objectives (triple the real-exam weight). Options shuffle each attempt. Not an official ISTQB exam.",
+  durationMinutes: 30,
+  passPercent: 65,
+  shuffleOptions: true,
+  questions: [
+  { n:1, lo:"GenAI-5.1.1", k:"K1", points:1, type:"single",
+    stem:"Which is a risk of shadow AI (using unapproved AI tools)?",
+    options:[
+      {k:"a",html:"Data breaches, because personal/unapproved tools may lack robust security.",correct:true,why:"Information security/privacy weakness from unapproved tools is a core shadow-AI risk."},
+      {k:"b",html:"Guaranteed compliance with all regulations.",correct:false,why:"Shadow AI tends to cause non-compliance."},
+      {k:"c",html:"Clear intellectual property licensing.",correct:false,why:"Shadow AI often involves vague/unclear licensing."},
+      {k:"d",html:"Reduced legal exposure.",correct:false,why:"It increases legal exposure."}
+    ]},
+  { n:2, lo:"GenAI-5.1.1", k:"K1", points:1, type:"single",
+    stem:"Using copyrighted data without proper authorization through shadow AI is categorized as which risk?",
+    options:[
+      {k:"a",html:"Vague intellectual property",correct:true,why:"Unclear licensing / processing copyrighted data without authorization is the IP risk of shadow AI."},
+      {k:"b",html:"Information security weakness",correct:false,why:"That covers weak security of unapproved tools, not copyright."},
+      {k:"c",html:"Data privacy weakness",correct:false,why:"That concerns personal-data exposure, not copyright."},
+      {k:"d",html:"Energy inefficiency",correct:false,why:"Not a shadow-AI category."}
+    ]},
+  { n:3, lo:"GenAI-5.1.2", k:"K2", points:1, type:"single",
+    stem:"Which is a measurable test objective to define in a Generative AI strategy for testing?",
+    options:[
+      {k:"a",html:"Increasing test productivity, shortening test cycles, and improving test quality.",correct:true,why:"Defining measurable objectives (productivity, shorter cycles, quality) is part of a GenAI strategy."},
+      {k:"b",html:"Maximizing data volume regardless of quality.",correct:false,why:"Data quality matters more than sheer volume."},
+      {k:"c",html:"Eliminating all human review of generated testware.",correct:false,why:"Quality gates with review are recommended."},
+      {k:"d",html:"Avoiding any process guidelines.",correct:false,why:"Process guidelines should be established."}
+    ]},
+  { n:4, lo:"GenAI-5.1.2", k:"K2", points:1, type:"single",
+    stem:"Why is high-quality input data important in a GenAI testing strategy?",
+    options:[
+      {k:"a",html:"The effectiveness of LLM-powered testing depends on accurate, relevant input to produce trustworthy results.",correct:true,why:"Reliable results depend on accurate, relevant, secure input data."},
+      {k:"b",html:"It lets you build the largest possible dataset.",correct:false,why:"Quality matters more than maximum quantity."},
+      {k:"c",html:"It removes the need for any metrics.",correct:false,why:"Task-specific metrics should still be collected."},
+      {k:"d",html:"It guarantees deterministic output.",correct:false,why:"Output remains non-deterministic."}
+    ]},
+  { n:5, lo:"GenAI-5.1.3", k:"K2", points:1, type:"single",
+    stem:"Considering licensing fees plus operational/computational expenses when selecting an LLM corresponds to which criterion?",
+    options:[
+      {k:"a",html:"Recurring cost",correct:true,why:"Recurring cost covers licensing and operational/compute expenses."},
+      {k:"b",html:"Model performance",correct:false,why:"That concerns benchmarked task quality."},
+      {k:"c",html:"Fine-tuning potential",correct:false,why:"That concerns adaptability with domain data."},
+      {k:"d",html:"Community and support",correct:false,why:"That concerns documentation and community."}
+    ]},
+  { n:6, lo:"GenAI-5.1.3", k:"K2", points:1, type:"single",
+    stem:"Choosing a model with an active community and detailed documentation reflects which selection criterion?",
+    options:[
+      {k:"a",html:"Community and support",correct:true,why:"Active community + documentation aiding implementation/troubleshooting is this criterion."},
+      {k:"b",html:"Recurring cost",correct:false,why:"That concerns licensing/operational expenses."},
+      {k:"c",html:"Model performance",correct:false,why:"That concerns task performance against benchmarks."},
+      {k:"d",html:"Fine-tuning potential",correct:false,why:"That concerns adaptability."}
+    ]},
+  { n:7, lo:"GenAI-5.1.4", k:"K1", points:1, type:"single",
+    stem:"Which correctly lists the three phases of adopting GenAI in a test organization, in order?",
+    options:[
+      {k:"a",html:"Discovery → Initiation and usage definition → Utilization and iteration",correct:true,why:"These are the three syllabus adoption phases, in order."},
+      {k:"b",html:"Planning → Experimentation → Evaluation",correct:false,why:"Not the syllabus phases."},
+      {k:"c",html:"Awareness → Prioritization → Monitoring",correct:false,why:"These are activities, not the named phases."},
+      {k:"d",html:"Training → Testing → Scaling",correct:false,why:"Not the syllabus phases."}
+    ]},
+  { n:8, lo:"GenAI-5.1.4", k:"K1", points:1, type:"single",
+    stem:"Which activity belongs to the DISCOVERY phase of GenAI adoption?",
+    options:[
+      {k:"a",html:"Training teams on GenAI concepts, providing LLM access, and experimenting with initial use cases.",correct:true,why:"Discovery focuses on awareness and capability building."},
+      {k:"b",html:"Full integration with continuous monitoring and scaling.",correct:false,why:"That is the Utilization and iteration phase."},
+      {k:"c",html:"Prioritizing practical use cases for adoption.",correct:false,why:"That is the Initiation and usage definition phase."},
+      {k:"d",html:"Decommissioning legacy tools.",correct:false,why:"Not a defined adoption phase."}
+    ]},
+  { n:9, lo:"GenAI-5.2.1", k:"K2", points:1, type:"single",
+    stem:"Which is an essential skill/knowledge area for testers working with GenAI?",
+    options:[
+      {k:"a",html:"Applying data sanitization and privacy-preserving prompting when sharing testware with LLMs, and assessing LLM capabilities.",correct:true,why:"Data sanitization, privacy-preserving prompting, and assessing LLM capabilities are named essential skills."},
+      {k:"b",html:"Designing the transformer architecture of new models.",correct:false,why:"That is an AI-developer skill."},
+      {k:"c",html:"Hand-labeling the model's entire pre-training corpus.",correct:false,why:"A model-development task, not for testers using GenAI."},
+      {k:"d",html:"Guaranteeing the model never hallucinates.",correct:false,why:"Hallucinations are intrinsic; testers mitigate, not guarantee prevention."}
+    ]},
+  { n:10, lo:"GenAI-5.2.1", k:"K2", points:1, type:"single",
+    stem:"Regarding hallucinations and reasoning errors, what should testers be able to do?",
+    options:[
+      {k:"a",html:"Identify and mitigate the risks of hallucinations, reasoning errors, and biases when testing with GenAI.",correct:true,why:"Testers should identify and mitigate these intrinsic risks, not prevent them entirely."},
+      {k:"b",html:"Permanently prevent the model from ever hallucinating.",correct:false,why:"These are intrinsic limitations that can't be fully prevented."},
+      {k:"c",html:"Ignore them because the model self-corrects.",correct:false,why:"They must be actively managed."},
+      {k:"d",html:"Retrain the base model to remove them.",correct:false,why:"That is not a tester responsibility and wouldn't eliminate them."}
+    ]},
+  { n:11, lo:"GenAI-5.2.2", k:"K1", points:1, type:"single",
+    stem:"What is the recommended way to build GenAI skills within a test team?",
+    options:[
+      {k:"a",html:"A hands-on, gradual process with guided exercises, peer learning, and knowledge-sharing communities.",correct:true,why:"Practical, gradual skill-building via guided exercises, peer learning and communities of practice is recommended."},
+      {k:"b",html:"A single big-bang rollout into all tasks at once.",correct:false,why:"Big-bang adoption is not recommended."},
+      {k:"c",html:"Theory-only external courses with no practice.",correct:false,why:"Over-relying on theory diminishes practical know-how."},
+      {k:"d",html:"Forbidding any experimentation with LLMs.",correct:false,why:"Hands-on practice is encouraged."}
+    ]},
+  { n:12, lo:"GenAI-5.2.2", k:"K1", points:1, type:"single",
+    stem:"What is a 'prompt pattern'?",
+    options:[
+      {k:"a",html:"A reusable template for crafting effective prompts that guide GenAI toward consistent, reliable outputs.",correct:true,why:"A prompt pattern is a reusable template; teams share prompt-pattern libraries."},
+      {k:"b",html:"A one-off prompt that must never be reused.",correct:false,why:"It is explicitly reusable."},
+      {k:"c",html:"A hardware configuration for running models.",correct:false,why:"It concerns prompt design, not hardware."},
+      {k:"d",html:"A regulation governing AI usage.",correct:false,why:"It is a practical template, not a regulation."}
+    ]},
+  { n:13, lo:"GenAI-5.2.3", k:"K1", points:1, type:"single",
+    stem:"How does a TESTER's role evolve with the adoption of Generative AI?",
+    options:[
+      {k:"a",html:"From manual test design/execution toward guiding and verifying AI-generated testware and maintaining prompt libraries.",correct:true,why:"Testers become AI-assisted specialists: guiding/verifying AI output, refining prompts, maintaining prompt libraries."},
+      {k:"b",html:"Into a full-time large-language-model research scientist.",correct:false,why:"Testers don't become model researchers."},
+      {k:"c",html:"Relying solely on AI output without any review.",correct:false,why:"Verification of AI output remains core."},
+      {k:"d",html:"Taking over oversight of all AI-based test processes.",correct:false,why:"That oversight is the test manager's responsibility."}
+    ]},
+  { n:14, lo:"GenAI-5.2.3", k:"K1", points:1, type:"single",
+    stem:"How do TEST MANAGERS' responsibilities change in an AI-enabled test organization?",
+    options:[
+      {k:"a",html:"They add AI-based test strategy, AI risk management, governance, and coordinating hybrid teams of people + GenAI agents.",correct:true,why:"Managers expand into AI strategy, risk management, governance, and coordinating hybrid human+agent teams."},
+      {k:"b",html:"They stop managing and let GenAI run unsupervised.",correct:false,why:"They must balance human and AI capabilities, not abdicate."},
+      {k:"c",html:"They become responsible only for refining individual prompts.",correct:false,why:"Prompt refinement is primarily the tester's evolving task."},
+      {k:"d",html:"They must personally master each model's transformer internals.",correct:false,why:"Their focus stays on management, not deep technical internals."}
+    ]},
+  { n:15, lo:"GenAI-5.1.1", k:"K1", points:1, type:"single",
+    stem:"Why is shadow AI a compliance risk?",
+    options:[
+      {k:"a",html:"Using unapproved AI tools can breach industry standards and regulations, risking legal consequences.",correct:true,why:"Unapproved tools can cause non-compliance with standards/regulations."},
+      {k:"b",html:"It guarantees encryption of all data.",correct:false,why:"Unapproved tools often lack robust security."},
+      {k:"c",html:"It clarifies intellectual property ownership.",correct:false,why:"Shadow AI creates vague IP/licensing risk."},
+      {k:"d",html:"It always lowers cost.",correct:false,why:"Cost is not the compliance risk."}
+    ]},
+  { n:16, lo:"GenAI-5.1.2", k:"K2", points:1, type:"single",
+    stem:"Which is an element of a sound Generative AI strategy for software testing?",
+    options:[
+      {k:"a",html:"Process guidelines including transparency about AI-generated content and quality gates that review generated testware.",correct:true,why:"Process guidelines, transparency, and quality gates are key strategy elements."},
+      {k:"b",html:"Feeding the maximum data regardless of quality.",correct:false,why:"Data quality matters more than volume."},
+      {k:"c",html:"Removing all effectiveness metrics.",correct:false,why:"Task-specific metrics should be collected."},
+      {k:"d",html:"Banning training to save time.",correct:false,why:"Training programs are recommended."}
+    ]},
+  { n:17, lo:"GenAI-5.1.3", k:"K2", points:1, type:"single",
+    stem:"Evaluating whether a model can be adapted with domain data to improve accuracy refers to which selection criterion?",
+    options:[
+      {k:"a",html:"Fine-tuning potential",correct:true,why:"Assessing whether the model can be fine-tuned with domain data is the fine-tuning-potential criterion."},
+      {k:"b",html:"Recurring cost",correct:false,why:"That concerns licensing/operational expenses."},
+      {k:"c",html:"Community and support",correct:false,why:"That concerns documentation/community."},
+      {k:"d",html:"Model performance",correct:false,why:"That concerns benchmarked task quality, not adaptability."}
+    ]},
+  { n:18, lo:"GenAI-5.1.4", k:"K1", points:1, type:"single",
+    stem:"In which adoption phase is GenAI fully integrated with continuous monitoring and scaling of the transformation?",
+    options:[
+      {k:"a",html:"Utilization and iteration",correct:true,why:"The third phase fully integrates GenAI with continuous monitoring and scaling."},
+      {k:"b",html:"Discovery",correct:false,why:"Discovery is awareness/capability building."},
+      {k:"c",html:"Initiation and usage definition",correct:false,why:"That phase identifies/prioritizes use cases."},
+      {k:"d",html:"Retirement",correct:false,why:"Not a defined phase."}
+    ]},
+  { n:19, lo:"GenAI-5.2.1", k:"K2", points:1, type:"single",
+    stem:"Which is an ENVIRONMENTAL skill testers should apply when using GenAI?",
+    options:[
+      {k:"a",html:"Selecting right-sized models and optimizing usage to balance benefits against cost and energy.",correct:true,why:"Right-sizing models and optimizing usage reduces computational/energy overhead."},
+      {k:"b",html:"Always choosing the largest model.",correct:false,why:"Oversized models waste energy."},
+      {k:"c",html:"Ignoring energy considerations.",correct:false,why:"Environmental awareness is an essential skill."},
+      {k:"d",html:"Building the model's training pipeline.",correct:false,why:"An AI-developer task, not a tester environmental skill."}
+    ]},
+  { n:20, lo:"GenAI-5.2.2", k:"K1", points:1, type:"single",
+    stem:"What supports ongoing knowledge sharing about effective GenAI use within a test team?",
+    options:[
+      {k:"a",html:"Internal communities of practice that share prompt-pattern libraries and lessons learned.",correct:true,why:"Communities of practice sharing prompt-pattern libraries drive continuous improvement."},
+      {k:"b",html:"A single one-time external lecture.",correct:false,why:"Over-reliance on one-off external courses isn't recommended."},
+      {k:"c",html:"Forbidding experimentation with LLMs.",correct:false,why:"Hands-on practice is encouraged."},
+      {k:"d",html:"A big-bang rollout into all tasks at once.",correct:false,why:"Gradual adoption is recommended."}
+    ]},
+  { n:21, lo:"GenAI-5.2.3", k:"K1", points:1, type:"single",
+    stem:"Who is usually responsible for ensuring the test team maintains both traditional testing competencies and AI literacy?",
+    options:[
+      {k:"a",html:"The test manager",correct:true,why:"Ensuring the team maintains both competencies is the test manager's evolving responsibility."},
+      {k:"b",html:"Each individual tester alone",correct:false,why:"Individuals own their own skills, but team-wide capability is a management responsibility."},
+      {k:"c",html:"No one — it happens automatically",correct:false,why:"It requires active management."},
+      {k:"d",html:"The LLM vendor",correct:false,why:"Not the vendor's responsibility."}
+    ]}
+  ]
+};
+</script>
+<script src="exam-engine.js"></script>
+</body>
+</html>
