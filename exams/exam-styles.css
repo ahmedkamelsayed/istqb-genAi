@@ -202,6 +202,15 @@ b{color:#0f172a}
   .home-fab .ico{font-size:1.15rem}
 }
 
+/* ---------- difficulty badge ---------- */
+.q-level{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.02em}
+.lvl-easy{background:var(--okbg);color:#15803d}
+.lvl-medium{background:#fef3c7;color:#b45309}
+.lvl-hard{background:#fee2e2;color:#b91c1c}
+[data-theme="dark"] .lvl-easy{background:#13331f;color:#86efac}
+[data-theme="dark"] .lvl-medium{background:#2a2208;color:#fcd34d}
+[data-theme="dark"] .lvl-hard{background:#3a1518;color:#fca5a5}
+
 /* ---------- pause + toast ---------- */
 .btn-pause{background:#fff;border:1px solid rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.14)}
 .btn-pause:hover{background:rgba(255,255,255,.26)}
