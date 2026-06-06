@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 Exam — Foundations (CT-GenAI)</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="exam-styles.css">
+</head>
+<body>
+<a href="../index.html" class="home-fab" title="Back to Study Hub" aria-label="Back to Study Hub"><span class="ico">🏠</span> Home</a>
+<div id="exam-root"></div>
+<script>
+window.EXAM = {
+  id: "chapter-1",
+  title: "Chapter 1 Exam — Introduction to Generative AI",
+  source: "21 original questions on Chapter 1 learning objectives (triple the real-exam weight). Options shuffle each attempt. Not an official ISTQB exam.",
+  durationMinutes: 30,
+  passPercent: 65,
+  shuffleOptions: true,
+  questions: [
+  { n:1, lo:"GenAI-1.1.1", k:"K1", points:1, type:"single",
+    stem:"Which type of AI uses neural networks to automatically learn features from data?",
+    options:[
+      {k:"a",html:"Deep learning",correct:true,why:"Deep learning uses neural networks to learn features automatically from data."},
+      {k:"b",html:"Symbolic AI",correct:false,why:"Symbolic AI uses hand-coded rules/logic."},
+      {k:"c",html:"Classical machine learning",correct:false,why:"Classical ML is data-driven but needs manual feature selection."},
+      {k:"d",html:"Generative AI",correct:false,why:"GenAI creates new content; it builds on deep learning but is defined by generation."}
+    ]},
+  { n:2, lo:"GenAI-1.1.1", k:"K1", points:1, type:"single",
+    stem:"Which statement about classical machine learning is CORRECT?",
+    options:[
+      {k:"a",html:"It is a data-driven approach that requires data preparation, feature selection, and model training.",correct:true,why:"Classical ML is data-driven and needs feature selection and training (e.g., for defect categorization)."},
+      {k:"b",html:"It generates new content such as text and images.",correct:false,why:"That describes Generative AI."},
+      {k:"c",html:"It uses only hand-coded logical rules.",correct:false,why:"That describes symbolic AI."},
+      {k:"d",html:"It learns features automatically without any human involvement.",correct:false,why:"That is closer to deep learning; classical ML needs manual feature selection."}
+    ]},
+  { n:3, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"What is a token in an LLM?",
+    options:[
+      {k:"a",html:"The smallest unit text is broken into — a character, sub-word, or word.",correct:true,why:"Tokenization splits text into tokens (char/sub-word/word)."},
+      {k:"b",html:"A vector capturing a word's meaning.",correct:false,why:"That is an embedding."},
+      {k:"c",html:"The maximum text the model can read at once.",correct:false,why:"That is the context window."},
+      {k:"d",html:"A trainable weight inside the neural network.",correct:false,why:"That is a parameter, not a token."}
+    ]},
+  { n:4, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"Why do words with similar meanings end up represented close together inside an LLM?",
+    options:[
+      {k:"a",html:"Because embeddings position semantically similar tokens near each other in a high-dimensional vector space.",correct:true,why:"Embeddings encode semantic/contextual relationships so similar tokens cluster together."},
+      {k:"b",html:"Because tokenization sorts words alphabetically.",correct:false,why:"Tokenization splits text; it doesn't sort by meaning."},
+      {k:"c",html:"Because the context window groups synonyms.",correct:false,why:"The context window limits how much text is considered, not meaning grouping."},
+      {k:"d",html:"Because the model stores a thesaurus.",correct:false,why:"LLMs don't store a thesaurus; meaning comes from embeddings."}
+    ]},
+  { n:5, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"What does the context window of an LLM define?",
+    options:[
+      {k:"a",html:"The amount of preceding text (in tokens) the model can consider when generating a response.",correct:true,why:"The context window is the span of tokens the model can take into account at once."},
+      {k:"b",html:"The number of parameters in the model.",correct:false,why:"Parameters are the trainable weights, not the context window."},
+      {k:"c",html:"The screen area where the chatbot is displayed.",correct:false,why:"It is unrelated to UI display area."},
+      {k:"d",html:"The time limit for generating an answer.",correct:false,why:"It is a token limit, not a time limit."}
+    ]},
+  { n:6, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"How does a Small Language Model (SLM) compare to a large LLM?",
+    options:[
+      {k:"a",html:"It has fewer parameters and is designed to be lightweight and focused.",correct:true,why:"SLMs are compact, lightweight, focused models with fewer parameters."},
+      {k:"b",html:"It always produces more accurate results than any LLM.",correct:false,why:"Accuracy depends on the task; SLMs aren't universally more accurate."},
+      {k:"c",html:"It cannot be fine-tuned.",correct:false,why:"SLMs can be fine-tuned, often efficiently."},
+      {k:"d",html:"It does not use tokenization.",correct:false,why:"All such models tokenize text."}
+    ]},
+  { n:7, lo:"GenAI-1.1.3", k:"K2", points:1, type:"single",
+    stem:"Which LLM category is derived from a foundation model and fine-tuned on prompt–response pairs to follow instructions?",
+    options:[
+      {k:"a",html:"Instruction-tuned LLM",correct:true,why:"Instruction-tuned LLMs are foundation models fine-tuned on prompt/response pairs to align with instructions."},
+      {k:"b",html:"Foundation LLM",correct:false,why:"Foundation LLMs are the general-purpose base before such tuning."},
+      {k:"c",html:"Reasoning LLM",correct:false,why:"Reasoning LLMs emphasize multi-step logical inference."},
+      {k:"d",html:"Symbolic LLM",correct:false,why:"Not a real category."}
+    ]},
+  { n:8, lo:"GenAI-1.1.3", k:"K2", points:1, type:"single",
+    stem:"A test task requires multi-step logical inference and chain-of-thought problem solving. Which LLM type is best suited?",
+    options:[
+      {k:"a",html:"Reasoning LLM",correct:true,why:"Reasoning LLMs specialize in logical inference and multi-step problem solving."},
+      {k:"b",html:"Foundation LLM (no adaptation)",correct:false,why:"Foundation models usually need further adaptation and aren't specialized for reasoning."},
+      {k:"c",html:"Instruction-tuned LLM",correct:false,why:"Good at following instructions/formats, weaker at complex reasoning."},
+      {k:"d",html:"A non-AI rule engine",correct:false,why:"Not an LLM and not what's asked."}
+    ]},
+  { n:9, lo:"GenAI-1.1.4", k:"K2", points:1, type:"single",
+    stem:"What is the relationship between vision-language models and multimodal LLMs?",
+    options:[
+      {k:"a",html:"Vision-language models are a subset of multimodal LLMs that integrate visual and textual information.",correct:true,why:"VLMs are a subset of multimodal LLMs focused on visual + textual data."},
+      {k:"b",html:"Multimodal LLMs are a subset of vision-language models.",correct:false,why:"Reversed."},
+      {k:"c",html:"They are unrelated.",correct:false,why:"They are closely related."},
+      {k:"d",html:"They are interchangeable terms.",correct:false,why:"They have distinct scopes."}
+    ]},
+  { n:10, lo:"GenAI-1.1.4", k:"K2", points:1, type:"single",
+    stem:"How can a multimodal LLM (with vision-language capability) help in software testing?",
+    options:[
+      {k:"a",html:"By analyzing a screenshot or GUI wireframe against its textual description to spot visual discrepancies.",correct:true,why:"VLM-augmented LLMs compare visual elements with textual descriptions to find discrepancies and enrich test cases."},
+      {k:"b",html:"By executing the automated UI test scripts.",correct:false,why:"Executing scripts is not a VLM capability."},
+      {k:"c",html:"By compiling the application code.",correct:false,why:"Unrelated to vision-language analysis."},
+      {k:"d",html:"By encrypting test data.",correct:false,why:"A security control, not a VLM capability."}
+    ]},
+  { n:11, lo:"GenAI-1.2.1", k:"K2", points:1, type:"multi", selectCount:2,
+    stem:"Which TWO of the following are key LLM capabilities for test tasks?",
+    options:[
+      {k:"a",html:"Analyzing requirements to identify ambiguities and inconsistencies.",correct:true,why:"Requirements analysis/improvement is a key capability."},
+      {k:"b",html:"Generating synthetic test data with boundary values and combinations.",correct:true,why:"Test data generation is a key capability."},
+      {k:"c",html:"Autonomously executing all test scripts without oversight.",correct:false,why:"LLMs support automation but do not execute all scripts unattended."},
+      {k:"d",html:"Performing exploratory testing on the application.",correct:false,why:"Exploratory testing is an intuitive human activity."},
+      {k:"e",html:"Provisioning the test servers.",correct:false,why:"Infrastructure provisioning is not an LLM capability."}
+    ]},
+  { n:12, lo:"GenAI-1.2.1", k:"K2", points:1, type:"single",
+    stem:"Which of the following is a key LLM capability for test tasks?",
+    options:[
+      {k:"a",html:"Analyzing test results by summarizing them and classifying anomalies by severity and priority.",correct:true,why:"Test result analysis (summaries, severity/priority classification) is a listed capability."},
+      {k:"b",html:"Guaranteeing defect-free production code.",correct:false,why:"No such guarantee exists."},
+      {k:"c",html:"Replacing the need for any human review.",correct:false,why:"Human review remains essential."},
+      {k:"d",html:"Deploying the application to production.",correct:false,why:"Deployment is not an LLM test capability."}
+    ]},
+  { n:13, lo:"GenAI-1.2.2", k:"K2", points:1, type:"single",
+    stem:"In which situation is an AI chatbot the more appropriate interaction model?",
+    options:[
+      {k:"a",html:"Ad hoc, conversational help such as clarifying a concept or onboarding a new tester.",correct:true,why:"Chatbots suit ad hoc, conversational, exploratory use and onboarding."},
+      {k:"b",html:"Embedding automated defect analysis into a test tool at scale.",correct:false,why:"That favors an API-integrated LLM-powered application."},
+      {k:"c",html:"Running nightly automated test-case generation in a pipeline.",correct:false,why:"That favors integrated applications."},
+      {k:"d",html:"A fully autonomous multi-agent test workflow.",correct:false,why:"That is an agent/application scenario, not a chatbot."}
+    ]},
+  { n:14, lo:"GenAI-1.2.2", k:"K2", points:1, type:"single",
+    stem:"How do LLM-powered testing applications differ from AI chatbots?",
+    options:[
+      {k:"a",html:"They integrate LLM capabilities via APIs into test tools to perform well-defined, automated, scalable tasks.",correct:true,why:"LLM-powered applications integrate via API for customized, scalable, automated testing tasks."},
+      {k:"b",html:"They are only used for casual conversation.",correct:false,why:"That describes chatbots."},
+      {k:"c",html:"They require no prompt engineering.",correct:false,why:"Strong prompt engineering is still needed."},
+      {k:"d",html:"They remove all data privacy and security concerns.",correct:false,why:"Privacy/security must still be managed."}
+    ]},
+  { n:15, lo:"GenAI-1.1.1", k:"K1", points:1, type:"single",
+    stem:"Which type of AI uses deep-learning techniques to create new content such as text, images, or code?",
+    options:[
+      {k:"a",html:"Generative AI",correct:true,why:"GenAI uses deep learning to generate new content by mimicking training-data patterns."},
+      {k:"b",html:"Symbolic AI",correct:false,why:"Symbolic AI is rule-based and doesn't generate new content."},
+      {k:"c",html:"Classical machine learning",correct:false,why:"Classical ML predicts/classifies; it doesn't create new content."},
+      {k:"d",html:"Deep learning on its own",correct:false,why:"Deep learning learns features; generation of new content is GenAI specifically."}
+    ]},
+  { n:16, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"What does it mean that LLMs exhibit non-deterministic behavior?",
+    options:[
+      {k:"a",html:"The same prompt can produce different outputs because inference is probabilistic.",correct:true,why:"Probabilistic sampling at inference means identical prompts can yield different outputs."},
+      {k:"b",html:"The model always returns identical results for identical prompts.",correct:false,why:"That would be deterministic, the opposite."},
+      {k:"c",html:"The model cannot process the same prompt twice.",correct:false,why:"It can; it just may answer differently."},
+      {k:"d",html:"Output only varies if the prompt has errors.",correct:false,why:"Variation comes from probabilistic inference, not prompt errors."}
+    ]},
+  { n:17, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"What does an LLM do during inference based on the transformer model?",
+    options:[
+      {k:"a",html:"It predicts the next token in the sequence using learned relationships, producing statistically plausible text.",correct:true,why:"At inference the transformer predicts the next token; output is plausible, not guaranteed correct."},
+      {k:"b",html:"It looks up an exact stored answer.",correct:false,why:"LLMs don't store/retrieve exact answers."},
+      {k:"c",html:"It guarantees factually correct output.",correct:false,why:"Plausible ≠ correct."},
+      {k:"d",html:"It compiles the prompt into code.",correct:false,why:"No compilation occurs."}
+    ]},
+  { n:18, lo:"GenAI-1.1.3", k:"K2", points:1, type:"single",
+    stem:"Which best describes a foundation LLM?",
+    options:[
+      {k:"a",html:"A general-purpose model trained on vast, diverse data that usually needs further adaptation.",correct:true,why:"Foundation models are broad/flexible but typically require further adaptation."},
+      {k:"b",html:"A model fine-tuned on prompt–response pairs to follow instructions.",correct:false,why:"That is an instruction-tuned LLM."},
+      {k:"c",html:"A model specialized in multi-step reasoning.",correct:false,why:"That is a reasoning LLM."},
+      {k:"d",html:"A model that processes only images.",correct:false,why:"Foundation models are not image-only."}
+    ]},
+  { n:19, lo:"GenAI-1.1.4", k:"K2", points:1, type:"single",
+    stem:"What is a multimodal LLM?",
+    options:[
+      {k:"a",html:"A model that can process multiple data types such as text, images, audio, and video.",correct:true,why:"Multimodal LLMs handle several modalities."},
+      {k:"b",html:"A model restricted to plain text only.",correct:false,why:"That is a text-only model."},
+      {k:"c",html:"A model whose only function is encryption.",correct:false,why:"Not a model capability."},
+      {k:"d",html:"A model that runs only on mobile devices.",correct:false,why:"Hardware doesn't define 'multimodal'."}
+    ]},
+  { n:20, lo:"GenAI-1.2.1", k:"K2", points:1, type:"single",
+    stem:"Which of the following is a key LLM capability for test tasks?",
+    options:[
+      {k:"a",html:"Test oracle generation — producing expected results.",correct:true,why:"Generating expected results (test oracles) is a listed capability."},
+      {k:"b",html:"Physically setting up the test lab hardware.",correct:false,why:"Not an LLM capability."},
+      {k:"c",html:"Guaranteeing a defect-free release.",correct:false,why:"No such guarantee."},
+      {k:"d",html:"Replacing all human testers.",correct:false,why:"GenAI assists; it doesn't replace human judgment/review."}
+    ]},
+  { n:21, lo:"GenAI-1.2.2", k:"K2", points:1, type:"single",
+    stem:"What is an advantage of an LLM-powered testing application over an AI chatbot?",
+    options:[
+      {k:"a",html:"Greater customization and scalability via API integration for automated tasks.",correct:true,why:"LLM-powered applications integrate via API for scalable, automated test tasks."},
+      {k:"b",html:"It is better for casual, ad hoc conversation.",correct:false,why:"That is the chatbot's strength."},
+      {k:"c",html:"It needs no prompt engineering.",correct:false,why:"Prompt engineering is still required."},
+      {k:"d",html:"It removes all privacy concerns.",correct:false,why:"Privacy/security still apply."}
+    ]}
+  ]
+};
+</script>
+<script src="exam-engine.js"></script>
+</body>
+</html>
