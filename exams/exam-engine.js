@@ -315,6 +315,7 @@
     var head = el("div", "q-head");
     head.appendChild(el("span", "q-num", "Question " + q.n + " of " + QS.length));
     head.appendChild(el("span", "q-pts", q.points + (q.points > 1 ? " points" : " point")));
+    if (q.level) head.appendChild(el("span", "q-level lvl-" + q.level.toLowerCase(), q.level));
     var flag = el("button", "flag-btn" + (state.marked[i] ? " on" : ""), (state.marked[i] ? "🚩 Flagged" : "🏳 Flag for review"));
     flag.onclick = function () {
       state.marked[i] = !state.marked[i];
@@ -545,7 +546,7 @@
       var icon = !answered ? "➖" : (ok ? "✔" : "✗");
       rh.appendChild(el("span", "rev-icon", icon));
       rh.appendChild(el("span", "rev-qn", "Q" + q.n));
-      rh.appendChild(el("span", "rev-meta", (q.lo || "") + " · " + (q.k || "") + " · " + q.points + "pt"));
+      rh.appendChild(el("span", "rev-meta", (q.lo || "") + " · " + (q.k || "") + (q.level ? " · " + q.level : "") + " · " + q.points + "pt"));
       if (state.marked[i]) rh.appendChild(el("span", "rev-flag", "🚩 flagged"));
       card.appendChild(rh);
 
