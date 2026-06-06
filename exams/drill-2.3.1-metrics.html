@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic Drill — 2.3.1 Metrics (CT-GenAI)</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="exam-styles.css">
+</head>
+<body>
+<a href="../index.html" class="home-fab" title="Back to Study Hub" aria-label="Back to Study Hub"><span class="ico">🏠</span> Home</a>
+<div id="exam-root"></div>
+<script>
+window.EXAM = {
+  id: "drill-231",
+  title: "Topic Drill — 2.3.1 Metrics for Evaluating GenAI Results",
+  source: "100 questions focused only on LO 2.3.1 (K2), Easy→Medium→Hard. Options shuffle each attempt. Original questions for practice — not official ISTQB items.",
+  durationMinutes: 90,
+  passPercent: 65,
+  shuffleOptions: true,
+  questions: [
+  /* ===================== EASY — definitions & recall ===================== */
+  { n:1, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What does the ACCURACY metric measure for GenAI results on test tasks?",
+    options:[
+      {k:"a",html:"The overall correctness of the generated output against expert-written test cases, requirements, or standards.",correct:true,why:"Accuracy = overall correctness measured against a trusted reference."},
+      {k:"b",html:"The time saved compared to manual test effort.",correct:false,why:"That is Time Efficiency."},
+      {k:"c",html:"The proportion of scripts that run without syntax errors.",correct:false,why:"That is Execution Success Rate."},
+      {k:"d",html:"The variety of scenarios covered.",correct:false,why:"That is Diversity."}
+    ]},
+  { n:2, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What does the PRECISION metric evaluate?",
+    options:[
+      {k:"a",html:"The correctness of the output with respect to a specific objective.",correct:true,why:"Precision = correctness w.r.t. a specific objective (e.g., correctly identifying anomalies)."},
+      {k:"b",html:"Whether all relevant instances were found.",correct:false,why:"That is Recall."},
+      {k:"c",html:"How well outputs fit the domain context.",correct:false,why:"That is Relevance & Contextual Fit."},
+      {k:"d",html:"How fast the AI produced the output.",correct:false,why:"That is Time Efficiency."}
+    ]},
+  { n:3, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What does the RECALL metric measure?",
+    options:[
+      {k:"a",html:"The ability of the model to identify all relevant instances within a dataset.",correct:true,why:"Recall = ability to find ALL relevant instances (completeness)."},
+      {k:"b",html:"The correctness of output for one specific objective.",correct:false,why:"That is Precision."},
+      {k:"c",html:"The overall correctness vs a standard.",correct:false,why:"That is Accuracy."},
+      {k:"d",html:"The energy used to generate output.",correct:false,why:"Energy is not a 2.3.1 quality metric."}
+    ]},
+  { n:4, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What does RELEVANCE & CONTEXTUAL FIT determine?",
+    options:[
+      {k:"a",html:"Whether the generated output is applicable and appropriate for a given context.",correct:true,why:"Relevance & Contextual Fit = applicability/appropriateness for the context."},
+      {k:"b",html:"How many scripts execute without errors.",correct:false,why:"That is Execution Success Rate."},
+      {k:"c",html:"The breadth of scenarios covered.",correct:false,why:"That is Diversity."},
+      {k:"d",html:"The completeness of partition coverage.",correct:false,why:"That is Recall."}
+    ]},
+  { n:5, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What does the DIVERSITY metric ensure?",
+    options:[
+      {k:"a",html:"A wide range of inputs and scenarios is covered, avoiding repetition.",correct:true,why:"Diversity = broad range of inputs/scenarios, avoiding repetition, exploring edge cases."},
+      {k:"b",html:"The output is correct against requirements.",correct:false,why:"That is Accuracy."},
+      {k:"c",html:"The output fits the specific domain.",correct:false,why:"That is Relevance & Contextual Fit."},
+      {k:"d",html:"The scripts can be executed successfully.",correct:false,why:"That is Execution Success Rate."}
+    ]},
+  { n:6, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What does the EXECUTION SUCCESS RATE metric measure?",
+    options:[
+      {k:"a",html:"The proportion of generated test cases or scripts that can be executed successfully.",correct:true,why:"Execution Success Rate = share of generated cases/scripts that run without syntax/format errors."},
+      {k:"b",html:"The correctness of output against requirements.",correct:false,why:"That is Accuracy."},
+      {k:"c",html:"The time saved versus manual effort.",correct:false,why:"That is Time Efficiency."},
+      {k:"d",html:"Whether all partitions are covered.",correct:false,why:"That is Recall."}
+    ]},
+  { n:7, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What does the TIME EFFICIENCY metric evaluate?",
+    options:[
+      {k:"a",html:"The time saved compared to manual test efforts.",correct:true,why:"Time Efficiency = time saved vs doing the work manually."},
+      {k:"b",html:"The correctness of generated output.",correct:false,why:"That is Accuracy/Precision."},
+      {k:"c",html:"The number of distinct scenarios covered.",correct:false,why:"That is Diversity."},
+      {k:"d",html:"Whether outputs fit the domain.",correct:false,why:"That is Relevance & Contextual Fit."}
+    ]},
+  { n:8, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"A metric describes 'the overall correctness of the generated output against requirements or a standard'. Which metric is it?",
+    options:[
+      {k:"a",html:"Accuracy",correct:true,why:"This is the definition of Accuracy."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is correctness for a specific objective, not overall."},
+      {k:"c",html:"Diversity",correct:false,why:"Diversity concerns variety, not correctness."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Time Efficiency concerns speed."}
+    ]},
+  { n:9, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"The syllabus example 'the degree to which generated test cases correctly identify anomalies' illustrates which metric?",
+    options:[
+      {k:"a",html:"Precision",correct:true,why:"Correctly identifying anomalies (correctness for a specific objective) is the Precision example."},
+      {k:"b",html:"Recall",correct:false,why:"Recall is about finding all relevant instances."},
+      {k:"c",html:"Accuracy",correct:false,why:"Accuracy is overall correctness vs a reference."},
+      {k:"d",html:"Diversity",correct:false,why:"Diversity is about variety."}
+    ]},
+  { n:10, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"The example 'the degree to which generated test cases cover valid and invalid equivalence partitions of a data class' illustrates which metric?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Covering valid AND invalid partitions (all relevant instances) is the Recall example."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is correctness for a specific objective."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"That concerns runnable scripts."},
+      {k:"d",html:"Relevance & Contextual Fit",correct:false,why:"That concerns domain appropriateness."}
+    ]},
+  { n:11, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"The example 'generated test cases are consistent with the test basis and integrate domain-specific requirements' illustrates which metric?",
+    options:[
+      {k:"a",html:"Relevance & Contextual Fit",correct:true,why:"Consistency with the test basis and domain requirements is the Relevance & Contextual Fit example."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is overall correctness vs a reference."},
+      {k:"c",html:"Diversity",correct:false,why:"Diversity is about variety of scenarios."},
+      {k:"d",html:"Recall",correct:false,why:"Recall is about complete coverage of relevant instances."}
+    ]},
+  { n:12, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"The example 'generated test cases cover various user behaviors and explore edge cases' illustrates which metric?",
+    options:[
+      {k:"a",html:"Diversity",correct:true,why:"Covering various behaviors and edge cases is the Diversity example."},
+      {k:"b",html:"Recall",correct:false,why:"Recall is completeness of relevant instances (e.g., partitions)."},
+      {k:"c",html:"Precision",correct:false,why:"Precision is correctness for a specific objective."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Time Efficiency concerns speed."}
+    ]},
+  { n:13, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"The example 'how many generated test scripts can be executed without syntax errors or output-format issues' illustrates which metric?",
+    options:[
+      {k:"a",html:"Execution Success Rate",correct:true,why:"Runnable-without-errors is the Execution Success Rate example."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is overall correctness."},
+      {k:"c",html:"Diversity",correct:false,why:"Diversity is variety."},
+      {k:"d",html:"Relevance & Contextual Fit",correct:false,why:"That is domain appropriateness."}
+    ]},
+  { n:14, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Comparing the time the AI needs to generate tests against the time a human would take illustrates which metric?",
+    options:[
+      {k:"a",html:"Time Efficiency",correct:true,why:"AI time vs human time is the Time Efficiency example."},
+      {k:"b",html:"Execution Success Rate",correct:false,why:"That is about runnable scripts."},
+      {k:"c",html:"Accuracy",correct:false,why:"That is correctness."},
+      {k:"d",html:"Precision",correct:false,why:"That is correctness for a specific objective."}
+    ]},
+  { n:15, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Which metric is fundamentally about COMPLETENESS — finding everything that should be found?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Recall measures whether all relevant instances are found (completeness)."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is about correctness of what was produced, not completeness."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Time Efficiency is about speed."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"That is about runnability."}
+    ]},
+  { n:16, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Which metric is about VARIETY and avoiding repetition?",
+    options:[
+      {k:"a",html:"Diversity",correct:true,why:"Diversity ensures varied inputs/scenarios and avoids repetition."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is correctness."},
+      {k:"c",html:"Recall",correct:false,why:"Recall is completeness of relevant instances."},
+      {k:"d",html:"Relevance & Contextual Fit",correct:false,why:"That is domain appropriateness."}
+    ]},
+  { n:17, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Which metric specifically tells you whether generated scripts actually RUN?",
+    options:[
+      {k:"a",html:"Execution Success Rate",correct:true,why:"It measures the proportion of generated scripts that execute successfully."},
+      {k:"b",html:"Diversity",correct:false,why:"Diversity is about variety."},
+      {k:"c",html:"Precision",correct:false,why:"Precision is correctness for an objective."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"That is speed."}
+    ]},
+  { n:18, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Which metric is about SPEED / productivity gain?",
+    options:[
+      {k:"a",html:"Time Efficiency",correct:true,why:"Time Efficiency measures time saved vs manual effort."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is correctness."},
+      {k:"c",html:"Recall",correct:false,why:"Recall is completeness."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"That is runnability."}
+    ]},
+  { n:19, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Which metric is most about ensuring outputs fit YOUR specific domain and test basis?",
+    options:[
+      {k:"a",html:"Relevance & Contextual Fit",correct:true,why:"It checks applicability/appropriateness for the given context and domain."},
+      {k:"b",html:"Diversity",correct:false,why:"Diversity is about variety regardless of domain fit."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"That is runnability."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"That is speed."}
+    ]},
+  { n:20, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Which of the following is NOT one of the metrics listed in syllabus 2.3.1 for evaluating GenAI results?",
+    options:[
+      {k:"a",html:"Cyclomatic complexity",correct:true,why:"Cyclomatic complexity is a code-complexity metric, not a 2.3.1 GenAI-results metric."},
+      {k:"b",html:"Diversity",correct:false,why:"Diversity is a listed metric."},
+      {k:"c",html:"Recall",correct:false,why:"Recall is a listed metric."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"Execution Success Rate is a listed metric."}
+    ]},
+  { n:21, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"What is the overall purpose of the 2.3.1 metrics?",
+    options:[
+      {k:"a",html:"To assess the quality, relevance, and effectiveness of GenAI outputs and help optimize LLM prompting.",correct:true,why:"The metrics evaluate quality/relevance/effectiveness of outputs and help optimize prompting."},
+      {k:"b",html:"To measure the carbon footprint of the model.",correct:false,why:"Environmental impact is covered in 3.3, not these quality metrics."},
+      {k:"c",html:"To replace all human review permanently.",correct:false,why:"Human review remains important; metrics support it."},
+      {k:"d",html:"To fine-tune the model's weights automatically.",correct:false,why:"Metrics evaluate outputs; they don't fine-tune the model."}
+    ]},
+  { n:22, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Accuracy is measured by comparing the generated output against what?",
+    options:[
+      {k:"a",html:"A trusted reference such as expert-written test cases, requirements, or standards.",correct:true,why:"Accuracy compares output to a trusted reference/standard."},
+      {k:"b",html:"The model's own previous output only.",correct:false,why:"Self-comparison is not the Accuracy reference."},
+      {k:"c",html:"The execution time of the scripts.",correct:false,why:"That relates to Time Efficiency."},
+      {k:"d",html:"The number of tokens used.",correct:false,why:"Token count is not the Accuracy reference."}
+    ]},
+  { n:23, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Diversity primarily helps avoid which problem in generated tests?",
+    options:[
+      {k:"a",html:"Repetition / near-duplicate scenarios",correct:true,why:"Diversity ensures variety and avoids repetition."},
+      {k:"b",html:"Syntax errors in scripts",correct:false,why:"That relates to Execution Success Rate."},
+      {k:"c",html:"Slow generation",correct:false,why:"That relates to Time Efficiency."},
+      {k:"d",html:"Misalignment with the domain",correct:false,why:"That relates to Relevance & Contextual Fit."}
+    ]},
+  { n:24, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Execution Success Rate is best expressed as…",
+    options:[
+      {k:"a",html:"A proportion/percentage of generated artifacts that run successfully.",correct:true,why:"It is the proportion of generated cases/scripts that execute successfully."},
+      {k:"b",html:"A count of requirements in the spec.",correct:false,why:"Not a requirements count."},
+      {k:"c",html:"A measure of token usage.",correct:false,why:"Not about tokens."},
+      {k:"d",html:"A measure of domain alignment.",correct:false,why:"That is Relevance & Contextual Fit."}
+    ]},
+  { n:25, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Recall is concerned with identifying ALL of what?",
+    options:[
+      {k:"a",html:"All relevant instances within a dataset",correct:true,why:"Recall = the ability to identify all relevant instances."},
+      {k:"b",html:"All tokens in the prompt",correct:false,why:"Not about tokens."},
+      {k:"c",html:"All models available",correct:false,why:"Not about model selection."},
+      {k:"d",html:"All execution errors",correct:false,why:"Errors relate to Execution Success Rate."}
+    ]},
+  { n:26, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Precision evaluates correctness with respect to…",
+    options:[
+      {k:"a",html:"A specific objective",correct:true,why:"Precision = correctness with respect to a specific objective."},
+      {k:"b",html:"The whole requirements set overall",correct:false,why:"That is closer to Accuracy."},
+      {k:"c",html:"Execution time",correct:false,why:"That is Time Efficiency."},
+      {k:"d",html:"Scenario variety",correct:false,why:"That is Diversity."}
+    ]},
+  { n:27, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"multi", selectCount:2,
+    stem:"Which TWO of the following are metrics listed in syllabus 2.3.1?",
+    options:[
+      {k:"a",html:"Accuracy",correct:true,why:"Accuracy is a listed metric."},
+      {k:"b",html:"Diversity",correct:true,why:"Diversity is a listed metric."},
+      {k:"c",html:"Code coverage percentage",correct:false,why:"Not a 2.3.1 GenAI-results metric."},
+      {k:"d",html:"Mean time to repair",correct:false,why:"Not a 2.3.1 metric."},
+      {k:"e",html:"Defect density",correct:false,why:"Not a 2.3.1 metric."}
+    ]},
+  { n:28, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"multi", selectCount:2,
+    stem:"Which TWO metrics are about CORRECTNESS of the output (rather than speed, runnability, or variety)?",
+    options:[
+      {k:"a",html:"Accuracy",correct:true,why:"Accuracy is overall correctness."},
+      {k:"b",html:"Precision",correct:true,why:"Precision is correctness for a specific objective."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"That is speed."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"That is runnability, not correctness."},
+      {k:"e",html:"Diversity",correct:false,why:"That is variety."}
+    ]},
+  { n:29, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"'The degree to which the generated test cases cover all specified requirements' is the syllabus example for which metric?",
+    options:[
+      {k:"a",html:"Accuracy",correct:true,why:"Covering all specified requirements is the Accuracy example."},
+      {k:"b",html:"Recall",correct:false,why:"Recall's example is covering valid/invalid partitions of a data class."},
+      {k:"c",html:"Diversity",correct:false,why:"Diversity's example is varied behaviors/edge cases."},
+      {k:"d",html:"Precision",correct:false,why:"Precision's example is correctly identifying anomalies."}
+    ]},
+  { n:30, lo:"GenAI-2.3.1", k:"K2", level:"Easy", points:1, type:"single",
+    stem:"Relevance & Contextual Fit asks whether the output is…",
+    options:[
+      {k:"a",html:"Applicable and appropriate for the given context",correct:true,why:"That is exactly its definition."},
+      {k:"b",html:"Produced quickly",correct:false,why:"Speed is Time Efficiency."},
+      {k:"c",html:"Free of syntax errors",correct:false,why:"That is Execution Success Rate."},
+      {k:"d",html:"Varied across many scenarios",correct:false,why:"That is Diversity."}
+    ]},
+
+  /* ===================== MEDIUM — scenarios from testing work ===================== */
+  { n:31, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You used an LLM to generate cases for an 'age' input field. You want to check it covered every equivalence partition (negative, 0, valid range, above max, non-numeric). Which metric?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Coverage of all valid/invalid partitions is measured by Recall."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is about correctness of what it flagged, not coverage."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"That is speed."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"That is whether scripts run."}
+    ]},
+  { n:32, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"The LLM generated 30 Selenium scripts. You want to know how many actually run without syntax/locator errors. Which metric?",
+    options:[
+      {k:"a",html:"Execution Success Rate",correct:true,why:"It measures the proportion of generated scripts that execute successfully."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is correctness vs requirements, not runnability."},
+      {k:"c",html:"Diversity",correct:false,why:"Diversity is variety."},
+      {k:"d",html:"Recall",correct:false,why:"Recall is completeness of coverage."}
+    ]},
+  { n:33, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You want to show your manager how much faster the AI built the regression suite versus you doing it by hand. Which metric?",
+    options:[
+      {k:"a",html:"Time Efficiency",correct:true,why:"Time saved vs manual effort is Time Efficiency."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is correctness for an objective."},
+      {k:"c",html:"Diversity",correct:false,why:"Diversity is variety."},
+      {k:"d",html:"Relevance & Contextual Fit",correct:false,why:"That is domain appropriateness."}
+    ]},
+  { n:34, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"The generated cases are technically valid but ignore your app's business rules (e.g., your '5 failed attempts → lock' rule) and use generic field names. Which metric is LOW?",
+    options:[
+      {k:"a",html:"Relevance & Contextual Fit",correct:true,why:"Output not matching the test basis/domain rules means low Relevance & Contextual Fit."},
+      {k:"b",html:"Execution Success Rate",correct:false,why:"Those cases might still run; the issue is domain fit."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Speed is unrelated to domain fit."},
+      {k:"d",html:"Diversity",correct:false,why:"Variety is not the problem described."}
+    ]},
+  { n:35, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You want the generated suite to explore many different user behaviors and edge cases instead of repeating the same happy path. Which metric captures this goal?",
+    options:[
+      {k:"a",html:"Diversity",correct:true,why:"Diversity = broad range of scenarios/behaviors, avoiding repetition."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is correctness, not breadth."},
+      {k:"c",html:"Precision",correct:false,why:"Precision is correctness for an objective."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"That is runnability."}
+    ]},
+  { n:36, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You compare the AI-generated cases against your team's expert-written baseline to judge overall correctness. Which metric?",
+    options:[
+      {k:"a",html:"Accuracy",correct:true,why:"Overall correctness vs expert-written cases is Accuracy."},
+      {k:"b",html:"Diversity",correct:false,why:"Diversity is variety."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"That is speed."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"That is runnability."}
+    ]},
+  { n:37, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You asked the LLM to produce cases that catch security anomalies. You measure what fraction of its 'anomaly-catching' cases truly target real anomalies. Which metric?",
+    options:[
+      {k:"a",html:"Precision",correct:true,why:"Correctness of output for the specific objective (catching anomalies) is Precision."},
+      {k:"b",html:"Recall",correct:false,why:"Recall would ask whether it found ALL anomalies, not whether its flags are correct."},
+      {k:"c",html:"Diversity",correct:false,why:"Diversity is variety."},
+      {k:"d",html:"Accuracy",correct:false,why:"Accuracy is overall correctness vs a reference, not this single objective."}
+    ]},
+  { n:38, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"The AI produced 50 cases, but 20 are near-identical variations of the login happy path. Which metric is poor?",
+    options:[
+      {k:"a",html:"Diversity",correct:true,why:"Near-duplicate scenarios mean low Diversity (poor variety, much repetition)."},
+      {k:"b",html:"Execution Success Rate",correct:false,why:"They may still run fine."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Speed isn't the issue."},
+      {k:"d",html:"Precision",correct:false,why:"Repetition isn't about correctness for an objective."}
+    ]},
+  { n:39, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Review shows the AI omitted several INVALID input partitions for the password field. Which metric is low?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Missing relevant partitions (incomplete coverage of valid/invalid partitions) lowers Recall."},
+      {k:"b",html:"Precision",correct:false,why:"Precision concerns correctness of produced items, not missed ones."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Unrelated to speed."},
+      {k:"d",html:"Relevance & Contextual Fit",correct:false,why:"The cases may still fit the domain; the issue is completeness."}
+    ]},
+  { n:40, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Most of the generated automation scripts fail to compile due to bad imports and locator syntax. Which metric is low?",
+    options:[
+      {k:"a",html:"Execution Success Rate",correct:true,why:"Scripts not running due to syntax errors means low Execution Success Rate."},
+      {k:"b",html:"Diversity",correct:false,why:"Variety isn't the issue."},
+      {k:"c",html:"Recall",correct:false,why:"Completeness isn't the issue."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Speed isn't the issue."}
+    ]},
+  { n:41, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You want a single metric answering 'did the generated cases correctly cover the specified requirements overall?'",
+    options:[
+      {k:"a",html:"Accuracy",correct:true,why:"Overall correctness vs the specified requirements is Accuracy."},
+      {k:"b",html:"Diversity",correct:false,why:"Diversity is variety."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"That is runnability."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"That is speed."}
+    ]},
+  { n:42, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"For generated test DATA, you want to confirm it spans extreme and varied situations broadly. Which metric?",
+    options:[
+      {k:"a",html:"Diversity",correct:true,why:"Broad coverage of varied/edge situations is Diversity."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is correctness for an objective."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"That is runnability."},
+      {k:"d",html:"Accuracy",correct:false,why:"Accuracy is correctness vs a reference."}
+    ]},
+  { n:43, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You want to know what proportion of generated cases can actually be executed in an otherwise-working environment. Which metric?",
+    options:[
+      {k:"a",html:"Execution Success Rate",correct:true,why:"Proportion executable successfully is Execution Success Rate."},
+      {k:"b",html:"Recall",correct:false,why:"Recall is completeness of coverage."},
+      {k:"c",html:"Relevance & Contextual Fit",correct:false,why:"That is domain appropriateness."},
+      {k:"d",html:"Diversity",correct:false,why:"That is variety."}
+    ]},
+  { n:44, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You produced many negative test cases; you care that the ones it claims will detect defects actually do. Which metric?",
+    options:[
+      {k:"a",html:"Precision",correct:true,why:"Whether produced items are correct for the objective (detecting defects) is Precision."},
+      {k:"b",html:"Recall",correct:false,why:"Recall is whether all defects were covered."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Speed is unrelated."},
+      {k:"d",html:"Diversity",correct:false,why:"Variety is unrelated to correctness here."}
+    ]},
+  { n:45, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You care that nothing important across the test basis was missed by the generated cases. Which metric?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Ensuring nothing relevant is missed (completeness) is Recall."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is about correctness of produced items."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"That is runnability."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"That is speed."}
+    ]},
+  { n:46, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You want to evaluate whether generated cases for a banking app correctly integrate domain-specific regulatory requirements. Which metric?",
+    options:[
+      {k:"a",html:"Relevance & Contextual Fit",correct:true,why:"Integrating domain-specific requirements / consistency with the test basis is Relevance & Contextual Fit."},
+      {k:"b",html:"Diversity",correct:false,why:"Variety isn't the same as domain integration."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"That is runnability."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"That is speed."}
+    ]},
+  { n:47, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"multi", selectCount:2,
+    stem:"You used GenAI to create test scripts for API interactions. Which TWO metrics together BEST assess varied input coverage AND that the scripts run?",
+    options:[
+      {k:"a",html:"Diversity (to ensure varied input scenarios)",correct:true,why:"Diversity ensures comprehensive coverage of varied input scenarios/edge cases."},
+      {k:"b",html:"Execution Success Rate (to validate the scripts run)",correct:true,why:"Execution Success Rate validates the generated scripts execute successfully."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Speed doesn't assess coverage or runnability."},
+      {k:"d",html:"Relevance & Contextual Fit",correct:false,why:"Domain fit doesn't directly measure variety or runnability."},
+      {k:"e",html:"Recall only",correct:false,why:"Recall alone doesn't cover runnability."}
+    ]},
+  { n:48, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"How can testers evaluate these metrics?",
+    options:[
+      {k:"a",html:"By manual review, or automatically by comparing the LLM output against a predefined reference.",correct:true,why:"The syllabus says metrics can be evaluated via manual review or automated comparison to a predefined reference."},
+      {k:"b",html:"Only by retraining the model.",correct:false,why:"Evaluation doesn't require retraining."},
+      {k:"c",html:"Only by counting tokens.",correct:false,why:"Token counting is unrelated to these quality metrics."},
+      {k:"d",html:"Only by asking the model to grade itself once.",correct:false,why:"A single self-grade is not the prescribed approach."}
+    ]},
+  { n:49, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Why must these metrics be based on statistically relevant data?",
+    options:[
+      {k:"a",html:"Because GenAI is non-deterministic, so outputs vary between runs.",correct:true,why:"Non-determinism means a single run is unreliable; use statistically relevant data."},
+      {k:"b",html:"Because the syllabus forbids manual review.",correct:false,why:"Manual review is allowed."},
+      {k:"c",html:"Because metrics are only valid for one model.",correct:false,why:"Not the reason."},
+      {k:"d",html:"Because tokens are random.",correct:false,why:"Tokenization is deterministic; variability comes from probabilistic inference."}
+    ]},
+  { n:50, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Beyond the general metrics, what else can testers define to evaluate a specific test activity?",
+    options:[
+      {k:"a",html:"Task-specific metrics tailored to the activity.",correct:true,why:"The syllabus notes task-specific metrics can be tailored to evaluate specific test activities."},
+      {k:"b",html:"Only the seven general metrics, nothing else.",correct:false,why:"Task-specific metrics are explicitly allowed."},
+      {k:"c",html:"Hardware benchmarks.",correct:false,why:"Not relevant to evaluating test-task output."},
+      {k:"d",html:"The model's parameter count.",correct:false,why:"Not an output-quality metric."}
+    ]},
+  { n:51, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"The AI keeps generating only positive-path tests and rarely anything unusual. Which metric most directly exposes this weakness?",
+    options:[
+      {k:"a",html:"Diversity",correct:true,why:"Lack of varied scenarios/edge cases is a Diversity weakness."},
+      {k:"b",html:"Execution Success Rate",correct:false,why:"They may run fine."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Speed is unrelated."},
+      {k:"d",html:"Accuracy",correct:false,why:"They could be correct yet not varied."}
+    ]},
+  { n:52, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Automatically diffing the LLM's generated cases against a curated 'golden' reference set is an example of…",
+    options:[
+      {k:"a",html:"Automated evaluation by comparing output against a predefined reference.",correct:true,why:"Comparing against a predefined reference is the syllabus's automated evaluation method."},
+      {k:"b",html:"Fine-tuning the model.",correct:false,why:"Diffing outputs is not fine-tuning."},
+      {k:"c",html:"Prompt chaining.",correct:false,why:"That is a prompting technique, not metric evaluation."},
+      {k:"d",html:"Data anonymization.",correct:false,why:"Unrelated privacy measure."}
+    ]},
+  { n:53, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Which metric would you track to detect that the generated suite still misses some required behaviors of the test basis?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Missing required/relevant items is a Recall (completeness) concern."},
+      {k:"b",html:"Time Efficiency",correct:false,why:"Speed doesn't reveal missed behaviors."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"Runnability doesn't reveal coverage gaps."},
+      {k:"d",html:"Precision",correct:false,why:"Precision concerns correctness of produced items, not what's missing."}
+    ]},
+  { n:54, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Which metric is essentially about minimizing FALSE POSITIVES among the items the AI produced?",
+    options:[
+      {k:"a",html:"Precision",correct:true,why:"Precision drops when produced items are wrong (false positives) for the objective."},
+      {k:"b",html:"Recall",correct:false,why:"Recall concerns false negatives (misses), not false positives."},
+      {k:"c",html:"Diversity",correct:false,why:"Variety, not correctness."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Speed, not correctness."}
+    ]},
+  { n:55, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Which metric is essentially about minimizing FALSE NEGATIVES (things that should have been found but were missed)?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Recall drops when relevant items are missed (false negatives)."},
+      {k:"b",html:"Precision",correct:false,why:"Precision concerns false positives among produced items."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"That is about runnability."},
+      {k:"d",html:"Relevance & Contextual Fit",correct:false,why:"That is about domain appropriateness."}
+    ]},
+  { n:56, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You generated cases that all run and are correct for what they target, but they only test the checkout page while the spec also covers cart and payments. Which metric is most affected?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Whole areas of the test basis are uncovered → low Recall (completeness)."},
+      {k:"b",html:"Execution Success Rate",correct:false,why:"They run fine."},
+      {k:"c",html:"Precision",correct:false,why:"What they target is correct."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Speed is unrelated."}
+    ]},
+  { n:57, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"multi", selectCount:2,
+    stem:"To evaluate generated test cases for an e-commerce app for BOTH completeness of coverage AND broad scenario variety, which TWO metrics fit best?",
+    options:[
+      {k:"a",html:"Recall (completeness of relevant coverage)",correct:true,why:"Recall measures whether all relevant instances are covered."},
+      {k:"b",html:"Diversity (breadth/variety of scenarios)",correct:true,why:"Diversity measures variety and edge-case breadth."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Speed addresses neither completeness nor variety."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"Runnability addresses neither."},
+      {k:"e",html:"Precision",correct:false,why:"Precision is correctness of produced items, not completeness/variety."}
+    ]},
+  { n:58, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Which statement about applying the metrics is CORRECT?",
+    options:[
+      {k:"a",html:"They can be assessed by manual review or by automated comparison against a reference, and should rely on statistically relevant data.",correct:true,why:"This matches the syllabus guidance exactly."},
+      {k:"b",html:"They must always be computed from a single generation run.",correct:false,why:"Single runs are unreliable due to non-determinism."},
+      {k:"c",html:"They can only be evaluated manually.",correct:false,why:"Automated comparison to a reference is also valid."},
+      {k:"d",html:"They replace the need for any reference baseline.",correct:false,why:"Automated comparison uses a predefined reference."}
+    ]},
+  { n:59, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"A tester says: 'The generated cases match our exact business rules and field names, integrating our domain requirements.' This is high…",
+    options:[
+      {k:"a",html:"Relevance & Contextual Fit",correct:true,why:"Matching domain rules and test basis is high Relevance & Contextual Fit."},
+      {k:"b",html:"Diversity",correct:false,why:"That is variety, not domain fit."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"That is speed."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"That is runnability."}
+    ]},
+  { n:60, lo:"GenAI-2.3.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"You want to optimize your prompts over time. How do these metrics help?",
+    options:[
+      {k:"a",html:"They quantify output quality/relevance/effectiveness so you can compare prompt versions and improve them.",correct:true,why:"Metrics help evaluate and optimize LLM prompting by quantifying output quality."},
+      {k:"b",html:"They automatically rewrite the prompt for you.",correct:false,why:"Metrics measure; they don't rewrite prompts themselves."},
+      {k:"c",html:"They guarantee deterministic output.",correct:false,why:"Output remains non-deterministic."},
+      {k:"d",html:"They remove the need to define objectives.",correct:false,why:"Objectives are still needed (e.g., for Precision)."}
+    ]},
+
+  /* ===================== HARD — calculations, distinctions, traps ===================== */
+  { n:61, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"The AI flagged 8 test cases as anomaly-detectors; on review, 6 truly target real anomalies. What is the Precision?",
+    options:[
+      {k:"a",html:"75%",correct:true,why:"Precision = correct produced / all produced = 6/8 = 75%."},
+      {k:"b",html:"60%",correct:false,why:"6/8 is 75%, not 60%."},
+      {k:"c",html:"80%",correct:false,why:"6/8 = 75%."},
+      {k:"d",html:"Cannot be determined",correct:false,why:"It can: 6 of 8 = 75%."}
+    ]},
+  { n:62, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"There are 12 relevant test conditions that should be covered; the generated suite covers 9 of them. What is the Recall?",
+    options:[
+      {k:"a",html:"75%",correct:true,why:"Recall = relevant found / all relevant = 9/12 = 75%."},
+      {k:"b",html:"90%",correct:false,why:"9/12 = 75%."},
+      {k:"c",html:"66%",correct:false,why:"9/12 = 75%, not 66%."},
+      {k:"d",html:"25%",correct:false,why:"25% is what's missing, not the recall."}
+    ]},
+  { n:63, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"The spec has 20 requirements; the generated cases correctly cover 17 of them. What is the Accuracy (as requirements coverage)?",
+    options:[
+      {k:"a",html:"85%",correct:true,why:"17/20 = 85%."},
+      {k:"b",html:"80%",correct:false,why:"17/20 = 85%."},
+      {k:"c",html:"70%",correct:false,why:"17/20 = 85%."},
+      {k:"d",html:"17%",correct:false,why:"It's a ratio: 17/20 = 85%."}
+    ]},
+  { n:64, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"The AI generated 40 automation scripts; 34 run without syntax/format errors. What is the Execution Success Rate?",
+    options:[
+      {k:"a",html:"85%",correct:true,why:"34/40 = 85%."},
+      {k:"b",html:"75%",correct:false,why:"34/40 = 85%."},
+      {k:"c",html:"94%",correct:false,why:"34/40 = 85%, not 94%."},
+      {k:"d",html:"6%",correct:false,why:"6 failed; success rate is 34/40 = 85%."}
+    ]},
+  { n:65, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"The AI produced 10 anomaly cases; 7 are correct. But there were actually 14 real anomalies to find. Which is higher — Precision or Recall?",
+    options:[
+      {k:"a",html:"Precision (70%) is higher than Recall (50%)",correct:true,why:"Precision = 7/10 = 70%; Recall = 7/14 = 50%; precision is higher."},
+      {k:"b",html:"Recall is higher than Precision",correct:false,why:"Recall (7/14=50%) is lower than Precision (7/10=70%)."},
+      {k:"c",html:"They are equal",correct:false,why:"70% ≠ 50%."},
+      {k:"d",html:"Both are 100%",correct:false,why:"Neither is 100%."}
+    ]},
+  { n:66, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which statement BEST distinguishes Accuracy from Precision?",
+    options:[
+      {k:"a",html:"Accuracy is overall correctness against a reference; Precision is correctness with respect to one specific objective.",correct:true,why:"That is the syllabus distinction."},
+      {k:"b",html:"Accuracy is about speed; Precision is about variety.",correct:false,why:"Neither is about speed or variety."},
+      {k:"c",html:"Accuracy measures runnable scripts; Precision measures coverage.",correct:false,why:"Those describe Execution Success Rate and Recall."},
+      {k:"d",html:"They are identical metrics.",correct:false,why:"They are distinct."}
+    ]},
+  { n:67, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which statement BEST distinguishes Precision from Recall?",
+    options:[
+      {k:"a",html:"Precision = of what was produced, how much is correct; Recall = of all that should be found, how much was found.",correct:true,why:"Precision is correctness of produced items; Recall is completeness of relevant items found."},
+      {k:"b",html:"Precision = completeness; Recall = correctness.",correct:false,why:"Reversed."},
+      {k:"c",html:"Both measure execution success.",correct:false,why:"Neither measures runnability."},
+      {k:"d",html:"Both measure time saved.",correct:false,why:"Neither measures speed."}
+    ]},
+  { n:68, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which statement is INCORRECT?",
+    options:[
+      {k:"a",html:"A 100% Execution Success Rate guarantees the generated tests are correct and complete.",correct:true,why:"INCORRECT — scripts can run perfectly yet be wrong, irrelevant, or incomplete. Execution success ≠ correctness/coverage."},
+      {k:"b",html:"Execution Success Rate measures whether generated scripts run without errors.",correct:false,why:"That is a correct statement."},
+      {k:"c",html:"Accuracy compares output to a trusted reference.",correct:false,why:"Correct statement."},
+      {k:"d",html:"Recall measures completeness of relevant coverage.",correct:false,why:"Correct statement."}
+    ]},
+  { n:69, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A single run reports Precision of 90%. What is the soundest conclusion?",
+    options:[
+      {k:"a",html:"Don't rely on one run — base the metric on statistically relevant data because GenAI is non-deterministic.",correct:true,why:"Non-determinism means one run is unreliable; use statistically relevant data."},
+      {k:"b",html:"The prompt is now perfect and needs no further evaluation.",correct:false,why:"One run can't establish that."},
+      {k:"c",html:"Precision will always be 90% on every future run.",correct:false,why:"Output varies between runs."},
+      {k:"d",html:"Execution Success Rate must also be 90%.",correct:false,why:"Different metrics are independent."}
+    ]},
+  { n:70, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Generated cases are all correct for what they cover and all run, but cover only 3 of 9 equivalence partitions. Which metric is LOW?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Only 3/9 partitions covered → low Recall (completeness), even though precision/execution look good."},
+      {k:"b",html:"Precision",correct:false,why:"What they cover is correct, so precision is high."},
+      {k:"c",html:"Execution Success Rate",correct:false,why:"They all run."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Speed isn't described."}
+    ]},
+  { n:71, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which metric can be HIGH even when the generated tests are logically wrong?",
+    options:[
+      {k:"a",html:"Execution Success Rate",correct:true,why:"A script can run without errors (high execution success) yet test the wrong thing — runnability ≠ correctness."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy drops when tests are wrong."},
+      {k:"c",html:"Precision",correct:false,why:"Precision drops when produced items are wrong."},
+      {k:"d",html:"Recall",correct:false,why:"Recall reflects coverage, but wrong tests don't raise it for the right reasons."}
+    ]},
+  { n:72, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which metric relates LEAST to the correctness of the generated tests?",
+    options:[
+      {k:"a",html:"Time Efficiency",correct:true,why:"Time Efficiency measures speed/effort saved, not whether output is correct."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is directly about correctness."},
+      {k:"c",html:"Precision",correct:false,why:"Precision is about correctness for an objective."},
+      {k:"d",html:"Recall",correct:false,why:"Recall relates to coverage correctness/completeness."}
+    ]},
+  { n:73, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which statement about Recall is INCORRECT?",
+    options:[
+      {k:"a",html:"Recall measures whether the items the model produced are correct.",correct:true,why:"INCORRECT — that's Precision. Recall measures whether ALL relevant items were found."},
+      {k:"b",html:"Recall measures the ability to find all relevant instances.",correct:false,why:"Correct statement."},
+      {k:"c",html:"Low recall means relevant cases were missed.",correct:false,why:"Correct statement."},
+      {k:"d",html:"Its example is covering valid and invalid partitions of a data class.",correct:false,why:"Correct (syllabus example)."}
+    ]},
+  { n:74, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"multi", selectCount:2,
+    stem:"To judge BOTH whether the AI's flagged anomaly cases are correct AND whether it found all the anomalies, which TWO metrics do you need?",
+    options:[
+      {k:"a",html:"Precision (are the flagged ones correct?)",correct:true,why:"Precision answers whether produced anomaly cases are correct."},
+      {k:"b",html:"Recall (did it find all anomalies?)",correct:true,why:"Recall answers whether all relevant anomalies were found."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"Speed answers neither question."},
+      {k:"d",html:"Diversity",correct:false,why:"Variety answers neither."},
+      {k:"e",html:"Execution Success Rate",correct:false,why:"Runnability answers neither."}
+    ]},
+  { n:75, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"The generated suite scored high Accuracy against requirements but the cases feel generic and don't use your project's specific rules. Which is the BEST interpretation?",
+    options:[
+      {k:"a",html:"High Accuracy and low Relevance & Contextual Fit can co-exist — correct against requirements yet not well-fitted to your specific context.",correct:true,why:"Accuracy (vs requirements) and Relevance/Contextual Fit (domain appropriateness) are different; one can be high while the other is low."},
+      {k:"b",html:"High Accuracy guarantees high Relevance.",correct:false,why:"They are distinct metrics; one doesn't guarantee the other."},
+      {k:"c",html:"This is impossible.",correct:false,why:"It is possible and common."},
+      {k:"d",html:"It means Execution Success Rate is low.",correct:false,why:"Unrelated to runnability."}
+    ]},
+  { n:76, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which conclusion from Time Efficiency alone is VALID?",
+    options:[
+      {k:"a",html:"It tells you how much effort/time was saved, but says nothing about whether the tests are correct or complete.",correct:true,why:"Time Efficiency only measures speed/savings; correctness and coverage need other metrics."},
+      {k:"b",html:"High Time Efficiency proves the tests are correct.",correct:false,why:"Speed says nothing about correctness."},
+      {k:"c",html:"High Time Efficiency proves full coverage.",correct:false,why:"Speed says nothing about coverage."},
+      {k:"d",html:"Time Efficiency replaces Accuracy and Recall.",correct:false,why:"It measures a different dimension."}
+    ]},
+  { n:77, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"You want to evaluate generated API test scripts comprehensively. Considering syllabus guidance, which pairing is MOST appropriate?",
+    options:[
+      {k:"a",html:"Diversity (to ensure varied input scenarios) + Execution Success Rate (to validate the API scripts run).",correct:true,why:"Diversity ensures edge-case/variety coverage; Execution Success Rate validates the scripts run — a well-matched pairing for generated API scripts."},
+      {k:"b",html:"Time Efficiency + Diversity only.",correct:false,why:"Time Efficiency doesn't validate that scripts run."},
+      {k:"c",html:"Relevance & Contextual Fit + Time Efficiency only.",correct:false,why:"Neither validates runnability of the scripts."},
+      {k:"d",html:"Accuracy + Time Efficiency only.",correct:false,why:"Misses runnability and variety for the scripts."}
+    ]},
+  { n:78, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Out of 25 generated cases, 20 are correct against the requirements. Treating this as requirements correctness, what is the Accuracy?",
+    options:[
+      {k:"a",html:"80%",correct:true,why:"20/25 = 80%."},
+      {k:"b",html:"75%",correct:false,why:"20/25 = 80%."},
+      {k:"c",html:"85%",correct:false,why:"20/25 = 80%."},
+      {k:"d",html:"20%",correct:false,why:"It's a ratio: 20/25 = 80%."}
+    ]},
+  { n:79, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Automating metric evaluation by comparing generated output against a predefined reference set is described in the syllabus as which kind of approach?",
+    options:[
+      {k:"a",html:"An automated evaluation method (vs manual review).",correct:true,why:"The syllabus lists automated comparison against a predefined reference as an evaluation method alongside manual review."},
+      {k:"b",html:"A fine-tuning method.",correct:false,why:"It evaluates outputs, not the model's weights."},
+      {k:"c",html:"A prompting technique.",correct:false,why:"It is evaluation, not prompting."},
+      {k:"d",html:"A data-poisoning attack.",correct:false,why:"Unrelated security concept."}
+    ]},
+  { n:80, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"An LLM gives Precision 90% on run 1 and 70% on run 2 for the same prompt. What is the correct takeaway?",
+    options:[
+      {k:"a",html:"Because outputs are non-deterministic, evaluate using statistically relevant data rather than a single run.",correct:true,why:"Variability across runs is expected; base metrics on statistically relevant data."},
+      {k:"b",html:"The metric is broken and should be discarded.",correct:false,why:"Variation is expected, not a broken metric."},
+      {k:"c",html:"The model was retrained between runs.",correct:false,why:"No retraining is implied; it's inference variability."},
+      {k:"d",html:"Precision and Recall are the same thing.",correct:false,why:"They are different metrics."}
+    ]},
+  { n:81, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A reviewer says: 'Our generated suite has great variety but we're not sure it covers every required partition.' Which TWO concepts are being contrasted?",
+    options:[
+      {k:"a",html:"Diversity (variety) vs Recall (complete coverage of required partitions).",correct:true,why:"Variety is Diversity; complete coverage of required partitions is Recall — distinct concerns."},
+      {k:"b",html:"Accuracy vs Time Efficiency.",correct:false,why:"Neither matches variety vs coverage."},
+      {k:"c",html:"Execution Success Rate vs Precision.",correct:false,why:"Neither matches the contrast described."},
+      {k:"d",html:"Relevance vs Time Efficiency.",correct:false,why:"Not the contrast described."}
+    ]},
+  { n:82, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"30 cases generated; 6 are essentially duplicates of others. Which metric does this duplication most directly hurt?",
+    options:[
+      {k:"a",html:"Diversity",correct:true,why:"Duplicates reduce variety, lowering Diversity."},
+      {k:"b",html:"Execution Success Rate",correct:false,why:"Duplicates can still run."},
+      {k:"c",html:"Precision",correct:false,why:"Duplicates aren't necessarily incorrect."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Speed isn't the issue."}
+    ]},
+  { n:83, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which combination of facts would indicate HIGH Precision but LOW Recall?",
+    options:[
+      {k:"a",html:"Few cases produced, all correct, but many required cases missing.",correct:true,why:"All produced correct → high Precision; many relevant missing → low Recall."},
+      {k:"b",html:"Many cases produced, most wrong, full coverage.",correct:false,why:"That is low Precision, high Recall."},
+      {k:"c",html:"Scripts that don't run.",correct:false,why:"That is Execution Success Rate, not precision/recall."},
+      {k:"d",html:"Fast generation time.",correct:false,why:"That is Time Efficiency."}
+    ]},
+  { n:84, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which statement about Diversity vs Recall is CORRECT?",
+    options:[
+      {k:"a",html:"Recall is about covering all the REQUIRED/relevant items; Diversity is about breadth and variety of scenarios, avoiding repetition.",correct:true,why:"Recall = completeness of required coverage; Diversity = variety/breadth and avoiding repetition."},
+      {k:"b",html:"They are the same metric.",correct:false,why:"They measure different things."},
+      {k:"c",html:"Diversity measures correctness; Recall measures speed.",correct:false,why:"Neither is about correctness or speed."},
+      {k:"d",html:"Recall is about avoiding repetition.",correct:false,why:"Avoiding repetition is Diversity."}
+    ]},
+  { n:85, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"You generated 16 cases; 12 correctly target the intended objective. Precision is closest to…",
+    options:[
+      {k:"a",html:"75%",correct:true,why:"12/16 = 75%."},
+      {k:"b",html:"80%",correct:false,why:"12/16 = 75%."},
+      {k:"c",html:"66%",correct:false,why:"12/16 = 75%."},
+      {k:"d",html:"60%",correct:false,why:"12/16 = 75%."}
+    ]},
+  { n:86, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A team reports Execution Success Rate of 100% but Accuracy of 60%. What does this most likely mean?",
+    options:[
+      {k:"a",html:"All generated scripts run, but a notable share are not correct against the requirements.",correct:true,why:"Runnable ≠ correct; 100% execution with 60% accuracy means they run but many are incorrect."},
+      {k:"b",html:"The scripts neither run nor are correct.",correct:false,why:"They do run (100%)."},
+      {k:"c",html:"The metrics are contradictory and one must be wrong.",correct:false,why:"They measure different dimensions; both can be true."},
+      {k:"d",html:"Time Efficiency must be 80%.",correct:false,why:"Unrelated metric."}
+    ]},
+  { n:87, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which metric best answers: 'Of everything the test basis requires, what share did the generated cases actually address?'",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Share of all required/relevant items addressed = Recall."},
+      {k:"b",html:"Precision",correct:false,why:"Precision is correctness of produced items, not coverage of required items."},
+      {k:"c",html:"Diversity",correct:false,why:"Variety, not required coverage."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"Runnability, not coverage."}
+    ]},
+  { n:88, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which metric best answers: 'Of the cases the AI actually produced for this goal, what share are correct?'",
+    options:[
+      {k:"a",html:"Precision",correct:true,why:"Share of produced items that are correct for the objective = Precision."},
+      {k:"b",html:"Recall",correct:false,why:"Recall is about completeness of required coverage."},
+      {k:"c",html:"Accuracy",correct:false,why:"Accuracy is overall correctness vs a reference, broader than a single goal's produced items."},
+      {k:"d",html:"Time Efficiency",correct:false,why:"Speed, not correctness."}
+    ]},
+  { n:89, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"multi", selectCount:2,
+    stem:"Which TWO statements are TRUE about evaluating GenAI results on test tasks?",
+    options:[
+      {k:"a",html:"Metrics can be evaluated by manual review or automated comparison to a predefined reference.",correct:true,why:"Syllabus-stated evaluation methods."},
+      {k:"b",html:"Because of non-determinism, metrics should be based on statistically relevant data.",correct:true,why:"Syllabus-stated caution about non-determinism."},
+      {k:"c",html:"A single run is sufficient to conclude a prompt is optimal.",correct:false,why:"One run is unreliable."},
+      {k:"d",html:"Execution Success Rate proves correctness.",correct:false,why:"Runnable ≠ correct."},
+      {k:"e",html:"Task-specific metrics are forbidden.",correct:false,why:"They are explicitly allowed."}
+    ]},
+  { n:90, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"For a heavily rules-based feature you asked the AI to build cases using decision tables. To judge how COMPLETELY it covered the rule combinations, which metric is best?",
+    options:[
+      {k:"a",html:"Recall",correct:true,why:"Completeness of covering all required rule combinations is a Recall concern."},
+      {k:"b",html:"Time Efficiency",correct:false,why:"Speed doesn't measure completeness."},
+      {k:"c",html:"Diversity",correct:false,why:"Variety is related but the specific ask is complete coverage of required combinations → Recall."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"Runnability doesn't measure completeness."}
+    ]},
+  { n:91, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which scenario indicates LOW Precision (rather than low Recall)?",
+    options:[
+      {k:"a",html:"Many of the cases the AI produced as 'defect-catching' actually don't catch any real defect.",correct:true,why:"Wrong produced items = low Precision (false positives)."},
+      {k:"b",html:"Several required defect types were never addressed.",correct:false,why:"Missing required items = low Recall, not Precision."},
+      {k:"c",html:"The scripts fail to compile.",correct:false,why:"That is Execution Success Rate."},
+      {k:"d",html:"Generation took too long.",correct:false,why:"That is Time Efficiency."}
+    ]},
+  { n:92, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which scenario indicates LOW Recall (rather than low Precision)?",
+    options:[
+      {k:"a",html:"The generated suite never tests several required behaviors that exist in the test basis.",correct:true,why:"Missing required/relevant items = low Recall."},
+      {k:"b",html:"Half of the produced cases are incorrect.",correct:false,why:"Incorrect produced items = low Precision."},
+      {k:"c",html:"The cases run but are slow to generate.",correct:false,why:"That is Time Efficiency."},
+      {k:"d",html:"The cases are duplicates.",correct:false,why:"Duplication is a Diversity issue."}
+    ]},
+  { n:93, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Generated cases are correct, complete, varied, and fit your domain — but it took the AI longer than writing them by hand. Which metric is poor?",
+    options:[
+      {k:"a",html:"Time Efficiency",correct:true,why:"Taking longer than manual work means poor Time Efficiency, despite the other metrics being good."},
+      {k:"b",html:"Accuracy",correct:false,why:"They are correct."},
+      {k:"c",html:"Recall",correct:false,why:"They are complete."},
+      {k:"d",html:"Diversity",correct:false,why:"They are varied."}
+    ]},
+  { n:94, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which is the BEST description of how Accuracy and Recall differ?",
+    options:[
+      {k:"a",html:"Accuracy is overall correctness against a reference/standard; Recall is the completeness of finding all relevant instances.",correct:true,why:"Accuracy = overall correctness vs reference; Recall = completeness of relevant coverage."},
+      {k:"b",html:"Accuracy is variety; Recall is speed.",correct:false,why:"Neither is variety or speed."},
+      {k:"c",html:"They are interchangeable.",correct:false,why:"They are distinct."},
+      {k:"d",html:"Accuracy is runnability; Recall is correctness for an objective.",correct:false,why:"Those describe Execution Success Rate and Precision."}
+    ]},
+  { n:95, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A prompt change raised Diversity but lowered Precision. What is the most reasonable read?",
+    options:[
+      {k:"a",html:"The output now covers more varied scenarios but a larger share of produced cases are incorrect — evaluate the trade-off with statistically relevant data.",correct:true,why:"More variety with more incorrect produced items is a real trade-off; judge it over enough runs."},
+      {k:"b",html:"Diversity and Precision always move together.",correct:false,why:"They are independent and can trade off."},
+      {k:"c",html:"One of the two metrics must be invalid.",correct:false,why:"Both can change independently."},
+      {k:"d",html:"It proves the model was retrained.",correct:false,why:"No retraining implied."}
+    ]},
+  { n:96, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"You found that 9 of 9 produced cases are correct, and they cover all 9 required conditions. Which is true?",
+    options:[
+      {k:"a",html:"Both Precision and Recall are 100% for this set.",correct:true,why:"All produced correct → Precision 100%; all required covered → Recall 100%."},
+      {k:"b",html:"Precision is 100% but Recall is 0%.",correct:false,why:"All required were covered, so Recall is 100%."},
+      {k:"c",html:"Recall is 100% but Precision is 0%.",correct:false,why:"All produced are correct, so Precision is 100%."},
+      {k:"d",html:"Neither can be computed.",correct:false,why:"Both are computable and 100%."}
+    ]},
+  { n:97, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which metric would you NOT use to judge correctness of generated test logic?",
+    options:[
+      {k:"a",html:"Execution Success Rate",correct:true,why:"It only tells you scripts run, not whether the logic is correct — not a correctness metric."},
+      {k:"b",html:"Accuracy",correct:false,why:"Accuracy directly measures correctness."},
+      {k:"c",html:"Precision",correct:false,why:"Precision measures correctness for an objective."},
+      {k:"d",html:"Recall",correct:false,why:"Recall reflects correctness/completeness of coverage."}
+    ]},
+  { n:98, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"multi", selectCount:2,
+    stem:"Which TWO metrics would BEST reveal that an AI-generated suite, although fast to produce, is shallow (repetitive and missing required coverage)?",
+    options:[
+      {k:"a",html:"Diversity (reveals repetition / lack of variety)",correct:true,why:"Low Diversity exposes repetitive, shallow scenarios."},
+      {k:"b",html:"Recall (reveals missing required coverage)",correct:true,why:"Low Recall exposes missing required/relevant coverage."},
+      {k:"c",html:"Time Efficiency",correct:false,why:"It would look good (fast) and hide the shallowness."},
+      {k:"d",html:"Execution Success Rate",correct:false,why:"Scripts may run yet still be shallow."},
+      {k:"e",html:"Relevance & Contextual Fit",correct:false,why:"Cases could fit the domain yet still be repetitive/incomplete."}
+    ]},
+  { n:99, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Across 100 generated scripts you measure: 92 run, 80 are correct vs requirements, all 7 required modules are touched, and it took 5 minutes vs ~6 hours by hand. Which pairing of metric→value is CORRECT?",
+    options:[
+      {k:"a",html:"Execution Success Rate = 92%; Accuracy (requirements correctness) = 80%.",correct:true,why:"92/100 run = 92% execution success; 80/100 correct vs requirements = 80% accuracy."},
+      {k:"b",html:"Execution Success Rate = 80%; Accuracy = 92%.",correct:false,why:"Swapped — 92 ran (execution), 80 correct (accuracy)."},
+      {k:"c",html:"Time Efficiency = 92%.",correct:false,why:"92% is the execution success rate, not a time figure."},
+      {k:"d",html:"Recall = 80%.",correct:false,why:"All 7 required modules were touched → recall is high, not 80%."}
+    ]},
+  { n:100, lo:"GenAI-2.3.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"What is the single BEST summary of how to use the 2.3.1 metrics responsibly?",
+    options:[
+      {k:"a",html:"Choose metrics that match your goal, evaluate via manual review or comparison to a reference, and base conclusions on statistically relevant data (since output is non-deterministic).",correct:true,why:"This captures the syllabus guidance: fit-for-purpose metrics, manual/automated evaluation, and statistically relevant data due to non-determinism."},
+      {k:"b",html:"Always use Time Efficiency alone, because speed is what matters most.",correct:false,why:"Speed alone ignores correctness, coverage, and fit."},
+      {k:"c",html:"Trust a single run and skip any reference baseline.",correct:false,why:"Single runs are unreliable; references aid automated evaluation."},
+      {k:"d",html:"Use Execution Success Rate as proof of correctness.",correct:false,why:"Runnable ≠ correct."}
+    ]}
+  ]
+};
+</script>
+<script src="exam-engine.js"></script>
+</body>
+</html>
