@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topic Drills — CT-GenAI Study Hub</title>
+<script src="theme.js"></script>
+<style>
+:root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--soft:#f1f5f9;--flag:#7c3aed;--flagbg:#ede9fe;--ok:#16a34a;}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);
+  background:#eef2f7;min-height:100vh}
+.topnav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;background:rgba(8,13,26,.98);
+  backdrop-filter:blur(6px);color:#fff;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.topnav a{color:#fff;text-decoration:none;font-size:.9rem;opacity:.9}
+.topnav a:hover{opacity:1}.topnav .home{font-weight:700}
+.wrap{max-width:980px;margin:0 auto;padding:22px 20px 80px}
+.hero{background:linear-gradient(150deg,#0f172a,#13233f);color:#fff}
+.hero-inner{max-width:980px;margin:0 auto;padding:28px 20px 26px}
+.badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:600;font-size:.8rem;padding:5px 13px;border-radius:999px}
+h1{margin:.6rem 0 .3rem;font-size:1.8rem}
+.hero p{opacity:.88;max-width:680px;line-height:1.6}
+.section-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:24px 0 12px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.07);padding:22px 24px;
+  text-decoration:none;color:inherit;display:block;transition:transform .08s,box-shadow .15s;border:1px solid transparent}
+.card:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,23,42,.12);border-color:var(--brand2)}
+.card .ico{font-size:1.6rem}
+.card h3{margin:.5rem 0 .3rem;font-size:1.12rem}
+.card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5}
+.tag{display:inline-block;margin-top:10px;font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;background:#ecfeff;color:var(--brand)}
+.flow{background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(15,23,42,.07);padding:14px 18px;color:#334155;font-size:.9rem;margin-bottom:6px}
+.flow b{color:#0f172a}
+.soon{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:22px 24px;color:var(--muted);display:flex;align-items:center;gap:10px}
+.foot{margin-top:26px;color:var(--muted);font-size:.8rem;text-align:center}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+:root[data-theme="dark"]{--ink:#e2e8f0;--muted:#94a3b8;--line:#334155;--soft:#0f1b2e}
+[data-theme="dark"] body{background:#0b1424}
+[data-theme="dark"] .card,[data-theme="dark"] .flow{background:#1b2738}
+[data-theme="dark"] .card h3{color:#f1f5f9}
+[data-theme="dark"] .card p,[data-theme="dark"] .flow{color:#cbd5e1}
+[data-theme="dark"] .soon{background:#111c30}
+[data-theme="dark"] .foot{color:#94a3b8}
+[data-theme="dark"] .tag{background:#0c2733;color:#67e8f9}
+</style>
+</head>
+<body>
+<nav class="topnav"><a class="home" href="index.html">🏠 Study Hub</a></nav>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">🎯 Topic drills</span>
+    <h1>Topic Drills</h1>
+    <p>Pick a learning objective to study it in depth. Each topic opens an <b>explanation</b> and from there you go straight to its <b>sample-question exam</b>.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="flow">📖 <b>How it works:</b> choose a topic → read the explanation with examples → click <b>“Answer the sample questions”</b> → take the focused, exam-mode quiz.</div>
+
+  <div class="section-title">Available topics</div>
+  <div class="grid">
+    <a class="card" href="topics/2.3.1-metrics.html">
+      <div class="ico">📊</div>
+      <h3>2.3.1 — Metrics for Evaluating GenAI Results</h3>
+      <p>Accuracy, Precision, Recall, Relevance &amp; Contextual Fit, Diversity, Execution Success Rate, Time Efficiency. Explanation + 100 sample questions (Easy → Hard).</p>
+      <span class="tag">Explanation + 100 questions</span>
+    </a>
+    <div class="soon"><span class="ico">➕</span> More topics coming soon…</div>
+  </div>
+
+  <div class="foot">Each topic opens an explanation and links to its own focused, exam-mode drill.</div>
+</div>
+</body>
+</html>
