@@ -9,9 +9,10 @@
 :root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--soft:#f1f5f9;--flag:#7c3aed;--flagbg:#ede9fe;--ok:#16a34a;}
 *{box-sizing:border-box}
 body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);
-  background:linear-gradient(180deg,#0f172a,#13233f 280px,#eef2f7 280px,#eef2f7);min-height:100vh}
-.wrap{max-width:980px;margin:0 auto;padding:30px 20px 80px}
-.hero{color:#fff;margin-bottom:26px}
+  background:#eef2f7;min-height:100vh}
+.wrap{max-width:980px;margin:0 auto;padding:26px 20px 80px}
+.hero{background:linear-gradient(150deg,#0f172a,#13233f);color:#fff}
+.hero-inner{max-width:980px;margin:0 auto;padding:34px 20px 30px}
 .badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:600;font-size:.8rem;padding:5px 13px;border-radius:999px}
 h1{margin:.6rem 0 .3rem;font-size:2rem}
 .hero p{opacity:.88;max-width:640px;line-height:1.6}
@@ -55,8 +56,8 @@ h1{margin:.6rem 0 .3rem;font-size:2rem}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="hero">
+<header class="hero">
+  <div class="hero-inner">
     <span class="badge">ISTQB® Specialist · CT-GenAI v1.0</span>
     <h1>Testing with Generative AI — Study Hub</h1>
     <p>Everything to prepare for the exam: timed mock exams that mirror the real format, chapter summaries covering every learning objective, and flashcards for fast recall.</p>
@@ -68,54 +69,27 @@ h1{margin:.6rem 0 .3rem;font-size:2rem}
       <div class="f">Prereq: <b>CTFL</b></div>
     </div>
   </div>
-
-  <div class="section-title">📝 Mock exams (timed, auto-graded, full explanations) — 6 exams</div>
+</header>
+<div class="wrap">
+  <div class="section-title">Practice</div>
   <div class="grid">
-    <a class="card" href="exams/official-istqb-exam-A.html">
+    <a class="card" href="exams.html">
+      <div class="ico">📝</div>
+      <h3>Mock Exams →</h3>
+      <p>Six full, timed, auto-graded exams (2 official + 4 practice) that mirror the real format, with pause, timer warnings, and per-option explanations.</p>
+      <span class="tag exam">6 full exams</span>
+    </a>
+    <a class="card" href="chapter-exams.html">
+      <div class="ico">📗</div>
+      <h3>Chapter Exams →</h3>
+      <p>A focused mock exam for every chapter (1–5), sized to triple the real exam's per-chapter weight, with full per-option explanations.</p>
+      <span class="tag exam">5 chapter exams · 120 questions</span>
+    </a>
+    <a class="card" href="topics.html">
       <div class="ico">🎯</div>
-      <h3>Official ISTQB Sample Exam A</h3>
-      <p>The real ISTQB sample, made interactive — 40 questions with ISTQB's official per-option justifications. Verified against the official answer key.</p>
-      <span class="tag official">Official · highest fidelity</span>
-    </a>
-    <a class="card" href="exams/astqb-sample-exam.html">
-      <div class="ico">🎯</div>
-      <h3>Official ASTQB Sample Exam</h3>
-      <p>The ASTQB GenAI v1.0 sample, made interactive — 40 questions with the official answers and explanations. Verified against the ASTQB answer key.</p>
-      <span class="tag official">Official · highest fidelity</span>
-    </a>
-    <a class="card" href="exams/practice-exam-B.html">
-      <div class="ico">🧪</div>
-      <h3>Practice Exam B</h3>
-      <p>40 original questions on the exact same blueprint (LOs, K-levels, point split). Answer options shuffle each attempt.</p>
-      <span class="tag exam">Original · shuffled</span>
-    </a>
-    <a class="card" href="exams/practice-exam-C.html">
-      <div class="ico">🧪</div>
-      <h3>Practice Exam C</h3>
-      <p>40 more original questions covering every learning objective with fresh scenarios. Answer options shuffle each attempt.</p>
-      <span class="tag exam">Original · shuffled</span>
-    </a>
-    <a class="card" href="exams/practice-exam-D.html">
-      <div class="ico">🧪</div>
-      <h3>Practice Exam D</h3>
-      <p>40 further original questions, distinct from B and C, on the same blueprint. Answer options shuffle each attempt.</p>
-      <span class="tag exam">Original · shuffled</span>
-    </a>
-    <a class="card" href="exams/practice-exam-E.html">
-      <div class="ico">🧪</div>
-      <h3>Practice Exam E</h3>
-      <p>40 more original questions with fresh scenarios, distinct from B, C and D. Answer options shuffle each attempt.</p>
-      <span class="tag exam">Original · shuffled</span>
-    </a>
-  </div>
-
-  <div class="section-title">🎯 Topic drills (focused, exam-mode practice on one LO)</div>
-  <div class="grid">
-    <a class="card full" href="exams/drill-2.3.1-metrics.html">
-      <div class="ico">📊</div>
-      <h3>2.3.1 — Metrics for Evaluating GenAI Results</h3>
-      <p>100 questions focused only on the metrics (Accuracy, Precision, Recall, Relevance &amp; Contextual Fit, Diversity, Execution Success Rate, Time Efficiency), graded Easy → Medium → Hard with full explanations. Each question shows its difficulty.</p>
-      <span class="tag exam">100 questions · Easy→Hard</span>
+      <h3>Topic Drills →</h3>
+      <p>Study one learning objective in depth: read its explanation, then answer focused, exam-mode sample questions. More topics added over time.</p>
+      <span class="tag exam">Explain + drill per topic</span>
     </a>
   </div>
 
@@ -140,7 +114,7 @@ h1{margin:.6rem 0 .3rem;font-size:2rem}
   </div>
 
   <div class="note">
-    <b>How to open:</b> double-click <code>index.html</code> (this page) — everything works offline in any modern browser. The <code>.md</code> summaries open best in a Markdown viewer or your editor. Your exam progress and last results are saved automatically in the browser.
+    <b>How to open:</b> double-click <code>index.html</code> (this page) — everything works offline in any modern browser. Use the 🌙 / ☀️ button to switch dark/light mode. Your exam progress and last results are saved automatically in the browser.
   </div>
 
   <div class="foot">
