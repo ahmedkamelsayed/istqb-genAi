@@ -436,8 +436,48 @@
     hidePauseOverlay();
     if (timerHandle) clearInterval(timerHandle);
     save();
+    recordHistory(auto);
     renderResults(auto);
     window.scrollTo(0, 0);
+  }
+
+  // ---- exam history (per-attempt log in localStorage) ---------------------
+  function stripTags(h) {
+    var d = document.createElement("div"); d.innerHTML = h || "";
+    return (d.textContent || "").replace(/\s+/g, " ").trim();
+  }
+  function recordHistory(auto) {
+    try {
+      var earned = 0, nC = 0, nI = 0, nS = 0, wrong = [];
+      QS.forEach(function (q, i) {
+        var answered = isAnswered(i), ok = answered && isCorrect(i);
+        if (!answered) nS++;
+        else if (ok) { nC++; earned += q.points; }
+        else nI++;
+        if (!ok) {
+          var sel = selectedKeys(i), corr = correctKeys(q);
+          function txt(k) { var o = q.options.filter(function (x) { return x.k === k; })[0]; return o ? stripTags(o.html) : k; }
+          wrong.push({
+            n: q.n, lo: q.lo || "", k: q.k || "", status: answered ? "incorrect" : "skipped",
+            stem: stripTags(q.stem),
+            your: sel.map(txt), correct: corr.map(txt),
+            why: q.options.filter(function (o) { return o.correct; }).map(function (o) { return o.why || ""; })
+          });
+        }
+      });
+      var pct = Math.round((earned / TOTAL_POINTS) * 100);
+      var rec = {
+        id: EXAM.id || EXAM.title, title: EXAM.title, ts: new Date().toISOString(),
+        earned: earned, total: TOTAL_POINTS, pct: pct, passMark: PASS_PERCENT, passed: earned >= PASS_POINTS,
+        auto: !!auto, counts: { correct: nC, incorrect: nI, skipped: nS, questions: QS.length },
+        wrong: wrong
+      };
+      var hist = [];
+      try { hist = JSON.parse(localStorage.getItem("ctgenai_history") || "[]"); } catch (e) {}
+      hist.push(rec);
+      if (hist.length > 300) hist = hist.slice(hist.length - 300);
+      localStorage.setItem("ctgenai_history", JSON.stringify(hist));
+    } catch (e) {}
   }
 
   // =========================================================================
