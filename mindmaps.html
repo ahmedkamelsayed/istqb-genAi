@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind Maps — CT-GenAI Study Hub</title>
+<script src="theme.js"></script>
+<style>
+:root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#cbd5e1;--soft:#f1f5f9;--flag:#7c3aed;--flagbg:#ede9fe;--shadow:0 8px 24px rgba(15,23,42,.07)}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#eef2f7;min-height:100vh}
+.topnav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;background:rgba(8,13,26,.98);
+  backdrop-filter:blur(6px);color:#fff;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.topnav a{color:#fff;text-decoration:none;font-size:.9rem;opacity:.9}.topnav a:hover{opacity:1}.topnav .home{font-weight:700}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 20px 80px}
+.hero{background:linear-gradient(150deg,#0f172a,#13233f);color:#fff}
+.hero-inner{max-width:1080px;margin:0 auto;padding:26px 20px 24px}
+.badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:600;font-size:.8rem;padding:5px 13px;border-radius:999px}
+h1{margin:.6rem 0 .3rem;font-size:1.8rem}
+.hero p{opacity:.88;max-width:680px;line-height:1.6}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 6px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 14px;font:inherit;font-weight:600;color:#334155;cursor:pointer}
+.tab:hover{border-color:var(--brand2)}
+.tab.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.toolbar{display:flex;gap:8px;align-items:center;margin:6px 0 12px}
+.toolbar button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 12px;font:inherit;font-size:.85rem;color:#475569;cursor:pointer}
+.toolbar button:hover{border-color:var(--brand2)}
+.toolbar .hint{color:var(--muted);font-size:.82rem;margin-left:auto}
+.mapwrap{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px 18px;overflow-x:auto}
+/* tree */
+.tree,.tree ul{list-style:none;margin:0;padding:0}
+.tree ul{padding-left:30px;position:relative}
+.tree li{position:relative;padding:7px 0 7px 26px}
+.tree li::before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:2px solid var(--line)}
+.tree li:last-child::before{height:24px}
+.tree li::after{content:"";position:absolute;left:0;top:24px;width:24px;border-top:2px solid var(--line)}
+.tree > li{padding-left:0}
+.tree > li::before,.tree > li::after{display:none}
+.node{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:7px 15px;font-weight:600;
+  border:1.5px solid transparent;box-shadow:0 1px 2px rgba(15,23,42,.08);transition:transform .06s}
+.node:active{transform:scale(.99)}
+.node.root{background:linear-gradient(120deg,#0f172a,#13233f);color:#fff;font-size:1.05rem;padding:10px 18px}
+.node.branch{color:#fff;cursor:pointer}
+.node.leaf{background:#fff;border-color:var(--line);color:#334155;font-weight:500;font-size:.92rem}
+.caret{font-size:.7rem;opacity:.85}
+.node.branch .caret{display:inline-block}
+li.collapsed > ul{display:none}
+li.collapsed > .node .caret{transform:rotate(-90deg)}
+/* branch palette */
+.c0{background:#0e7490}.c1{background:#7c3aed}.c2{background:#b45309}.c3{background:#15803d}.c4{background:#be185d}.c5{background:#0369a1}
+.foot{margin-top:20px;color:var(--muted);font-size:.8rem;text-align:center}
+@media(max-width:560px){.hero-inner{padding:22px 14px 20px}.mapwrap{padding:16px 10px}.tree ul{padding-left:20px}.tree li{padding-left:20px}.tree li::after{width:18px}}
+:root[data-theme="dark"]{--ink:#e2e8f0;--muted:#94a3b8;--line:#334155;--soft:#0f1b2e}
+[data-theme="dark"] body{background:#0b1424}
+[data-theme="dark"] .tab,[data-theme="dark"] .toolbar button,[data-theme="dark"] .mapwrap{background:#1b2738;color:#e2e8f0}
+[data-theme="dark"] .tab.active{background:#0e7490;color:#fff}
+[data-theme="dark"] .node.leaf{background:#0f1b2e;color:#cbd5e1}
+[data-theme="dark"] .foot{color:#94a3b8}
+</style>
+</head>
+<body>
+<nav class="topnav"><a class="home" href="index.html">🏠 Study Hub</a></nav>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">🧠 Mind maps</span>
+    <h1>Chapter Mind Maps</h1>
+    <p>A visual map of each chapter's key concepts and learning objectives. Click a coloured branch to collapse/expand it. Great for a quick big-picture review before the exam.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="toolbar">
+    <button id="expandAll">⤢ Expand all</button>
+    <button id="collapseAll">⤡ Collapse all</button>
+    <span class="hint">Tip: collapse branches you've mastered to focus on the rest.</span>
+  </div>
+  <div class="mapwrap"><ul class="tree" id="tree"></ul></div>
+  <div class="foot">Conceptual outline based on the official CT-GenAI Syllabus v1.0 structure.</div>
+</div>
+
+<script>
+const MAPS = {
+  "1": { title:"Ch 1 — Foundations of Generative AI", branches:[
+    { label:"AI spectrum (1.1.1)", children:["Symbolic AI — rule-based","Classical ML — feature selection + training","Deep learning — neural nets, auto features","Generative AI — creates new content"] },
+    { label:"LLM basics (1.1.2)", children:["Tokenization — text → tokens","Embeddings — vectors; similar = close","Transformer — predicts next token","Context window — tokens considered at once","Non-deterministic — varies per run","SLM — fewer parameters, lightweight"] },
+    { label:"Model types (1.1.3)", children:["Foundation — general, needs adaptation","Instruction-tuned — follows instructions/formats","Reasoning — multi-step logic"] },
+    { label:"Multimodal & VLMs (1.1.4)", children:["Multimodal — text/image/audio/video","VLM — subset: visual + textual","Testing use — screenshot vs description"] },
+    { label:"LLM capabilities (1.2.1)", children:["Requirements analysis","Test case & oracle generation","Test data generation","Automation support","Result analysis","Testware creation"] },
+    { label:"Interaction models (1.2.2)", children:["AI chatbot — ad hoc, conversational","LLM-powered app — API, automated, scalable"] }
+  ]},
+  "2": { title:"Ch 2 — Prompt Engineering", branches:[
+    { label:"6 prompt components (2.1.1)", children:["Role","Context","Instruction","Input data","Constraints","Output format"] },
+    { label:"Core techniques (2.1.2)", children:["Prompt chaining — steps + verify","Few-shot — examples (zero/one/few)","Meta — LLM crafts its own prompt"] },
+    { label:"System vs user prompt (2.1.3)", children:["System — constant, hidden, sets behavior","User — changes each turn, visible"] },
+    { label:"Apply to test tasks (2.2 · K3)", children:["Test analysis (2.2.1)","Test design & implementation (2.2.2)","Regression — self-healing / keyword (2.2.3)","Monitoring vs control (2.2.4)","Choosing the technique (2.2.5)"] },
+    { label:"Metrics (2.3.1)", children:["Accuracy","Precision","Recall","Relevance & contextual fit","Diversity","Execution success rate","Time efficiency"] },
+    { label:"Refine prompts (2.3.2)", children:["Iterative modification","A/B testing","Output analysis","Integrate user feedback","Adjust length & specificity"] }
+  ]},
+  "3": { title:"Ch 3 — Managing Risks of GenAI", branches:[
+    { label:"Core defects (3.1.1)", children:["Hallucination — incorrect / irrelevant","Reasoning error — flawed logic","Bias — from skewed training data"] },
+    { label:"Identify & mitigate (3.1.2–3.1.3)", children:["Cross-verify / domain experts","Logical validation / output testing","Provide complete context","Prompt chaining (verify steps)","Compare across models"] },
+    { label:"Non-determinism (3.1.4)", children:["Lower temperature","Set random seed","Automate verification"] },
+    { label:"Privacy & security (3.2)", children:["Privacy: exposure, consent, GDPR","Attack: data exfiltration","Attack: request manipulation","Attack: data poisoning","Attack: malicious code generation","Mitigate: minimization, anonymization, encryption, secure env"] },
+    { label:"Energy & CO₂ (3.3.1)", children:["Image ≫ text energy","Cumulative impact is significant","Limit interactions / right-size model"] },
+    { label:"Regulations (3.4.1)", children:["ISO/IEC 42001 — AI management (standard)","ISO/IEC 23053 — AI/ML framework (standard)","EU AI Act — regulation, risk levels","NIST AI RMF — framework"] }
+  ]},
+  "4": { title:"Ch 4 — LLM-Powered Test Infrastructure", branches:[
+    { label:"Architecture (4.1.1)", children:["Front-end — user interface","Back-end — auth, retrieval, prompt prep, post-processing","LLM — smart processing component","Relational DB — structured data","Vector DB — embeddings / semantic"] },
+    { label:"RAG (4.1.2)", children:["Preprocess: chunk → clean → embed → store","Query: Retrieval → Generation","Grounds output in latest enterprise data"] },
+    { label:"Agents (4.1.3)", children:["Invoke tools / take actions","Autonomous vs semi-autonomous","Multi-agent → orchestration","Still need verification"] },
+    { label:"Fine-tuning (4.2.1)", children:["Adapt a pre-trained model","Works on SLMs (less compute)","Challenges: overfitting, opacity, data quality, compute"] },
+    { label:"LLMOps (4.2.2)", children:["Lifecycle: develop, deploy, maintain","Privacy, security, cost","Approaches: chatbot / tool / in-house (combinable)"] }
+  ]},
+  "5": { title:"Ch 5 — Deploying GenAI in Test Orgs", branches:[
+    { label:"Shadow AI risks (5.1.1)", children:["Security & privacy weakness","Compliance issues","Vague IP / licensing"] },
+    { label:"GenAI strategy (5.1.2)", children:["Measurable objectives","Right LLM selection","Data quality","Training programs","Task-specific metrics","Process guidelines / quality gates"] },
+    { label:"Selecting LLMs (5.1.3)", children:["Model performance","Fine-tuning potential","Recurring cost","Community & support"] },
+    { label:"Adoption phases (5.1.4)", children:["1 · Discovery","2 · Initiation & usage definition","3 · Utilization & iteration"] },
+    { label:"Skills & change (5.2)", children:["Tester skills: prompts, evaluate, sanitization (5.2.1)","Build capability: hands-on, communities, prompt patterns (5.2.2)","Evolving roles: tester → AI-assisted; manager → AI strategy & governance (5.2.3)"] }
+  ]}
+};
+
+var current = "1";
+function esc(s){ var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
+
+function render(ch){
+  current = ch;
+  var m = MAPS[ch];
+  var tree = document.getElementById("tree");
+  var html = '<li><div class="node root">'+esc(m.title)+'</div><ul>';
+  m.branches.forEach(function(b, i){
+    html += '<li><div class="node branch c'+(i%6)+'" onclick="this.parentNode.classList.toggle(\'collapsed\')">'
+      +'<span class="caret">▾</span> '+esc(b.label)+'</div><ul>';
+    b.children.forEach(function(c){
+      if (typeof c === "string"){ html += '<li><div class="node leaf">'+esc(c)+'</div></li>'; }
+      else {
+        html += '<li><div class="node branch c'+((i+1)%6)+'" onclick="this.parentNode.classList.toggle(\'collapsed\')"><span class="caret">▾</span> '+esc(c.label)+'</div><ul>';
+        (c.children||[]).forEach(function(cc){ html += '<li><div class="node leaf">'+esc(cc)+'</div></li>'; });
+        html += '</ul></li>';
+      }
+    });
+    html += '</ul></li>';
+  });
+  html += '</ul></li>';
+  tree.innerHTML = html;
+  // tabs active state
+  [].forEach.call(document.querySelectorAll('.tab'), function(t){ t.classList.toggle('active', t.dataset.ch===ch); });
+}
+
+// build tabs
+var tabsEl = document.getElementById("tabs");
+Object.keys(MAPS).forEach(function(ch){
+  var b = document.createElement("button");
+  b.className = "tab"; b.dataset.ch = ch; b.textContent = "Chapter "+ch;
+  b.onclick = function(){ render(ch); };
+  tabsEl.appendChild(b);
+});
+document.getElementById("expandAll").onclick = function(){ [].forEach.call(document.querySelectorAll('.tree li'), function(li){ li.classList.remove('collapsed'); }); };
+document.getElementById("collapseAll").onclick = function(){ [].forEach.call(document.querySelectorAll('.tree > li > ul > li'), function(li){ li.classList.add('collapsed'); }); };
+render("1");
+</script>
+</body>
+</html>
