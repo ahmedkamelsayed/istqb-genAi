@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter Exams — CT-GenAI Study Hub</title>
+<script src="theme.js"></script>
+<style>
+:root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--soft:#f1f5f9;--flag:#7c3aed;--flagbg:#ede9fe;--ok:#16a34a;}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#eef2f7;min-height:100vh}
+.topnav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;background:rgba(8,13,26,.98);
+  backdrop-filter:blur(6px);color:#fff;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.topnav a{color:#fff;text-decoration:none;font-size:.9rem;opacity:.9}
+.topnav a:hover{opacity:1}.topnav .home{font-weight:700}
+.wrap{max-width:980px;margin:0 auto;padding:22px 20px 80px}
+.hero{background:linear-gradient(150deg,#0f172a,#13233f);color:#fff}
+.hero-inner{max-width:980px;margin:0 auto;padding:28px 20px 26px}
+.badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:600;font-size:.8rem;padding:5px 13px;border-radius:999px}
+h1{margin:.6rem 0 .3rem;font-size:1.8rem}
+.hero p{opacity:.88;max-width:680px;line-height:1.6}
+.flow{background:#fff;border-radius:14px;box-shadow:0 8px 24px rgba(15,23,42,.07);padding:14px 18px;color:#334155;font-size:.9rem;margin-bottom:14px}
+.flow b{color:#0f172a}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.07);padding:20px 22px;
+  text-decoration:none;color:inherit;display:block;transition:transform .08s,box-shadow .15s;border:1px solid transparent}
+.card:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(15,23,42,.12);border-color:var(--brand2)}
+.card .n{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:var(--brand);color:#fff;font-weight:700}
+.card h3{margin:.5rem 0 .3rem;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5}
+.meta{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.meta span{font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;background:#ecfeff;color:var(--brand)}
+.meta .w{background:var(--soft);color:var(--muted)}
+.foot{margin-top:26px;color:var(--muted);font-size:.8rem;text-align:center}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+:root[data-theme="dark"]{--ink:#e2e8f0;--muted:#94a3b8;--line:#334155;--soft:#0f1b2e}
+[data-theme="dark"] body{background:#0b1424}
+[data-theme="dark"] .card,[data-theme="dark"] .flow{background:#1b2738}
+[data-theme="dark"] .card h3{color:#f1f5f9}
+[data-theme="dark"] .card p,[data-theme="dark"] .flow{color:#cbd5e1}
+[data-theme="dark"] .foot{color:#94a3b8}
+[data-theme="dark"] .meta span{background:#0c2733;color:#67e8f9}
+[data-theme="dark"] .meta .w{background:#0f1b2e;color:#94a3b8}
+</style>
+</head>
+<body>
+<nav class="topnav"><a class="home" href="index.html">🏠 Study Hub</a></nav>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">📗 Chapter exams</span>
+    <h1>Chapter Exams</h1>
+    <p>A focused, timed mock exam for each chapter — sized to triple the real exam's weighting per chapter, so the big chapters get more practice. Same engine: timer, flagging, pause, and a per-option explanation on every question.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="flow">📖 <b>Tip:</b> read the matching chapter summary first (Study Hub → Chapter summaries), then take its exam here to check yourself.</div>
+  <div class="grid">
+    <a class="card" href="exams/chapter-1.html">
+      <span class="n">1</span>
+      <h3>Foundations of Generative AI</h3>
+      <p>AI spectrum, LLM basics, tokens &amp; embeddings, model types, multimodal/VLMs, LLM capabilities, chatbots vs applications.</p>
+      <div class="meta"><span>21 questions</span><span class="w">~30 min</span></div>
+    </a>
+    <a class="card" href="exams/chapter-2.html">
+      <span class="n">2</span>
+      <h3>Prompt Engineering</h3>
+      <p>The 6 prompt components, core techniques, system vs user prompts, applying GenAI to test tasks (K3), metrics &amp; prompt refinement.</p>
+      <div class="meta"><span>33 questions</span><span class="w">~50 min</span></div>
+    </a>
+    <a class="card" href="exams/chapter-3.html">
+      <span class="n">3</span>
+      <h3>Managing Risks of GenAI</h3>
+      <p>Hallucinations / reasoning errors / biases, mitigations, non-determinism, data privacy &amp; security, attack vectors, energy, regulations.</p>
+      <div class="meta"><span>30 questions</span><span class="w">~45 min</span></div>
+    </a>
+    <a class="card" href="exams/chapter-4.html">
+      <span class="n">4</span>
+      <h3>LLM-Powered Test Infrastructure</h3>
+      <p>Architecture components, RAG, LLM-powered agents &amp; orchestration, fine-tuning, LLMOps.</p>
+      <div class="meta"><span>15 questions</span><span class="w">~22 min</span></div>
+    </a>
+    <a class="card" href="exams/chapter-5.html">
+      <span class="n">5</span>
+      <h3>Deploying GenAI in Test Orgs</h3>
+      <p>Shadow AI, GenAI strategy, selecting LLMs, adoption phases, tester skills, building team capability, evolving roles.</p>
+      <div class="meta"><span>21 questions</span><span class="w">~30 min</span></div>
+    </a>
+  </div>
+  <div class="foot">Original questions grounded in the official CT-GenAI Syllabus v1.0. Not official ISTQB exam items. For full all-chapters practice, see the Mock Exams.</div>
+</div>
+</body>
+</html>
