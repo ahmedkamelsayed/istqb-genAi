@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CT-GenAI 2.3.1 — Metrics for Evaluating GenAI Results</title>
+<script src="../theme.js"></script>
+<style>
+:root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--soft:#f1f5f9;
+  --flag:#7c3aed;--flagbg:#ede9fe;--ok:#16a34a;--okbg:#dcfce7;--shadow:0 8px 24px rgba(15,23,42,.08);}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);
+  background:#eef2f7;line-height:1.7;min-height:100vh}
+.topnav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;background:rgba(8,13,26,.98);
+  backdrop-filter:blur(6px);color:#fff;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.topnav a{color:#fff;text-decoration:none;font-size:.9rem;opacity:.9}
+.topnav a:hover{opacity:1}.topnav .home{font-weight:700}
+.wrap{max-width:1000px;margin:0 auto;padding:22px 18px 80px}
+.hero{background:linear-gradient(150deg,#0f172a,#13233f);color:#fff}
+.hero-inner{max-width:1000px;margin:0 auto;padding:28px 18px 26px}
+.badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:999px}
+h1{margin:.5rem 0 .2rem;font-size:1.7rem}
+.hero p{opacity:.9;margin:.2rem 0}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  background:linear-gradient(120deg,#0e7490,#0891b2);color:#fff;border-radius:16px;padding:18px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.cta .cta-txt{font-weight:600}
+.cta .cta-txt small{display:block;font-weight:400;opacity:.92;font-size:.85rem;margin-top:2px}
+.cta a.cta-btn{background:#fff;color:#0e7490;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.cta a.cta-btn:hover{transform:translateY(-1px)}
+.card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px 24px;margin-bottom:16px}
+.card h2{margin:0 0 .2rem;font-size:1.25rem;color:var(--brand)}
+.metric-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--soft);padding-bottom:10px;margin-bottom:14px}
+.metric-head .num{background:var(--brand);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+h4{margin:.6rem 0 .2rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.card p{margin:.2rem 0 .6rem}
+.eg{background:var(--soft);border-radius:10px;padding:10px 13px;margin:.4rem 0;font-size:.95rem}
+.eg.work{background:#ecfeff;border:1px solid #a5f3fc}
+.eg.syl{background:#f5f3ff;border:1px solid #ddd6fe}
+.cue{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:9px 13px;font-size:.92rem;color:#92400e;margin-top:.3rem}
+.formula{font-family:ui-monospace,Consolas,monospace;background:#0f172a;color:#e2e8f0;border-radius:8px;padding:8px 12px;font-size:.85rem;display:inline-block;margin:.3rem 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;margin:.5rem 0}
+.tablewrap{overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:start;vertical-align:top}
+thead th{background:var(--brand);color:#fff}
+tbody tr:nth-child(even){background:var(--soft)}
+.note{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:14px 18px;color:#065f46;margin:14px 0}
+.scenario{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:18px 22px;margin-bottom:18px}
+.scenario h3{margin:0 0 .4rem;color:#67e8f9}
+.scenario code{background:rgba(255,255,255,.12);padding:2px 7px;border-radius:5px}
+.foot{color:var(--muted);font-size:.82rem;text-align:center;margin-top:24px}
+/* dark mode */
+:root[data-theme="dark"]{--ink:#e2e8f0;--muted:#94a3b8;--line:#334155;--soft:#0f1b2e;--brand:#38bdf8;--brand2:#7dd3fc;--okbg:#13331f;--shadow:0 8px 24px rgba(0,0,0,.4)}
+[data-theme="dark"] body{background:#0b1424}
+[data-theme="dark"] .card{background:#1b2738}
+[data-theme="dark"] .card h2{color:#38bdf8}
+[data-theme="dark"] .eg{background:#0f1b2e}
+[data-theme="dark"] .eg.work{background:#0c2733;border-color:#155e75}
+[data-theme="dark"] .eg.syl{background:#221a3a;border-color:#4c3a86}
+[data-theme="dark"] .cue{background:#2a2208;border-color:#5c4a12;color:#fcd34d}
+[data-theme="dark"] .note{background:#0c2a1f;border-color:#14533b;color:#a7f3d0}
+[data-theme="dark"] thead th{background:#0e7490;border-color:#0e7490}
+[data-theme="dark"] strong,[data-theme="dark"] b{color:#f1f5f9}
+@media(max-width:560px){.wrap{padding:18px 13px 80px}.hero-inner{padding:22px 14px 20px}.card{padding:18px 16px}}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="../topics.html">← Topic drills</a>
+</nav>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">ISTQB CT-GenAI · LO 2.3.1 (K2)</span>
+    <h1>Metrics for Evaluating GenAI Results on Test Tasks</h1>
+    <p>Understand &amp; explain the metrics used to judge the quality of GenAI output for testing — with examples from your own automation work.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="cta">
+    <div class="cta-txt">Ready to test yourself on this topic?
+      <small>Read the explanation below, then answer the 100 sample questions (Easy → Hard) in exam mode.</small>
+    </div>
+    <a class="cta-btn" href="../exams/drill-2.3.1-metrics.html">▶ Answer the 100 sample questions</a>
+  </div>
+
+  <div class="scenario">
+    <h3>🧪 Our running example</h3>
+    <p>You are testing the <b>Login feature</b> of a web app (the kind you automate with Selenium). You ask an LLM to <b>generate test cases and automated test scripts</b> from the requirements. Requirements include: valid login, wrong password, empty fields, account locks after 5 failed attempts, "remember me", and password rules (8–20 chars, at least one digit). We'll measure the AI's output with each metric below.</p>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">1</span><h2>Accuracy</h2></div>
+    <h4>What it means</h4>
+    <p>The <b>overall correctness</b> of the generated output compared to a trusted reference: expert-written test cases, the requirements, or a standard. "Did it get things right overall?"</p>
+    <div class="eg syl"><b>Syllabus example:</b> the degree to which the generated test cases cover all specified requirements.</div>
+    <div class="eg work"><b>On your work:</b> The Login spec has 6 requirements. The AI produced cases that correctly cover 5 of them (it missed "account locks after 5 attempts"). → Accuracy ≈ <b>5/6 = 83%</b>.</div>
+    <div class="cue">🎯 <b>Exam cue:</b> "overall correctness against requirements / expert cases / a standard" → <b>Accuracy</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">2</span><h2>Precision</h2></div>
+    <h4>What it means</h4>
+    <p>Correctness of the output with respect to <b>one specific objective</b>. Of what it produced <i>for that goal</i>, how much is actually correct/relevant? "When it flags something, is it right?"</p>
+    <div class="formula">Precision = correct items / all items it produced</div>
+    <div class="eg syl"><b>Syllabus example:</b> the degree to which the generated test cases correctly identify anomalies.</div>
+    <div class="eg work"><b>On your work:</b> You asked it to generate cases that catch <b>security anomalies</b> on Login. It produced 10 such cases; 7 truly target real anomalies (SQL injection, brute-force, etc.), 3 are noise. → Precision = <b>7/10 = 70%</b>.</div>
+    <div class="cue">🎯 <b>Exam cue:</b> "correctness for a specific objective", "correctly identifies anomalies", "few false positives" → <b>Precision</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">3</span><h2>Recall</h2></div>
+    <h4>What it means</h4>
+    <p>The ability to find <b>ALL the relevant items</b> that should exist. "Did it miss anything important?" (Completeness of coverage.)</p>
+    <div class="formula">Recall = relevant items found / all relevant items that exist</div>
+    <div class="eg syl"><b>Syllabus example:</b> the degree to which generated test cases cover valid <b>and</b> invalid equivalence partitions of a data class.</div>
+    <div class="eg work"><b>On your work:</b> The password field has 8 equivalence partitions (valid length, too short, too long, no digit, only digits, special chars, empty, SQL-injection string). The AI covered 6 of 8. → Recall = <b>6/8 = 75%</b>.</div>
+    <div class="cue">🎯 <b>Exam cue:</b> "covers ALL", "valid and invalid partitions", "completeness", "nothing missed" → <b>Recall</b>.</div>
+  </div>
+
+  <div class="note">
+    <b>💡 Precision vs Recall (the classic confusion):</b> Precision = "of what it produced, how much is correct?" (quality / few false alarms). Recall = "of everything it should have found, how much did it find?" (completeness / nothing missed).
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">4</span><h2>Relevance &amp; Contextual Fit</h2></div>
+    <h4>What it means</h4>
+    <p>Whether the output is <b>applicable and appropriate for your specific context</b> — your test basis, your domain, your business rules — not generic boilerplate.</p>
+    <div class="eg syl"><b>Syllabus example:</b> the degree to which generated test cases are consistent with the test basis and integrate the domain-specific requirements.</div>
+    <div class="eg work"><b>On your work:</b> Good fit = cases use <i>your</i> actual rules (locks after <b>5</b> attempts, password <b>8–20</b> chars) and your field names. Poor fit = generic "enter username/password" cases that ignore your business rules.</div>
+    <div class="cue">🎯 <b>Exam cue:</b> "consistent with the test basis", "domain-specific", "appropriate for the context" → <b>Relevance &amp; Contextual Fit</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">5</span><h2>Diversity</h2></div>
+    <h4>What it means</h4>
+    <p>A <b>wide range</b> of inputs and scenarios is covered, <b>avoiding repetition</b>, and exploring <b>edge cases</b> — not 10 near-identical happy-path variations.</p>
+    <div class="eg syl"><b>Syllabus example:</b> the degree to which generated test cases cover various user behaviors and explore edge cases.</div>
+    <div class="eg work"><b>On your work:</b> High diversity = it covers desktop + mobile, different locales, pasting the password, autofill, Caps-Lock on, very long input, network timeout mid-login. Low diversity = 8 cases that are all "valid login with slightly different valid passwords".</div>
+    <div class="cue">🎯 <b>Exam cue:</b> "variety", "avoids repetition", "various behaviors", "edge cases breadth" → <b>Diversity</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">6</span><h2>Execution Success Rate</h2></div>
+    <h4>What it means</h4>
+    <p>The proportion of generated test cases/<b>scripts</b> that actually <b>run successfully</b> — no syntax errors, no output-format problems — in an otherwise working environment.</p>
+    <div class="formula">Execution Success Rate = scripts that run / total scripts generated</div>
+    <div class="eg syl"><b>Syllabus example:</b> how many generated test scripts can be executed without syntax errors or output-format issues.</div>
+    <div class="eg work"><b>On your work:</b> The AI generated 20 Selenium scripts for Login. 17 run without errors; 3 fail (bad locator syntax / wrong import). → Execution Success Rate = <b>17/20 = 85%</b>.</div>
+    <div class="cue">🎯 <b>Exam cue:</b> "scripts that run/execute", "without syntax errors", "executable" → <b>Execution Success Rate</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">7</span><h2>Time Efficiency</h2></div>
+    <h4>What it means</h4>
+    <p>The <b>time saved</b> by using GenAI compared to doing the same work manually.</p>
+    <div class="eg syl"><b>Syllabus example:</b> time the AI needs to generate test cases vs the time a human would take to create equivalent tests.</div>
+    <div class="eg work"><b>On your work:</b> The AI drafted 20 Login scripts in ~3 minutes; writing them by hand would take you ~3 hours. The time saved is the Time Efficiency gain.</div>
+    <div class="cue">🎯 <b>Exam cue:</b> "time saved vs manual", "faster than doing it by hand" → <b>Time Efficiency</b>.</div>
+  </div>
+
+  <div class="card">
+    <h2>⚡ Quick reference — pick the metric</h2>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>If the question is about…</th><th>The metric is</th></tr></thead>
+      <tbody>
+        <tr><td>Overall correctness vs requirements / expert cases / a standard</td><td><b>Accuracy</b></td></tr>
+        <tr><td>Correctness for one specific objective (e.g., correctly identifying anomalies)</td><td><b>Precision</b></td></tr>
+        <tr><td>Covering ALL relevant items (valid + invalid partitions, completeness)</td><td><b>Recall</b></td></tr>
+        <tr><td>Fitting your test basis / domain / business rules</td><td><b>Relevance &amp; Contextual Fit</b></td></tr>
+        <tr><td>Variety, avoiding repetition, edge-case breadth</td><td><b>Diversity</b></td></tr>
+        <tr><td>Generated scripts run without syntax/format errors</td><td><b>Execution Success Rate</b></td></tr>
+        <tr><td>Time saved vs manual effort</td><td><b>Time Efficiency</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🔍 How to apply these metrics (syllabus notes)</h2>
+    <ul>
+      <li><b>How to measure:</b> by <b>manual review</b>, or <b>automated</b> by comparing the LLM output against a predefined reference.</li>
+      <li><b>Non-determinism:</b> because GenAI output varies between runs, base your metrics on <b>statistically relevant data</b> (don't judge from a single run).</li>
+      <li><b>Task-specific metrics:</b> beyond these general metrics, you can define metrics tailored to a specific test activity.</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <div class="cta-txt">Now you understand the metrics — lock it in.
+      <small>100 questions, Easy → Medium → Hard, with full explanations and your difficulty shown per question.</small>
+    </div>
+    <a class="cta-btn" href="../exams/drill-2.3.1-metrics.html">▶ Start the sample questions</a>
+  </div>
+
+  <div class="foot">Based on the official ISTQB® CT-GenAI Syllabus v1.0, section 2.3.1 (K2). Examples are illustrative, mapped to a Login-feature automation scenario.</div>
+</div>
+</body>
+</html>
