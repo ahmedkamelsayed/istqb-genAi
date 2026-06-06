@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Progress — CT-GenAI Study Hub</title>
+<script src="theme.js"></script>
+<style>
+:root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--soft:#f1f5f9;--flag:#7c3aed;--flagbg:#ede9fe;--ok:#16a34a;--okbg:#dcfce7;--bad:#dc2626;--badbg:#fee2e2;--shadow:0 8px 24px rgba(15,23,42,.07)}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#eef2f7;min-height:100vh}
+.topnav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;background:rgba(8,13,26,.98);
+  backdrop-filter:blur(6px);color:#fff;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.topnav a{color:#fff;text-decoration:none;font-size:.9rem;opacity:.9}.topnav a:hover{opacity:1}.topnav .home{font-weight:700}
+.wrap{max-width:980px;margin:0 auto;padding:22px 20px 80px}
+.hero{background:linear-gradient(150deg,#0f172a,#13233f);color:#fff}
+.hero-inner{max-width:980px;margin:0 auto;padding:28px 20px 26px}
+.badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:600;font-size:.8rem;padding:5px 13px;border-radius:999px}
+h1{margin:.6rem 0 .3rem;font-size:1.8rem}
+.hero p{opacity:.88;max-width:680px;line-height:1.6}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.tile{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:14px;text-align:center}
+.tile-num{font-size:1.5rem;font-weight:800;color:var(--brand)}
+.tile-lbl{font-size:.78rem;color:var(--muted);margin-top:2px}
+.section-title{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:22px 0 10px;font-weight:700}
+.exam-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px}
+.exam-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.exam-head h3{margin:0;font-size:1.05rem;flex:1;min-width:200px}
+.pill{font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--muted)}
+.pill.best{background:var(--okbg);color:#15803d}
+.spark{display:flex;align-items:flex-end;gap:3px;height:42px;margin:8px 0 4px}
+.spark .bar{flex:1;min-width:5px;border-radius:3px 3px 0 0;background:var(--brand2);opacity:.85}
+.spark .bar.fail{background:#f59e0b}
+.attempts{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+.att{border:1px solid var(--line);border-radius:10px;margin:6px 0;overflow:hidden}
+.att-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 12px;cursor:pointer;background:#fff}
+.att-row:hover{background:var(--soft)}
+.att-date{color:var(--muted);font-size:.85rem;min-width:150px}
+.att-score{font-weight:700}
+.att-verdict{font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:999px}
+.att-verdict.pass{background:var(--okbg);color:#15803d}.att-verdict.fail{background:var(--badbg);color:var(--bad)}
+.att-counts{font-size:.8rem;color:var(--muted);margin-left:auto}
+.att-toggle{font-size:.8rem;color:var(--brand);font-weight:600}
+.att-body{display:none;padding:4px 12px 12px;background:var(--soft)}
+.att.open .att-body{display:block}
+.wrongq{background:#fff;border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:10px;padding:10px 13px;margin:8px 0}
+.wrongq.skipped{border-left-color:var(--muted)}
+.wrongq .meta{font-size:.74rem;color:var(--muted);background:var(--soft);padding:2px 8px;border-radius:999px}
+.wrongq .stem{margin:6px 0;font-size:.92rem}
+.wrongq .ans{font-size:.88rem;margin:3px 0}
+.wrongq .ans .lab{font-weight:700}
+.wrongq .yours{color:var(--bad)} .wrongq .corr{color:var(--ok)}
+.wrongq .why{font-size:.85rem;color:#475569;margin-top:6px;border-top:1px dashed var(--line);padding-top:6px}
+.weak{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:14px}
+.weak h3{margin:0 0 10px;font-size:1.05rem}
+.weak-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.weak-lo{width:130px;font-size:.85rem;font-weight:600;color:#334155;flex:none}
+.weak-bar{flex:1;height:10px;background:var(--soft);border-radius:999px;overflow:hidden}
+.weak-fill{height:100%;background:#f59e0b;border-radius:999px}
+.weak-cnt{width:80px;text-align:right;font-size:.82rem;color:var(--muted);flex:none}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 16px;font:inherit;font-weight:600;color:#334155;cursor:pointer}
+.btn:hover{border-color:var(--brand2)}
+.btn.danger{color:var(--bad);border-color:#fecaca}.btn.danger:hover{background:var(--badbg)}
+.empty{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:40px;text-align:center;color:var(--muted)}
+.empty a{color:var(--brand);font-weight:600}
+.note{margin-top:18px;background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:12px 16px;color:#92400e;font-size:.85rem}
+.foot{margin-top:22px;color:var(--muted);font-size:.8rem;text-align:center}
+@media(max-width:720px){.tiles{grid-template-columns:repeat(2,1fr)}}
+:root[data-theme="dark"]{--ink:#e2e8f0;--muted:#94a3b8;--line:#334155;--soft:#0f1b2e;--okbg:#13331f;--badbg:#3a1518}
+[data-theme="dark"] body{background:#0b1424}
+[data-theme="dark"] .tile,[data-theme="dark"] .exam-card,[data-theme="dark"] .weak,[data-theme="dark"] .empty,[data-theme="dark"] .att-row,[data-theme="dark"] .wrongq,[data-theme="dark"] .btn{background:#1b2738}
+[data-theme="dark"] .att-row:hover{background:#243246}
+[data-theme="dark"] .exam-head h3,[data-theme="dark"] .weak h3{color:#f1f5f9}
+[data-theme="dark"] .att-body{background:#0f1b2e}
+[data-theme="dark"] .note{background:#2a2208;border-color:#5c4a12;color:#fcd34d}
+[data-theme="dark"] .foot{color:#94a3b8}
+</style>
+</head>
+<body>
+<nav class="topnav"><a class="home" href="index.html">🏠 Study Hub</a></nav>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">📈 My progress</span>
+    <h1>Exam History &amp; Progress</h1>
+    <p>Every exam attempt you finish is recorded here — your score each time, your trend, your weakest learning objectives, and exactly which questions you got wrong (with the correct answer and why) so you can review.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div id="content"></div>
+  <div class="note">⚠️ History is saved only in <b>this browser</b> on this device (nothing is uploaded). Clearing your browser data, or using a different device/browser, will show a different history.</div>
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+(function(){
+  function load(){ try { return JSON.parse(localStorage.getItem("ctgenai_history")||"[]"); } catch(e){ return []; } }
+  function esc(s){ var d=document.createElement("div"); d.textContent=s==null?"":String(s); return d.innerHTML; }
+  function fmtDate(iso){ try{ var d=new Date(iso); return d.toLocaleString(undefined,{year:"numeric",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"}); }catch(e){ return iso; } }
+  var CHN={ "1":"1 · Foundations","2":"2 · Prompt Engineering","3":"3 · Managing Risks","4":"4 · Test Infrastructure","5":"5 · Deployment" };
+
+  function render(){
+    var hist = load();
+    var c = document.getElementById("content");
+    if(!hist.length){
+      c.innerHTML = '<div class="empty">No attempts yet.<br><br>Finish any exam and your score will appear here.<br><br><a href="index.html">→ Go to the Study Hub</a></div>';
+      document.getElementById("foot").textContent="";
+      return;
+    }
+    // overall tiles
+    var attempts=hist.length;
+    var exams={}; hist.forEach(function(r){ (exams[r.id]=exams[r.id]||[]).push(r); });
+    var examCount=Object.keys(exams).length;
+    var passed=hist.filter(function(r){return r.passed;}).length;
+    var avg=Math.round(hist.reduce(function(s,r){return s+r.pct;},0)/attempts);
+    var html='<div class="tiles">'
+      +tile(attempts,"attempts")+tile(examCount,"exams tried")+tile(passed+"/"+attempts,"passed")+tile(avg+"%","avg score")
+      +'</div>';
+
+    // weak areas across all attempts
+    var loWrong={}, loSeen={};
+    hist.forEach(function(r){
+      (r.wrong||[]).forEach(function(w){ if(w.lo){ loWrong[w.lo]=(loWrong[w.lo]||0)+1; } });
+    });
+    var weak=Object.keys(loWrong).map(function(lo){return {lo:lo,c:loWrong[lo]};}).sort(function(a,b){return b.c-a.c;}).slice(0,8);
+    if(weak.length){
+      var max=weak[0].c;
+      html+='<div class="weak"><h3>🔧 Weakest areas (most-missed learning objectives)</h3>';
+      weak.forEach(function(w){
+        html+='<div class="weak-row"><div class="weak-lo">'+esc(w.lo)+'</div>'
+          +'<div class="weak-bar"><div class="weak-fill" style="width:'+Math.round(w.c/max*100)+'%"></div></div>'
+          +'<div class="weak-cnt">'+w.c+' miss'+(w.c>1?"es":"")+'</div></div>';
+      });
+      html+='</div>';
+    }
+
+    // per-exam groups (most recently attempted first)
+    var order=Object.keys(exams).sort(function(a,b){
+      var la=exams[a][exams[a].length-1].ts, lb=exams[b][exams[b].length-1].ts; return lb<la?-1:1;
+    });
+    html+='<div class="section-title">By exam</div>';
+    order.forEach(function(id){
+      var list=exams[id].slice().sort(function(a,b){return a.ts<b.ts?-1:1;}); // chronological
+      var title=list[list.length-1].title||id;
+      var best=Math.max.apply(null,list.map(function(r){return r.pct;}));
+      var latest=list[list.length-1].pct;
+      html+='<div class="exam-card"><div class="exam-head"><h3>'+esc(title)+'</h3>'
+        +'<span class="pill best">best '+best+'%</span><span class="pill">latest '+latest+'%</span><span class="pill">'+list.length+' attempt'+(list.length>1?"s":"")+'</span></div>';
+      // sparkline of attempts (chronological)
+      html+='<div class="spark" title="Score per attempt (oldest → newest)">';
+      list.forEach(function(r){ html+='<div class="bar'+(r.passed?"":" fail")+'" style="height:'+Math.max(8,r.pct)+'%" title="'+r.pct+'%"></div>'; });
+      html+='</div>';
+      // attempts list (newest first), each expandable
+      html+='<div class="attempts">';
+      list.slice().reverse().forEach(function(r){
+        var gi=globalIndex(hist,r);
+        var wq=(r.wrong||[]);
+        html+='<div class="att" data-i="'+gi+'"><div class="att-row" onclick="this.parentNode.classList.toggle(\'open\')">'
+          +'<span class="att-date">'+esc(fmtDate(r.ts))+'</span>'
+          +'<span class="att-score">'+r.earned+'/'+r.total+' · '+r.pct+'%</span>'
+          +'<span class="att-verdict '+(r.passed?"pass":"fail")+'">'+(r.passed?"PASS":"NOT YET")+'</span>'
+          +'<span class="att-counts">✔ '+r.counts.correct+' · ✗ '+r.counts.incorrect+' · ➖ '+r.counts.skipped+'</span>'
+          +'<span class="att-toggle">'+(wq.length?("review "+wq.length+" ▾"):"all correct ✓")+'</span>'
+          +'</div><div class="att-body">'+renderWrong(wq)+'</div></div>';
+      });
+      html+='</div></div>';
+    });
+
+    html+='<div style="margin-top:8px"><button class="btn danger" id="clearBtn">🗑 Clear all history</button></div>';
+    c.innerHTML=html;
+    document.getElementById("foot").textContent="Tip: retake an exam any time — each finish adds a new entry so you can watch your scores climb.";
+    var cb=document.getElementById("clearBtn");
+    if(cb) cb.onclick=function(){ if(confirm("Delete ALL saved exam history on this browser? This cannot be undone.")){ localStorage.removeItem("ctgenai_history"); render(); } };
+  }
+  function tile(n,l){ return '<div class="tile"><div class="tile-num">'+n+'</div><div class="tile-lbl">'+l+'</div></div>'; }
+  function globalIndex(hist,r){ return hist.indexOf(r); }
+  function renderWrong(wq){
+    if(!wq.length) return '<div style="padding:8px 2px;color:var(--muted);font-size:.9rem">🎉 You got every question right on this attempt.</div>';
+    return wq.map(function(w){
+      return '<div class="wrongq '+(w.status==="skipped"?"skipped":"")+'">'
+        +'<span class="meta">Q'+w.n+' · '+esc(w.lo)+' · '+esc(w.k)+' · '+(w.status==="skipped"?"skipped":"incorrect")+'</span>'
+        +'<div class="stem">'+esc(w.stem)+'</div>'
+        +'<div class="ans yours"><span class="lab">Your answer:</span> '+(w.your&&w.your.length?esc(w.your.join("; ")):"<i>— skipped —</i>")+'</div>'
+        +'<div class="ans corr"><span class="lab">Correct answer:</span> '+esc((w.correct||[]).join("; "))+'</div>'
+        +(w.why&&w.why.length?'<div class="why">💡 '+esc(w.why.join(" "))+'</div>':"")
+        +'</div>';
+    }).join("");
+  }
+  render();
+})();
+</script>
+</body>
+</html>
