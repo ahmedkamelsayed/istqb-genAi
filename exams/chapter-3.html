@@ -14,251 +14,251 @@
 window.EXAM = {
   id: "chapter-3",
   title: "Chapter 3 Exam — Managing Risks of Generative AI",
-  source: "30 original scenario-based questions on Chapter 3 learning objectives (triple the real-exam weight). K3 questions are worth 2 points. Options shuffle each attempt. Not an official ISTQB exam.",
+  source: "30 original questions on Chapter 3 learning objectives, written to the ISTQB sample-exam style (plausible distractors; no give-away stems). K3 questions are worth 2 points. Options shuffle each attempt. Not an official ISTQB exam.",
   durationMinutes: 45,
   passPercent: 65,
   shuffleOptions: true,
   questions: [
   { n:1, lo:"GenAI-3.1.1", k:"K1", points:1, type:"single",
-    stem:"An LLM confidently cites a requirement ID that simply does not exist in your specification.\n\nWhat is this kind of output called?",
+    stem:"An LLM confidently cites a requirement ID and an acceptance criterion that do not exist anywhere in your specification.\n\nWhich problem does this BEST illustrate?",
     options:[
-      {k:"a",html:"A hallucination — factually incorrect or irrelevant output.",correct:true,why:"Hallucinations are outputs that appear factually incorrect or irrelevant to the task."},
-      {k:"b",html:"A reasoning error that comes from misinterpreting the logical structures.",correct:false,why:"That is a reasoning error."},
-      {k:"c",html:"A bias favouring certain perspectives from training.",correct:false,why:"That is bias."},
-      {k:"d",html:"Non-determinism varying between identical runs.",correct:false,why:"That is non-deterministic behaviour."}
+      {k:"a",html:"A hallucination — output that is fabricated or factually incorrect.",correct:true,why:"Inventing content that isn't in the source is a hallucination."},
+      {k:"b",html:"A reasoning error — a flaw in applying logical structures.",correct:false,why:"No logic was misapplied; content was fabricated."},
+      {k:"c",html:"A bias — output skewed by the training data.",correct:false,why:"Skew toward perspectives is bias, not fabrication."},
+      {k:"d",html:"Non-determinism — output that varies between identical runs.",correct:false,why:"That is run-to-run variability, not fabrication."}
     ]},
   { n:2, lo:"GenAI-3.1.1", k:"K1", points:1, type:"single",
-    stem:"While ordering test cases, an LLM mishandles a cause-and-effect chain and reaches an illogical conclusion.\n\nWhich problem is this?",
+    stem:"When prioritising test cases, an LLM repeatedly mishandles conditional logic and draws the wrong conclusion from a cause-and-effect relationship.\n\nWhich problem does this BEST illustrate?",
     options:[
-      {k:"a",html:"A reasoning error from misinterpreting logical structures.",correct:true,why:"Reasoning errors come from misinterpreting logical structures (cause-effect, conditionals)."},
-      {k:"b",html:"Inventing an entirely new feature that does not actually exist.",correct:false,why:"That is a hallucination."},
-      {k:"c",html:"Favouring English-language perspectives.",correct:false,why:"That is bias from training data."},
-      {k:"d",html:"Producing different wording each run.",correct:false,why:"That is non-determinism."}
+      {k:"a",html:"A reasoning error — output from misinterpreting logical structures.",correct:true,why:"Misreading conditional/cause-effect logic is a reasoning error."},
+      {k:"b",html:"A hallucination — fabricated or irrelevant content.",correct:false,why:"Nothing was fabricated; the logic was misapplied."},
+      {k:"c",html:"A bias — a skew inherited from training data.",correct:false,why:"This is a logic flaw, not a representational skew."},
+      {k:"d",html:"A tokenization fault in how the text was split.",correct:false,why:"Tokenization is unrelated to logical reasoning."}
     ]},
   { n:3, lo:"GenAI-3.1.2", k:"K3", points:2, type:"single",
-    stem:"An LLM generates test cases for a \"guest checkout\" feature that appears nowhere in the requirements.\n\nWhat is this, and how should you detect it?",
+    stem:"An LLM generates test cases for a 'guest checkout' feature that appears nowhere in the requirements.\n\nWhat is the problem, and how should you detect it?",
     options:[
-      {k:"a",html:"A hallucination — cross-verify against the requirements.",correct:true,why:"Inventing a non-existent feature is a hallucination; cross-verification against the test basis flags it."},
-      {k:"b",html:"A bias — lower the temperature to fix it.",correct:false,why:"This is fabricated content, not skewed representation."},
-      {k:"c",html:"A reasoning error — carefully check all of the arithmetic and the logic.",correct:false,why:"No logical structure was misinterpreted."},
-      {k:"d",html:"A privacy breach — run a compliance audit.",correct:false,why:"No sensitive data is involved."}
+      {k:"a",html:"A hallucination — detect it by cross-verifying the output against the requirements and documentation.",correct:true,why:"Inventing a non-existent feature is a hallucination; cross-checking the test basis flags it."},
+      {k:"b",html:"A bias — detect it by reviewing whether locales are fairly represented.",correct:false,why:"Fabrication is not a representational skew; representation review won't catch it."},
+      {k:"c",html:"A reasoning error — detect it by re-checking the arithmetic.",correct:false,why:"No logic was misapplied; arithmetic checking is irrelevant."},
+      {k:"d",html:"Non-determinism — detect it by fixing the random seed.",correct:false,why:"A seed addresses run variability, not a fabricated feature."}
     ]},
   { n:4, lo:"GenAI-3.1.2", k:"K3", points:2, type:"single",
-    stem:"An LLM's synthetic test data is heavily skewed toward one gender and age group.\n\nWhat is this, and how should you detect it?",
+    stem:"An LLM's synthetic test data for a global product is heavily skewed toward names, addresses, and locales from a single English-speaking country.\n\nWhat is the problem, and how should you detect it?",
     options:[
-      {k:"a",html:"Bias — review fair representation vs the strategy.",correct:true,why:"Skewed representation is bias; bias detection reviews fair/accurate representation of generated testware."},
-      {k:"b",html:"A hallucination — count the tokens in the output to confirm it.",correct:false,why:"Nothing is fabricated; this is skewed representation."},
-      {k:"c",html:"A reasoning error — re-run the same prompt.",correct:false,why:"No logical inference failed."},
-      {k:"d",html:"An execution failure — try to compile the code.",correct:false,why:"Not about runnability."}
+      {k:"a",html:"A bias — detect it by reviewing whether the generated testware fairly represents the test strategy and locales.",correct:true,why:"Skewed representation is bias; detection reviews fair/accurate representation against the strategy."},
+      {k:"b",html:"A hallucination — detect it by counting the tokens used.",correct:false,why:"Nothing is fabricated; token counts say nothing about representation."},
+      {k:"c",html:"A reasoning error — detect it by validating the logical inference.",correct:false,why:"No logical inference failed; the issue is skewed data."},
+      {k:"d",html:"A context-window overflow — detect it by shortening the prompt.",correct:false,why:"Locale skew is unrelated to window size."}
     ]},
   { n:5, lo:"GenAI-3.1.3", k:"K2", points:1, type:"single",
-    stem:"You want to reduce hallucinations, reasoning errors, and bias in a complex generation task.\n\nWhich is a recommended mitigation?",
+    stem:"For a complex generation task, you want to catch reasoning slips early instead of only at the end.\n\nWhich mitigation is MOST directly aimed at this?",
     options:[
-      {k:"a",html:"Provide complete context and verify each step.",correct:true,why:"Complete context plus prompt chaining with step verification are key mitigations."},
-      {k:"b",html:"Remove context to keep the prompts as short as possible.",correct:false,why:"Missing context makes these problems more likely."},
+      {k:"a",html:"Split the task into smaller steps and verify each output before continuing.",correct:true,why:"Prompt chaining with per-step verification catches errors early."},
+      {k:"b",html:"Provide as little context as possible to keep prompts short.",correct:false,why:"Insufficient context makes errors more likely, not less."},
       {k:"c",html:"Use deliberately ambiguous data formats for flexibility.",correct:false,why:"Ambiguity increases misinterpretation."},
-      {k:"d",html:"Always use the largest model available.",correct:false,why:"Select an appropriate model for the task."}
+      {k:"d",html:"Always select the largest available model regardless of the task.",correct:false,why:"Right-sizing to the task is advised, not defaulting to the biggest model."}
     ]},
   { n:6, lo:"GenAI-3.1.3", k:"K2", points:1, type:"single",
-    stem:"For a critical result, you run the same prompts through several different LLMs and compare.\n\nHow does this reduce errors?",
+    stem:"A single LLM's output for a critical risk-analysis prompt is fluent and plausible, but you worry it may be subtly wrong.\n\nWhich approach BEST raises your confidence in the result?",
     options:[
-      {k:"a",html:"Run the same prompts on several models and compare.",correct:true,why:"Cross-model comparison surfaces discrepancies and helps pick reliable outputs."},
-      {k:"b",html:"Blindly merge all of the model outputs to remove every error.",correct:false,why:"Merging aggregates errors, not removes them."},
-      {k:"c",html:"It guarantees fully deterministic output.",correct:false,why:"Output remains non-deterministic."},
-      {k:"d",html:"It removes the need for human review.",correct:false,why:"Human review remains important."}
+      {k:"a",html:"Run the same prompt through several different LLMs and reconcile where they disagree.",correct:true,why:"Cross-model comparison surfaces discrepancies and helps identify the reliable answer."},
+      {k:"b",html:"Re-run the prompt on the same model until two runs happen to agree.",correct:false,why:"Two agreeing runs of one model don't establish correctness; they can share the same flaw."},
+      {k:"c",html:"Raise the temperature so the model explores more possibilities.",correct:false,why:"Higher temperature increases variability, not reliability."},
+      {k:"d",html:"Trust the longest, most detailed of the responses.",correct:false,why:"Length is not a measure of correctness."}
     ]},
   { n:7, lo:"GenAI-3.1.4", k:"K1", points:1, type:"single",
-    stem:"You want more consistent output by narrowing the probability distribution at inference.\n\nWhich setting does that?",
+    stem:"During inference you lower the temperature parameter.\n\nWhat effect does this have?",
     options:[
-      {k:"a",html:"Lowering the temperature",correct:true,why:"Lower temperature narrows the distribution for more consistent output."},
-      {k:"b",html:"Raising the temperature for variety",correct:false,why:"Higher temperature increases randomness."},
-      {k:"c",html:"Increasing the training learning rate",correct:false,why:"Learning rate is a training setting."},
-      {k:"d",html:"Enlarging the context window",correct:false,why:"Window size helps long passages, not consistency."}
+      {k:"a",html:"It narrows the probability distribution, giving more consistent but less varied output.",correct:true,why:"Lower temperature reduces randomness, increasing consistency at the cost of variety."},
+      {k:"b",html:"It retrains the model on new data for that request.",correct:false,why:"Temperature is an inference setting, not training."},
+      {k:"c",html:"It increases the creativity and variety of responses.",correct:false,why:"That is the effect of raising, not lowering, temperature."},
+      {k:"d",html:"It fixes the random seed so output is fully reproducible.",correct:false,why:"Temperature and seed are independent settings."}
     ]},
   { n:8, lo:"GenAI-3.1.4", k:"K1", points:1, type:"single",
-    stem:"For a reproducible regression check, you fix the random seed.\n\nHow does setting a seed help?",
+    stem:"You need the same prompt to produce the same output across runs for a regression check.\n\nWhy does setting a random seed help — and what are its limits?",
     options:[
-      {k:"a",html:"It reproduces the same pseudo-random sequence.",correct:true,why:"A fixed seed makes the RNG start identically, improving reproducibility."},
-      {k:"b",html:"It increases the model's overall creativity.",correct:false,why:"That is the opposite effect."},
-      {k:"c",html:"It permanently retrains the underlying model.",correct:false,why:"Seeds don't retrain the model."},
-      {k:"d",html:"Its specific value (high or low) changes the output quality.",correct:false,why:"The seed's magnitude is irrelevant; it just fixes the sequence."}
+      {k:"a",html:"A fixed seed reproduces the same pseudo-random sequence, improving reproducibility, though full determinism still isn't guaranteed.",correct:true,why:"A seed pins the RNG sequence; with sampling, reproducibility improves but isn't absolutely guaranteed."},
+      {k:"b",html:"The seed's numeric value directly controls how good the output quality is.",correct:false,why:"The seed's magnitude is irrelevant; it just fixes the sequence."},
+      {k:"c",html:"A seed permanently retrains the model so it can only give one answer.",correct:false,why:"Seeds do not retrain the model."},
+      {k:"d",html:"A seed widens the sampling so more options are considered.",correct:false,why:"A seed fixes the pseudo-random sequence; it does not widen sampling."}
     ]},
   { n:9, lo:"GenAI-3.2.1", k:"K2", points:1, type:"single",
-    stem:"A GenAI vendor stores and processes whatever test data you submit, without your consent.\n\nWhich kind of risk is this?",
+    stem:"A GenAI vendor's terms allow them to store and reuse whatever test data you submit, with no opt-out.\n\nHow is this BEST classified?",
     options:[
-      {k:"a",html:"A data privacy concern (loss of control over data).",correct:true,why:"Lack of control over data usage is a privacy concern."},
-      {k:"b",html:"An external attacker actively exploiting a model vulnerability.",correct:false,why:"That is a security attack."},
-      {k:"c",html:"The model running slowly under load.",correct:false,why:"Performance is unrelated to privacy."},
-      {k:"d",html:"High energy use during image generation.",correct:false,why:"That is an environmental concern."}
+      {k:"a",html:"A data privacy concern — loss of control over how the data is used.",correct:true,why:"Storage/reuse without consent is a lack-of-control privacy concern."},
+      {k:"b",html:"A security risk — the infrastructure is being breached by an attacker.",correct:false,why:"No attack/breach is described; the issue is control over the data."},
+      {k:"c",html:"A reasoning error in how the model handles data.",correct:false,why:"It is not a logic flaw."},
+      {k:"d",html:"An environmental concern about data-centre energy.",correct:false,why:"Unrelated to energy."}
     ]},
   { n:10, lo:"GenAI-3.2.1", k:"K2", points:1, type:"single",
-    stem:"Your security lead asks you to name a true SECURITY risk (as opposed to a pure privacy concern).\n\nWhich is it?",
+    stem:"A penetration test finds the LLM-powered test platform exposes an unauthenticated admin endpoint that outsiders could use.\n\nHow is this BEST classified?",
     options:[
-      {k:"a",html:"Infrastructure vulnerable to breaches or unauthorised access.",correct:true,why:"Infrastructure vulnerability to attacks is a security risk."},
-      {k:"b",html:"Generated outputs accidentally revealing some sensitive information.",correct:false,why:"That is a privacy concern (unintentional exposure)."},
-      {k:"c",html:"Non-compliance with GDPR.",correct:false,why:"That is a privacy/compliance concern."},
-      {k:"d",html:"Storing data without user consent.",correct:false,why:"That is a privacy concern."}
+      {k:"a",html:"A security risk — the infrastructure is vulnerable to unauthorised access.",correct:true,why:"An exposed endpoint enabling unauthorised access is a security risk."},
+      {k:"b",html:"A data privacy concern — purely about missing user consent.",correct:false,why:"The defining issue is unauthorised access to the system, i.e., security."},
+      {k:"c",html:"A hallucination produced by the model.",correct:false,why:"Unrelated to model output."},
+      {k:"d",html:"An environmental concern about server load.",correct:false,why:"Unrelated to energy."}
     ]},
   { n:11, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
-    stem:"An attacker sends overlong prompts to overload the model so it leaks snippets of its training data.\n\nWhich attack vector is this?",
+    stem:"An attacker sends very long, specially crafted prompts that overload the model, hoping it spills random snippets of its training data.\n\nWhich attack vector is this?",
     options:[
-      {k:"a",html:"Data exfiltration",correct:true,why:"Requests designed to extract confidential training data are data exfiltration."},
-      {k:"b",html:"Request manipulation of the output",correct:false,why:"That disrupts output, not extracts data."},
-      {k:"c",html:"Data poisoning of the training set",correct:false,why:"That manipulates training data."},
-      {k:"d",html:"Malicious code generation",correct:false,why:"That generates backdoors."}
+      {k:"a",html:"Data exfiltration",correct:true,why:"Crafting requests to extract confidential training data is data exfiltration."},
+      {k:"b",html:"Request manipulation",correct:false,why:"Request manipulation disrupts the output via misleading input; it is not data extraction."},
+      {k:"c",html:"Data poisoning",correct:false,why:"Poisoning corrupts the training data; it does not extract it."},
+      {k:"d",html:"Malicious code generation",correct:false,why:"That manipulates the model into producing harmful code, not leaking data."}
     ]},
   { n:12, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
-    stem:"A doctored reference image makes a visual-testing LLM ignore real UI defects.\n\nWhich attack vector is this?",
+    stem:"During visual regression testing, an attacker feeds subtly doctored reference screenshots so the model systematically overlooks real UI defects.\n\nWhich attack vector is this?",
     options:[
-      {k:"a",html:"Request manipulation",correct:true,why:"Introducing data that disrupts output is request manipulation."},
-      {k:"b",html:"Data exfiltration of confidential data",correct:false,why:"Nothing confidential is extracted."},
-      {k:"c",html:"Data poisoning of the training set",correct:false,why:"Runtime input, not training data."},
-      {k:"d",html:"Malicious code generation",correct:false,why:"No backdoor code is produced."}
+      {k:"a",html:"Request manipulation",correct:true,why:"Introducing misleading input that disrupts the model's output is request manipulation."},
+      {k:"b",html:"Data exfiltration",correct:false,why:"Nothing confidential is being extracted; the output is being disrupted."},
+      {k:"c",html:"Data poisoning",correct:false,why:"The training data is not being corrupted; runtime input is being manipulated."},
+      {k:"d",html:"Malicious code generation",correct:false,why:"No harmful code is generated."}
     ]},
   { n:13, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
-    stem:"An attacker injects fake evaluations and falsified results into the training dataset.\n\nWhich attack vector is this?",
+    stem:"An attacker injects fake evaluations and falsified test results into the dataset that will be used to fine-tune the model.\n\nWhich attack vector is this?",
     options:[
-      {k:"a",html:"Data poisoning",correct:true,why:"Manipulating training data is data poisoning."},
-      {k:"b",html:"Data exfiltration of the data",correct:false,why:"That extracts data, not injects it."},
-      {k:"c",html:"Request manipulation at runtime",correct:false,why:"That disrupts runtime output."},
-      {k:"d",html:"Malicious code generation",correct:false,why:"No code is generated."}
+      {k:"a",html:"Data poisoning",correct:true,why:"Corrupting the training/fine-tuning data is data poisoning."},
+      {k:"b",html:"Data exfiltration",correct:false,why:"Exfiltration extracts data; here data is being injected, not extracted."},
+      {k:"c",html:"Request manipulation",correct:false,why:"That disrupts runtime output, not the training set."},
+      {k:"d",html:"Malicious code generation",correct:false,why:"No harmful code is produced."}
     ]},
   { n:14, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
-    stem:"An attacker manipulates an LLM into producing a script with a hidden backdoor to an external IP.\n\nWhich attack vector is this?",
+    stem:"An attacker manipulates an LLM-powered tool into emitting a script that quietly opens a connection to an external server they control.\n\nWhich attack vector is this?",
     options:[
-      {k:"a",html:"Malicious code generation",correct:true,why:"Manipulating the LLM to generate backdoors/external calls is malicious code generation."},
-      {k:"b",html:"Data exfiltration of secrets",correct:false,why:"Nothing confidential is extracted."},
-      {k:"c",html:"Request manipulation attack",correct:false,why:"This produces harmful code, not merely disrupts output."},
+      {k:"a",html:"Malicious code generation",correct:true,why:"Manipulating the model into producing backdoor/external-call code is malicious code generation."},
+      {k:"b",html:"Data exfiltration",correct:false,why:"Nothing confidential is being extracted from the model here."},
+      {k:"c",html:"Request manipulation",correct:false,why:"This produces harmful code, not merely a disrupted output."},
       {k:"d",html:"Data poisoning",correct:false,why:"No training data is corrupted."}
     ]},
   { n:15, lo:"GenAI-3.2.3", k:"K2", points:1, type:"single",
-    stem:"Before testing, your team replaces real names and IDs in the data with non-identifiable values.\n\nWhat is the purpose of this data anonymisation?",
+    stem:"Before sharing a dataset with an LLM, your team replaces real names and IDs with non-identifiable values.\n\nWhich privacy measure is this?",
     options:[
-      {k:"a",html:"Mask or replace sensitive info with non-identifiable data.",correct:true,why:"Anonymisation/pseudonymisation masks or replaces sensitive data."},
-      {k:"b",html:"Always process the maximum possible amount of all available data.",correct:false,why:"That contradicts data minimisation."},
-      {k:"c",html:"Disable encryption for speed.",correct:false,why:"That weakens security."},
-      {k:"d",html:"Grant all testers full data access.",correct:false,why:"That increases breach risk."}
+      {k:"a",html:"Anonymisation / pseudonymisation",correct:true,why:"Masking or replacing sensitive identifiers is anonymisation/pseudonymisation."},
+      {k:"b",html:"Data minimisation",correct:false,why:"Minimisation is processing only the data you need, not masking identifiers."},
+      {k:"c",html:"Encryption at rest",correct:false,why:"Encryption protects stored/transmitted data; it doesn't replace identifiers in the content."},
+      {k:"d",html:"A security audit",correct:false,why:"An audit assesses weaknesses; it does not mask data."}
     ]},
   { n:16, lo:"GenAI-3.2.3", k:"K2", points:1, type:"single",
-    stem:"For the highest confidentiality, your organisation wants the MOST control over its data.\n\nWhich choice gives that?",
+    stem:"An organisation handling highly confidential test data wants the STRONGEST possible control over where that data is processed.\n\nWhich choice gives the most control, and why?",
     options:[
-      {k:"a",html:"Host the LLM in the organisation's own infrastructure.",correct:true,why:"In-house hosting gives the most control vs commercial/secure-cloud options."},
-      {k:"b",html:"Paste all confidential data straight into a free public chatbot.",correct:false,why:"That maximises exposure."},
-      {k:"c",html:"Email the data to a third party.",correct:false,why:"That relinquishes control."},
-      {k:"d",html:"Disable access controls for convenience.",correct:false,why:"That reduces security."}
+      {k:"a",html:"Hosting and operating the LLM within the organisation's own secure infrastructure.",correct:true,why:"In-house hosting maximises control over confidential data versus a secure cloud or commercial offering."},
+      {k:"b",html:"Pasting the data into a free public chatbot for speed.",correct:false,why:"That maximises exposure, not control."},
+      {k:"c",html:"Emailing the data to a third-party vendor to process.",correct:false,why:"That hands control of the data to a third party."},
+      {k:"d",html:"Disabling access controls so the team can work faster.",correct:false,why:"Removing controls reduces security and control."}
     ]},
   { n:17, lo:"GenAI-3.3.1", k:"K2", points:1, type:"single",
-    stem:"A sustainability review asks which statement about GenAI energy use is true.\n\nWhich is CORRECT?",
+    stem:"A sustainability lead asks which statement about GenAI energy use is actually true.\n\nWhich one is CORRECT?",
     options:[
-      {k:"a",html:"Image generation uses far more energy than text.",correct:true,why:"Generating an image needs much more compute/energy than text."},
-      {k:"b",html:"GenAI-powered search uses much less energy than traditional web search.",correct:false,why:"It uses considerably more."},
-      {k:"c",html:"Text generation has zero cumulative impact.",correct:false,why:"Cumulative impact is significant."},
-      {k:"d",html:"Energy use and CO₂ are unrelated.",correct:false,why:"They are typically correlated."}
+      {k:"a",html:"Image generation is far more energy-intensive than text generation, and cumulative usage across many users is significant.",correct:true,why:"Images cost much more energy than text; the cumulative footprint of usage is significant, not negligible."},
+      {k:"b",html:"Text generation across millions of users has no measurable cumulative impact.",correct:false,why:"The cumulative effect is significant, not negligible."},
+      {k:"c",html:"GenAI-powered search consumes less energy than a traditional web search.",correct:false,why:"GenAI search typically uses considerably more energy."},
+      {k:"d",html:"A model's energy use and its CO₂ emissions are unrelated.",correct:false,why:"They are typically correlated."}
     ]},
   { n:18, lo:"GenAI-3.3.1", k:"K2", points:1, type:"single",
-    stem:"Your team wants to cut the environmental impact of using GenAI.\n\nWhich practice helps?",
+    stem:"Your team wants to cut the environmental impact of using GenAI in testing without abandoning it.\n\nWhich practice helps MOST directly?",
     options:[
-      {k:"a",html:"Limit unnecessary interactions and right-size the model.",correct:true,why:"Limiting interactions and right-sizing reduces energy use."},
-      {k:"b",html:"Always default to using the very largest available model.",correct:false,why:"Oversized models waste energy."},
-      {k:"c",html:"Prefer image generation over text.",correct:false,why:"Image generation is far more intensive."},
-      {k:"d",html:"Ignore usage patterns entirely.",correct:false,why:"Optimising usage is what reduces impact."}
+      {k:"a",html:"Limiting unnecessary model calls and right-sizing the model to each task.",correct:true,why:"Energy scales with usage and model/task complexity; limiting calls and right-sizing reduces impact."},
+      {k:"b",html:"Defaulting to the largest available model for every task.",correct:false,why:"Oversized models waste energy on trivial tasks."},
+      {k:"c",html:"Preferring image generation over text wherever possible.",correct:false,why:"Image generation is far more energy-intensive."},
+      {k:"d",html:"Ignoring usage patterns since individual calls are tiny.",correct:false,why:"Cumulative usage is significant; optimising usage is what reduces impact."}
     ]},
   { n:19, lo:"GenAI-3.4.1", k:"K1", points:1, type:"single",
-    stem:"Your compliance officer asks which instrument establishes a legal framework classifying AI applications by risk level.\n\nWhich is it?",
+    stem:"A compliance officer wants the instrument that establishes a legal framework classifying AI applications by risk level.\n\nWhich is it?",
     options:[
-      {k:"a",html:"The EU AI Act",correct:true,why:"The EU AI Act is a regulation classifying AI by risk level."},
-      {k:"b",html:"ISO/IEC 42001:2023 management standard",correct:false,why:"A standard for managing AI systems."},
-      {k:"c",html:"ISO/IEC 23053:2022 framework",correct:false,why:"A standard framework for AI systems using ML."},
-      {k:"d",html:"The NIST AI RMF",correct:false,why:"A risk-management framework, not a legal classification."}
+      {k:"a",html:"The EU AI Act",correct:true,why:"The EU AI Act is a regulation that classifies AI applications by risk level."},
+      {k:"b",html:"ISO/IEC 42001:2023",correct:false,why:"That is a standard for managing AI systems, not a risk-classifying regulation."},
+      {k:"c",html:"ISO/IEC 23053:2022",correct:false,why:"That is a standard framework for AI systems using ML, not a legal classification."},
+      {k:"d",html:"The NIST AI Risk Management Framework",correct:false,why:"That is a voluntary risk-management framework, not a legal risk classification."}
     ]},
   { n:20, lo:"GenAI-3.4.1", k:"K1", points:1, type:"multi", selectCount:2,
-    stem:"A colleague mixes up AI governance artefacts.\n\nSelect the TWO that are ISO/IEC STANDARDS relevant to GenAI in testing.",
+    stem:"A colleague mixes up AI governance instruments.\n\nWhich TWO of the following are ISO/IEC STANDARDS (not a regulation or a framework)?",
     options:[
-      {k:"a",html:"ISO/IEC 42001:2023",correct:true,why:"A standard for managing AI systems."},
-      {k:"b",html:"ISO/IEC 23053:2022",correct:true,why:"A standard framework for AI systems using ML."},
-      {k:"c",html:"The EU AI Act regulation",correct:false,why:"A regulation, not an ISO standard."},
-      {k:"d",html:"NIST AI Risk Management Framework",correct:false,why:"A framework, not an ISO standard."},
-      {k:"e",html:"GDPR",correct:false,why:"A data-protection regulation."}
+      {k:"a",html:"ISO/IEC 42001:2023",correct:true,why:"A standard for managing AI systems within an organisation."},
+      {k:"b",html:"ISO/IEC 23053:2022",correct:true,why:"A standard providing a framework for AI systems using machine learning."},
+      {k:"c",html:"The EU AI Act",correct:false,why:"A regulation, not an ISO standard."},
+      {k:"d",html:"The NIST AI Risk Management Framework",correct:false,why:"A framework, not an ISO standard."},
+      {k:"e",html:"GDPR",correct:false,why:"A data-protection regulation, not an ISO standard."}
     ]},
   { n:21, lo:"GenAI-3.1.1", k:"K1", points:1, type:"single",
-    stem:"Because of skewed training data, an LLM consistently favours certain perspectives in its output.\n\nWhat is this called?",
+    stem:"An LLM consistently produces testware that favours one demographic group, mirroring imbalances in the data it was trained on.\n\nWhich problem does this BEST illustrate?",
     options:[
-      {k:"a",html:"Bias — favouring certain perspectives from skewed data.",correct:true,why:"Bias comes from skewed training data and favours certain perspectives."},
-      {k:"b",html:"Output that is plainly factually incorrect or entirely irrelevant.",correct:false,why:"That is a hallucination."},
-      {k:"c",html:"Output from misinterpreting logical structures.",correct:false,why:"That is a reasoning error."},
-      {k:"d",html:"Output that varies between identical runs.",correct:false,why:"That is non-determinism."}
+      {k:"a",html:"A bias — a skew in output inherited from the training data.",correct:true,why:"Output favouring certain groups due to skewed training data is bias."},
+      {k:"b",html:"A hallucination — fabricated or factually incorrect content.",correct:false,why:"Nothing is fabricated; the output is skewed."},
+      {k:"c",html:"A reasoning error — a misapplied logical inference.",correct:false,why:"No logic was misapplied."},
+      {k:"d",html:"Non-determinism — variability between identical runs.",correct:false,why:"This is a consistent skew, not run-to-run variability."}
     ]},
   { n:22, lo:"GenAI-3.1.2", k:"K3", points:2, type:"single",
-    stem:"The LLM ranks a low-risk item first \"because it appears earlier in the list,\" producing a flawed order.\n\nWhat is this, and how should you detect it?",
+    stem:"While prioritising test cases, the LLM concludes a low-risk item must run first 'because it appears earlier in the list', producing an order that ignores risk.\n\nWhat is the problem, and how should you detect it?",
     options:[
-      {k:"a",html:"A reasoning error — validate the logic and test output.",correct:true,why:"Faulty logical inference is a reasoning error; logical validation and output testing detect it."},
-      {k:"b",html:"A hallucination — carefully cross-check all of the facts.",correct:false,why:"Nothing factual was fabricated."},
-      {k:"c",html:"A bias — review representation across locales.",correct:false,why:"This isn't skewed representation."},
-      {k:"d",html:"A privacy issue — run a compliance audit.",correct:false,why:"No sensitive data is involved."}
+      {k:"a",html:"A reasoning error — detect it by logically validating the model's justification and testing the resulting order.",correct:true,why:"A flawed cause-effect inference is a reasoning error; logical validation plus output testing detect it."},
+      {k:"b",html:"A hallucination — detect it by cross-checking that the items exist.",correct:false,why:"The items are real; the flaw is in the logic, not fabricated content."},
+      {k:"c",html:"A bias — detect it by reviewing demographic representation.",correct:false,why:"This is a logic flaw, not a representational skew."},
+      {k:"d",html:"A privacy issue — detect it with a data-protection audit.",correct:false,why:"No sensitive data is involved."}
     ]},
   { n:23, lo:"GenAI-3.1.3", k:"K2", points:1, type:"single",
-    stem:"Most of the model's mistakes seem to come from missing information in the prompt.\n\nWhich mitigation most directly reduces those hallucinations?",
+    stem:"Analysis shows most of the model's mistakes happen when the prompt omits information it needs.\n\nWhich mitigation targets this root cause MOST directly?",
     options:[
-      {k:"a",html:"Provide complete, relevant context in the prompt.",correct:true,why:"Missing context raises the risk; complete context is a key mitigation."},
-      {k:"b",html:"Deliberately remove context to keep the prompt very short.",correct:false,why:"Insufficient context increases the risk."},
-      {k:"c",html:"Use ambiguous formats.",correct:false,why:"Ambiguity increases misinterpretation."},
-      {k:"d",html:"Raise the temperature.",correct:false,why:"Higher temperature increases variability."}
+      {k:"a",html:"Provide complete, relevant context in the prompt.",correct:true,why:"Missing context drives these errors; supplying complete context is the direct mitigation."},
+      {k:"b",html:"Shorten the prompt by removing context to avoid confusing the model.",correct:false,why:"Removing context increases the risk when omissions are the cause."},
+      {k:"c",html:"Switch to deliberately ambiguous formats so the model fills gaps.",correct:false,why:"Ambiguity increases misinterpretation."},
+      {k:"d",html:"Raise the temperature so the model improvises the missing details.",correct:false,why:"Improvised details are more likely to be wrong, not less."}
     ]},
   { n:24, lo:"GenAI-3.1.4", k:"K1", points:1, type:"single",
-    stem:"Even with a fixed seed and low temperature, you can't fully guarantee identical output every run.\n\nWhy not?",
+    stem:"Even after lowering the temperature and fixing a seed, your team cannot fully guarantee identical output every run.\n\nWhy not?",
     options:[
-      {k:"a",html:"Inference uses probabilistic sampling.",correct:true,why:"Non-determinism stems from probabilistic sampling; mitigations reduce but don't guarantee reproducibility."},
-      {k:"b",html:"Because the tokenization is random each and every time.",correct:false,why:"Tokenization is deterministic."},
-      {k:"c",html:"Because embeddings change every request.",correct:false,why:"Embeddings are stable."},
-      {k:"d",html:"Because the context window shrinks over time.",correct:false,why:"It doesn't shrink on its own."}
+      {k:"a",html:"Inference relies on probabilistic sampling, which seeds and low temperature reduce but do not entirely remove.",correct:true,why:"Non-determinism stems from probabilistic sampling; mitigations reduce, not eliminate, variability."},
+      {k:"b",html:"Because the model re-tokenises the prompt randomly each time.",correct:false,why:"Tokenization is deterministic."},
+      {k:"c",html:"Because the embeddings are recomputed differently every request.",correct:false,why:"Embeddings are stable representations."},
+      {k:"d",html:"Because the context window shrinks a little on each run.",correct:false,why:"Window size does not shrink on its own."}
     ]},
   { n:25, lo:"GenAI-3.2.1", k:"K2", points:1, type:"single",
-    stem:"Submitting personal test data to a GenAI tool could breach data-protection law.\n\nWhich is this COMPLIANCE-related privacy risk?",
+    stem:"Sending EU residents' personal test data to a GenAI tool hosted in a non-approved region could expose the company to fines.\n\nHow is this BEST classified?",
     options:[
-      {k:"a",html:"Using GenAI without GDPR compliance, risking disputes.",correct:true,why:"Non-compliance with data-protection regulations is a compliance privacy risk."},
-      {k:"b",html:"An external attacker injecting crafted malicious input.",correct:false,why:"That is a security attack."},
-      {k:"c",html:"Slow response under load.",correct:false,why:"A performance issue."},
-      {k:"d",html:"High energy use.",correct:false,why:"An environmental concern."}
+      {k:"a",html:"A data privacy concern — non-compliance with data-protection regulations.",correct:true,why:"Risking a GDPR/data-residency violation is a compliance privacy concern."},
+      {k:"b",html:"A security risk — the servers are being actively attacked.",correct:false,why:"No attack is described; the issue is regulatory compliance."},
+      {k:"c",html:"A functional defect in the application under test.",correct:false,why:"It is not a functional bug."},
+      {k:"d",html:"An environmental concern about cross-region data transfer.",correct:false,why:"Unrelated to energy/environment."}
     ]},
   { n:26, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
-    stem:"An attacker crafts prompts to make an LLM reveal confidential API keys it inherited during training.\n\nWhich attack vector is this?",
+    stem:"An attacker crafts prompts designed to make a test LLM reveal confidential API keys that it inherited during training.\n\nWhich attack vector is this?",
     options:[
       {k:"a",html:"Data exfiltration",correct:true,why:"Extracting confidential data via crafted requests is data exfiltration."},
-      {k:"b",html:"Request manipulation of the output",correct:false,why:"That disrupts output, not extracts data."},
-      {k:"c",html:"Data poisoning of the training set",correct:false,why:"That corrupts training data."},
-      {k:"d",html:"Malicious code generation",correct:false,why:"That produces backdoor code."}
+      {k:"b",html:"Request manipulation",correct:false,why:"That disrupts the output rather than extracting confidential data."},
+      {k:"c",html:"Data poisoning",correct:false,why:"That corrupts the training data; it does not extract it."},
+      {k:"d",html:"Malicious code generation",correct:false,why:"No harmful code is produced here."}
     ]},
   { n:27, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
-    stem:"Crafted images lure a multimodal LLM into the wrong context, provoking hallucinated test criteria.\n\nWhich attack vector is this?",
+    stem:"An attacker submits crafted images that lure a multimodal test LLM into the wrong context, provoking it to hallucinate acceptance criteria.\n\nWhich attack vector is this?",
     options:[
-      {k:"a",html:"Request manipulation",correct:true,why:"Introducing data (images) that disrupts output is request manipulation."},
-      {k:"b",html:"Data exfiltration of secrets",correct:false,why:"Nothing confidential is extracted."},
-      {k:"c",html:"Data poisoning of the training set",correct:false,why:"Runtime input, not training data."},
-      {k:"d",html:"Malicious code generation",correct:false,why:"No backdoor code is produced."}
+      {k:"a",html:"Request manipulation",correct:true,why:"Introducing misleading input (images) to disrupt the output is request manipulation."},
+      {k:"b",html:"Data exfiltration",correct:false,why:"Nothing confidential is being extracted."},
+      {k:"c",html:"Data poisoning",correct:false,why:"Runtime input is manipulated, not the training data."},
+      {k:"d",html:"Malicious code generation",correct:false,why:"No harmful code is produced."}
     ]},
   { n:28, lo:"GenAI-3.2.3", k:"K2", points:1, type:"single",
-    stem:"Your team wants a practical pair of measures to protect privacy when testing with GenAI.\n\nWhich pair helps?",
+    stem:"Your team wants a practical pair of measures that together protect data privacy when testing with GenAI on sensitive data.\n\nWhich pairing is appropriate?",
     options:[
-      {k:"a",html:"Data minimisation plus encrypted, access-controlled storage.",correct:true,why:"Minimising sensitive data and securing storage are recommended mitigations."},
-      {k:"b",html:"Disabling all encryption and granting completely open data access.",correct:false,why:"That weakens security."},
-      {k:"c",html:"Sending raw PII to a public chatbot.",correct:false,why:"That maximises exposure."},
-      {k:"d",html:"Logging all sensitive data in plain text.",correct:false,why:"That increases breach risk."}
+      {k:"a",html:"Minimise the sensitive data shared, and keep what remains in encrypted, access-controlled storage.",correct:true,why:"Data minimisation plus secured storage are complementary privacy/security mitigations."},
+      {k:"b",html:"Disable encryption and grant open access so the team can move quickly.",correct:false,why:"That weakens protection rather than strengthening it."},
+      {k:"c",html:"Send raw personal data to a public chatbot and rely on its goodwill.",correct:false,why:"That maximises exposure of sensitive data."},
+      {k:"d",html:"Log all sensitive data in plain text for easier debugging.",correct:false,why:"Plain-text logging increases breach risk."}
     ]},
   { n:29, lo:"GenAI-3.3.1", k:"K2", points:1, type:"single",
-    stem:"A colleague asks roughly which GenAI activity uses about as much energy as charging a smartphone.\n\nWhich is it?",
+    stem:"A colleague claims a single short text generation has roughly the same energy cost as generating one image.\n\nWhy is this WRONG?",
     options:[
-      {k:"a",html:"Generating a single image.",correct:true,why:"Generating one image can use about as much energy as charging a phone."},
-      {k:"b",html:"Generating a short text answer of a few sentences.",correct:false,why:"Text uses only a small fraction of a phone charge."},
-      {k:"c",html:"Tokenizing a sentence.",correct:false,why:"Negligible energy."},
-      {k:"d",html:"Opening the chatbot UI.",correct:false,why:"Not a meaningful energy driver."}
+      {k:"a",html:"Image generation is far more compute- and energy-intensive than a short text generation.",correct:true,why:"Generating an image costs much more energy than generating short text."},
+      {k:"b",html:"Text generation actually uses more energy than image generation.",correct:false,why:"The reverse is true; images cost much more."},
+      {k:"c",html:"Both have exactly zero energy cost in practice.",correct:false,why:"Both consume energy; image generation considerably more."},
+      {k:"d",html:"Energy cost depends only on the time of day the request is sent.",correct:false,why:"It depends on task complexity and compute, not the clock."}
     ]},
   { n:30, lo:"GenAI-3.4.1", k:"K1", points:1, type:"single",
-    stem:"Your team wants guidelines for managing AI risks like fairness, transparency, and security.\n\nWhich framework provides them?",
+    stem:"A team wants the instrument that provides voluntary guidelines for managing AI risks such as fairness, transparency, and security.\n\nWhich is it?",
     options:[
-      {k:"a",html:"NIST AI Risk Management Framework",correct:true,why:"The NIST AI RMF provides guidelines for managing AI risks."},
-      {k:"b",html:"The EU AI Act risk-level regulation",correct:false,why:"A regulation classifying AI by risk level, not the RMF."},
-      {k:"c",html:"ISO/IEC 25010",correct:false,why:"A product-quality model, not GenAI-specific."},
-      {k:"d",html:"ISO/IEC/IEEE 29119-2",correct:false,why:"A test-process standard."}
+      {k:"a",html:"The NIST AI Risk Management Framework",correct:true,why:"The NIST AI RMF provides voluntary guidelines for managing AI risks."},
+      {k:"b",html:"The EU AI Act",correct:false,why:"That is a binding regulation classifying AI by risk, not a voluntary framework."},
+      {k:"c",html:"ISO/IEC 25010",correct:false,why:"That is a software product-quality model, not GenAI risk guidelines."},
+      {k:"d",html:"ISO/IEC/IEEE 29119-2",correct:false,why:"That is a test-process standard, not AI risk guidelines."}
     ]}
   ]
 };
