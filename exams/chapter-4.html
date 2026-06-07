@@ -14,129 +14,129 @@
 window.EXAM = {
   id: "chapter-4",
   title: "Chapter 4 Exam — LLM-Powered Test Infrastructure",
-  source: "15 original questions on Chapter 4 learning objectives (triple the real-exam weight). Options shuffle each attempt. Not an official ISTQB exam.",
+  source: "15 original scenario-based questions on Chapter 4 learning objectives (triple the real-exam weight). Options shuffle each attempt. Not an official ISTQB exam.",
   durationMinutes: 22,
   passPercent: 65,
   shuffleOptions: true,
   questions: [
   { n:1, lo:"GenAI-4.1.1", k:"K2", points:1, type:"single",
-    stem:"In an LLM-powered test infrastructure, which component handles authentication, data retrieval, prompt preparation, and combines user input with retrieved data?",
+    stem:"In your LLM-powered test infrastructure, one component handles authentication, retrieves data, and prepares the prompt by combining user input with retrieved data.\n\nWhich component is this?",
     options:[
       {k:"a",html:"The back-end",correct:true,why:"The back-end manages auth, retrieval, prompt preparation, LLM interaction, and post-processing."},
-      {k:"b",html:"The front-end",correct:false,why:"The front-end is the UI for input."},
-      {k:"c",html:"The LLM itself",correct:false,why:"The LLM reasons/generates; it doesn't orchestrate the data sources."},
+      {k:"b",html:"The front-end user interface",correct:false,why:"The front-end is the UI for input."},
+      {k:"c",html:"The LLM itself",correct:false,why:"The LLM reasons/generates; it doesn't orchestrate data sources."},
       {k:"d",html:"The user's browser cache",correct:false,why:"Not a component of the architecture."}
     ]},
   { n:2, lo:"GenAI-4.1.1", k:"K2", points:1, type:"single",
-    stem:"Which data source provides semantic, similarity-based retrieval of related content via embeddings?",
+    stem:"You need a data source that retrieves related content by semantic similarity using embeddings.\n\nWhich data source provides that?",
     options:[
       {k:"a",html:"A vector database",correct:true,why:"Vector databases store embeddings for semantic similarity retrieval."},
-      {k:"b",html:"A relational database",correct:false,why:"Relational databases hold structured data like test cases, not semantic embedding retrieval."},
-      {k:"c",html:"The front-end",correct:false,why:"The front-end is the UI."},
-      {k:"d",html:"The post-processing component",correct:false,why:"It refines output, it isn't a data source."}
+      {k:"b",html:"A traditional relational database",correct:false,why:"Relational DBs hold structured data like test cases."},
+      {k:"c",html:"The front-end UI",correct:false,why:"The front-end is the UI."},
+      {k:"d",html:"The post-processing step",correct:false,why:"It refines output; it isn't a data source."}
     ]},
   { n:3, lo:"GenAI-4.1.2", k:"K2", points:1, type:"single",
-    stem:"What are the two steps of Retrieval-Augmented Generation (RAG) at query time?",
+    stem:"A colleague asks what the two query-time steps of RAG are.\n\nWhich pair is correct?",
     options:[
-      {k:"a",html:"Retrieval, then Generation",correct:true,why:"RAG retrieves relevant chunks by semantic similarity, then the LLM generates a grounded response."},
-      {k:"b",html:"Input, then Output",correct:false,why:"Not the RAG steps."},
-      {k:"c",html:"Tokenization, then Embedding",correct:false,why:"Those are preprocessing concepts, not the two RAG query steps."},
+      {k:"a",html:"Retrieval, then Generation",correct:true,why:"RAG retrieves relevant chunks, then the LLM generates a grounded response."},
+      {k:"b",html:"Plain Input, then plain Output",correct:false,why:"Not the RAG steps."},
+      {k:"c",html:"Tokenization, then Embedding",correct:false,why:"Those are preprocessing concepts."},
       {k:"d",html:"Training, then Inference",correct:false,why:"RAG does not train the model."}
     ]},
   { n:4, lo:"GenAI-4.1.2", k:"K2", points:1, type:"single",
-    stem:"During RAG preprocessing, why are large documents split into smaller chunks?",
+    stem:"During RAG preprocessing, your large documents are split into chunks before embedding.\n\nWhy chunk them?",
     options:[
-      {k:"a",html:"To enable focused retrieval and fit within the model's context window.",correct:true,why:"Chunking supports focused similarity retrieval and compatibility with the context window."},
-      {k:"b",html:"To retrain the model on each chunk.",correct:false,why:"RAG does not retrain the model."},
-      {k:"c",html:"To increase the temperature.",correct:false,why:"Unrelated to temperature."},
-      {k:"d",html:"To remove the need for embeddings.",correct:false,why:"Chunks are exactly what get embedded."}
+      {k:"a",html:"Enable focused retrieval and fit the context window.",correct:true,why:"Chunking supports focused similarity retrieval and fits the context window."},
+      {k:"b",html:"Retrain the underlying model on each separate chunk.",correct:false,why:"RAG does not retrain the model."},
+      {k:"c",html:"Increase the response temperature.",correct:false,why:"Unrelated to temperature."},
+      {k:"d",html:"Remove the need for embeddings.",correct:false,why:"Chunks are exactly what get embedded."}
     ]},
   { n:5, lo:"GenAI-4.1.3", k:"K2", points:1, type:"single",
-    stem:"What can an LLM-powered agent do that a basic chatbot cannot?",
+    stem:"You want a component that can take actions on external systems, not just answer questions.\n\nWhat can an LLM-powered agent do that a basic chatbot cannot?",
     options:[
-      {k:"a",html:"Invoke predefined functions ('tools') to act on and interact with external systems.",correct:true,why:"Agents can 'act' by calling tools to manipulate external systems, beyond Q&A."},
-      {k:"b",html:"Answer questions in natural language.",correct:false,why:"Chatbots also do this."},
-      {k:"c",html:"Generate coherent text.",correct:false,why:"Both can generate text."},
-      {k:"d",html:"Guarantee it never hallucinates.",correct:false,why:"Agents share LLM risks; verification is still needed."}
+      {k:"a",html:"Invoke tools to act on external systems.",correct:true,why:"Agents can 'act' by calling tools, beyond Q&A."},
+      {k:"b",html:"Answer general questions in natural language.",correct:false,why:"Chatbots also do this."},
+      {k:"c",html:"Generate coherent, readable text.",correct:false,why:"Both can generate text."},
+      {k:"d",html:"Guarantee it will never ever hallucinate.",correct:false,why:"Agents share LLM risks; verification is still needed."}
     ]},
   { n:6, lo:"GenAI-4.1.3", k:"K2", points:1, type:"single",
-    stem:"What does 'orchestration' mean for LLM-powered agents?",
+    stem:"Several specialised agents work together, coordinated, to solve one complex test problem.\n\nWhat does 'orchestration' mean here?",
     options:[
-      {k:"a",html:"Several specialized agents coordinating to solve complex problems more efficiently (multi-agent architecture).",correct:true,why:"Orchestration is the coordinated effort among multiple specialized agents."},
-      {k:"b",html:"A single chatbot answering questions.",correct:false,why:"That is not orchestration."},
+      {k:"a",html:"Several agents coordinating to solve complex problems.",correct:true,why:"Orchestration is the coordinated effort among multiple specialised agents."},
+      {k:"b",html:"A single chatbot answering one-off user questions in a chat.",correct:false,why:"Not orchestration."},
       {k:"c",html:"Storing embeddings in a vector database.",correct:false,why:"That is RAG infrastructure."},
       {k:"d",html:"Fine-tuning the model on new data.",correct:false,why:"Unrelated to agent coordination."}
     ]},
   { n:7, lo:"GenAI-4.2.1", k:"K2", points:1, type:"single",
-    stem:"What is the goal of fine-tuning an LLM or SLM for a test task?",
+    stem:"Your team plans to fine-tune a pre-trained model for a narrow test task.\n\nWhat is the goal of fine-tuning?",
     options:[
-      {k:"a",html:"To adapt a pre-trained model to a specific task/domain by further training it on a targeted dataset.",correct:true,why:"Fine-tuning further trains a pre-trained model on targeted data to specialize it."},
-      {k:"b",html:"To completely replace the model's general knowledge.",correct:false,why:"Fine-tuning adapts, it doesn't erase general knowledge."},
-      {k:"c",html:"To remove the need for prompts.",correct:false,why:"Prompts are still used."},
-      {k:"d",html:"To guarantee the model cannot overfit.",correct:false,why:"Overfitting remains a risk."}
+      {k:"a",html:"Adapt a pre-trained model via targeted training.",correct:true,why:"Fine-tuning further trains a pre-trained model on targeted data to specialise it."},
+      {k:"b",html:"Completely replace the model's general knowledge.",correct:false,why:"Fine-tuning adapts, it doesn't erase general knowledge."},
+      {k:"c",html:"Remove the need for prompts.",correct:false,why:"Prompts are still used."},
+      {k:"d",html:"Guarantee the model cannot overfit.",correct:false,why:"Overfitting remains a risk."}
     ]},
   { n:8, lo:"GenAI-4.2.1", k:"K2", points:1, type:"single",
-    stem:"How can overfitting compromise a fine-tuned model?",
+    stem:"Your fine-tuned model scores brilliantly on its training cases but poorly on new ones.\n\nHow does overfitting compromise a fine-tuned model?",
     options:[
-      {k:"a",html:"The model becomes too specialized to its training data and performs poorly on new, unseen data.",correct:true,why:"Overfitting harms generalization to new data."},
-      {k:"b",html:"It becomes too general to be useful.",correct:false,why:"That is the opposite of overfitting."},
+      {k:"a",html:"The model performs poorly on new, unseen data.",correct:true,why:"Overfitting harms generalisation to new data."},
+      {k:"b",html:"The model becomes far too general to use at all.",correct:false,why:"That is the opposite of overfitting."},
       {k:"c",html:"It eliminates all computational cost.",correct:false,why:"Fine-tuning still needs compute."},
-      {k:"d",html:"It requires no training data.",correct:false,why:"Fine-tuning needs high-quality task-specific data."}
+      {k:"d",html:"It requires no training data.",correct:false,why:"Fine-tuning needs task-specific data."}
     ]},
   { n:9, lo:"GenAI-4.2.2", k:"K2", points:1, type:"single",
-    stem:"What is LLMOps?",
+    stem:"Your team wants to develop, deploy, and maintain LLMs across their production lifecycle.\n\nWhat is LLMOps?",
     options:[
-      {k:"a",html:"Practices and tools to develop, deploy, and maintain LLMs in production across their lifecycle, addressing privacy, security, and cost.",correct:true,why:"LLMOps streamlines the LLM lifecycle in production, covering privacy/security/cost."},
-      {k:"b",html:"A technique that prevents reliance on GenAI in testing.",correct:false,why:"LLMOps manages LLMs, it doesn't prevent their use."},
-      {k:"c",html:"A method that applies only to chatbot deployments.",correct:false,why:"It applies to many deployment types."},
-      {k:"d",html:"A way to remove all human oversight.",correct:false,why:"It does not aim to eliminate human oversight."}
+      {k:"a",html:"Develop, deploy, and maintain LLMs across their lifecycle.",correct:true,why:"LLMOps streamlines the LLM lifecycle in production (privacy, security, cost)."},
+      {k:"b",html:"A technique that deliberately prevents all reliance on GenAI tools.",correct:false,why:"LLMOps manages LLMs; it doesn't prevent their use."},
+      {k:"c",html:"A method that applies only to chatbots.",correct:false,why:"It applies to many deployment types."},
+      {k:"d",html:"A way to remove all human oversight.",correct:false,why:"It does not aim to eliminate oversight."}
     ]},
   { n:10, lo:"GenAI-4.2.2", k:"K2", points:1, type:"single",
-    stem:"Which statement about the ways to use GenAI in test processes (under LLMOps) is CORRECT?",
+    stem:"Your organisation already uses a chatbot, a vendor tool, and an in-house tool for different tasks.\n\nWhich statement about using GenAI in test processes is CORRECT?",
     options:[
-      {k:"a",html:"Using a chatbot, a GenAI-enabled test tool, and in-house development are not mutually exclusive and can be combined; in-house gives the most control over privacy/security.",correct:true,why:"The approaches can be used simultaneously; in-house development offers the most control but needs careful cost/expertise planning."},
-      {k:"b",html:"Only one approach may ever be used organization-wide.",correct:false,why:"They are not mutually exclusive."},
-      {k:"c",html:"Using a chatbot removes all cost and privacy considerations.",correct:false,why:"Privacy/security and cost still apply."},
-      {k:"d",html:"None of the approaches can incorporate RAG or fine-tuning.",correct:false,why:"All can incorporate RAG and fine-tuning."}
+      {k:"a",html:"Chatbot, vendor tool, and in-house can be combined.",correct:true,why:"The approaches are not mutually exclusive; in-house gives the most control."},
+      {k:"b",html:"Only one single approach may ever be used at a time.",correct:false,why:"They are not mutually exclusive."},
+      {k:"c",html:"A chatbot removes all cost and privacy concerns.",correct:false,why:"Privacy/security and cost still apply."},
+      {k:"d",html:"None of them can incorporate RAG.",correct:false,why:"All can incorporate RAG and fine-tuning."}
     ]},
   { n:11, lo:"GenAI-4.1.1", k:"K2", points:1, type:"single",
-    stem:"In an LLM-powered test infrastructure, which component refines/aligns the LLM's raw output with the test conditions before showing it to the user?",
+    stem:"Before the tester sees it, raw LLM output is refined and aligned with the test conditions.\n\nWhich component does that?",
     options:[
-      {k:"a",html:"The post-processing component",correct:true,why:"Post-processing enhances/aligns the raw output with test conditions before display."},
-      {k:"b",html:"The front-end",correct:false,why:"The front-end is the UI for input."},
+      {k:"a",html:"The post-processing component",correct:true,why:"Post-processing aligns the raw output with test conditions before display."},
+      {k:"b",html:"The front-end user interface",correct:false,why:"The front-end is the UI for input."},
       {k:"c",html:"The vector database",correct:false,why:"It stores embeddings for retrieval."},
-      {k:"d",html:"The authentication component",correct:false,why:"It controls access, not output refinement."}
+      {k:"d",html:"The user authentication component",correct:false,why:"It controls access, not output refinement."}
     ]},
   { n:12, lo:"GenAI-4.1.2", k:"K2", points:1, type:"single",
-    stem:"What is the main benefit of RAG for software test tasks?",
+    stem:"You add RAG so the LLM grounds its answers in your latest enterprise data.\n\nWhat is the main benefit for test tasks?",
     options:[
-      {k:"a",html:"It grounds responses in the latest enterprise specs, requirements, and test data, improving relevance and accuracy.",correct:true,why:"RAG augments generation with semantically-retrieved current data, grounding responses."},
-      {k:"b",html:"It retrains the model on every query.",correct:false,why:"RAG does not retrain the model."},
+      {k:"a",html:"It grounds responses in the latest enterprise data.",correct:true,why:"RAG augments generation with semantically-retrieved current data."},
+      {k:"b",html:"It retrains the underlying model from scratch on every single query.",correct:false,why:"RAG does not retrain the model."},
       {k:"c",html:"It removes the need to write prompts.",correct:false,why:"Prompts are still required."},
-      {k:"d",html:"It completely eliminates hallucinations.",correct:false,why:"RAG reduces but doesn't entirely eliminate hallucination risk."}
+      {k:"d",html:"It completely eliminates hallucinations.",correct:false,why:"RAG reduces but doesn't eliminate hallucination risk."}
     ]},
   { n:13, lo:"GenAI-4.1.3", k:"K2", points:1, type:"single",
-    stem:"What is the difference between an autonomous and a semi-autonomous LLM-powered agent?",
+    stem:"For a critical test process you must choose between an autonomous and a semi-autonomous agent.\n\nWhat is the difference?",
     options:[
-      {k:"a",html:"Autonomous agents operate with minimal human intervention; semi-autonomous agents include periodic human oversight.",correct:true,why:"That is the distinction; semi-autonomous agents are preferred for critical tasks."},
-      {k:"b",html:"Autonomous agents need approval at every step; semi-autonomous never involve humans.",correct:false,why:"Reversed."},
-      {k:"c",html:"Both eliminate the need for verification.",correct:false,why:"Verification remains crucial for both."},
-      {k:"d",html:"Semi-autonomous agents cannot use tools.",correct:false,why:"Agents can invoke tools regardless of autonomy level."}
+      {k:"a",html:"Autonomous: minimal oversight; semi: periodic oversight.",correct:true,why:"Autonomous agents operate with minimal intervention; semi-autonomous include periodic human oversight."},
+      {k:"b",html:"Autonomous needs approval each step; semi-autonomous never does.",correct:false,why:"Reversed."},
+      {k:"c",html:"Both eliminate the need for any verification.",correct:false,why:"Verification remains crucial for both."},
+      {k:"d",html:"Semi-autonomous agents cannot use tools.",correct:false,why:"Agents can invoke tools regardless of autonomy."}
     ]},
   { n:14, lo:"GenAI-4.2.1", k:"K2", points:1, type:"single",
-    stem:"Why might you fine-tune a Small Language Model (SLM) instead of a large LLM for a specific test task?",
+    stem:"With a tight compute budget for a narrow task, you weigh fine-tuning a Small Language Model instead of a large LLM.\n\nWhy might the SLM be the right choice?",
     options:[
-      {k:"a",html:"An SLM can achieve high task performance with less computational overhead.",correct:true,why:"Fine-tuning an SLM can reach strong task performance while being less resource-intensive."},
-      {k:"b",html:"SLMs are immune to overfitting.",correct:false,why:"Any fine-tuned model can overfit."},
-      {k:"c",html:"Fine-tuning an SLM needs no data.",correct:false,why:"Fine-tuning always needs task-specific data."},
-      {k:"d",html:"SLMs are always more accurate than LLMs.",correct:false,why:"Not true in general; it depends on the task."}
+      {k:"a",html:"An SLM reaches high performance with less compute.",correct:true,why:"Fine-tuning an SLM can reach strong task performance with less overhead."},
+      {k:"b",html:"SLMs are completely immune to overfitting during fine-tuning.",correct:false,why:"Any fine-tuned model can overfit."},
+      {k:"c",html:"Fine-tuning an SLM needs no data.",correct:false,why:"Fine-tuning always needs data."},
+      {k:"d",html:"SLMs are always more accurate than LLMs.",correct:false,why:"Not true in general; depends on the task."}
     ]},
   { n:15, lo:"GenAI-4.2.2", k:"K2", points:1, type:"single",
-    stem:"Which LLM deployment type is most concerned with data privacy?",
+    stem:"A teammate asks which LLM deployment type is inherently the most concerned with data privacy.\n\nWhat is the BEST answer?",
     options:[
-      {k:"a",html:"It depends on the data handled — privacy can be critical for any of them (chatbot, vendor tool, or in-house).",correct:true,why:"Privacy depends more on the data than the deployment approach, so it can be critical for any."},
-      {k:"b",html:"Only AI chatbots.",correct:false,why:"Privacy isn't limited to chatbots."},
-      {k:"c",html:"Only in-house tools.",correct:false,why:"Not inherently the single most critical."},
+      {k:"a",html:"It depends on the data — any can be most critical.",correct:true,why:"Privacy depends on the data handled, not the deployment approach."},
+      {k:"b",html:"Only the public AI chatbots are ever really a concern here.",correct:false,why:"Privacy isn't limited to chatbots."},
+      {k:"c",html:"Only the in-house tools.",correct:false,why:"Not inherently the single most critical."},
       {k:"d",html:"Only commercial vendor tools.",correct:false,why:"Privacy applies across deployment types."}
     ]}
   ]
