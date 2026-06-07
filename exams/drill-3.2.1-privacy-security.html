@@ -14,419 +14,166 @@
 window.EXAM = {
   id: "drill-321",
   title: "Topic Drill — 3.2.1 Data Privacy Concerns vs Security Risks",
-  source: "50 scenario-based questions focused only on LO 3.2.1 (K2), Easy→Medium→Hard. Options shuffle each attempt. Original questions for practice — not official ISTQB items.",
+  source: "50 questions on LO 3.2.1 (K2), written to the ISTQB sample-exam style: situation-based stems with category options (no definition give-aways) and plausible distractors. Easy→Hard. Options shuffle each attempt. Not an official ISTQB exam.",
   durationMinutes: 45,
   passPercent: 65,
   shuffleOptions: true,
   questions: [
-  /* ===================== EASY — definitions & recognition ===================== */
+  /* ===================== EASY — classify the scenario ===================== */
   { n:1, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"Your lead asks what a DATA PRIVACY concern is fundamentally about when using GenAI for testing.\n\nWhich is correct?",
-    options:[
-      {k:"a",html:"Loss of control over how your data is stored, processed, or reused.",correct:true,why:"Data privacy concerns centre on control, consent, exposure, and compliance of the data itself."},
-      {k:"b",html:"The test infrastructure being attacked, breached, or accessed without authorisation.",correct:false,why:"That is a security risk, not a privacy concern."},
-      {k:"c",html:"The model running too slowly under heavy load.",correct:false,why:"That is a performance issue, not privacy."},
-      {k:"d",html:"The amount of energy the model consumes.",correct:false,why:"That is an environmental concern."}
-    ]},
+    stem:"A vendor's terms let them keep and reuse whatever test data you submit, with no opt-out.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A data privacy concern — lack of control over the data.",correct:true,why:"Reuse/retention you can't control is the lack-of-control privacy concern."},{k:"b",html:"A security risk — the infrastructure is being breached.",correct:false,why:"No attack/breach is described; it's about data control."},{k:"c",html:"A data privacy concern — unintentional exposure in the output.",correct:false,why:"Nothing accidental was disclosed in output here."},{k:"d",html:"A data privacy concern — non-compliance with a regulation.",correct:false,why:"No specific regulatory breach is stated; the core issue is control."}]},
   { n:2, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"A teammate asks what a SECURITY risk means in the GenAI testing context.\n\nWhich is correct?",
-    options:[
-      {k:"a",html:"The test infrastructure being vulnerable to attacks or unauthorised access.",correct:true,why:"Security risks concern the GenAI/LLM infrastructure being attacked, breached, or accessed without authorisation."},
-      {k:"b",html:"The third-party vendor quietly storing and reusing your submitted data without any consent.",correct:false,why:"That is a privacy concern (lack of control), not a security risk."},
-      {k:"c",html:"The output accidentally revealing sensitive data.",correct:false,why:"That is a privacy concern (unintentional exposure)."},
-      {k:"d",html:"Non-compliance with data-protection regulations.",correct:false,why:"That is a privacy/compliance concern."}
-    ]},
+    stem:"An LLM's generated summary accidentally includes another customer's personal details that had slipped into the prompt context.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A data privacy concern — unintentional data exposure.",correct:true,why:"Output accidentally revealing sensitive data is unintentional exposure."},{k:"b",html:"A security risk — an attacker extracted the data.",correct:false,why:"No attacker is involved; it was accidental."},{k:"c",html:"A data privacy concern — lack of control over reuse.",correct:false,why:"The issue is accidental disclosure, not reuse terms."},{k:"d",html:"A data privacy concern — non-compliance with a regulation.",correct:false,why:"No regulatory breach is the defining feature here."}]},
   { n:3, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"A colleague wants the simplest way to tell privacy concerns and security risks apart.\n\nWhich distinction is correct?",
-    options:[
-      {k:"a",html:"Privacy is about the data; security is about the system being attacked.",correct:true,why:"Privacy centres on control/exposure/compliance of data; security centres on the infrastructure being attacked or breached."},
-      {k:"b",html:"Privacy is about system breaches, while security is all about consent for the data.",correct:false,why:"Reversed."},
-      {k:"c",html:"They are exactly the same thing with two different names.",correct:false,why:"They are distinct categories of risk."},
-      {k:"d",html:"Both are only about how much energy the model uses.",correct:false,why:"Energy is an environmental concern, unrelated."}
-    ]},
+    stem:"Sending EU residents' personal data to a tool hosted in a non-approved region could trigger fines.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A data privacy concern — non-compliance with regulations.",correct:true,why:"Risking a GDPR/data-residency violation is the compliance concern."},{k:"b",html:"A security risk — the servers are being attacked.",correct:false,why:"No attack is described; it's regulatory."},{k:"c",html:"A data privacy concern — unintentional exposure.",correct:false,why:"No accidental output disclosure is described."},{k:"d",html:"A data privacy concern — lack of control over the data.",correct:false,why:"The defining issue is regulatory compliance, not control terms."}]},
   { n:4, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"A GenAI tool stores and processes the test data you submit without your explicit consent.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — lack of control over the data.",correct:true,why:"Storing/processing data without consent is lack of control — a core privacy concern."},
-      {k:"b",html:"A security risk — the infrastructure being breached by an attacker.",correct:false,why:"No attack/breach is described; this is about consent."},
-      {k:"c",html:"A performance issue with the model.",correct:false,why:"Unrelated to performance."},
-      {k:"d",html:"An environmental, energy-related concern.",correct:false,why:"Unrelated to energy."}
-    ]},
+    stem:"An attacker breaches the LLM-powered test platform's servers and copies the stored test data.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A security risk — the system was breached.",correct:true,why:"A breach of the infrastructure is a security risk."},{k:"b",html:"A data privacy concern — simply missing consent paperwork.",correct:false,why:"The defining event is a system breach, i.e., security."},{k:"c",html:"A data privacy concern — non-compliance with a standard.",correct:false,why:"The cause is an attack, making it primarily security."},{k:"d",html:"Neither — it is only a performance issue.",correct:false,why:"A breach is a clear security risk."}]},
   { n:5, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"A generated summary accidentally includes confidential details that were sitting in the prompt context.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — unintentional data exposure.",correct:true,why:"Output accidentally revealing sensitive information is unintentional data exposure (privacy)."},
-      {k:"b",html:"A security risk — an attacker exploiting the test infrastructure.",correct:false,why:"No attacker is involved; the exposure was accidental."},
-      {k:"c",html:"A reasoning error in the model's logic.",correct:false,why:"Not a logic failure; it is data exposure."},
-      {k:"d",html:"A time-efficiency problem.",correct:false,why:"Unrelated to speed."}
-    ]},
+    stem:"A penetration test finds the GenAI test platform exposes an unauthenticated admin endpoint outsiders could use.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A security risk — unauthorised access is possible.",correct:true,why:"An exposed endpoint enabling unauthorised access is a security risk."},{k:"b",html:"A data privacy concern — purely about consent.",correct:false,why:"The defining issue is unauthorised access to the system."},{k:"c",html:"A data privacy concern — unintentional exposure in output.",correct:false,why:"No accidental output disclosure is described."},{k:"d",html:"Neither — it is just an environmental concern.",correct:false,why:"Unauthorised access is a security risk."}]},
   { n:6, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"Using a GenAI tool in a way that breaches data-protection law (e.g., GDPR) could trigger legal disputes.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — non-compliance with regulations.",correct:true,why:"Failing to meet data-protection regulations is the compliance privacy concern."},
-      {k:"b",html:"A security risk — unauthorised access to the test servers.",correct:false,why:"No unauthorised access is described; this is regulatory compliance."},
-      {k:"c",html:"A pure functionality defect in the application.",correct:false,why:"Not a functional bug."},
-      {k:"d",html:"An environmental sustainability concern.",correct:false,why:"Unrelated to sustainability."}
-    ]},
+    stem:"Your organisation cannot find out where a cloud GenAI provider physically stores the data you send it.\n\nWhich concern does this MOST directly raise?",
+    options:[{k:"a",html:"A data privacy concern — lack of control (with possible compliance implications).",correct:true,why:"Not knowing where/how data is stored is loss of control, with compliance implications."},{k:"b",html:"A security risk — the provider is being hacked.",correct:false,why:"No breach is described; the issue is control over data location."},{k:"c",html:"A data privacy concern — unintentional exposure in output.",correct:false,why:"No accidental disclosure is described."},{k:"d",html:"Neither — it only affects response speed.",correct:false,why:"Data-location uncertainty is a privacy concern."}]},
   { n:7, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"An attacker gains unauthorised access to your LLM-powered test infrastructure and reads stored test data.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A security risk — the infrastructure being breached.",correct:true,why:"Unauthorised access / breach of the infrastructure is a security risk."},
-      {k:"b",html:"A data privacy concern — simply a lack of consent for data use.",correct:false,why:"This is an active breach of the system, i.e., a security risk."},
-      {k:"c",html:"A performance bottleneck under load.",correct:false,why:"Unrelated to performance."},
-      {k:"d",html:"A model hallucination.",correct:false,why:"Unrelated to hallucinations."}
-    ]},
+    stem:"A generated test report unexpectedly prints API keys that were embedded in the prompt context — no attacker involved.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A data privacy concern — unintentional data exposure.",correct:true,why:"Accidental disclosure of secrets in output, with no attacker, is unintentional exposure."},{k:"b",html:"A security risk — an attacker deliberately extracted them.",correct:false,why:"No attacker is involved; it was accidental."},{k:"c",html:"A data privacy concern — non-compliance with a regulation.",correct:false,why:"The defining feature is accidental output disclosure."},{k:"d",html:"Neither — it is a reasoning error.",correct:false,why:"It is data exposure, not a logic flaw."}]},
   { n:8, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"A colleague asks you to name the three categories of DATA PRIVACY concern from the syllabus.\n\nWhich set is correct?",
-    options:[
-      {k:"a",html:"Lack of control, unintentional exposure, and non-compliance.",correct:true,why:"The three privacy concerns are lack of control over data, unintentional data exposure, and compliance issues."},
-      {k:"b",html:"Breach, unauthorised access, and a direct infrastructure attack on the system.",correct:false,why:"Those are aspects of the security risk, not privacy categories."},
-      {k:"c",html:"Accuracy, precision, and recall.",correct:false,why:"Those are evaluation metrics, not privacy concerns."},
-      {k:"d",html:"Cost, energy use, and slow response time.",correct:false,why:"None of those are privacy concerns."}
-    ]},
+    stem:"Which of these is a SECURITY risk rather than a pure data-privacy concern?",
+    options:[{k:"a",html:"The LLM test infrastructure is vulnerable to breaches and unauthorised access.",correct:true,why:"Vulnerability of the infrastructure to attack/breach is a security risk."},{k:"b",html:"A tool stores your data without consent.",correct:false,why:"That is a privacy concern (lack of control)."},{k:"c",html:"Output accidentally reveals sensitive data.",correct:false,why:"That is a privacy concern (unintentional exposure)."},{k:"d",html:"Handling personal data in breach of GDPR.",correct:false,why:"That is a privacy concern (compliance)."}]},
   { n:9, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"In a review, four items are listed. One is NOT a data privacy concern.\n\nWhich one is NOT?",
-    options:[
-      {k:"a",html:"The LLM test infrastructure being breached by an external attacker.",correct:true,why:"An infrastructure breach is a SECURITY risk, not a data privacy concern."},
-      {k:"b",html:"Tools storing data without consent.",correct:false,why:"That is a privacy concern (lack of control)."},
-      {k:"c",html:"Output accidentally revealing sensitive data to an unauthorised party.",correct:false,why:"That is a privacy concern (unintentional exposure)."},
-      {k:"d",html:"Breaching GDPR when handling personal data.",correct:false,why:"That is a privacy concern (compliance)."}
-    ]},
+    stem:"Which of these is a DATA PRIVACY concern rather than a security risk?",
+    options:[{k:"a",html:"A tool processes and retains your sensitive data without consent.",correct:true,why:"Lack of control over data use/retention is a privacy concern."},{k:"b",html:"An external attacker breaks into the test infrastructure.",correct:false,why:"That is a security risk."},{k:"c",html:"Intruders gain unauthorised access to the GenAI system.",correct:false,why:"That is a security risk."},{k:"d",html:"The integration is compromised through a crafted exploit.",correct:false,why:"That is a security risk."}]},
   { n:10, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"Four items are listed. One is NOT a security risk.\n\nWhich one is NOT?",
-    options:[
-      {k:"a",html:"A vendor reusing your submitted test data to train its own models.",correct:true,why:"That is a PRIVACY concern (lack of control), not a security risk."},
-      {k:"b",html:"Unauthorised access to the test infrastructure by an outside intruder.",correct:false,why:"That is a security risk."},
-      {k:"c",html:"A breach of the LLM-powered test system.",correct:false,why:"That is a security risk."},
-      {k:"d",html:"Attackers compromising the GenAI integration.",correct:false,why:"That is a security risk."}
-    ]},
+    stem:"Four items are listed in a review. Which is NOT a data privacy concern?",
+    options:[{k:"a",html:"The LLM test infrastructure being breached by an external attacker.",correct:true,why:"An infrastructure breach is a security risk, not a privacy concern."},{k:"b",html:"Tools storing data without consent.",correct:false,why:"A privacy concern (lack of control)."},{k:"c",html:"Output accidentally revealing sensitive data.",correct:false,why:"A privacy concern (unintentional exposure)."},{k:"d",html:"Breaching GDPR when handling personal data.",correct:false,why:"A privacy concern (compliance)."}]},
   { n:11, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"Your data could be reused to train the GenAI vendor's future models, and you cannot opt out.\n\nWhich privacy sub-concern is this?",
-    options:[
-      {k:"a",html:"Lack of control over how the data is used.",correct:true,why:"No control over reuse/processing of your data is the 'lack of control' privacy concern."},
-      {k:"b",html:"Unintentional exposure in the model's visible output.",correct:false,why:"This is about control over reuse, not accidental output exposure."},
-      {k:"c",html:"Non-compliance with a specific regulation.",correct:false,why:"No specific regulatory breach is stated."},
-      {k:"d",html:"A breach of the test infrastructure by attackers.",correct:false,why:"That would be a security risk."}
-    ]},
+    stem:"A team member uses a personal AI tool that may train on whatever you paste, and you can't stop it.\n\nWhich privacy sub-concern is this?",
+    options:[{k:"a",html:"Lack of control over how the data is used.",correct:true,why:"No control over reuse/training is the lack-of-control concern."},{k:"b",html:"Unintentional exposure in the model's output.",correct:false,why:"This is about control over reuse, not accidental output."},{k:"c",html:"Non-compliance with a specific regulation.",correct:false,why:"No specific regulatory breach is stated."},{k:"d",html:"A breach of the infrastructure by attackers.",correct:false,why:"That would be a security risk."}]},
   { n:12, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"\"Unintentional data exposure\" as a privacy concern means…?",
-    options:[
-      {k:"a",html:"The generated output accidentally reveals sensitive information.",correct:true,why:"Unintentional exposure = the model's output accidentally discloses sensitive data."},
-      {k:"b",html:"An attacker who deliberately breaks into the system in order to steal data.",correct:false,why:"Deliberate intrusion is a security risk, not accidental exposure."},
-      {k:"c",html:"The model takes too long to produce a response.",correct:false,why:"That is a performance issue."},
-      {k:"d",html:"The output is factually wrong about the domain.",correct:false,why:"That is a hallucination/accuracy issue."}
-    ]},
+    stem:"A teammate claims privacy and security are the same thing.\n\nWhich statement BEST distinguishes them?",
+    options:[{k:"a",html:"Privacy is about protecting the data; security is about protecting the system from attack.",correct:true,why:"Privacy = control/exposure/compliance of data; security = system attacked/breached."},{k:"b",html:"Privacy is about system breaches; security is about consent for data.",correct:false,why:"Reversed."},{k:"c",html:"They are two names for exactly the same risk.",correct:false,why:"They are distinct categories."},{k:"d",html:"Both are only about how much energy the model uses.",correct:false,why:"Energy is an environmental concern."}]},
   { n:13, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"A security risk in GenAI testing is fundamentally about which thing being compromised?",
-    options:[
-      {k:"a",html:"The LLM-powered test infrastructure / system itself.",correct:true,why:"Security risks concern the infrastructure/system being attacked, breached, or accessed without authorisation."},
-      {k:"b",html:"The consent paperwork and forms for all of the submitted data.",correct:false,why:"Consent relates to privacy, not the system being compromised."},
-      {k:"c",html:"The number of tokens used per request.",correct:false,why:"Token usage is unrelated."},
-      {k:"d",html:"The colour scheme of the chatbot interface.",correct:false,why:"Irrelevant to security."}
-    ]},
+    stem:"A GenAI feature responds slowly during peak hours, frustrating testers.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"Neither — it is a performance issue, not privacy or security.",correct:true,why:"Slow responses are a performance concern."},{k:"b",html:"A data privacy concern about unauthorised reuse.",correct:false,why:"No data control/exposure/compliance issue is described."},{k:"c",html:"A security risk — the system is being breached.",correct:false,why:"No breach is described."},{k:"d",html:"A compliance violation under GDPR.",correct:false,why:"No regulatory breach is described."}]},
   { n:14, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"single",
-    stem:"You must explain why data privacy matters specifically when sharing testware with an LLM.\n\nWhich statement is correct?",
-    options:[
-      {k:"a",html:"Testware may contain sensitive data whose use you cannot fully control.",correct:true,why:"Shared testware can hold sensitive data, raising lack-of-control, exposure, and compliance concerns."},
-      {k:"b",html:"Testware can only ever cause the model to run more slowly.",correct:false,why:"That is a performance issue, not privacy."},
-      {k:"c",html:"Sharing testware somehow always guarantees full and complete regulatory compliance.",correct:false,why:"It can risk non-compliance, not guarantee it."},
-      {k:"d",html:"Testware sharing removes every possible security risk.",correct:false,why:"It does not remove security risks."}
-    ]},
+    stem:"A tester worries that the GenAI tool's heavy compute is bad for the company's sustainability goals.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"Neither — it is an environmental concern, not privacy or security.",correct:true,why:"Energy/CO₂ impact is an environmental concern (3.3), outside 3.2.1."},{k:"b",html:"A data privacy concern about consent.",correct:false,why:"No data control/exposure/compliance issue is described."},{k:"c",html:"A security risk — the infrastructure is attacked.",correct:false,why:"No attack is described."},{k:"d",html:"A non-compliance issue with data-protection law.",correct:false,why:"No regulatory breach is described."}]},
   { n:15, lo:"GenAI-3.2.1", k:"K2", level:"Easy", points:1, type:"multi", selectCount:2,
-    stem:"A colleague lists possible issues. Select the TWO that are DATA PRIVACY concerns (not security risks or other categories).",
-    options:[
-      {k:"a",html:"A tool processing your data without consent.",correct:true,why:"Lack of control over data is a privacy concern."},
-      {k:"b",html:"Output accidentally exposing sensitive information.",correct:true,why:"Unintentional data exposure is a privacy concern."},
-      {k:"c",html:"An external attacker breaching the test infrastructure servers.",correct:false,why:"That is a security risk."},
-      {k:"d",html:"The model consuming a lot of energy.",correct:false,why:"That is an environmental concern."},
-      {k:"e",html:"The model responding slowly under load.",correct:false,why:"That is a performance issue."}
-    ]},
+    stem:"Select the TWO situations that are DATA PRIVACY concerns (not security or other categories).",
+    options:[{k:"a",html:"A tool processing your data without consent.",correct:true,why:"Lack of control is a privacy concern."},{k:"b",html:"Output accidentally exposing sensitive information.",correct:true,why:"Unintentional exposure is a privacy concern."},{k:"c",html:"An attacker breaching the test infrastructure.",correct:false,why:"A security risk."},{k:"d",html:"The model consuming a lot of energy.",correct:false,why:"An environmental concern."},{k:"e",html:"The model responding slowly under load.",correct:false,why:"A performance issue."}]},
 
-  /* ===================== MEDIUM — scenarios to classify ===================== */
+  /* ===================== MEDIUM — trickier classification ===================== */
   { n:16, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
     stem:"A tester pastes real customer records into a free public chatbot whose terms allow the provider to reuse submitted content.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — lack of control over the data.",correct:true,why:"You lose control over how the submitted personal data is stored/reused — a privacy concern."},
-      {k:"b",html:"A security risk — the infrastructure has been breached.",correct:false,why:"No breach of your system occurred; the issue is loss of control over data."},
-      {k:"c",html:"A purely environmental concern.",correct:false,why:"Unrelated to energy."},
-      {k:"d",html:"A model accuracy problem.",correct:false,why:"Unrelated to correctness."}
-    ]},
+    options:[{k:"a",html:"A data privacy concern — lack of control over the data.",correct:true,why:"You lose control over how the personal data is stored/reused."},{k:"b",html:"A security risk — the infrastructure has been breached.",correct:false,why:"No breach of your system occurred."},{k:"c",html:"A data privacy concern — unintentional exposure.",correct:false,why:"The disclosure here is deliberate submission, not accidental output."},{k:"d",html:"Neither — purely a performance concern.",correct:false,why:"It is a clear privacy concern."}]},
   { n:17, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"The GenAI test tool's server is hacked and the stored test data is stolen.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A security risk — the infrastructure was breached.",correct:true,why:"A hack/breach of the system is a security risk."},
-      {k:"b",html:"A data privacy concern about needing extra consent forms.",correct:false,why:"The defining event is a system breach, i.e., a security risk."},
-      {k:"c",html:"A diversity problem in the generated tests.",correct:false,why:"Unrelated to variety of tests."},
-      {k:"d",html:"A time-efficiency concern.",correct:false,why:"Unrelated to speed."}
-    ]},
-  { n:18, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
     stem:"A GenAI report for one client accidentally surfaces another client's confidential data in its output.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — unintentional data exposure.",correct:true,why:"Output accidentally revealing sensitive data is unintentional exposure (privacy)."},
-      {k:"b",html:"A security risk — an attacker has compromised the system.",correct:false,why:"No attacker is involved; the exposure was accidental."},
-      {k:"c",html:"A reasoning error in the model.",correct:false,why:"Not a logic failure."},
-      {k:"d",html:"A performance issue under heavy load.",correct:false,why:"Unrelated to performance."}
-    ]},
+    options:[{k:"a",html:"A data privacy concern — unintentional data exposure.",correct:true,why:"Accidental output disclosure is unintentional exposure."},{k:"b",html:"A security risk — an attacker compromised the system.",correct:false,why:"No attacker is involved."},{k:"c",html:"A data privacy concern — non-compliance.",correct:false,why:"The defining feature is accidental disclosure."},{k:"d",html:"A reasoning error in the model.",correct:false,why:"It is data exposure, not a logic flaw."}]},
+  { n:18, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Your GenAI test integration allows logins with weak, guessable credentials, letting outsiders in.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A security risk — unauthorised access to the system.",correct:true,why:"Weak access controls enabling intruders is a security risk."},{k:"b",html:"A data privacy concern — purely missing consent.",correct:false,why:"The defining issue is unauthorised access."},{k:"c",html:"A data privacy concern — unintentional exposure.",correct:false,why:"No accidental output disclosure is described."},{k:"d",html:"Neither — only a usability issue.",correct:false,why:"Unauthorised access is a security risk."}]},
   { n:19, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"Processing EU residents' personal data in a GenAI tool hosted in a non-approved region risks violating GDPR.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — non-compliance with regulations.",correct:true,why:"Risking a GDPR/data-residency violation is the compliance privacy concern."},
-      {k:"b",html:"A security risk — the servers are being actively attacked.",correct:false,why:"No attack is described; the issue is regulatory compliance."},
-      {k:"c",html:"A functional defect in the application under test.",correct:false,why:"Not a functional bug."},
-      {k:"d",html:"An environmental concern about server energy use.",correct:false,why:"Unrelated to energy."}
-    ]},
-  { n:20, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"Your GenAI test integration is found to allow logins with weak, guessable credentials, letting outsiders in.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A security risk — unauthorised access to the system.",correct:true,why:"Weak access controls enabling intruders is a security risk (unauthorised access)."},
-      {k:"b",html:"A data privacy concern purely about missing consent.",correct:false,why:"The defining issue is unauthorised access to the system — a security risk."},
-      {k:"c",html:"A diversity gap in the generated test data.",correct:false,why:"Unrelated to variety."},
-      {k:"d",html:"A time-efficiency shortfall.",correct:false,why:"Unrelated to speed."}
-    ]},
-  { n:21, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
     stem:"A vendor's contract states they may use any test cases you upload to improve their own commercial models.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — lack of control over the data.",correct:true,why:"Reuse of your uploaded data outside your control is the lack-of-control privacy concern."},
-      {k:"b",html:"A security risk — your systems are being actively breached.",correct:false,why:"No breach occurs; you simply lose control over the data's reuse."},
-      {k:"c",html:"A pure accuracy issue with the generated cases.",correct:false,why:"Unrelated to correctness."},
-      {k:"d",html:"An environmental, energy-related concern.",correct:false,why:"Unrelated to energy."}
-    ]},
+    options:[{k:"a",html:"A data privacy concern — lack of control over the data.",correct:true,why:"Reuse beyond your control is the lack-of-control concern."},{k:"b",html:"A security risk — your systems are being breached.",correct:false,why:"No breach occurs; you lose control over reuse."},{k:"c",html:"A data privacy concern — unintentional exposure.",correct:false,why:"No accidental output disclosure is described."},{k:"d",html:"Neither — purely an accuracy issue.",correct:false,why:"It is a privacy concern."}]},
+  { n:20, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"Storing personal data in a region that violates your data-residency obligations risks regulatory penalties.\n\nHow is this BEST classified?",
+    options:[{k:"a",html:"A data privacy concern — non-compliance with regulations.",correct:true,why:"Data-residency/regulatory breach is the compliance concern."},{k:"b",html:"A security risk — an attack on the data centre.",correct:false,why:"No attack is described."},{k:"c",html:"A data privacy concern — unintentional exposure.",correct:false,why:"No accidental output disclosure is described."},{k:"d",html:"Neither — an environmental concern.",correct:false,why:"It is a compliance privacy concern."}]},
+  { n:21, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"During a risk review you must sort issues correctly.\n\nWhich pair correctly maps the phrases to categories?",
+    options:[{k:"a",html:"'No control over what the tool does with data' = privacy; 'the system can be attacked' = security.",correct:true,why:"Privacy = data control/exposure/compliance; security = the system attacked."},{k:"b",html:"'No control over data' = security; 'system can be attacked' = privacy.",correct:false,why:"Reversed."},{k:"c",html:"Both phrases describe the same single category.",correct:false,why:"They are two distinct categories."},{k:"d",html:"Neither phrase relates to privacy or security.",correct:false,why:"Both clearly map to the two categories."}]},
   { n:22, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"A generated test report unexpectedly prints API keys that were embedded in the prompt context.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A data privacy concern — unintentional data exposure.",correct:true,why:"Output accidentally revealing secrets that were in context is unintentional exposure."},
-      {k:"b",html:"A security risk — an external attacker deliberately extracted them.",correct:false,why:"No attacker is described; the exposure was accidental, not an attack."},
-      {k:"c",html:"A reasoning error in the model.",correct:false,why:"Not a logic failure."},
-      {k:"d",html:"A diversity problem in the output.",correct:false,why:"Unrelated to variety."}
-    ]},
+    stem:"A vendor promises strong encryption and breach protection but says nothing about whether they reuse your data.\n\nWhich risk remains UNADDRESSED?",
+    options:[{k:"a",html:"A privacy lack-of-control concern over data reuse.",correct:true,why:"Encryption/breach protection address security; data-reuse control (privacy) is still open."},{k:"b",html:"The security risk of system breaches.",correct:false,why:"Breach protection addresses that."},{k:"c",html:"The model's response speed.",correct:false,why:"Unrelated to the question."},{k:"d",html:"The environmental energy footprint.",correct:false,why:"Unrelated to the question."}]},
   { n:23, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"Which of the following situations is a SECURITY risk rather than a pure data-privacy concern?",
-    options:[
-      {k:"a",html:"The LLM test infrastructure is vulnerable to breaches and unauthorised access.",correct:true,why:"Vulnerability of the infrastructure to attack/breach is a security risk."},
-      {k:"b",html:"A tool stores your data without consent.",correct:false,why:"That is a privacy concern (lack of control)."},
-      {k:"c",html:"The generated output accidentally reveals sensitive data to the wrong recipient entirely.",correct:false,why:"That is a privacy concern (unintentional exposure)."},
-      {k:"d",html:"Handling data in breach of GDPR.",correct:false,why:"That is a privacy concern (compliance)."}
-    ]},
+    stem:"To address a LACK-OF-CONTROL privacy concern specifically, which action is MOST on point?",
+    options:[{k:"a",html:"Check the provider's data-usage terms and restrict what data you submit.",correct:true,why:"Lack of control is addressed by understanding/limiting how submitted data may be used."},{k:"b",html:"Add a firewall to block external attackers.",correct:false,why:"That mitigates a security risk."},{k:"c",html:"Increase the model's context window.",correct:false,why:"Irrelevant to data control."},{k:"d",html:"Lower the temperature for consistency.",correct:false,why:"Irrelevant to data control."}]},
   { n:24, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"Which of the following situations is a DATA PRIVACY concern rather than a security risk?",
-    options:[
-      {k:"a",html:"A tool processes and retains your sensitive data without consent.",correct:true,why:"Lack of control over data use/retention is a privacy concern."},
-      {k:"b",html:"An external attacker who breaks straight into the test infrastructure servers.",correct:false,why:"That is a security risk."},
-      {k:"c",html:"Intruders gain unauthorised access to the GenAI system.",correct:false,why:"That is a security risk."},
-      {k:"d",html:"The integration is compromised through a crafted exploit.",correct:false,why:"That is a security risk."}
-    ]},
+    stem:"To reduce a SECURITY risk to the GenAI test platform specifically, which action is MOST on point?",
+    options:[{k:"a",html:"Harden access controls and protect the infrastructure against breaches.",correct:true,why:"Security risks are mitigated by protecting the infrastructure against attack."},{k:"b",html:"Rewrite the vendor's policy about data reuse.",correct:false,why:"That addresses a privacy (lack-of-control) concern."},{k:"c",html:"Add more few-shot examples to the prompt.",correct:false,why:"Irrelevant to infrastructure security."},{k:"d",html:"Increase the diversity of generated tests.",correct:false,why:"Irrelevant to security."}]},
   { n:25, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"During a risk review you must sort issues into the right bucket.\n\nWhich pair correctly contrasts the two categories?",
-    options:[
-      {k:"a",html:"\"No control over what the tool does with data\" = privacy; \"the system can be attacked\" = security.",correct:true,why:"Privacy = control/exposure/compliance of data; security = the system being attacked/breached."},
-      {k:"b",html:"\"No control over the data\" means security, while \"the system can be attacked\" means privacy in this case.",correct:false,why:"Reversed."},
-      {k:"c",html:"Both phrases describe the same single category of risk.",correct:false,why:"They are two distinct categories."},
-      {k:"d",html:"Neither phrase relates to privacy or to security at all.",correct:false,why:"Both clearly map to the two categories."}
-    ]},
+    stem:"A team hosts the LLM entirely in-house, so no third party can reuse the data, and hardens the servers against intrusion.\n\nWhich risks has it MOST directly reduced?",
+    options:[{k:"a",html:"Both a privacy (lack-of-control) concern and a security (breach) risk.",correct:true,why:"In-house hosting cuts third-party reuse (privacy); hardening reduces breach risk (security)."},{k:"b",html:"Only the environmental impact of the model.",correct:false,why:"Hosting choice doesn't primarily address energy here."},{k:"c",html:"Only the diversity of the generated tests.",correct:false,why:"Unrelated to variety."},{k:"d",html:"Neither — only response speed.",correct:false,why:"It directly addresses privacy and security."}]},
   { n:26, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"A GenAI feature occasionally responds slowly during peak hours, frustrating testers.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"Neither — it is a performance issue, not a privacy or security risk.",correct:true,why:"Slow responses are a performance concern, not a data-privacy or security risk."},
-      {k:"b",html:"A data privacy concern purely about some unauthorised reuse of the data.",correct:false,why:"No data control/exposure/compliance issue is described."},
-      {k:"c",html:"A security risk — the system is being breached.",correct:false,why:"No breach is described; it is just slow."},
-      {k:"d",html:"A compliance violation under GDPR.",correct:false,why:"No regulatory breach is described."}
-    ]},
+    stem:"A scenario is described only as a 'data breach'.\n\nWhat is the PRIMARY classification?",
+    options:[{k:"a",html:"A security risk — a breach is an attack on the system, though it has privacy consequences.",correct:true,why:"A breach is fundamentally a security event; the resulting data loss has privacy fallout."},{k:"b",html:"Only a privacy concern with no security aspect.",correct:false,why:"A breach is primarily a security event."},{k:"c",html:"Neither a privacy nor a security matter.",correct:false,why:"It is both, primarily security."},{k:"d",html:"Purely a performance problem.",correct:false,why:"Incorrect category."}]},
   { n:27, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"A tester worries that the GenAI tool's high energy use is bad for the company's sustainability goals.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"Neither — it is an environmental concern, not privacy or security.",correct:true,why:"Energy/CO₂ impact is an environmental concern (3.3), not a 3.2.1 privacy or security risk."},
-      {k:"b",html:"A data privacy concern about consent for the data.",correct:false,why:"No data control/exposure/compliance issue is described."},
-      {k:"c",html:"A security risk — the underlying infrastructure is actively being attacked.",correct:false,why:"No attack/breach is described."},
-      {k:"d",html:"A non-compliance issue with data-protection law.",correct:false,why:"No regulatory breach is described."}
-    ]},
-  { n:28, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"Your organisation cannot verify where a cloud GenAI provider physically stores the data you send it.\n\nWhich concern does this MOST directly raise?",
-    options:[
-      {k:"a",html:"A data privacy concern — lack of control (and possible compliance issues).",correct:true,why:"Not knowing where/how your data is stored is loss of control, with compliance implications — a privacy concern."},
-      {k:"b",html:"A security risk — the cloud provider's systems are being actively hacked right now.",correct:false,why:"No breach is described; the issue is control over data location."},
-      {k:"c",html:"A diversity problem in generated tests.",correct:false,why:"Unrelated to variety."},
-      {k:"d",html:"A time-efficiency shortfall.",correct:false,why:"Unrelated to speed."}
-    ]},
-  { n:29, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
-    stem:"A penetration test finds the GenAI test platform exposes an unauthenticated admin endpoint.\n\nHow is this BEST classified?",
-    options:[
-      {k:"a",html:"A security risk — unauthorised access is possible.",correct:true,why:"An exposed unauthenticated endpoint enables unauthorised access — a security risk."},
-      {k:"b",html:"A data privacy concern about missing user consent.",correct:false,why:"The defining issue is unauthorised access to the system."},
-      {k:"c",html:"An accuracy problem with the model output.",correct:false,why:"Unrelated to correctness."},
-      {k:"d",html:"An environmental energy concern.",correct:false,why:"Unrelated to energy."}
-    ]},
-  { n:30, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"multi", selectCount:2,
+    stem:"A regulator asks whether your GenAI testing handles personal data lawfully across borders.\n\nWhich privacy sub-concern is in focus?",
+    options:[{k:"a",html:"Non-compliance with data-protection regulations.",correct:true,why:"Lawful cross-border handling is a compliance concern."},{k:"b",html:"Unintentional exposure of data in the output.",correct:false,why:"No accidental output disclosure is described."},{k:"c",html:"A breach of the infrastructure by attackers.",correct:false,why:"That would be a security risk."},{k:"d",html:"Slow performance of the model.",correct:false,why:"Unrelated to compliance."}]},
+  { n:28, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"multi", selectCount:2,
     stem:"Two incidents occur. Select the TWO that are SECURITY risks (not privacy concerns).",
-    options:[
-      {k:"a",html:"Attackers breach the LLM test infrastructure.",correct:true,why:"A breach of the infrastructure is a security risk."},
-      {k:"b",html:"An outsider gains unauthorised access to the GenAI system.",correct:true,why:"Unauthorised access is a security risk."},
-      {k:"c",html:"A vendor reuses your data without consent.",correct:false,why:"That is a privacy concern (lack of control)."},
-      {k:"d",html:"Output that accidentally reveals some sensitive information to others.",correct:false,why:"That is a privacy concern (unintentional exposure)."},
-      {k:"e",html:"Personal data is handled in breach of GDPR.",correct:false,why:"That is a privacy concern (compliance)."}
-    ]},
+    options:[{k:"a",html:"Attackers breach the LLM test infrastructure.",correct:true,why:"A breach is a security risk."},{k:"b",html:"An outsider gains unauthorised access to the GenAI system.",correct:true,why:"Unauthorised access is a security risk."},{k:"c",html:"A vendor reuses your data without consent.",correct:false,why:"A privacy concern (lack of control)."},{k:"d",html:"Output accidentally reveals sensitive information.",correct:false,why:"A privacy concern (unintentional exposure)."},{k:"e",html:"Personal data is handled in breach of GDPR.",correct:false,why:"A privacy concern (compliance)."}]},
+  { n:29, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"A colleague says 'any time data is involved, it must be a privacy concern, never a security one'.\n\nWhy is this WRONG?",
+    options:[{k:"a",html:"Attacks/breaches of the data-holding system are security risks, even though data is involved.",correct:true,why:"Security risks also involve data but are categorised by the attack on the system."},{k:"b",html:"Because data is never involved in security risks.",correct:false,why:"Data is often involved in security incidents too."},{k:"c",html:"Because privacy and security are identical.",correct:false,why:"They are distinct categories."},{k:"d",html:"Because all data issues are really performance problems.",correct:false,why:"False; they are privacy or security issues."}]},
+  { n:30, lo:"GenAI-3.2.1", k:"K2", level:"Medium", points:1, type:"single",
+    stem:"A vendor offers strong encryption and breach defences and clearly states they never train on or reuse your data.\n\nWhich risks are addressed?",
+    options:[{k:"a",html:"Both the security (breach) risk and the privacy lack-of-control concern.",correct:true,why:"Breach defences address security; a no-reuse promise addresses lack of control."},{k:"b",html:"Only the environmental impact.",correct:false,why:"Not the focus of these measures."},{k:"c",html:"Only the diversity of outputs.",correct:false,why:"Unrelated."},{k:"d",html:"Neither privacy nor security.",correct:false,why:"Both are directly addressed."}]},
 
   /* ===================== HARD — subtle distinctions & traps ===================== */
   { n:31, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"Two situations: (1) the model accidentally prints secret data in its reply; (2) an attacker crafts inputs to deliberately make the model leak that data.\n\nHow should each be classified?",
-    options:[
-      {k:"a",html:"(1) privacy — unintentional exposure; (2) security — a deliberate attack.",correct:true,why:"Accidental disclosure is a privacy exposure; deliberate extraction by an attacker is a security attack."},
-      {k:"b",html:"Both are simply ordinary privacy concerns with no security dimension at all.",correct:false,why:"The deliberate attack (2) is a security risk, not merely privacy."},
-      {k:"c",html:"Both are security risks with no privacy dimension.",correct:false,why:"The accidental disclosure (1) is a privacy exposure, not an attack."},
-      {k:"d",html:"Neither relates to privacy or security.",correct:false,why:"Both clearly relate to the two categories."}
-    ]},
+    stem:"Situation A: the model accidentally prints secret data. Situation B: an attacker crafts inputs to deliberately make it leak that data.\n\nHow should each be classified?",
+    options:[{k:"a",html:"A = privacy (unintentional exposure); B = security (a deliberate attack).",correct:true,why:"Accidental disclosure is privacy; deliberate extraction is a security attack."},{k:"b",html:"Both are simply privacy concerns.",correct:false,why:"The deliberate attack is a security risk."},{k:"c",html:"Both are security risks.",correct:false,why:"The accidental disclosure is a privacy exposure."},{k:"d",html:"Neither relates to privacy or security.",correct:false,why:"Both clearly relate to the two categories."}]},
   { n:32, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
     stem:"Sensitive data leaks BECAUSE an attacker breached the test platform and copied the database.\n\nWhat is the PRIMARY classification?",
-    options:[
-      {k:"a",html:"A security risk — the leak resulted from a system breach.",correct:true,why:"When the disclosure is caused by an attacker breaching the system, the primary risk is security."},
-      {k:"b",html:"Purely a privacy concern about some unintentional exposure of data.",correct:false,why:"The cause is a deliberate breach, making it primarily a security risk."},
-      {k:"c",html:"A performance issue with the platform.",correct:false,why:"Unrelated to performance."},
-      {k:"d",html:"A diversity issue in the test data.",correct:false,why:"Unrelated to variety."}
-    ]},
+    options:[{k:"a",html:"A security risk — the leak resulted from a system breach.",correct:true,why:"When disclosure is caused by a breach, the primary risk is security."},{k:"b",html:"Purely a privacy concern about unintentional exposure.",correct:false,why:"The cause is a deliberate breach, making it primarily security."},{k:"c",html:"A performance issue with the platform.",correct:false,why:"Unrelated to performance."},{k:"d",html:"A diversity issue in the data.",correct:false,why:"Unrelated to variety."}]},
   { n:33, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"Sensitive data is disclosed in the model's output with NO attacker involved — it simply included context it shouldn't have.\n\nWhat is the PRIMARY classification?",
-    options:[
-      {k:"a",html:"A privacy concern — unintentional exposure (no attack involved).",correct:true,why:"With no attacker, accidental disclosure in output is a privacy exposure concern."},
-      {k:"b",html:"A security risk, simply because some sensitive data ended up disclosed.",correct:false,why:"Disclosure alone isn't a security risk; security involves an attack/breach, which is absent here."},
-      {k:"c",html:"An environmental concern.",correct:false,why:"Unrelated to energy."},
-      {k:"d",html:"A pure accuracy/hallucination issue.",correct:false,why:"The data was real, not fabricated; the issue is exposure."}
-    ]},
+    stem:"Sensitive data is disclosed in the model's output with NO attacker — it simply included context it shouldn't have.\n\nWhat is the PRIMARY classification?",
+    options:[{k:"a",html:"A privacy concern — unintentional exposure (no attack involved).",correct:true,why:"With no attacker, accidental output disclosure is a privacy exposure."},{k:"b",html:"A security risk, because some data was disclosed.",correct:false,why:"Disclosure alone isn't security; security needs an attack, which is absent."},{k:"c",html:"An environmental concern.",correct:false,why:"Unrelated to energy."},{k:"d",html:"A pure accuracy/hallucination issue.",correct:false,why:"The data was real; the issue is exposure."}]},
   { n:34, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"A teammate claims: \"Any time data is involved, it must be a privacy concern, never a security one.\"\n\nWhy is this WRONG?",
-    options:[
-      {k:"a",html:"Because attacks/breaches of the data-holding system are security risks, even though data is involved.",correct:true,why:"Security risks (breach, unauthorised access) also involve data but are categorised by the attack on the system."},
-      {k:"b",html:"Because data is never actually involved in security risks.",correct:false,why:"Data is often involved in security incidents too."},
-      {k:"c",html:"Because privacy and security are completely identical concepts, so the label never really matters at all.",correct:false,why:"They are distinct categories."},
-      {k:"d",html:"Because all data issues are really just performance problems.",correct:false,why:"False; they are privacy or security issues."}
-    ]},
+    stem:"Two privacy issues: (A) the vendor may reuse your data; (B) you risk fines for how the data is handled.\n\nWhich sub-concerns are these?",
+    options:[{k:"a",html:"(A) lack of control; (B) non-compliance.",correct:true,why:"Reuse without control = lack of control; regulatory fines = compliance."},{k:"b",html:"(A) non-compliance; (B) unintentional exposure.",correct:false,why:"Mislabelled."},{k:"c",html:"Both are unintentional exposure.",correct:false,why:"Neither is accidental output disclosure."},{k:"d",html:"Both are security risks.",correct:false,why:"Both are privacy concerns."}]},
   { n:35, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"Two privacy issues: (A) the vendor may reuse your data; (B) you risk fines under GDPR for how the data is handled.\n\nWhich privacy sub-concerns are these?",
-    options:[
-      {k:"a",html:"(A) lack of control; (B) non-compliance with regulations.",correct:true,why:"Reuse without control = lack of control; regulatory fines = compliance."},
-      {k:"b",html:"(A) non-compliance with rules; (B) unintentional exposure of data.",correct:false,why:"Mislabelled — A is lack of control, B is compliance."},
-      {k:"c",html:"Both are unintentional exposure.",correct:false,why:"Neither is accidental output exposure."},
-      {k:"d",html:"Both are security risks, not privacy concerns.",correct:false,why:"Both are privacy concerns."}
-    ]},
-  { n:36, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"To address a LACK-OF-CONTROL privacy concern specifically, which action is MOST on point?",
-    options:[
-      {k:"a",html:"Check the provider's data-usage terms and restrict what data you submit.",correct:true,why:"Lack of control is addressed by understanding/limiting how the provider may use submitted data."},
-      {k:"b",html:"Add a firewall to block all external attackers from reaching the servers directly.",correct:false,why:"That mitigates a security risk, not the lack-of-control privacy concern."},
-      {k:"c",html:"Increase the model's context window.",correct:false,why:"Irrelevant to data control."},
-      {k:"d",html:"Lower the temperature for consistency.",correct:false,why:"Irrelevant to data control."}
-    ]},
-  { n:37, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"To reduce a SECURITY risk to the GenAI test platform specifically, which action is MOST on point?",
-    options:[
-      {k:"a",html:"Harden access controls and protect the infrastructure against breaches.",correct:true,why:"Security risks are mitigated by protecting the infrastructure against attack/unauthorised access."},
-      {k:"b",html:"Rewrite the vendor's entire privacy policy concerning their data reuse practices.",correct:false,why:"That addresses a privacy (lack-of-control) concern, not infrastructure security."},
-      {k:"c",html:"Add more few-shot examples to the prompt.",correct:false,why:"Irrelevant to infrastructure security."},
-      {k:"d",html:"Increase the diversity of the generated tests.",correct:false,why:"Irrelevant to security."}
-    ]},
-  { n:38, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"A scenario is described as a \"data breach.\" A teammate insists that automatically makes it ONLY a privacy concern.\n\nWhat is the better view?",
-    options:[
-      {k:"a",html:"A breach is primarily a security risk; it may also have privacy consequences.",correct:true,why:"A breach is an attack on the system (security); the resulting data loss has privacy consequences too."},
-      {k:"b",html:"A breach is only ever a pure privacy concern, with no security aspect whatsoever.",correct:false,why:"A breach is fundamentally a security event."},
-      {k:"c",html:"A breach is neither a privacy nor a security matter.",correct:false,why:"It is clearly both, primarily security."},
-      {k:"d",html:"A breach is purely a performance problem.",correct:false,why:"Incorrect category."}
-    ]},
-  { n:39, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
     stem:"Which statement about privacy vs security is INCORRECT?",
-    options:[
-      {k:"a",html:"Unauthorised access to the test system is a data-privacy concern, not a security risk.",correct:true,why:"INCORRECT — unauthorised access is a SECURITY risk, not a privacy concern."},
-      {k:"b",html:"Storing data without consent is a privacy concern.",correct:false,why:"Correct statement (lack of control)."},
-      {k:"c",html:"A system breach is a security risk.",correct:false,why:"Correct statement."},
-      {k:"d",html:"Accidental disclosure of data in the model's output is correctly treated as a privacy concern.",correct:false,why:"Correct statement (unintentional exposure)."}
-    ]},
-  { n:40, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"A regulator asks whether your GenAI testing handles personal data lawfully across borders.\n\nWhich privacy sub-concern is in focus?",
-    options:[
-      {k:"a",html:"Non-compliance with data-protection regulations.",correct:true,why:"Lawful cross-border handling of personal data is a compliance concern."},
-      {k:"b",html:"Unintentional exposure of the data within the model output.",correct:false,why:"No accidental output disclosure is described."},
-      {k:"c",html:"A breach of the infrastructure by attackers.",correct:false,why:"That would be a security risk."},
-      {k:"d",html:"Slow performance of the model.",correct:false,why:"Unrelated to compliance."}
-    ]},
-  { n:41, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"A company hosts the LLM entirely in-house, so no third party can reuse the data, and the infrastructure is hardened against intrusion.\n\nWhich risks has it MOST directly reduced?",
-    options:[
-      {k:"a",html:"Both a privacy (lack-of-control) concern and a security (breach) risk.",correct:true,why:"In-house hosting cuts third-party data reuse (privacy) and hardening reduces breach risk (security)."},
-      {k:"b",html:"Only the environmental impact of the model.",correct:false,why:"Hosting choice doesn't primarily address energy here."},
-      {k:"c",html:"Only the diversity of the generated tests.",correct:false,why:"Unrelated to variety."},
-      {k:"d",html:"Neither privacy nor security — it only ever affects the model's response speed.",correct:false,why:"It directly addresses privacy and security."}
-    ]},
-  { n:42, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    options:[{k:"a",html:"Unauthorised access to the test system is a data-privacy concern, not a security risk.",correct:true,why:"INCORRECT — unauthorised access is a SECURITY risk."},{k:"b",html:"Storing data without consent is a privacy concern.",correct:false,why:"Correct (lack of control)."},{k:"c",html:"A system breach is a security risk.",correct:false,why:"Correct."},{k:"d",html:"Accidental disclosure in output is a privacy concern.",correct:false,why:"Correct (unintentional exposure)."}]},
+  { n:36, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
     stem:"Which scenario is a PRIVACY concern even though NO data is ever stolen or leaked?",
-    options:[
-      {k:"a",html:"The provider's terms let them reuse your data, removing your control over it.",correct:true,why:"Lack of control is a privacy concern regardless of whether any leak occurs."},
-      {k:"b",html:"An attacker who actively breaks straight into the test infrastructure servers themselves.",correct:false,why:"That is a security risk and involves an attack."},
-      {k:"c",html:"The system suffers downtime during peak load.",correct:false,why:"That is a performance issue."},
-      {k:"d",html:"The model generates repetitive, low-variety tests.",correct:false,why:"That is a diversity issue."}
-    ]},
-  { n:43, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"A teammate says unintentional data exposure and a deliberate data-exfiltration attack are \"the same risk.\"\n\nWhy are they different?",
-    options:[
-      {k:"a",html:"Exposure is accidental disclosure (privacy); exfiltration is a deliberate attack (security).",correct:true,why:"Accidental disclosure is a privacy concern; a deliberate extraction attack is a security risk."},
-      {k:"b",html:"They are completely identical risks and are therefore always classified in exactly the same way.",correct:false,why:"Intent and category differ — one is accidental privacy, one is an attack."},
-      {k:"c",html:"Both are purely environmental concerns.",correct:false,why:"Neither is environmental."},
-      {k:"d",html:"Both are performance problems.",correct:false,why:"Neither is about performance."}
-    ]},
-  { n:44, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"multi", selectCount:2,
+    options:[{k:"a",html:"The provider's terms let them reuse your data, removing your control over it.",correct:true,why:"Lack of control is a privacy concern regardless of any leak."},{k:"b",html:"An attacker actively breaks into the infrastructure.",correct:false,why:"That is a security risk involving an attack."},{k:"c",html:"The system suffers downtime during peak load.",correct:false,why:"A performance issue."},{k:"d",html:"The model generates repetitive, low-variety tests.",correct:false,why:"A diversity issue."}]},
+  { n:37, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A teammate says unintentional data exposure and a deliberate data-exfiltration attack are 'the same risk'.\n\nWhy are they different?",
+    options:[{k:"a",html:"Exposure is accidental disclosure (privacy); exfiltration is a deliberate attack (security).",correct:true,why:"Intent and category differ — one is accidental privacy, one is a security attack."},{k:"b",html:"They are identical and always classified the same way.",correct:false,why:"Intent and category differ."},{k:"c",html:"Both are purely environmental concerns.",correct:false,why:"Neither is environmental."},{k:"d",html:"Both are performance problems.",correct:false,why:"Neither is about performance."}]},
+  { n:38, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"multi", selectCount:2,
     stem:"Select the TWO situations that are DATA PRIVACY concerns (not security risks).",
-    options:[
-      {k:"a",html:"A cloud tool reuses your submitted data beyond your control.",correct:true,why:"Lack of control over data reuse is a privacy concern."},
-      {k:"b",html:"Handling personal data in a way that breaches GDPR.",correct:true,why:"Regulatory non-compliance is a privacy concern."},
-      {k:"c",html:"An attacker breaches the test platform's servers.",correct:false,why:"That is a security risk."},
-      {k:"d",html:"An intruder gains unauthorised admin access.",correct:false,why:"That is a security risk."},
-      {k:"e",html:"The whole integration is compromised by a carefully crafted exploit.",correct:false,why:"That is a security risk."}
-    ]},
-  { n:45, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    options:[{k:"a",html:"A cloud tool reuses your submitted data beyond your control.",correct:true,why:"Lack of control over reuse is a privacy concern."},{k:"b",html:"Handling personal data in a way that breaches GDPR.",correct:true,why:"Regulatory non-compliance is a privacy concern."},{k:"c",html:"An attacker breaches the test platform's servers.",correct:false,why:"A security risk."},{k:"d",html:"An intruder gains unauthorised admin access.",correct:false,why:"A security risk."},{k:"e",html:"The integration is compromised by a crafted exploit.",correct:false,why:"A security risk."}]},
+  { n:39, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
     stem:"Which statement is CORRECT about how privacy and security relate?",
-    options:[
-      {k:"a",html:"They are distinct but can overlap — a breach (security) can cause data loss (privacy impact).",correct:true,why:"They are separate categories that can interact; a security breach can have privacy consequences."},
-      {k:"b",html:"They are entirely separate and never interact with one another under any circumstances whatsoever.",correct:false,why:"They can interact (e.g., a breach causing exposure)."},
-      {k:"c",html:"Security is just a sub-type of privacy.",correct:false,why:"They are distinct categories, not nested."},
-      {k:"d",html:"Privacy is just a sub-type of performance.",correct:false,why:"Privacy is unrelated to performance."}
-    ]},
-  { n:46, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"A vendor promises strong encryption and breach protection but says nothing about whether they reuse your data.\n\nWhich risk remains UNADDRESSED?",
-    options:[
-      {k:"a",html:"The privacy lack-of-control concern over data reuse.",correct:true,why:"Encryption/breach protection address security; data-reuse control (privacy) is still unaddressed."},
-      {k:"b",html:"The headline security risk of external system breaches.",correct:false,why:"Breach protection addresses that security risk."},
-      {k:"c",html:"The model's response speed.",correct:false,why:"Unrelated to the question."},
-      {k:"d",html:"The environmental energy footprint.",correct:false,why:"Unrelated to the question."}
-    ]},
-  { n:47, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"Which is the BEST one-line summary a tester could give of LO 3.2.1?",
-    options:[
-      {k:"a",html:"Privacy = protecting the data (control, exposure, compliance); security = protecting the system from attack.",correct:true,why:"Captures the core distinction the LO draws between data-privacy concerns and security risks."},
-      {k:"b",html:"Privacy and security both only mean encrypting everything.",correct:false,why:"Encryption is one control, not the definition of either category."},
-      {k:"c",html:"Privacy and security are basically interchangeable words that both describe the exact same single underlying risk.",correct:false,why:"They are distinct categories."},
-      {k:"d",html:"Privacy and security are about how fast the model answers.",correct:false,why:"Speed is unrelated."}
-    ]},
-  { n:48, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"A scenario describes both: the vendor reuses data without consent AND a hacker later breaks into the platform.\n\nHow are the two parts classified?",
-    options:[
-      {k:"a",html:"Reuse without consent = privacy; the break-in = security.",correct:true,why:"Two distinct issues: lack-of-control privacy concern and a security breach."},
-      {k:"b",html:"Both parts are security risks.",correct:false,why:"The data reuse is a privacy concern, not a security risk."},
-      {k:"c",html:"Both parts are privacy concerns.",correct:false,why:"The break-in is a security risk, not privacy."},
-      {k:"d",html:"Neither part of the scenario is a privacy or a security issue.",correct:false,why:"Both clearly map to the two categories."}
-    ]},
-  { n:49, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    options:[{k:"a",html:"They are distinct but can overlap — a breach (security) can cause data loss (privacy impact).",correct:true,why:"Separate categories that can interact; a breach can have privacy consequences."},{k:"b",html:"They never interact under any circumstances.",correct:false,why:"They can interact."},{k:"c",html:"Security is just a sub-type of privacy.",correct:false,why:"They are distinct, not nested."},{k:"d",html:"Privacy is just a sub-type of performance.",correct:false,why:"Privacy is unrelated to performance."}]},
+  { n:40, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A scenario describes the vendor reusing data without consent AND, separately, a hacker later breaking into the platform.\n\nHow are the two parts classified?",
+    options:[{k:"a",html:"Reuse without consent = privacy; the break-in = security.",correct:true,why:"Two distinct issues: a lack-of-control privacy concern and a security breach."},{k:"b",html:"Both parts are security risks.",correct:false,why:"The reuse is a privacy concern."},{k:"c",html:"Both parts are privacy concerns.",correct:false,why:"The break-in is a security risk."},{k:"d",html:"Neither part is a privacy or security issue.",correct:false,why:"Both map to the two categories."}]},
+  { n:41, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
     stem:"Which scenario is NEITHER a data-privacy concern NOR a security risk?",
-    options:[
-      {k:"a",html:"The GenAI tool's heavy compute drives up the team's carbon footprint.",correct:true,why:"That is an environmental concern (3.3), outside the 3.2.1 privacy/security categories."},
-      {k:"b",html:"A tool stores personal data without consent.",correct:false,why:"That is a privacy concern."},
-      {k:"c",html:"Attackers breach the test infrastructure.",correct:false,why:"That is a security risk."},
-      {k:"d",html:"Output that accidentally reveals confidential data to an unintended party.",correct:false,why:"That is a privacy concern."}
-    ]},
+    options:[{k:"a",html:"The GenAI tool's heavy compute drives up the team's carbon footprint.",correct:true,why:"That is an environmental concern (3.3), outside 3.2.1."},{k:"b",html:"A tool stores personal data without consent.",correct:false,why:"A privacy concern."},{k:"c",html:"Attackers breach the test infrastructure.",correct:false,why:"A security risk."},{k:"d",html:"Output accidentally reveals confidential data.",correct:false,why:"A privacy concern."}]},
+  { n:42, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Encryption and breach protection are in place, but the vendor still trains on whatever you submit.\n\nWhich risk is STILL open?",
+    options:[{k:"a",html:"The privacy lack-of-control concern over data reuse.",correct:true,why:"Security measures don't address the vendor's reuse of your data."},{k:"b",html:"The security risk of system breaches.",correct:false,why:"Breach protection addresses that."},{k:"c",html:"The model's response speed.",correct:false,why:"Unrelated."},{k:"d",html:"The environmental footprint.",correct:false,why:"Unrelated."}]},
+  { n:43, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Your manager wants the safest overall posture when testing with GenAI on sensitive data.\n\nWhich approach BEST addresses BOTH privacy and security?",
+    options:[{k:"a",html:"Control what data is shared and how it's used, and harden the infrastructure against attack.",correct:true,why:"Addressing data control/exposure/compliance (privacy) AND protecting the system (security) covers both."},{k:"b",html:"Only buy the fastest model available.",correct:false,why:"Speed addresses neither."},{k:"c",html:"Only maximise the diversity of generated tests.",correct:false,why:"Variety addresses neither."},{k:"d",html:"Only reduce the model's energy consumption.",correct:false,why:"That is environmental, not privacy or security."}]},
+  { n:44, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A finding reads: 'the LLM-powered test infrastructure can be accessed by unauthorised parties.'\n\nWhich category, and what kind of mitigation fits?",
+    options:[{k:"a",html:"A security risk — mitigated by hardening access controls and protecting the infrastructure.",correct:true,why:"Unauthorised access is a security risk addressed by infrastructure protection."},{k:"b",html:"A privacy concern — mitigated by rewriting the data-reuse policy.",correct:false,why:"Reuse policy addresses a privacy concern, not unauthorised access."},{k:"c",html:"A performance issue — mitigated by scaling servers.",correct:false,why:"Unauthorised access is not performance."},{k:"d",html:"An environmental concern — mitigated by right-sizing the model.",correct:false,why:"Not environmental."}]},
+  { n:45, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which is the BEST one-line summary of LO 3.2.1?",
+    options:[{k:"a",html:"Privacy = protecting the data (control, exposure, compliance); security = protecting the system from attack.",correct:true,why:"Captures the core distinction the LO draws."},{k:"b",html:"Privacy and security both just mean encrypting everything.",correct:false,why:"Encryption is one control, not the definition of either."},{k:"c",html:"Privacy and security are interchangeable words for one risk.",correct:false,why:"They are distinct categories."},{k:"d",html:"Privacy and security are about how fast the model answers.",correct:false,why:"Speed is unrelated."}]},
+  { n:46, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A consultant claims that hosting the LLM in-house automatically removes ALL data-privacy obligations.\n\nWhy is this WRONG?",
+    options:[{k:"a",html:"In-house hosting improves control but does not remove privacy obligations such as lawful handling and exposure prevention.",correct:true,why:"You still must handle data lawfully and prevent exposure even when self-hosted."},{k:"b",html:"Because in-house hosting actually increases the risk of vendor reuse.",correct:false,why:"In-house hosting reduces, not increases, third-party reuse."},{k:"c",html:"Because only public chatbots have any privacy obligations.",correct:false,why:"Obligations depend on the data, not only on chatbots."},{k:"d",html:"Because privacy obligations only apply to security teams.",correct:false,why:"They apply to anyone handling the data."}]},
+  { n:47, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A finding reads: 'the model's output occasionally includes confidential details from its context, with no attacker present.'\n\nWhich mitigation fits the category BEST?",
+    options:[{k:"a",html:"Sanitise/limit what sensitive data enters the prompt context to prevent accidental disclosure.",correct:true,why:"Unintentional exposure (privacy) is mitigated by controlling what enters the context."},{k:"b",html:"Deploy a firewall to block external attackers.",correct:false,why:"There is no attacker; this is accidental exposure, not a breach."},{k:"c",html:"Increase the model's diversity setting.",correct:false,why:"Unrelated to exposure."},{k:"d",html:"Switch to the largest available model.",correct:false,why:"Model size doesn't prevent accidental disclosure."}]},
+  { n:48, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"Which statement is INCORRECT?",
+    options:[{k:"a",html:"A breach of the test infrastructure is best classified as a privacy compliance issue.",correct:true,why:"INCORRECT — a breach is primarily a SECURITY risk, not a compliance issue."},{k:"b",html:"Reusing data without consent is a privacy lack-of-control concern.",correct:false,why:"Correct."},{k:"c",html:"Accidental disclosure in output is unintentional exposure.",correct:false,why:"Correct."},{k:"d",html:"Violating GDPR when handling data is a privacy compliance concern.",correct:false,why:"Correct."}]},
+  { n:49, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
+    stem:"A report bundles three findings: (i) no opt-out from data reuse, (ii) a GDPR violation, (iii) an unauthenticated endpoint.\n\nWhich classification of the three is CORRECT?",
+    options:[{k:"a",html:"(i) privacy lack-of-control; (ii) privacy compliance; (iii) security.",correct:true,why:"Reuse = lack of control; GDPR breach = compliance; open endpoint = security."},{k:"b",html:"All three are security risks.",correct:false,why:"(i) and (ii) are privacy concerns."},{k:"c",html:"All three are privacy concerns.",correct:false,why:"(iii) is a security risk."},{k:"d",html:"(i) security; (ii) performance; (iii) privacy.",correct:false,why:"Mislabelled across the board."}]},
   { n:50, lo:"GenAI-3.2.1", k:"K2", level:"Hard", points:1, type:"single",
-    stem:"Your manager asks for the safest overall posture when testing with GenAI on sensitive data.\n\nWhich approach BEST addresses BOTH privacy and security?",
-    options:[
-      {k:"a",html:"Control what data is shared and how it's used, and harden the infrastructure against attack.",correct:true,why:"Addressing data control/exposure/compliance (privacy) AND protecting the system (security) covers both categories."},
-      {k:"b",html:"Only buy the fastest model available.",correct:false,why:"Speed addresses neither privacy nor security."},
-      {k:"c",html:"Only ever focus on maximising the raw diversity of all the generated tests, and nothing else at all.",correct:false,why:"Variety addresses neither category."},
-      {k:"d",html:"Only reduce the model's energy consumption.",correct:false,why:"That is environmental, not privacy or security."}
-    ]}
+    stem:"A vendor addresses encryption, breach protection, lawful data handling, and a no-reuse promise, but the model still sometimes prints context data in its replies.\n\nWhich risk remains?",
+    options:[{k:"a",html:"A privacy unintentional-exposure concern in the output.",correct:true,why:"The remaining gap is accidental disclosure in output — unintentional exposure."},{k:"b",html:"A security breach risk.",correct:false,why:"Breach protection is in place."},{k:"c",html:"A privacy lack-of-control concern.",correct:false,why:"The no-reuse promise addresses control."},{k:"d",html:"A compliance concern.",correct:false,why:"Lawful handling is addressed."}]}
   ]
 };
 </script>
