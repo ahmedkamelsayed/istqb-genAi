@@ -70,7 +70,7 @@
       if (!ord) return q;
       var opts = ord.map(function (origIdx, pos) {
         var o = q.options[origIdx];
-        return { k: String.fromCharCode(97 + pos), html: o.html, correct: !!o.correct, why: o.why };
+        return { k: String.fromCharCode(97 + pos), html: o.html, correct: !!o.correct, why: o.why, struct: o.struct };
       });
       var nq = Object.assign({}, q); nq.options = opts; return nq;
     });
@@ -345,7 +345,7 @@
       row.appendChild(input);
       var body = el("div", "opt-body");
       body.appendChild(el("span", "opt-key", o.k + ")"));
-      body.appendChild(el("span", "opt-text", o.html));
+      body.appendChild(el("span", "opt-text" + (o.struct ? " struct" : ""), o.html));
       row.appendChild(body);
       opts.appendChild(row);
     });
@@ -608,7 +608,7 @@
         var tag = isCor ? "✔ correct" : (isSel ? "✗ your pick" : "");
         var row = el("div", cls);
         row.innerHTML =
-          "<div class='ro-head'><span class='ro-key'>" + o.k + ")</span> <span class='ro-text'>" + o.html + "</span>" +
+          "<div class='ro-head'><span class='ro-key'>" + o.k + ")</span> <span class='ro-text" + (o.struct ? " struct" : "") + "'>" + o.html + "</span>" +
           (tag ? " <span class='ro-tag'>" + tag + "</span>" : "") + "</div>" +
           (o.why ? "<div class='ro-why'>" + o.why + "</div>" : "");
         opts.appendChild(row);
