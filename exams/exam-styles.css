@@ -92,9 +92,14 @@ b{color:#0f172a}
 .opt:hover{border-color:var(--brand2);background:#f8fdff}
 .opt.chosen{border-color:var(--brand);background:#ecfeff}
 .opt input{margin-top:4px;width:17px;height:17px;accent-color:var(--brand);flex:none}
-.opt-body{display:flex;gap:8px}
-.opt-key{font-weight:700;color:var(--brand)}
-.opt-text{color:#334155}
+.opt-body{display:flex;gap:8px;flex:1;min-width:0}
+.opt-key{font-weight:700;color:var(--brand);flex:none}
+.opt-text{color:#334155;line-height:1.55;min-width:0}
+.opt-text b{color:#0f172a}
+/* structured (ISTQB-style) multi-line options, e.g. Role/Context/Instruction prompts */
+.opt-text.struct{display:block}
+.opt-text.struct .ln{display:block;margin:1px 0}
+.ro-text.struct .ln{display:block;margin:1px 0}
 .q-nav{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
 .q-nav .btn-primary{margin-left:auto}
 
