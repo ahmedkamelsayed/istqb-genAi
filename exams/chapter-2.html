@@ -14,274 +14,274 @@
 window.EXAM = {
   id: "chapter-2",
   title: "Chapter 2 Exam — Prompt Engineering for Software Testing",
-  source: "33 original questions on Chapter 2 learning objectives (triple the real-exam weight). K3 questions are worth 2 points. Options shuffle each attempt. Not an official ISTQB exam.",
+  source: "33 original scenario-based questions on Chapter 2 learning objectives (triple the real-exam weight). K3 questions are worth 2 points. Options shuffle each attempt. Not an official ISTQB exam.",
   durationMinutes: 50,
   passPercent: 65,
   shuffleOptions: true,
   questions: [
   { n:1, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
-    stem:"A prompt line reads: \"Return the result as a JUnit test class.\" Which prompt component is this?",
+    stem:"A structured prompt ends with the line:\n\n   \"Return the result as a JUnit test class.\"\n\nWhich prompt component is this?",
     options:[
-      {k:"a",html:"Output format",correct:true,why:"It specifies the structure/format of the response — the output format component."},
-      {k:"b",html:"Instruction",correct:false,why:"The instruction is the task to perform, not the output shape."},
+      {k:"a",html:"Output format",correct:true,why:"It specifies the structure/format of the response."},
+      {k:"b",html:"Instruction (the task itself)",correct:false,why:"Instruction is the task to perform, not the output shape."},
       {k:"c",html:"Constraints",correct:false,why:"Constraints restrict how the task is done."},
       {k:"d",html:"Context",correct:false,why:"Context is background about the test object."}
     ]},
   { n:2, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
-    stem:"A prompt line reads: \"You are testing a REST API that returns user profiles.\" Which prompt component is this?",
+    stem:"A prompt opens with:\n\n   \"You are testing a REST API that returns user profiles.\"\n\nWhich prompt component is this?",
     options:[
-      {k:"a",html:"Context",correct:true,why:"It provides background about the test object/functionality — context."},
-      {k:"b",html:"Role",correct:false,why:"Role defines the persona (e.g., 'act as a tester')."},
-      {k:"c",html:"Output format",correct:false,why:"It does not specify response format."},
+      {k:"a",html:"Context",correct:true,why:"It gives background about the test object/functionality."},
+      {k:"b",html:"Role (the persona to adopt)",correct:false,why:"Role defines the persona (e.g., 'act as a tester')."},
+      {k:"c",html:"Output format",correct:false,why:"It doesn't specify the response format."},
       {k:"d",html:"Constraints",correct:false,why:"It is not a restriction."}
     ]},
   { n:3, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
-    stem:"A prompt includes: \"Attached are the requirements specification and the existing test cases.\" Which prompt component is this?",
+    stem:"A prompt includes:\n\n   \"Attached are the requirements spec and the existing test cases.\"\n\nWhich prompt component is this?",
     options:[
-      {k:"a",html:"Input data",correct:true,why:"Material to process (requirements, existing cases) is the input data component."},
-      {k:"b",html:"Context",correct:false,why:"Context is background framing, not the supplied material."},
+      {k:"a",html:"Input data",correct:true,why:"Material to process (requirements, existing cases) is input data."},
+      {k:"b",html:"Context that frames the background",correct:false,why:"Context is background framing, not the supplied material."},
       {k:"c",html:"Instruction",correct:false,why:"Instruction is the directive to act."},
       {k:"d",html:"Output format",correct:false,why:"It is not about response format."}
     ]},
   { n:4, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
-    stem:"Which set lists the six components of a structured prompt?",
+    stem:"A new tester asks you to name the six components of a well-structured prompt.\n\nWhich set is CORRECT?",
     options:[
       {k:"a",html:"Role, Context, Instruction, Input data, Constraints, Output format",correct:true,why:"These are the six components of a structured prompt."},
-      {k:"b",html:"Role, Bias, Context, Instruction, Input data, Output data",correct:false,why:"\"Bias\" is not a component, and it is Output format, not Output data."},
+      {k:"b",html:"Role, Bias, Context, Instruction, Input data, Output data",correct:false,why:"\"Bias\" isn't a component; it's Output format, not Output data."},
       {k:"c",html:"Persona, Background, Steps, Assumptions, Examples, Result",correct:false,why:"Wrong names; not the six components."},
-      {k:"d",html:"Prompt chain, Role, Instruction, Temperature, Seed, Output",correct:false,why:"Mixes techniques/parameters with components."}
+      {k:"d",html:"Prompt chaining, Role, Instruction, Temperature, Seed, and Output data",correct:false,why:"Mixes techniques/parameters with components."}
     ]},
   { n:5, lo:"GenAI-2.1.2", k:"K2", points:1, type:"single",
-    stem:"Which technique breaks a task into intermediate steps, checking each result before moving to the next?",
+    stem:"For a complex analysis you decompose the task and check each intermediate result before feeding it into the next step.\n\nWhich technique is this?",
     options:[
       {k:"a",html:"Prompt chaining",correct:true,why:"Prompt chaining decomposes a task into checked steps."},
-      {k:"b",html:"Few-shot prompting",correct:false,why:"Few-shot supplies examples; it isn't stepwise decomposition."},
-      {k:"c",html:"Zero-shot prompting",correct:false,why:"Zero-shot uses no examples and no stepwise checking."},
+      {k:"b",html:"Few-shot prompting with examples",correct:false,why:"Few-shot supplies examples."},
+      {k:"c",html:"Zero-shot prompting",correct:false,why:"Zero-shot uses no examples or stepwise checks."},
       {k:"d",html:"Meta prompting",correct:false,why:"Meta prompting crafts/refines the prompt itself."}
     ]},
   { n:6, lo:"GenAI-2.1.2", k:"K2", points:1, type:"single",
-    stem:"Which statement correctly distinguishes zero-shot, one-shot, and few-shot prompting?",
+    stem:"Three testers each provide a different number of worked examples in their prompts: none, one, and several.\n\nWhich statement distinguishes zero-, one-, and few-shot prompting?",
     options:[
-      {k:"a",html:"Zero-shot = no example; one-shot = one example; few-shot = several examples.",correct:true,why:"This is the precise distinction by number of examples provided."},
-      {k:"b",html:"Zero-shot = many examples; few-shot = none.",correct:false,why:"Reversed."},
+      {k:"a",html:"Zero-shot has no example; one-shot one; few-shot several.",correct:true,why:"The distinction is the number of examples provided."},
+      {k:"b",html:"Zero-shot always has many worked examples; few-shot has none at all.",correct:false,why:"Reversed."},
       {k:"c",html:"All three rely on the model writing its own prompt.",correct:false,why:"That is meta prompting."},
-      {k:"d",html:"They differ only in temperature.",correct:false,why:"They differ by examples, not temperature."}
+      {k:"d",html:"They differ only in the temperature used.",correct:false,why:"They differ by examples, not temperature."}
     ]},
   { n:7, lo:"GenAI-2.1.3", k:"K2", points:1, type:"single",
-    stem:"What is the primary role of a system prompt?",
+    stem:"A developer sets one hidden instruction that governs the assistant's behaviour for the whole chat session.\n\nWhat is the primary role of that system prompt?",
     options:[
-      {k:"a",html:"To set the LLM's behavior/rules for the entire conversation; it stays constant and is usually hidden.",correct:true,why:"The system prompt establishes constant behavior for the session and is typically developer/tester-defined and hidden."},
-      {k:"b",html:"To pose the specific question the user wants answered right now.",correct:false,why:"That is the user prompt."},
-      {k:"c",html:"To change with each interaction.",correct:false,why:"That describes the user prompt."},
-      {k:"d",html:"To display the model's output to the user.",correct:false,why:"It governs behavior, not display."}
+      {k:"a",html:"Set behaviour for the whole session; constant and hidden.",correct:true,why:"The system prompt sets constant behaviour for the session and is usually hidden."},
+      {k:"b",html:"Pose the user's one specific question for this particular turn.",correct:false,why:"That is the user prompt."},
+      {k:"c",html:"Change with each user interaction.",correct:false,why:"That describes the user prompt."},
+      {k:"d",html:"Display the model's output on screen.",correct:false,why:"It governs behaviour, not display."}
     ]},
   { n:8, lo:"GenAI-2.1.3", k:"K2", points:1, type:"single",
-    stem:"Which is a characteristic of a USER prompt?",
+    stem:"In a chat, the tester types a fresh, visible request on every turn.\n\nWhich is a characteristic of that USER prompt?",
     options:[
-      {k:"a",html:"It changes with each interaction and is the visible input from the user.",correct:true,why:"User prompts are the visible, changing input for each interaction."},
-      {k:"b",html:"It is set once and stays constant for the whole session.",correct:false,why:"That is the system prompt."},
+      {k:"a",html:"It changes each interaction; the visible user input.",correct:true,why:"User prompts are the visible, changing input per interaction."},
+      {k:"b",html:"It is set once and constant for the session.",correct:false,why:"That is the system prompt."},
       {k:"c",html:"It is usually hidden from the user.",correct:false,why:"That is the system prompt."},
-      {k:"d",html:"It defines global behavior rules the model must always follow.",correct:false,why:"That is the system prompt's job."}
+      {k:"d",html:"It defines the global behaviour rules to always be followed.",correct:false,why:"That is the system prompt's job."}
     ]},
   { n:9, lo:"GenAI-2.2.1", k:"K3", points:2, type:"single",
-    stem:"You have reviewed, stable requirements and want GenAI to derive test conditions, prioritize them by risk, then check coverage. Which prompt-chaining sequence is best?",
+    stem:"For reviewed, stable requirements you want GenAI to derive test conditions, prioritise them by risk, then check coverage — each step verified before the next.\n\nWhich chaining sequence is BEST?",
     options:[
-      {k:"a",html:"Generate test conditions → prioritize them by risk likelihood/impact → analyze coverage of all requirements.",correct:true,why:"Test analysis on stable requirements: derive conditions, prioritize by risk, then coverage analysis — each step checked (chaining)."},
-      {k:"b",html:"Generate everything (conditions, priorities, coverage) in one prompt.",correct:false,why:"One-shot everything contradicts prompt chaining's stepwise verification."},
-      {k:"c",html:"First detect defects/ambiguities, since the requirements are stable.",correct:false,why:"Requirements are already reviewed/stable, so defect detection is unnecessary here."},
-      {k:"d",html:"Write the automation scripts first, then derive conditions.",correct:false,why:"Script writing is implementation, not test analysis, and the order is wrong."}
+      {k:"a",html:"Generate conditions → prioritise by risk → analyse coverage.",correct:true,why:"Derive conditions, prioritise by risk, then coverage analysis — each step checked."},
+      {k:"b",html:"Generate the conditions, priorities, and coverage all in one single prompt.",correct:false,why:"One-shot everything contradicts prompt chaining."},
+      {k:"c",html:"First detect defects, since the requirements are stable.",correct:false,why:"Stable/reviewed requirements make defect detection unnecessary here."},
+      {k:"d",html:"Write the automation scripts before deriving conditions.",correct:false,why:"That is implementation, and the order is wrong."}
     ]},
   { n:10, lo:"GenAI-2.2.1", k:"K3", points:2, type:"single",
-    stem:"For each requirement you want GenAI to suggest a suitable test design technique (e.g., boundary value analysis, equivalence partitioning). How should you apply it (test analysis)?",
+    stem:"For each requirement, you want GenAI to suggest a fitting test design technique (e.g., BVA, equivalence partitioning).\n\nHow should you apply it for this test-analysis task?",
     options:[
-      {k:"a",html:"Prompt the LLM to analyze each requirement and recommend appropriate test techniques based on its type.",correct:true,why:"Suggesting relevant techniques per requirement is a listed test-analysis use of GenAI."},
-      {k:"b",html:"Have the LLM execute the tests and report results.",correct:false,why:"LLMs don't execute the system; that's not test analysis."},
-      {k:"c",html:"Lower the temperature to 0 to pick techniques.",correct:false,why:"Temperature controls variability, not technique selection."},
+      {k:"a",html:"Have the LLM analyse each requirement and suggest techniques.",correct:true,why:"Suggesting relevant techniques per requirement is a test-analysis use of GenAI."},
+      {k:"b",html:"Have the LLM execute all the tests itself and report the results.",correct:false,why:"LLMs don't execute the system; that's not test analysis."},
+      {k:"c",html:"Lower the temperature to zero to pick the techniques.",correct:false,why:"Temperature controls variability, not technique selection."},
       {k:"d",html:"Deploy to production to see which technique fits.",correct:false,why:"Deployment is irrelevant here."}
     ]},
   { n:11, lo:"GenAI-2.2.2", k:"K3", points:2, type:"single",
-    stem:"You generated functional test cases from a user story and must confirm every acceptance criterion is covered. Best next step with GenAI?",
+    stem:"You generated test cases from a user story and must confirm each acceptance criterion is actually covered.\n\nWhat is the BEST next step?",
     options:[
-      {k:"a",html:"Have the LLM produce a coverage table mapping each acceptance criterion to its test cases.",correct:true,why:"A coverage table mapping criteria to cases verifies completeness (test-design HO)."},
-      {k:"b",html:"Re-run at a higher temperature and accept the new output.",correct:false,why:"Temperature adds variability, not coverage verification."},
-      {k:"c",html:"Delete near-duplicate cases without checking coverage.",correct:false,why:"Deleting cases risks reducing coverage."},
-      {k:"d",html:"Ship the cases without any check.",correct:false,why:"Skipping verification can leave criteria uncovered."}
+      {k:"a",html:"Have the LLM produce a coverage table mapping criteria to cases.",correct:true,why:"A coverage table mapping criteria to cases verifies completeness."},
+      {k:"b",html:"Re-run the generation at a higher temperature and accept the new output.",correct:false,why:"Temperature adds variability, not coverage verification."},
+      {k:"c",html:"Delete all near-duplicate cases without ever checking the coverage.",correct:false,why:"Deleting cases risks reducing coverage."},
+      {k:"d",html:"Ship the cases without any verification.",correct:false,why:"Skipping verification can leave criteria uncovered."}
     ]},
   { n:12, lo:"GenAI-2.2.2", k:"K3", points:2, type:"single",
-    stem:"You must generate Gherkin (Given-When-Then) scenarios from user stories and you have several example story→scenario pairs. Which technique fits best?",
+    stem:"You must generate Gherkin-style (Given-When-Then) scenarios from a user story, and you already have several example story→scenario pairs to imitate.\n\n   • User story: \"As a shopper, I want to filter search results by price so that I can find affordable items.\"\n   • You hold predefined example story→scenario pairs.\n\nUsing the few-shot structured prompting technique, which prompt is BEST suited?",
     options:[
-      {k:"a",html:"Few-shot prompting using the example pairs.",correct:true,why:"Few-shot with examples is ideal for a specific, consistent output format like Gherkin."},
-      {k:"b",html:"Zero-shot prompting with no examples.",correct:false,why:"Ignoring the examples gives less reliable formatting."},
-      {k:"c",html:"Meta prompting only.",correct:false,why:"Meta prompting crafts prompts; it doesn't leverage the example pairs for the format."},
-      {k:"d",html:"Lowering the temperature to enforce Gherkin.",correct:false,why:"Temperature does not enforce syntax."}
+      {k:"a", struct:true, html:"<span class='ln'><b>Role:</b> Act as a test analyst specialising in Gherkin scenarios.</span><span class='ln'><b>Context:</b> You are testing a search price-filter feature.</span><span class='ln'><b>Instruction:</b> Generate Gherkin scenarios for the user story, using the following predefined example pairs as a guide: &lt;&lt; example pairs &gt;&gt;.</span><span class='ln'><b>Input Data:</b> &lt;&lt;&lt; user story &gt;&gt;&gt;.</span><span class='ln'><b>Constraints:</b> Use Given-When-Then syntax and cover both valid and invalid price filters.</span><span class='ln'><b>Output Format:</b> One Given-When-Then scenario per case.</span>", correct:true, why:"BEST: it is few-shot (uses the example pairs), supplies the input data, constrains output to Given-When-Then covering valid and invalid filters, and fixes a clear scenario format — every part of the task is covered."},
+      {k:"b", struct:true, html:"<span class='ln'><b>Role:</b> Act as a test analyst.</span><span class='ln'><b>Context:</b> You are testing a search price-filter feature.</span><span class='ln'><b>Instruction:</b> Generate Gherkin scenarios for the user story, using the following predefined example pairs as a guide: &lt;&lt; example pairs &gt;&gt;.</span><span class='ln'><b>Constraints:</b> Rely on best practices to write the scenarios.</span><span class='ln'><b>Output Format:</b> Generate the scenarios with expected results.</span>", correct:false, why:"Few-shot, but it omits the input data and never constrains the Given-When-Then syntax or valid/invalid coverage."},
+      {k:"c", struct:true, html:"<span class='ln'><b>Role:</b> Act as a test analyst.</span><span class='ln'><b>Context:</b> You are testing a search price-filter feature for a large online retail store.</span><span class='ln'><b>Instruction:</b> Generate Gherkin scenarios for the user story, relying on your own general experience and professional judgement rather than any of the provided example pairs.</span><span class='ln'><b>Input Data:</b> &lt;&lt;&lt; user story &gt;&gt;&gt;.</span><span class='ln'><b>Constraints:</b> Use Given-When-Then syntax and cover valid and invalid filters.</span><span class='ln'><b>Output Format:</b> One Given-When-Then scenario per case.</span>", correct:false, why:"It explicitly ignores the example pairs, so it is NOT few-shot — but the task asks you to use the few-shot technique with the examples."},
+      {k:"d", struct:true, html:"<span class='ln'><b>Role:</b> Act as a developer.</span><span class='ln'><b>Context:</b> You are building a search filter.</span><span class='ln'><b>Instruction:</b> Write a few test ideas for the filter.</span><span class='ln'><b>Constraints:</b> Keep it short.</span><span class='ln'><b>Output Format:</b> A plain prose paragraph.</span>", correct:false, why:"Wrong role, no examples, no input data, no Gherkin syntax, prose output — it fails almost every requirement."}
     ]},
   { n:13, lo:"GenAI-2.2.3", k:"K3", points:2, type:"single",
-    stem:"In CI/CD, GUI regression scripts break whenever element locators change between builds. Which GenAI capability helps most?",
+    stem:"GUI regression scripts break whenever element locators change between builds, even though behaviour is unchanged.\n\nWhich GenAI capability helps MOST?",
     options:[
-      {k:"a",html:"Self-healing/adaptive tests that auto-adjust scripts to minor UI changes such as changed locators.",correct:true,why:"Self-healing tests adapt to minor UI changes, reducing false failures."},
-      {k:"b",html:"Generating a new test plan document.",correct:false,why:"A document doesn't fix flaky locators."},
-      {k:"c",html:"Deleting the failing tests.",correct:false,why:"Removes coverage instead of fixing the cause."},
-      {k:"d",html:"Increasing the model's context window.",correct:false,why:"Unrelated to locator changes."}
+      {k:"a",html:"Self-healing tests that auto-adjust to changed locators",correct:true,why:"Self-healing tests adapt to minor UI changes, reducing false failures."},
+      {k:"b",html:"Generating a brand-new, high-level master test plan document",correct:false,why:"A document doesn't fix flaky locators."},
+      {k:"c",html:"Deleting the failing regression tests",correct:false,why:"Removes coverage instead of fixing the cause."},
+      {k:"d",html:"Increasing the model's context window",correct:false,why:"Unrelated to locator changes."}
     ]},
   { n:14, lo:"GenAI-2.2.3", k:"K3", points:2, type:"single",
-    stem:"In automated regression testing, which is a valid GenAI-supported activity?",
+    stem:"After a code change, your team wants GenAI to help target regression and build the keyword-driven scripts.\n\nWhich is a VALID GenAI-supported activity in automated regression testing?",
     options:[
-      {k:"a",html:"Impact analysis of code changes to focus regression on high-risk areas, and keyword-driven script implementation.",correct:true,why:"GenAI supports impact analysis and keyword-driven automation to target and build regression tests."},
-      {k:"b",html:"Guaranteeing zero regressions without any test execution.",correct:false,why:"No such guarantee; tests still run."},
-      {k:"c",html:"Permanently removing all manual review.",correct:false,why:"Output must still be reviewed by risk."},
-      {k:"d",html:"Replacing the CI/CD pipeline entirely.",correct:false,why:"GenAI assists within the pipeline, not replaces it."}
+      {k:"a",html:"Impact analysis on changes plus keyword-driven script generation",correct:true,why:"GenAI supports impact analysis and keyword-driven automation to target and build regression tests."},
+      {k:"b",html:"Guaranteeing absolutely zero regressions without ever running any tests",correct:false,why:"No such guarantee; tests still run."},
+      {k:"c",html:"Permanently removing all manual review",correct:false,why:"Output must still be reviewed by risk."},
+      {k:"d",html:"Replacing the CI/CD pipeline entirely",correct:false,why:"GenAI assists within the pipeline, not replaces it."}
     ]},
   { n:15, lo:"GenAI-2.2.4", k:"K3", points:2, type:"single",
-    stem:"Which is an example of GenAI assisting test MONITORING (rather than control)?",
+    stem:"Management wants a glanceable view of trends and coverage from this week's data — without acting on it yet.\n\nWhich is an example of GenAI assisting test MONITORING (rather than control)?",
     options:[
-      {k:"a",html:"Generating dashboards and natural-language summaries of defect trends and coverage from raw test data.",correct:true,why:"Trend/coverage dashboards and summaries are monitoring/reporting."},
-      {k:"b",html:"Reallocating testers to high-risk areas.",correct:false,why:"That is test control."},
-      {k:"c",html:"Rescheduling the remaining test cycles.",correct:false,why:"That is test control."},
-      {k:"d",html:"Reprioritizing the backlog toward critical features.",correct:false,why:"That is test control."}
+      {k:"a",html:"Generate dashboards and natural-language summaries of trends",correct:true,why:"Trend/coverage dashboards and summaries are monitoring/reporting."},
+      {k:"b",html:"Reallocate all of the available testers to the highest-risk areas right now",correct:false,why:"That is test control."},
+      {k:"c",html:"Reschedule the remaining test cycles",correct:false,why:"That is test control."},
+      {k:"d",html:"Reprioritise the backlog toward critical features",correct:false,why:"That is test control."}
     ]},
   { n:16, lo:"GenAI-2.2.4", k:"K3", points:2, type:"single",
-    stem:"Which is an example of GenAI assisting test CONTROL?",
+    stem:"Acting on the monitoring data, the manager wants GenAI to help steer the rest of the effort.\n\nWhich is an example of GenAI assisting test CONTROL?",
     options:[
-      {k:"a",html:"Providing insights to reprioritize tests, adjust schedules, and reallocate resources to high-priority areas.",correct:true,why:"Acting on monitoring data (reprioritize/reschedule/reallocate) is test control."},
-      {k:"b",html:"Producing a defect-trend dashboard.",correct:false,why:"That is monitoring/reporting."},
-      {k:"c",html:"Summarizing coverage in natural language.",correct:false,why:"That is monitoring/reporting."},
-      {k:"d",html:"Writing a test completion report.",correct:false,why:"That is a completion insight, not active control."}
+      {k:"a",html:"Reprioritise tests, adjust schedules, and reallocate resources",correct:true,why:"Acting on monitoring data (reprioritise/reschedule/reallocate) is test control."},
+      {k:"b",html:"Produce a defect-trend dashboard for stakeholders",correct:false,why:"That is monitoring/reporting."},
+      {k:"c",html:"Summarise the overall test coverage in plain, readable natural language prose",correct:false,why:"That is monitoring/reporting."},
+      {k:"d",html:"Write a test completion report",correct:false,why:"That is a completion insight, not active control."}
     ]},
   { n:17, lo:"GenAI-2.2.5", k:"K3", points:2, type:"single",
-    stem:"You must repeatedly produce reports in a fixed, organization-specific layout and you have several example reports to model. Which technique is best?",
+    stem:"Every release you must produce reports in a fixed layout, and you have several example reports to imitate.\n\nWhich technique is BEST?",
     options:[
-      {k:"a",html:"Few-shot prompting",correct:true,why:"Repetitive tasks with a specific output format and available examples suit few-shot prompting."},
-      {k:"b",html:"Meta prompting",correct:false,why:"Meta prompting suits flexible/new tasks, not repetitive fixed-format generation with examples."},
-      {k:"c",html:"Prompt chaining",correct:false,why:"Chaining suits complex multi-step tasks needing verification."},
-      {k:"d",html:"Zero-shot prompting",correct:false,why:"Zero-shot ignores the examples and is less reliable for a strict format."}
+      {k:"a",html:"Few-shot prompting",correct:true,why:"Repetitive fixed-format output with available examples suits few-shot."},
+      {k:"b",html:"Meta prompting for a new, undefined task",correct:false,why:"Meta prompting suits flexible/new tasks."},
+      {k:"c",html:"Prompt chaining",correct:false,why:"Chaining suits complex tasks needing verification."},
+      {k:"d",html:"Zero-shot prompting",correct:false,why:"Zero-shot ignores the examples; less reliable for a strict format."}
     ]},
   { n:18, lo:"GenAI-2.2.5", k:"K3", points:2, type:"single",
-    stem:"You face a brand-new, ill-defined analysis task and are unsure how to even word the prompt. Which technique is the best starting point?",
+    stem:"You face a brand-new, ill-defined task and aren't sure how to even word the prompt.\n\nWhich starting technique is BEST?",
     options:[
-      {k:"a",html:"Meta prompting",correct:true,why:"Meta prompting helps when you're unsure how to craft a prompt — collaborate with the LLM to build it."},
-      {k:"b",html:"Few-shot prompting",correct:false,why:"You lack good examples for a vague new task."},
-      {k:"c",html:"Prompt chaining",correct:false,why:"Chaining suits decomposing a known process, not crafting a prompt for an unknown task."},
-      {k:"d",html:"Zero-shot prompting",correct:false,why:"Zero-shot gives one shot with no help developing the approach."}
+      {k:"a",html:"Meta prompting",correct:true,why:"Meta prompting helps you collaborate with the LLM to craft the prompt."},
+      {k:"b",html:"Few-shot prompting with examples",correct:false,why:"You lack good examples for a vague new task."},
+      {k:"c",html:"Prompt chaining",correct:false,why:"Chaining suits decomposing a known process."},
+      {k:"d",html:"Zero-shot prompting",correct:false,why:"One shot, no help developing the approach."}
     ]},
   { n:19, lo:"GenAI-2.3.1", k:"K2", points:1, type:"single",
-    stem:"Which metric measures whether the generated cases cover ALL the valid and invalid equivalence partitions of a data class?",
+    stem:"You want to know whether the generated cases cover ALL valid and invalid equivalence partitions of a field.\n\nWhich metric measures that?",
     options:[
-      {k:"a",html:"Recall",correct:true,why:"Recall measures completeness — covering all relevant instances (e.g., all partitions)."},
-      {k:"b",html:"Precision",correct:false,why:"Precision is correctness of produced items for an objective."},
+      {k:"a",html:"Recall",correct:true,why:"Recall measures completeness — covering all relevant instances."},
+      {k:"b",html:"Precision for a specific objective",correct:false,why:"Precision is correctness for an objective."},
       {k:"c",html:"Time efficiency",correct:false,why:"That compares time saved vs manual effort."},
       {k:"d",html:"Execution success rate",correct:false,why:"That measures whether scripts run."}
     ]},
   { n:20, lo:"GenAI-2.3.1", k:"K2", points:1, type:"single",
-    stem:"Which metric measures the proportion of generated test scripts that run without syntax or output-format errors?",
+    stem:"You generated 30 scripts and want the proportion that run without syntax errors.\n\nWhich metric is that?",
     options:[
-      {k:"a",html:"Execution success rate",correct:true,why:"It is the share of generated cases/scripts that execute successfully."},
-      {k:"b",html:"Accuracy",correct:false,why:"Accuracy is overall correctness vs a reference."},
-      {k:"c",html:"Diversity",correct:false,why:"Diversity is variety of scenarios."},
+      {k:"a",html:"Execution success rate",correct:true,why:"It is the share of generated scripts that execute successfully."},
+      {k:"b",html:"Accuracy against a reference",correct:false,why:"Accuracy is overall correctness vs a reference."},
+      {k:"c",html:"Diversity of scenarios",correct:false,why:"Diversity is variety of scenarios."},
       {k:"d",html:"Relevance & contextual fit",correct:false,why:"That is domain appropriateness."}
     ]},
   { n:21, lo:"GenAI-2.3.2", k:"K2", points:1, type:"single",
-    stem:"You create two versions of a prompt and compare their outputs against predefined metrics to see which performs better. Which refinement technique is this?",
+    stem:"You run two prompt versions against the same inputs and compare results against predefined metrics.\n\nWhich technique is this?",
     options:[
-      {k:"a",html:"A/B testing of prompts",correct:true,why:"Comparing prompt versions against predefined metrics is A/B testing of prompts."},
-      {k:"b",html:"Output analysis",correct:false,why:"Output analysis inspects a single output for error patterns."},
-      {k:"c",html:"Integrating user feedback",correct:false,why:"That uses testers' opinions, not a controlled comparison."},
-      {k:"d",html:"Adjusting prompt length",correct:false,why:"That changes detail level, not a head-to-head comparison."}
+      {k:"a",html:"A/B testing of prompts",correct:true,why:"Comparing prompt versions against metrics is A/B testing."},
+      {k:"b",html:"Output analysis of one response",correct:false,why:"Output analysis inspects a single output for errors."},
+      {k:"c",html:"Integrating user feedback",correct:false,why:"That uses testers' opinions."},
+      {k:"d",html:"Adjusting prompt length",correct:false,why:"That changes detail level, not a comparison."}
     ]},
   { n:22, lo:"GenAI-2.3.2", k:"K2", points:1, type:"single",
-    stem:"Your prompt keeps producing the same type of error. You examine the outputs to understand why, so you can refine the prompt. Which technique is this?",
+    stem:"Your prompt keeps producing the same kind of error; you study the outputs to understand why.\n\nWhich technique is this?",
     options:[
-      {k:"a",html:"Output analysis",correct:true,why:"Examining outputs for inaccuracies/inconsistencies to diagnose and prevent errors is output analysis."},
-      {k:"b",html:"A/B testing of prompts",correct:false,why:"A/B compares versions, not diagnoses a single output."},
-      {k:"c",html:"Iterative prompt modification",correct:false,why:"You've iterated already; the diagnostic step is output analysis."},
-      {k:"d",html:"Integrating user feedback",correct:false,why:"That gathers tester opinions, not analysis of the outputs."}
+      {k:"a",html:"Output analysis",correct:true,why:"Examining outputs to diagnose error patterns is output analysis."},
+      {k:"b",html:"A/B testing of two prompt versions",correct:false,why:"A/B compares versions, not diagnoses one output."},
+      {k:"c",html:"Iterative prompt modification",correct:false,why:"You've iterated already; diagnosis is output analysis."},
+      {k:"d",html:"Integrating user feedback",correct:false,why:"That gathers tester opinions."}
     ]},
   { n:23, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
-    stem:"A prompt begins: \"Act as a senior test analyst specializing in security testing.\" Which prompt component is this?",
+    stem:"A prompt begins:\n\n   \"Act as a senior test analyst specialising in security.\"\n\nWhich prompt component is this?",
     options:[
-      {k:"a",html:"Role",correct:true,why:"Defining the persona the model should adopt is the Role component."},
-      {k:"b",html:"Context",correct:false,why:"Context is background about the test object."},
+      {k:"a",html:"Role",correct:true,why:"Defining the persona the model adopts is the Role component."},
+      {k:"b",html:"Context about the test object",correct:false,why:"Context is background about the test object."},
       {k:"c",html:"Instruction",correct:false,why:"Instruction is the task to perform."},
       {k:"d",html:"Constraints",correct:false,why:"Constraints restrict how the task is done."}
     ]},
   { n:24, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
-    stem:"A prompt line reads: \"Only include test cases for high-risk scenarios; exclude cosmetic UI checks.\" Which prompt component is this?",
+    stem:"A prompt line reads:\n\n   \"Only include high-risk scenarios; exclude cosmetic UI checks.\"\n\nWhich prompt component is this?",
     options:[
-      {k:"a",html:"Constraints",correct:true,why:"It restricts how the instruction is applied — a constraint."},
-      {k:"b",html:"Instruction",correct:false,why:"The instruction is the task itself; this restricts it."},
-      {k:"c",html:"Output format",correct:false,why:"It does not define the response format."},
-      {k:"d",html:"Input data",correct:false,why:"It is a restriction, not supplied material."}
+      {k:"a",html:"Constraints",correct:true,why:"It restricts how the instruction is applied."},
+      {k:"b",html:"Instruction (the core task)",correct:false,why:"The instruction is the task; this restricts it."},
+      {k:"c",html:"Output format",correct:false,why:"It doesn't define the response format."},
+      {k:"d",html:"Input data",correct:false,why:"It's a restriction, not supplied material."}
     ]},
   { n:25, lo:"GenAI-2.1.2", k:"K2", points:1, type:"single",
-    stem:"Which technique has the LLM generate and refine its own prompt in collaboration with the tester?",
+    stem:"Unsure how to phrase a prompt, a tester has the LLM generate and refine the prompt with them.\n\nWhich technique is this?",
     options:[
-      {k:"a",html:"Meta prompting",correct:true,why:"Meta prompting leverages the LLM to craft/refine its own prompts iteratively."},
-      {k:"b",html:"Few-shot prompting",correct:false,why:"Few-shot supplies examples; it doesn't co-create the prompt."},
+      {k:"a",html:"Meta prompting",correct:true,why:"Meta prompting lets the LLM craft/refine its own prompts iteratively."},
+      {k:"b",html:"Few-shot prompting with examples",correct:false,why:"Few-shot supplies examples; it doesn't co-create the prompt."},
       {k:"c",html:"Prompt chaining",correct:false,why:"Chaining decomposes a task into verified steps."},
-      {k:"d",html:"Zero-shot prompting",correct:false,why:"Zero-shot relies on model knowledge with no examples or co-creation."}
+      {k:"d",html:"Zero-shot prompting",correct:false,why:"Zero-shot relies on model knowledge with no co-creation."}
     ]},
   { n:26, lo:"GenAI-2.1.3", k:"K2", points:1, type:"single",
-    stem:"Which item most appropriately belongs in a system prompt rather than a user prompt?",
+    stem:"You want one rule to hold across the entire session, not be repeated each turn.\n\nWhich item most appropriately belongs in a SYSTEM prompt?",
     options:[
-      {k:"a",html:"\"Always use ISTQB-aligned terminology and never reveal internal data.\"",correct:true,why:"A persistent behavior rule for the whole session belongs in the system prompt."},
-      {k:"b",html:"\"Generate edge-case tests for this login form.\"",correct:false,why:"A specific one-off request is a user prompt."},
-      {k:"c",html:"\"Summarize the defects in the file I just attached.\"",correct:false,why:"A changing, task-specific request is a user prompt."},
-      {k:"d",html:"\"List today's failed test runs.\"",correct:false,why:"An immediate, changing request is a user prompt."}
+      {k:"a",html:"A persistent rule that governs the whole session.",correct:true,why:"Persistent behaviour rules for the session belong in the system prompt."},
+      {k:"b",html:"A specific one-off request for this particular form.",correct:false,why:"A one-off request is a user prompt."},
+      {k:"c",html:"A changing, task-specific question.",correct:false,why:"A changing request is a user prompt."},
+      {k:"d",html:"An immediate request for today's test runs.",correct:false,why:"An immediate, changing request is a user prompt."}
     ]},
   { n:27, lo:"GenAI-2.2.1", k:"K3", points:2, type:"single",
-    stem:"You receive fresh requirements that have NOT been reviewed yet. You want GenAI to surface defects, derive test conditions, and prioritize by risk. Which chaining sequence is best?",
+    stem:"For fresh requirements that have NOT been reviewed, you want to surface defects, derive conditions, and prioritise — verifying each step.\n\nWhich chaining order is BEST?",
     options:[
-      {k:"a",html:"Detect ambiguities/inconsistencies → derive test conditions → prioritize by risk.",correct:true,why:"For un-reviewed requirements, first detect defects, then derive conditions, then prioritize — each step checked (chaining)."},
-      {k:"b",html:"Prioritize first, then derive conditions, then check defects.",correct:false,why:"You can't prioritize conditions before deriving them; defect detection should come first here."},
+      {k:"a",html:"Detect ambiguities → derive conditions → prioritise by risk.",correct:true,why:"For un-reviewed requirements, detect defects first, then derive, then prioritise."},
+      {k:"b",html:"Prioritise first, then derive the conditions, then check for defects.",correct:false,why:"You can't prioritise conditions before deriving them."},
       {k:"c",html:"Do everything in a single prompt.",correct:false,why:"That contradicts prompt chaining."},
       {k:"d",html:"Skip defect detection because the model is reliable.",correct:false,why:"Requirements are un-reviewed, so defect detection matters."}
     ]},
   { n:28, lo:"GenAI-2.2.2", k:"K3", points:2, type:"single",
-    stem:"You have structured test cases and want GenAI to help create automated scripts for your framework. How can it assist (test implementation)?",
+    stem:"You have structured test cases and want GenAI to help create automated scripts for your framework (test implementation).\n\nHow?",
     options:[
-      {k:"a",html:"Interpret the test steps and translate them into code compatible with your automation framework.",correct:true,why:"GenAI can generate automated scripts from structured cases, translating steps into framework-compatible code."},
-      {k:"b",html:"Run the scripts directly against production.",correct:false,why:"Executing against production is not script generation and is risky."},
-      {k:"c",html:"Only summarize the cases in prose.",correct:false,why:"A summary doesn't produce the scripts."},
+      {k:"a",html:"Interpret the steps and translate them into framework code.",correct:true,why:"GenAI can generate scripts from structured cases, translating steps to code."},
+      {k:"b",html:"Run all of the generated scripts directly against live production.",correct:false,why:"Executing against production isn't generation and is risky."},
+      {k:"c",html:"Only summarise the cases in prose.",correct:false,why:"A summary doesn't produce the scripts."},
       {k:"d",html:"Lower the temperature so the code compiles.",correct:false,why:"Temperature doesn't determine compilation."}
     ]},
   { n:29, lo:"GenAI-2.2.3", k:"K3", points:2, type:"single",
-    stem:"Your API regression tests keep breaking when request/response formats and endpoints change. How can GenAI most directly help?",
+    stem:"Your API regression tests break whenever request/response formats change.\n\nHow can GenAI help MOST directly?",
     options:[
-      {k:"a",html:"Automatically adapt the test scripts to the evolving API specifications and generate matching test data.",correct:true,why:"GenAI can adapt scripts to changing API specs and produce diverse test data, reducing manual rework."},
-      {k:"b",html:"Delete the failing API tests.",correct:false,why:"That removes coverage rather than fixing the problem."},
-      {k:"c",html:"Generate a new test plan document only.",correct:false,why:"A document doesn't fix breaking scripts."},
-      {k:"d",html:"Increase the context window.",correct:false,why:"Unrelated to adapting to API changes."}
+      {k:"a",html:"Adapt the scripts to changing API specs and generate data.",correct:true,why:"GenAI can adapt scripts to evolving API specs and produce matching test data."},
+      {k:"b",html:"Permanently delete all of the failing API regression tests from the suite.",correct:false,why:"That removes coverage instead of fixing it."},
+      {k:"c",html:"Generate only a brand-new test plan document instead.",correct:false,why:"A document doesn't fix breaking scripts."},
+      {k:"d",html:"Increase the model's context window.",correct:false,why:"Unrelated to adapting to API changes."}
     ]},
   { n:30, lo:"GenAI-2.2.4", k:"K3", points:2, type:"single",
-    stem:"A test manager wants early warnings when test metrics deviate from the plan. Which GenAI use fits (monitoring)?",
+    stem:"A manager wants early warnings when test metrics start drifting from the plan.\n\nWhich GenAI use fits (monitoring)?",
     options:[
-      {k:"a",html:"Automate monitoring and trend analysis to predict risks and alert the team to deviations.",correct:true,why:"GenAI can automate monitoring, analyze trends, predict risks, and alert on deviations."},
-      {k:"b",html:"Anonymize the test data.",correct:false,why:"That is a privacy measure, not monitoring."},
-      {k:"c",html:"Generate Gherkin scenarios.",correct:false,why:"That is test design, not monitoring."},
+      {k:"a",html:"Automate monitoring and trend analysis with alerts.",correct:true,why:"GenAI can monitor, analyse trends, predict risks, and alert on deviations."},
+      {k:"b",html:"Anonymise the entire test data set first.",correct:false,why:"That is a privacy measure, not monitoring."},
+      {k:"c",html:"Generate detailed Gherkin scenarios from the stories.",correct:false,why:"That is test design, not monitoring."},
       {k:"d",html:"Fine-tune a model on unrelated data.",correct:false,why:"Doesn't provide monitoring alerts."}
     ]},
   { n:31, lo:"GenAI-2.2.5", k:"K3", points:2, type:"single",
-    stem:"You must analyze a large regression report in stages (separate expected vs actual, cluster defects, cross-check known anomalies, summarize), verifying each stage. Which technique fits best?",
+    stem:"You must analyse a large regression report in stages, verifying each stage before the next.\n\nWhich technique is BEST?",
     options:[
-      {k:"a",html:"Prompt chaining",correct:true,why:"A complex multi-stage task with verification at each step is the case for prompt chaining."},
-      {k:"b",html:"Few-shot prompting",correct:false,why:"Few-shot suits repetitive fixed-format generation, not staged verification."},
+      {k:"a",html:"Prompt chaining",correct:true,why:"A complex multi-stage task with per-step verification fits prompt chaining."},
+      {k:"b",html:"Few-shot prompting with examples",correct:false,why:"Few-shot suits repetitive fixed-format generation."},
       {k:"c",html:"Zero-shot prompting",correct:false,why:"No stepwise checking for a complex task."},
-      {k:"d",html:"Meta prompting",correct:false,why:"Meta prompting crafts prompts; not the technique for staged verification."}
+      {k:"d",html:"Meta prompting",correct:false,why:"Meta prompting crafts prompts, not staged verification."}
     ]},
   { n:32, lo:"GenAI-2.3.1", k:"K2", points:1, type:"single",
-    stem:"Which metric evaluates correctness of the output for a specific objective, e.g., correctly identifying anomalies?",
+    stem:"You measure how well the generated cases correctly identify anomalies for one specific objective.\n\nWhich metric is this?",
     options:[
       {k:"a",html:"Precision",correct:true,why:"Precision is correctness with respect to a specific objective."},
-      {k:"b",html:"Recall",correct:false,why:"Recall measures completeness of finding all relevant instances."},
+      {k:"b",html:"Recall for completeness of coverage",correct:false,why:"Recall measures completeness of finding all relevant instances."},
       {k:"c",html:"Diversity",correct:false,why:"Diversity is variety of scenarios."},
       {k:"d",html:"Time efficiency",correct:false,why:"That compares time saved vs manual effort."}
     ]},
   { n:33, lo:"GenAI-2.3.2", k:"K2", points:1, type:"single",
-    stem:"You start from a base prompt and gradually add context and adjust wording to improve results. Which technique is this?",
+    stem:"You start from a base prompt and gradually add context to improve the results over several iterations.\n\nWhich technique is this?",
     options:[
-      {k:"a",html:"Iterative prompt modification",correct:true,why:"Gradually refining a base prompt by adding context/adjusting wording is this technique."},
-      {k:"b",html:"A/B testing of prompts",correct:false,why:"A/B compares distinct versions against metrics."},
+      {k:"a",html:"Iterative prompt modification",correct:true,why:"Gradually refining a base prompt is this technique."},
+      {k:"b",html:"A/B testing of distinct prompt versions",correct:false,why:"A/B compares distinct versions against metrics."},
       {k:"c",html:"Output analysis",correct:false,why:"Output analysis inspects outputs to diagnose errors."},
-      {k:"d",html:"Integrating user feedback",correct:false,why:"That uses testers' opinions, not gradual self-modification."}
+      {k:"d",html:"Integrating user feedback",correct:false,why:"That uses testers' opinions."}
     ]}
   ]
 };
