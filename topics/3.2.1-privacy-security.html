@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CT-GenAI 3.2.1 — Data Privacy Concerns vs Security Risks</title>
+<script src="../theme.js"></script>
+<style>
+:root{--brand:#0e7490;--brand2:#0891b2;--ink:#1e293b;--muted:#64748b;--line:#e2e8f0;--soft:#f1f5f9;
+  --flag:#7c3aed;--flagbg:#ede9fe;--ok:#16a34a;--okbg:#dcfce7;--shadow:0 8px 24px rgba(15,23,42,.08);}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);
+  background:#eef2f7;line-height:1.7;min-height:100vh}
+.topnav{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:14px;background:rgba(8,13,26,.98);
+  backdrop-filter:blur(6px);color:#fff;padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.topnav a{color:#fff;text-decoration:none;font-size:.9rem;opacity:.9}
+.topnav a:hover{opacity:1}.topnav .home{font-weight:700}
+.wrap{max-width:1000px;margin:0 auto;padding:22px 18px 80px}
+.hero{background:linear-gradient(150deg,#0f172a,#13233f);color:#fff}
+.hero-inner{max-width:1000px;margin:0 auto;padding:28px 18px 26px}
+.badge{display:inline-block;background:var(--flagbg);color:var(--flag);font-weight:700;font-size:.78rem;padding:5px 12px;border-radius:999px}
+h1{margin:.5rem 0 .2rem;font-size:1.7rem}
+.hero p{opacity:.9;margin:.2rem 0}
+.cta{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  background:linear-gradient(120deg,#0e7490,#0891b2);color:#fff;border-radius:16px;padding:18px 22px;margin:18px 0;box-shadow:var(--shadow)}
+.cta .cta-txt{font-weight:600}
+.cta .cta-txt small{display:block;font-weight:400;opacity:.92;font-size:.85rem;margin-top:2px}
+.cta a.cta-btn{background:#fff;color:#0e7490;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:10px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.cta a.cta-btn:hover{transform:translateY(-1px)}
+.card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:22px 24px;margin-bottom:16px}
+.card h2{margin:0 0 .2rem;font-size:1.25rem;color:var(--brand)}
+.metric-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--soft);padding-bottom:10px;margin-bottom:14px}
+.metric-head .num{background:var(--brand);color:#fff;width:30px;height:30px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.metric-head .num.sec{background:var(--flag)}
+h4{margin:.6rem 0 .2rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.card p{margin:.2rem 0 .6rem}
+.eg{background:var(--soft);border-radius:10px;padding:10px 13px;margin:.4rem 0;font-size:.95rem}
+.eg.work{background:#ecfeff;border:1px solid #a5f3fc}
+.eg.syl{background:#f5f3ff;border:1px solid #ddd6fe}
+.cue{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:9px 13px;font-size:.92rem;color:#92400e;margin-top:.3rem}
+table{border-collapse:collapse;width:100%;font-size:.92rem;margin:.5rem 0}
+.tablewrap{overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 11px;text-align:start;vertical-align:top}
+thead th{background:var(--brand);color:#fff}
+tbody tr:nth-child(even){background:var(--soft)}
+.note{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:12px;padding:14px 18px;color:#065f46;margin:14px 0}
+.warn{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:14px 18px;color:#991b1b;margin:14px 0}
+.scenario{background:#0f172a;color:#e2e8f0;border-radius:14px;padding:18px 22px;margin-bottom:18px}
+.scenario h3{margin:0 0 .4rem;color:#67e8f9}
+.scenario code{background:rgba(255,255,255,.12);padding:2px 7px;border-radius:5px}
+.pill{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px}
+.pill.priv{background:#ecfeff;color:#0e7490}
+.pill.sec{background:#ede9fe;color:#7c3aed}
+.foot{color:var(--muted);font-size:.82rem;text-align:center;margin-top:24px}
+:root[data-theme="dark"]{--ink:#e2e8f0;--muted:#94a3b8;--line:#334155;--soft:#0f1b2e;--brand:#38bdf8;--brand2:#7dd3fc;--okbg:#13331f;--shadow:0 8px 24px rgba(0,0,0,.4)}
+[data-theme="dark"] body{background:#0b1424}
+[data-theme="dark"] .card{background:#1b2738}
+[data-theme="dark"] .card h2{color:#38bdf8}
+[data-theme="dark"] .eg{background:#0f1b2e}
+[data-theme="dark"] .eg.work{background:#0c2733;border-color:#155e75}
+[data-theme="dark"] .eg.syl{background:#221a3a;border-color:#4c3a86}
+[data-theme="dark"] .cue{background:#2a2208;border-color:#5c4a12;color:#fcd34d}
+[data-theme="dark"] .note{background:#0c2a1f;border-color:#14533b;color:#a7f3d0}
+[data-theme="dark"] .warn{background:#2a1414;border-color:#5c1f1f;color:#fca5a5}
+[data-theme="dark"] thead th{background:#0e7490;border-color:#0e7490}
+[data-theme="dark"] strong,[data-theme="dark"] b{color:#f1f5f9}
+[data-theme="dark"] .pill.priv{background:#0c2733;color:#67e8f9}
+[data-theme="dark"] .pill.sec{background:#221a3a;color:#c4b5fd}
+@media(max-width:560px){.wrap{padding:18px 13px 80px}.hero-inner{padding:22px 14px 20px}.card{padding:18px 16px}}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a class="home" href="../index.html">🏠 Study Hub</a>
+  <a href="../topics.html">← Topic drills</a>
+</nav>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="badge">ISTQB CT-GenAI · LO 3.2.1 (K2)</span>
+    <h1>Data Privacy Concerns vs Security Risks</h1>
+    <p>Tell the two apart with confidence: privacy is about the <b>data</b>; security is about the <b>system</b> being attacked.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="cta">
+    <div class="cta-txt">Ready to test yourself on this topic?
+      <small>Read the explanation below, then answer the 50 sample questions (Easy → Hard) in exam mode.</small>
+    </div>
+    <a class="cta-btn" href="../exams/drill-3.2.1-privacy-security.html">▶ Answer the 50 sample questions</a>
+  </div>
+
+  <div class="scenario">
+    <h3>🧭 The one-line rule</h3>
+    <p><b>Data privacy</b> = is the <code>data</code> kept under control, not exposed, and handled lawfully? &nbsp;<b>Security</b> = is the <code>system / infrastructure</code> protected from attack, breach, and unauthorised access? When in doubt, ask: <i>"Is the problem about the data itself, or about someone attacking the system?"</i></p>
+  </div>
+
+  <div class="card">
+    <h2>🔐 Data privacy concerns <span class="pill priv">about the DATA</span></h2>
+    <p>Privacy concerns are about <b>what happens to the data</b> you put into (or get out of) a GenAI tool. The syllabus groups them into three:</p>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">1</span><h2>Lack of control over data</h2></div>
+    <p>You can't fully control how a GenAI tool (often a third-party/cloud service) <b>stores, processes, or reuses</b> the data you submit — it might even be used to train the vendor's models.</p>
+    <div class="eg work"><b>Example:</b> You paste real customer records into a public chatbot whose terms say submitted content may be reused. You've lost control of that data.</div>
+    <div class="cue">🎯 <b>Cue:</b> "stored/processed/reused without consent", "vendor may train on your data", "don't know where data goes" → <b>lack of control</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">2</span><h2>Unintentional data exposure</h2></div>
+    <p>The model's <b>output accidentally reveals sensitive information</b> — e.g., confidential data that was in the prompt context, or another user's data — to someone who shouldn't see it. <b>No attacker is involved; it's accidental.</b></p>
+    <div class="eg work"><b>Example:</b> A generated test report unexpectedly prints API keys that were sitting in the prompt context, or surfaces another client's data.</div>
+    <div class="cue">🎯 <b>Cue:</b> "output accidentally reveals/leaks sensitive data", "no attacker" → <b>unintentional exposure</b>.</div>
+  </div>
+
+  <div class="card">
+    <div class="metric-head"><span class="num">3</span><h2>Compliance / regulatory</h2></div>
+    <p>Using GenAI in a way that <b>breaches data-protection regulations</b> (e.g., GDPR) — including where data is stored/processed — risking legal disputes and penalties.</p>
+    <div class="eg work"><b>Example:</b> Sending EU residents' personal data to a tool hosted in a non-approved region, risking a GDPR violation.</div>
+    <div class="cue">🎯 <b>Cue:</b> "GDPR", "regulation", "legal/compliance", "data residency" → <b>compliance</b>.</div>
+  </div>
+
+  <div class="card">
+    <h2>🛡️ Security risks <span class="pill sec">about the SYSTEM</span></h2>
+    <p>Security risks are about the <b>LLM-powered test infrastructure being attacked</b> — vulnerable to <b>breaches, unauthorised access, and manipulative attacks</b>. The defining feature is an <b>attack on / compromise of the system</b> (often deliberate).</p>
+    <div class="eg work"><b>Examples:</b> the GenAI test platform's server is hacked; an intruder gains unauthorised admin access; a weak login lets outsiders in.</div>
+    <div class="cue">🎯 <b>Cue:</b> "breach", "hacked", "unauthorised access", "attacker compromises the system" → <b>security risk</b>.</div>
+    <div class="note"><b>Note:</b> the <i>specific</i> attack vectors (data exfiltration, request manipulation, data poisoning, malicious code generation) are detailed in <b>LO 3.2.2</b>. For 3.2.1 you just need the high-level split: privacy (data) vs security (system).</div>
+  </div>
+
+  <div class="warn">
+    <b>⚠️ The classic trap — accidental vs deliberate:</b> If sensitive data shows up in the output <b>by accident</b> (no attacker) → that's a <b>privacy</b> concern (unintentional exposure). If an <b>attacker deliberately</b> extracts or steals it by attacking the system → that's a <b>security</b> risk. Same data leaking, different category, decided by <b>whether there's an attack</b>.
+  </div>
+
+  <div class="card">
+    <h2>⚡ Quick reference — which bucket?</h2>
+    <div class="tablewrap">
+    <table>
+      <thead><tr><th>If the situation is about…</th><th>Category</th></tr></thead>
+      <tbody>
+        <tr><td>Tool stores/processes/reuses your data without consent or control</td><td><b>Privacy</b> — lack of control</td></tr>
+        <tr><td>Output <i>accidentally</i> reveals sensitive data (no attacker)</td><td><b>Privacy</b> — unintentional exposure</td></tr>
+        <tr><td>Breaching GDPR / data-protection law, data residency</td><td><b>Privacy</b> — compliance</td></tr>
+        <tr><td>The infrastructure is breached, hacked, or accessed without authorisation</td><td><b>Security</b> — system attacked</td></tr>
+        <tr><td>An attacker <i>deliberately</i> extracts/steals data by attacking the system</td><td><b>Security</b> — attack/breach</td></tr>
+        <tr><td>Slow responses, high energy use, repetitive tests</td><td><i>Neither</i> (performance / environmental / diversity)</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div class="cta-txt">Now you can tell them apart — lock it in.
+      <small>50 questions, Easy → Medium → Hard, with full explanations and your difficulty shown per question.</small>
+    </div>
+    <a class="cta-btn" href="../exams/drill-3.2.1-privacy-security.html">▶ Start the sample questions</a>
+  </div>
+
+  <div class="foot">Based on the official ISTQB® CT-GenAI Syllabus v1.0, section 3.2.1 (K2). Examples are illustrative.</div>
+</div>
+</body>
+</html>
