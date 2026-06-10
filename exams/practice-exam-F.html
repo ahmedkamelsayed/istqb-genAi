@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Exam F (Hard) — CT-GenAI</title>
+<script src="../theme.js"></script>
+<link rel="stylesheet" href="exam-styles.css">
+</head>
+<body>
+<a href="../index.html" class="home-fab" title="Back to Study Hub" aria-label="Back to Study Hub"><span class="ico">🏠</span> Home</a>
+<div id="exam-root"></div>
+<script>
+window.EXAM = {
+  id: "practice-F",
+  title: "Practice Exam F (Hard) — Testing with Generative AI",
+  source: "Original HARD questions to the official ISTQB CT-GenAI blueprint, written to mimic the real exam: long scenario stems, full-sentence answer options, and trap-heavy formats (which-of-i–v-are-correct, matching, which-is-INCORRECT, BEST-explains-why) with distractors very close to correct. 40 questions · 46 points. Options shuffle each attempt. Not an official ISTQB exam.",
+  durationMinutes: 60,
+  passPercent: 65,
+  shuffleOptions: true,
+  questions: [
+  { n:1, lo:"GenAI-1.1.1", k:"K1", points:1, type:"single",
+    stem:"A trainer lists four AI approaches and four descriptions, then deliberately scrambles them and adds wording designed to mislead. Match each approach (1–4) to the description (A–D) that fits it BEST:\n\n  1. Symbolic AI\n  2. Classical machine learning\n  3. Deep learning\n  4. Generative AI\n\n  A. Learns features automatically through multi-layered neural networks, without manual feature engineering.\n  B. Applies explicit, hand-authored rules to imitate human decision-making.\n  C. Relies on a data-driven approach in which a human still selects the relevant features.\n  D. Builds on deep learning to synthesise entirely new artefacts that resemble its training data.",
+    options:[
+      {k:"a",html:"1B, 2C, 3A, 4D",correct:true,why:"Symbolic AI = hand-authored rules (B); classical ML = data-driven with human feature selection (C); deep learning = auto-learned features via neural networks (A); GenAI = deep learning that synthesises new artefacts (D)."},
+      {k:"b",html:"1A, 2C, 3B, 4D",correct:false,why:"Symbolic AI is rule-based (B), not neural feature learning (A); deep learning is (A), not rules (B)."},
+      {k:"c",html:"1B, 2D, 3A, 4C",correct:false,why:"Classical ML is the data-driven-with-feature-selection option (C), not (D); GenAI is the synthesising option (D), not (C)."},
+      {k:"d",html:"1C, 2B, 3D, 4A",correct:false,why:"Every pairing is misassigned here."}
+    ]},
+  { n:2, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"A tester claims that an LLM answers questions by retrieving the closest answer it memorised during training, and that this is why very long prompts sometimes lose earlier details — \"the stored record simply gets truncated.\" Which option BEST corrects this, addressing both the mechanism and the real cause of the lost detail?",
+    options:[
+      {k:"a",html:"The model does not retrieve memorised answers; it predicts each token from learned statistical relationships, and earlier detail is lost because content beyond the context window can no longer be attended to — not because a record is truncated.",correct:true,why:"Inference is next-token prediction; loss of detail is a context-window limit, not retrieval/truncation."},
+      {k:"b",html:"The model does retrieve a stored record, but the loss of detail comes from its embeddings being down-sampled to fit the response-length limit.",correct:false,why:"No record is retrieved, and embeddings are not down-sampled to fit responses."},
+      {k:"c",html:"The model predicts tokens rather than retrieving them, but detail is lost because the tokenizer randomly drops low-frequency words from long inputs.",correct:false,why:"Tokenization is deterministic and does not randomly drop words."},
+      {k:"d",html:"The model both retrieves answers and predicts tokens in equal measure, and the missing detail reflects deliberate summarising to save compute.",correct:false,why:"It does not retrieve stored answers, and it is not deliberately summarising to save compute."}
+    ]},
+  { n:3, lo:"GenAI-1.1.2", k:"K2", points:1, type:"single",
+    stem:"During onboarding, five statements are made about how LLMs process text and how model size relates to capability. Which combination lists ONLY the CORRECT statements?\n\n  i. Tokenization splits text into smaller units that act as the building blocks the model works with.\n  ii. Embeddings are the high-dimensional vectors that capture the meaning of tokens.\n  iii. A larger context window always makes a model more accurate, regardless of the task.\n  iv. A Small Language Model (SLM) cannot be fine-tuned because it has too few parameters.\n  v. Tokenization and embedding are simply two names for exactly the same step.",
+    options:[
+      {k:"a",html:"i and ii",correct:true,why:"i and ii are accurate; iii overstates ('always'), iv is false (SLMs can be fine-tuned), v conflates two distinct steps."},
+      {k:"b",html:"i, ii and iii",correct:false,why:"iii is wrong — a larger context window does not always raise accuracy."},
+      {k:"c",html:"ii, iv and v",correct:false,why:"iv and v are both false."},
+      {k:"d",html:"i, iii and v",correct:false,why:"iii and v are both false."}
+    ]},
+  { n:4, lo:"GenAI-1.1.3", k:"K2", points:1, type:"single",
+    stem:"Considering foundation, instruction-tuned, and reasoning LLMs in a testing context, five statements are proposed. Which combination lists ONLY the CORRECT statements?\n\n  i. Reasoning LLMs are well suited to multi-step inference, such as ordering test cases under interdependent constraints.\n  ii. Instruction-tuned LLMs are particularly good at producing output that follows a requested format, such as Gherkin syntax.\n  iii. Foundation LLMs, used without any adaptation, are the most reliable choice for strict template adherence.\n  iv. Instruction-tuned LLMs autonomously re-prioritise test execution in real time with no human input.\n  v. Reasoning LLMs handle interdependent logical conditions less reliably than instruction-tuned models do.",
+    options:[
+      {k:"a",html:"i and ii",correct:true,why:"i and ii correctly characterise reasoning and instruction-tuned models; iii, iv and v misattribute capabilities."},
+      {k:"b",html:"i, ii and v",correct:false,why:"v is reversed — reasoning LLMs handle interdependent logic more reliably, not less."},
+      {k:"c",html:"ii, iii and iv",correct:false,why:"iii and iv are both incorrect."},
+      {k:"d",html:"i, iii and v",correct:false,why:"iii and v are both incorrect."}
+    ]},
+  { n:5, lo:"GenAI-1.1.4", k:"K2", points:1, type:"single",
+    stem:"A team wants to automatically flag screens whose rendered layout contradicts the wording of the corresponding user story. A colleague proposes a vision-language model (VLM) but insists it only counts as \"real testing\" if the same model also executes the UI automation and encrypts the captured screenshots. Which option BEST describes a VALID use of a VLM here and correctly dismisses the added conditions?",
+    options:[
+      {k:"a",html:"Use the VLM to jointly interpret the screenshot together with the story text and surface mismatches between them; executing automation and encrypting files are separate concerns that are not VLM capabilities.",correct:true,why:"VLMs analyse combined visual+textual input to find discrepancies; execution and encryption are out of scope."},
+      {k:"b",html:"Use the VLM to execute the UI automation scripts directly, since a multimodal model can drive a browser as readily as it reads an image.",correct:false,why:"Driving automation is not a VLM capability."},
+      {k:"c",html:"Use the VLM to encrypt the screenshots first, because secure handling of visual data is the defining feature of vision-language models.",correct:false,why:"Encryption is a security control, not what defines a VLM."},
+      {k:"d",html:"Decline to use a VLM at all unless it can simultaneously analyse, execute and encrypt, as partial capability offers no testing value.",correct:false,why:"The added conditions are not VLM responsibilities; the analysis use is valid on its own."}
+    ]},
+  { n:6, lo:"GenAI-1.2.1", k:"K2", points:1, type:"multi", selectCount:2,
+    stem:"A test lead drafts a list of things she hopes the team's LLM can take on. Several entries are phrased to sound responsible or ambitious but actually describe work the LLM does not itself perform. Select the TWO entries that are genuine, documented LLM capabilities in testing.",
+    options:[
+      {k:"a",html:"Drafting expected results for given inputs, so testers have a starting point when creating test oracles.",correct:true,why:"Supporting test-oracle creation by drafting expected results is a documented capability."},
+      {k:"b",html:"Summarising large volumes of execution results and grouping the anomalies it finds by apparent severity.",correct:true,why:"Result analysis and severity-based anomaly grouping is a documented capability."},
+      {k:"c",html:"Taking final accountability for the release decision once it judges that coverage is sufficient.",correct:false,why:"Release accountability is a human responsibility, not an LLM capability."},
+      {k:"d",html:"Provisioning and configuring the physical test-environment hardware in the data centre.",correct:false,why:"Infrastructure provisioning is outside an LLM's capabilities."},
+      {k:"e",html:"Guaranteeing that no defects remain in the product once a run completes without errors.",correct:false,why:"No tool can guarantee the absence of defects."}
+    ]},
+  { n:7, lo:"GenAI-1.2.2", k:"K2", points:1, type:"single",
+    stem:"Two distinct needs arise on the same day. First: a tester wants to think through unusual edge cases conversationally, for a single throwaway investigation, with no tooling to set up. Second: the team wants defect triage wired permanently into the nightly CI pipeline so it runs unattended at scale. A colleague asserts a chatbot is equally appropriate for both. Which option BEST identifies where a chatbot is preferable to an API-integrated application, and why?",
+    options:[
+      {k:"a",html:"The first need favours a chatbot, because it suits interactive, ad hoc, throwaway exploration with no integration; the second, being automated and at scale, is better served by an API-integrated application.",correct:true,why:"Chatbots fit conversational one-off use; scaled pipeline integration favours an application."},
+      {k:"b",html:"The second need favours a chatbot, because chatbots are specifically engineered to embed into automated pipelines and run unattended at scale.",correct:false,why:"Reversed — scaled, automated integration favours an API-integrated application."},
+      {k:"c",html:"Both needs favour a chatbot equally, because the conversational and integrated delivery modes differ only in branding, not in fit.",correct:false,why:"They differ materially in fit, not just branding."},
+      {k:"d",html:"Neither need favours a chatbot, because exploratory test ideation should never involve a generative model in any form.",correct:false,why:"Exploratory ideation is a valid, encouraged GenAI use."}
+    ]},
+  { n:8, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
+    stem:"Four lines are taken from a single structured prompt (1–4). Match each line to the prompt component (A–D) it most precisely belongs to:\n\n  1. \"Adopt the persona of a senior security tester reviewing against the OWASP Top 10.\"\n  2. \"Return the findings as a Markdown table sorted by risk, newest first.\"\n  3. \"Base your analysis only on the requirements document provided below.\"\n  4. \"Do not include any test data that contains real customer identifiers.\"\n\n  A. Output format\n  B. Role\n  C. Constraints\n  D. Input data",
+    options:[
+      {k:"a",html:"1B, 2A, 3D, 4C",correct:true,why:"Persona = Role (B); presentation of results = Output format (A); the document to work from = Input data (D); the 'do not' restriction = Constraints (C)."},
+      {k:"b",html:"1B, 2A, 3C, 4D",correct:false,why:"Line 3 supplies the data (Input data), and line 4 is a restriction (Constraints) — these are swapped here."},
+      {k:"c",html:"1A, 2B, 3D, 4C",correct:false,why:"The persona is Role, and the table is Output format — lines 1 and 2 are swapped."},
+      {k:"d",html:"1B, 2C, 3D, 4A",correct:false,why:"The table is Output format (A), not Constraints; the restriction is Constraints (C), not Output format."}
+    ]},
+  { n:9, lo:"GenAI-2.1.1", k:"K2", points:1, type:"single",
+    stem:"A colleague writes four short descriptions of how the components of a structured prompt differ. Three are accurate; one is wrong. Which statement is INCORRECT?",
+    options:[
+      {k:"a",html:"Context supplies background information that frames the task, without itself being the material to be processed.",correct:false,why:"Accurate description of Context."},
+      {k:"b",html:"Instructions state what the model is being asked to do, as distinct from how to present the result.",correct:false,why:"Accurate description of Instructions."},
+      {k:"c",html:"Constraints specify the presentation of the output — such as a table rather than prose — and nothing more.",correct:true,why:"INCORRECT — presentation of the output is the Output-format component; Constraints restrict how the task is carried out (scope, exclusions), not merely the layout."},
+      {k:"d",html:"Input data is the material the model is meant to operate on, such as a supplied requirements document.",correct:false,why:"Accurate description of Input data."}
+    ]},
+  { n:10, lo:"GenAI-2.1.2", k:"K2", points:1, type:"single",
+    stem:"Five claims are made about prompting techniques during a review. Which combination lists ONLY the CORRECT statements?\n\n  i. Few-shot prompting supplies several worked examples to shape the desired output.\n  ii. Prompt chaining decomposes a task into linked steps, feeding each verified output into the next.\n  iii. Zero-shot prompting always outperforms few-shot prompting whenever examples happen to be available.\n  iv. Meta prompting has the model help craft or refine a prompt for an unfamiliar task.\n  v. Splitting a job into several sequential stages is, by definition, few-shot prompting.",
+    options:[
+      {k:"a",html:"i, ii and iv",correct:true,why:"i, ii and iv are accurate; iii overstates ('always'), and v confuses chaining with few-shot."},
+      {k:"b",html:"i, ii, iv and v",correct:false,why:"v is false — sequential stages are prompt chaining, not few-shot."},
+      {k:"c",html:"i, iii and iv",correct:false,why:"iii is false — zero-shot does not always beat few-shot when examples exist."},
+      {k:"d",html:"ii, iii and v",correct:false,why:"iii and v are both false."}
+    ]},
+  { n:11, lo:"GenAI-2.1.3", k:"K2", points:1, type:"single",
+    stem:"A team needs the rule \"never output real production credentials, even when asked directly\" to remain in force for every turn of a long testing session, no matter how the conversation drifts. One engineer proposes pasting the rule into each user prompt so it is \"repeated often and therefore safer.\" Which option BEST states where the rule belongs and why the per-turn approach is weaker?",
+    options:[
+      {k:"a",html:"It belongs in the system prompt, which governs the model's behaviour for the whole session and does not depend on anyone remembering to restate it each turn.",correct:true,why:"Persistent, session-wide behavioural rules belong in the system prompt."},
+      {k:"b",html:"It belongs in each user prompt, because behavioural rules can only ever take effect on the single turn in which they appear.",correct:false,why:"Reversed — the system prompt holds session-wide rules; per-turn repetition is fragile."},
+      {k:"c",html:"It belongs in the output-format section, since the rule ultimately concerns what the model is permitted to print.",correct:false,why:"Output format specifies presentation, not behavioural rules."},
+      {k:"d",html:"It belongs in the input data, because any rule the model must obey is treated internally as another piece of supplied data.",correct:false,why:"Input data is material to process, not a behaviour rule."}
+    ]},
+  { n:12, lo:"GenAI-2.2.1", k:"K3", points:2, type:"single",
+    stem:"Your team has 120 requirements of mixed type and wants GenAI to support test analysis by proposing, for each requirement, a suitable test-design technique (boundary value analysis, decision tables, state transition, and so on) for a tester to review and approve. A teammate objects that involving GenAI here means \"letting the AI design and then run the tests with no oversight.\" Which approach BEST applies GenAI to this test-analysis activity?",
+    options:[
+      {k:"a",html:"Submit each requirement to the LLM to classify its nature and recommend an appropriate technique, then have a tester critically review and accept or reject each recommendation before it is used.",correct:true,why:"Per-requirement technique suggestion with human review is the valid analysis use."},
+      {k:"b",html:"Have the LLM not only recommend techniques but also execute the resulting tests against the system and report pass/fail, dropping the review step to save time.",correct:false,why:"LLMs do not execute the system, and unsupervised execution is not the described activity."},
+      {k:"c",html:"Bypass analysis entirely and deploy the requirements to the production environment so the live behaviour reveals which techniques were needed.",correct:false,why:"Deployment is irrelevant to selecting techniques during analysis."},
+      {k:"d",html:"Require the model to be fine-tuned on an unrelated public corpus before it is permitted to suggest any technique.",correct:false,why:"Unnecessary and unrelated to the task."}
+    ]},
+  { n:13, lo:"GenAI-2.2.2", k:"K3", points:2, type:"single",
+    stem:"Your team has a set of structured manual API test cases for an Orders endpoint, plus two example RestAssured + JUnit scripts that follow the project's conventions (a BaseApiTest providing auth and JSON-schema helpers). You want GenAI to turn the cases into runnable scripts (test implementation) using few-shot structured prompting. Which prompt is BEST suited — watch for one that looks thorough but quietly drops a required element?",
+    options:[
+      {k:"a", struct:true, html:"<span class='ln'><b>Role:</b> Act as a test automation engineer working in RestAssured + JUnit.</span><span class='ln'><b>Context:</b> The project extends a BaseApiTest providing auth and JSON-schema helpers for the Orders endpoint.</span><span class='ln'><b>Instruction:</b> Convert the manual API test cases into runnable scripts, using the predefined example scripts as a guide: &lt;&lt; example scripts &gt;&gt;.</span><span class='ln'><b>Input Data:</b> &lt;&lt;&lt; structured API test cases &gt;&gt;&gt;.</span><span class='ln'><b>Constraints:</b> Assert on status code and response schema, and reuse the BaseApiTest helpers.</span><span class='ln'><b>Output Format:</b> Runnable JUnit test methods.</span>", correct:true, why:"BEST: genuinely few-shot, supplies the input data, requires status/schema assertions and the BaseApiTest helpers, and fixes runnable JUnit output."},
+      {k:"b", struct:true, html:"<span class='ln'><b>Role:</b> Act as a test automation engineer.</span><span class='ln'><b>Context:</b> The framework uses RestAssured and JUnit for the Orders endpoint.</span><span class='ln'><b>Instruction:</b> Convert the manual API test cases into runnable scripts, using the predefined example scripts as a guide: &lt;&lt; example scripts &gt;&gt;.</span><span class='ln'><b>Constraints:</b> Follow general best practices.</span><span class='ln'><b>Output Format:</b> Some automation scripts.</span>", correct:false, why:"Few-shot, but it omits the input data and never requires the assertions or the BaseApiTest helpers."},
+      {k:"c", struct:true, html:"<span class='ln'><b>Role:</b> Act as a test automation engineer.</span><span class='ln'><b>Context:</b> The framework uses RestAssured and JUnit with a BaseApiTest helper.</span><span class='ln'><b>Instruction:</b> Convert the manual API test cases into runnable scripts from your own experience, without referring to the example scripts.</span><span class='ln'><b>Input Data:</b> &lt;&lt;&lt; structured API test cases &gt;&gt;&gt;.</span><span class='ln'><b>Constraints:</b> Assert on status code and schema, and reuse the helpers.</span><span class='ln'><b>Output Format:</b> Runnable JUnit test methods.</span>", correct:false, why:"It deliberately ignores the example scripts, so it is not few-shot — which the task requires."},
+      {k:"d", struct:true, html:"<span class='ln'><b>Role:</b> Act as a business analyst.</span><span class='ln'><b>Context:</b> An Orders feature is under development.</span><span class='ln'><b>Instruction:</b> Describe a few testing ideas for the Orders endpoint.</span><span class='ln'><b>Constraints:</b> Keep it brief.</span><span class='ln'><b>Output Format:</b> A prose paragraph.</span>", correct:false, why:"Wrong role, no examples, no input data, no assertions/framework constraints, and prose rather than runnable scripts."}
+    ]},
+  { n:14, lo:"GenAI-2.2.3", k:"K3", points:2, type:"single",
+    stem:"A single, small change touches only the payment module two days before release. The team has limited time and wants to direct regression effort at the areas most likely to break, rather than re-running the entire suite or trimming tests at random. One engineer argues that \"impact analysis just means running fewer tests, so we should simply delete the older regression cases.\" Which use of GenAI BEST serves the team's actual goal?",
+    options:[
+      {k:"a",html:"Use GenAI to perform change-impact analysis on the modification, identifying the components and flows most affected so regression can be concentrated where the risk is highest.",correct:true,why:"Impact analysis focuses regression where the change is most likely to cause failures."},
+      {k:"b",html:"Use GenAI to delete the older regression cases outright, on the basis that a smaller suite is what impact analysis is meant to produce.",correct:false,why:"Deleting cases removes coverage rather than targeting it — the trap."},
+      {k:"c",html:"Use GenAI to raise the sampling temperature during generation so a wider, more varied set of outputs is produced for the payment module.",correct:false,why:"Temperature is unrelated to focusing regression effort."},
+      {k:"d",html:"Use GenAI to compile a glossary of regression-testing terminology so the team shares a vocabulary before deciding what to run.",correct:false,why:"A glossary does not target regression effort."}
+    ]},
+  { n:15, lo:"GenAI-2.2.4", k:"K3", points:2, type:"single",
+    stem:"From the week's raw execution data, leadership asks for two separate things: first, a clear, shareable picture of where quality currently stands; second, a decision to reshuffle and re-prioritise next week's test cycles in light of that picture. A colleague labels both activities \"test monitoring.\" Which option correctly identifies the activity that is test MONITORING rather than test control, and explains the distinction?",
+    options:[
+      {k:"a",html:"Producing dashboards and plain-language summaries of the current metrics for stakeholders is monitoring, because it reports the state; re-prioritising the cycles acts on that state and is therefore control.",correct:true,why:"Monitoring observes/reports the state; control acts on it."},
+      {k:"b",html:"Re-prioritising and rescheduling the remaining cycles is the monitoring activity, because any activity that uses the metrics counts as monitoring.",correct:false,why:"Acting on the data to steer the effort is test control, not monitoring."},
+      {k:"c",html:"Anonymising the underlying dataset before storage is the monitoring activity, since protecting the data is part of observing it.",correct:false,why:"Anonymisation is a privacy measure, not monitoring."},
+      {k:"d",html:"Fine-tuning a model on the week's data is the monitoring activity, because it incorporates the latest results into the system.",correct:false,why:"Fine-tuning is unrelated to monitoring the test effort."}
+    ]},
+  { n:16, lo:"GenAI-2.2.5", k:"K3", points:2, type:"single",
+    stem:"You are handed an unfamiliar, loosely-scoped analysis task and genuinely do not yet know how to phrase an effective prompt for it; you also have no good worked examples to draw on. One colleague insists you should \"just use few-shot, because examples always help,\" and another says \"always start zero-shot to avoid over-engineering.\" Which option BEST identifies the most suitable starting technique and why the colleagues' advice is flawed here?",
+    options:[
+      {k:"a",html:"Meta prompting is the best start — have the model help you draft and refine a prompt for the unfamiliar task; few-shot is impractical with no good examples, and a blind zero-shot attempt offers no help shaping the approach.",correct:true,why:"Meta prompting suits a task you don't yet know how to phrase."},
+      {k:"b",html:"Few-shot is the best start, because suitable worked examples are effectively always available and invariably improve the result.",correct:false,why:"You have no good examples for a brand-new task."},
+      {k:"c",html:"Prompt chaining is the best start, because every task must first be decomposed into sequential steps before anything else is attempted.",correct:false,why:"Chaining suits a known, decomposable process, not an undefined one."},
+      {k:"d",html:"Zero-shot is the best start, because a single unguided attempt is always the safest and most economical first move.",correct:false,why:"A blind attempt gives no help developing the approach."}
+    ]},
+  { n:17, lo:"GenAI-2.3.1", k:"K2", points:1, type:"single",
+    stem:"Four GenAI evaluation metrics (1–4) must be matched to what they measure (A–D). Beware descriptions that actually fit a neighbouring metric:\n\n  1. Accuracy\n  2. Diversity\n  3. Execution success rate\n  4. Time efficiency\n\n  A. The proportion of generated scripts that actually run without errors.\n  B. How varied the generated items are across the produced set.\n  C. How much time the AI-assisted approach saves compared with manual effort.\n  D. How correct the generated output is when checked against a trusted reference.",
+    options:[
+      {k:"a",html:"1D, 2B, 3A, 4C",correct:true,why:"Accuracy = correctness vs reference (D); Diversity = variety (B); Execution success rate = scripts that run (A); Time efficiency = time saved (C)."},
+      {k:"b",html:"1A, 2B, 3D, 4C",correct:false,why:"Accuracy is correctness (D), not run-rate (A); execution success rate is the run-rate (A), not (D)."},
+      {k:"c",html:"1D, 2C, 3A, 4B",correct:false,why:"Diversity is variety (B), not time saved (C); time efficiency is time saved (C), not variety (B)."},
+      {k:"d",html:"1B, 2D, 3A, 4C",correct:false,why:"Accuracy is correctness (D), not variety (B); diversity is variety (B), not correctness (D)."}
+    ]},
+  { n:18, lo:"GenAI-2.3.2", k:"K2", points:1, type:"single",
+    stem:"Before changing anything, a tester reads a representative batch of the model's outputs and carefully categorises the recurring kinds of error. She is not yet editing the prompt, not comparing two prompt variants against each other, and not collecting end-users' opinions. Which option BEST names this preparatory step and distinguishes it from the alternatives she has deliberately not done?",
+    options:[
+      {k:"a",html:"It is output analysis — diagnosing the error types in the existing outputs — as opposed to iterative prompt modification (editing the prompt), A/B testing (comparing two variants), or integrating user feedback (gathering opinions).",correct:true,why:"Examining outputs to understand error types is output analysis."},
+      {k:"b",html:"It is A/B testing, because examining a batch of outputs inherently compares them against one another.",correct:false,why:"A/B testing compares two prompt versions, which she has not done."},
+      {k:"c",html:"It is iterative prompt modification, because any close reading of outputs is really the first edit of the prompt.",correct:false,why:"She has not edited the prompt; this is the prior diagnostic step."},
+      {k:"d",html:"It is integrating user feedback, because the tester's own observations count as user feedback.",correct:false,why:"User feedback is others' opinions, not the tester's output diagnosis."}
+    ]},
+  { n:19, lo:"GenAI-3.1.1", k:"K1", points:1, type:"single",
+    stem:"An LLM tasked with sequencing test steps keeps drawing the wrong conclusion from \"if A then B\" style conditions. Every fact it cites is real, nothing is fabricated, and it reproduces the identical mistake on every single run. A colleague calls it a hallucination; another calls it non-determinism. Which option BEST classifies the problem and rules out those two labels?",
+    options:[
+      {k:"a",html:"It is a reasoning error — the model misapplied the logical/conditional structure; it is not a hallucination because nothing was fabricated, and not non-determinism because the same error recurs identically each run.",correct:true,why:"Misapplied conditional logic with no fabrication and no run-to-run variance is a reasoning error."},
+      {k:"b",html:"It is a hallucination, because any output that reaches an incorrect conclusion is by definition fabricated content.",correct:false,why:"Incorrect ≠ fabricated; nothing was invented here."},
+      {k:"c",html:"It is non-determinism, because the model's logic evidently varies with hidden randomness between runs.",correct:false,why:"The mistake is identical every run, so it is not variability."},
+      {k:"d",html:"It is a bias inherited from training data, because consistent mistakes can only come from a skewed dataset.",correct:false,why:"This is a logic flaw, not a representational skew."}
+    ]},
+  { n:20, lo:"GenAI-3.1.2", k:"K3", points:2, type:"single",
+    stem:"A model used to synthesise customer test data repeatedly over-represents one demographic group and under-represents others, run after run. None of the values is fabricated, and every total reconciles arithmetically. The team must both classify the problem and choose a sound way to detect it in future. Which option is BEST?",
+    options:[
+      {k:"a",html:"The problem is bias; detect it by reviewing whether the generated testware fairly represents the population and the test strategy in scope, comparing the distribution against the intended coverage.",correct:true,why:"Skewed representation is bias; detection checks fair representation against the strategy."},
+      {k:"b",html:"The problem is hallucination; detect it by counting the output tokens and flagging runs that exceed an expected length.",correct:false,why:"Nothing is fabricated, and token counts say nothing about representation."},
+      {k:"c",html:"The problem is a reasoning error; detect it by re-checking the arithmetic totals for inconsistencies.",correct:false,why:"The arithmetic reconciles; no logical inference failed."},
+      {k:"d",html:"The problem is non-determinism; detect it by fixing a random seed and confirming the distribution then stays constant.",correct:false,why:"The skew is consistent, not run-to-run variability."}
+    ]},
+  { n:21, lo:"GenAI-3.1.3", k:"K2", points:1, type:"single",
+    stem:"A single model's answer to a high-stakes risk-analysis prompt reads fluently and runs to several detailed paragraphs, yet you suspect a subtle but serious error. One colleague proposes re-running the same prompt on the same model until two runs match \"to prove it\"; another says simply trust the longest, most thorough answer. Which option BEST raises genuine confidence in the result?",
+    options:[
+      {k:"a",html:"Put the same prompt to several different LLMs and reconcile the points where their answers diverge, treating disagreement as a signal to investigate before trusting any one of them.",correct:true,why:"Cross-model comparison surfaces discrepancies and helps identify the reliable answer."},
+      {k:"b",html:"Re-run the prompt on the same model until two outputs match, since identical repeated answers demonstrate the conclusion must be sound.",correct:false,why:"Two matching runs can repeat the same flaw."},
+      {k:"c",html:"Accept whichever response is longest and most detailed, because thoroughness is the most reliable proxy for correctness.",correct:false,why:"Length is not correctness."},
+      {k:"d",html:"Raise the temperature and re-run, because more varied sampling will naturally converge on the correct answer.",correct:false,why:"Higher temperature adds variability, not reliability."}
+    ]},
+  { n:22, lo:"GenAI-3.1.4", k:"K1", points:1, type:"single",
+    stem:"After pinning a fixed random seed and setting the temperature to its minimum, a tester still observes that identical prompts occasionally yield slightly different outputs. A teammate concludes the tokenizer \"must be acting randomly,\" or that the embeddings \"are recomputed differently on each call.\" Which option BEST explains the residual variation?",
+    options:[
+      {k:"a",html:"Inference still relies on probabilistic sampling over token distributions; fixing the seed and lowering the temperature reduce the variation but cannot completely remove it.",correct:true,why:"Residual non-determinism stems from probabilistic sampling."},
+      {k:"b",html:"The tokenizer re-segments the prompt at random on each call, so the same text yields different tokens and hence different output.",correct:false,why:"Tokenization is deterministic."},
+      {k:"c",html:"The embeddings for the prompt are recomputed with fresh values on every request, which is the sole source of the variation.",correct:false,why:"Embeddings are stable across requests."},
+      {k:"d",html:"The context window quietly contracts a little between successive runs, dropping different tokens each time.",correct:false,why:"The window does not shrink on its own."}
+    ]},
+  { n:23, lo:"GenAI-3.2.1", k:"K2", points:1, type:"single",
+    stem:"A generated test summary unexpectedly contains a real customer's home address, which had earlier slipped into the prompt context unnoticed. No external party was involved, no system was broken into, and no one set out to obtain the address — it simply surfaced in the output. A colleague argues this must be a security breach \"because sensitive data got out.\" Which option BEST classifies the situation and corrects the colleague?",
+    options:[
+      {k:"a",html:"It is a data-privacy concern — specifically the unintentional exposure of personal data — because no attacker and no breach were involved; security risks arise from deliberate attacks on the system.",correct:true,why:"Accidental disclosure with no attacker is unintentional exposure (privacy)."},
+      {k:"b",html:"It is a security risk, because any escape of sensitive data is, by definition, the result of an attack on the system.",correct:false,why:"Reversed — security risks involve deliberate breach; this was accidental."},
+      {k:"c",html:"It is a reasoning error, because the model produced the address by mis-sequencing its internal logic.",correct:false,why:"It is data exposure, not a logic flaw."},
+      {k:"d",html:"It is not a concern at all unless and until an attacker actively exploits the exposed address.",correct:false,why:"Unintentional exposure is itself a privacy concern."}
+    ]},
+  { n:24, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
+    stem:"Four GenAI security attack vectors (1–4) must be matched to the scenario (A–D) that illustrates each. Watch for scenarios that resemble a neighbouring vector:\n\n  1. Data exfiltration\n  2. Data poisoning\n  3. Request manipulation\n  4. Malicious code generation\n\n  A. An attacker corrupts the data the model will later be trained on, degrading its future behaviour.\n  B. An attacker crafts oversized prompts to coax the model into emitting fragments of its confidential training data.\n  C. An attacker manipulates the model into producing a helper script that secretly opens an outbound connection.\n  D. An attacker feeds misleading input designed to disrupt or distort the model's normal output.",
+    options:[
+      {k:"a",html:"1B, 2A, 3D, 4C",correct:true,why:"Exfiltration = extracting confidential data (B); poisoning = corrupting training data (A); request manipulation = misleading input that distorts output (D); malicious code generation = coaxing out harmful code (C)."},
+      {k:"b",html:"1B, 2A, 3C, 4D",correct:false,why:"Request manipulation is distorted output (D), and malicious code generation is the backdoor script (C) — these are swapped."},
+      {k:"c",html:"1A, 2B, 3D, 4C",correct:false,why:"Exfiltration is extracting data (B), and poisoning is corrupting training data (A) — swapped."},
+      {k:"d",html:"1B, 2D, 3A, 4C",correct:false,why:"Poisoning is corrupting training data (A), not the misleading-input scenario (D)."}
+    ]},
+  { n:25, lo:"GenAI-3.2.2", k:"K2", points:1, type:"single",
+    stem:"A colleague writes four one-line definitions of GenAI security threats for a team wiki. Three are accurate; one is wrong. Which statement is INCORRECT?",
+    options:[
+      {k:"a",html:"Data exfiltration is the use of crafted requests to extract confidential or training data from the model.",correct:false,why:"Accurate definition of data exfiltration."},
+      {k:"b",html:"Data poisoning is the corruption of the data used to train the model, harming its later behaviour.",correct:false,why:"Accurate definition of data poisoning."},
+      {k:"c",html:"Malicious code generation is when an attacker manipulates the model into producing harmful or backdoor code.",correct:false,why:"Accurate definition of malicious code generation."},
+      {k:"d",html:"Request manipulation is the deliberate theft of the model's training data by overwhelming its context window.",correct:true,why:"INCORRECT — that describes data exfiltration; request manipulation means feeding misleading input to disrupt or distort the model's output."}
+    ]},
+  { n:26, lo:"GenAI-3.2.3", k:"K2", points:1, type:"single",
+    stem:"Ahead of sharing a production-derived dataset with a GenAI tool, the team replaces real names, e-mail addresses and account numbers with realistic but non-identifying substitutes, while preserving the data's structure so it remains useful for testing. One colleague files this under \"data minimisation,\" another under \"encryption at rest.\" Which option BEST names the practice and separates it from those two?",
+    options:[
+      {k:"a",html:"It is anonymisation/pseudonymisation — replacing identifiers with non-identifying values — which differs from data minimisation (processing only the data actually needed) and from encryption (protecting stored data without removing the identifiers).",correct:true,why:"Replacing identifiers with non-identifying values is anonymisation/pseudonymisation."},
+      {k:"b",html:"It is data minimisation, because substituting identifiers reduces the dataset to only what is strictly necessary.",correct:false,why:"Minimisation means processing only needed data, not masking identifiers."},
+      {k:"c",html:"It is encryption at rest, because transforming the identifiers is a form of encrypting the stored data.",correct:false,why:"Encryption protects stored data; it does not replace identifiers."},
+      {k:"d",html:"It is a security audit, because reviewing and altering the fields amounts to assessing the data's weaknesses.",correct:false,why:"An audit assesses weaknesses; it does not mask data."}
+    ]},
+  { n:27, lo:"GenAI-3.3.1", k:"K2", points:1, type:"single",
+    stem:"A sustainability reviewer lists several candidate drivers of the energy a GenAI task consumes: the colour scheme of the chatbot interface, how quickly the user types, the time of day the request is submitted, and the nature and computational demand of the task itself. A colleague claims \"they all matter about equally.\" Which option BEST identifies the dominant factor and explains why?",
+    options:[
+      {k:"a",html:"What the task demands in processing power is the dominant factor — generating an image, for instance, needs far more compute, and therefore far more energy, than a short text reply; the colour scheme, typing speed and time of day are essentially irrelevant.",correct:true,why:"Task complexity and the compute it requires drive energy use."},
+      {k:"b",html:"The interface's colour scheme dominates, because rendering certain palettes forces the model to perform extra processing.",correct:false,why:"UI appearance has no bearing on model energy use."},
+      {k:"c",html:"The user's typing speed dominates, because faster input compresses the work the model must do per second.",correct:false,why:"Typing speed is irrelevant to model energy consumption."},
+      {k:"d",html:"The time of day dominates, because models draw measurably more energy during peak hours regardless of the task.",correct:false,why:"Time of day is not a factor in the model's energy use."}
+    ]},
+  { n:28, lo:"GenAI-3.4.1", k:"K1", points:1, type:"multi", selectCount:2,
+    stem:"A colleague keeps confusing AI standards with AI regulations and quality models. From the statements below — some of which swap a standard for a law, or a regulation for a quality model — select the TWO that are CORRECT.",
+    options:[
+      {k:"a",html:"ISO/IEC 42001:2023 specifies the requirements for establishing and operating an AI management system.",correct:true,why:"Correct — 42001 is the AI management system standard."},
+      {k:"b",html:"ISO/IEC 23053:2022 provides a framework for describing AI systems that are built using machine learning.",correct:true,why:"Correct — 23053 frames AI systems using ML."},
+      {k:"c",html:"The EU AI Act is, in effect, an ISO standard that organisations may certify against.",correct:false,why:"The EU AI Act is a regulation, not an ISO standard."},
+      {k:"d",html:"The NIST AI Risk Management Framework is legally binding legislation within the European Union.",correct:false,why:"It is a voluntary US framework, not EU law."},
+      {k:"e",html:"The GDPR is best understood as a product-quality model specifically for AI systems.",correct:false,why:"GDPR is a data-protection regulation, not a quality model."}
+    ]},
+  { n:29, lo:"GenAI-4.1.1", k:"K2", points:1, type:"single",
+    stem:"An LLM-based test infrastructure must fetch passages by meaning — \"find content semantically close to this query\" — using embeddings rather than exact key matches. An architect proposes simply adding a carefully designed index to the existing relational database \"so it can rank rows by semantic closeness.\" Which option BEST identifies the component actually required and why the relational proposal fails?",
+    options:[
+      {k:"a",html:"A vector database is required: it stores embeddings and retrieves by semantic similarity, whereas relational indexes can only match or sort by exact, structured field values and cannot rank by meaning.",correct:true,why:"Semantic retrieval over embeddings is what vector databases provide."},
+      {k:"b",html:"A relational database suffices: with the right composite index it can be tuned to order rows by their semantic meaning.",correct:false,why:"Relational indexes match structured values, not meaning."},
+      {k:"c",html:"The front-end layer is required, because it can cache and return the semantically related content on demand.",correct:false,why:"The front-end is the UI, not a retrieval store."},
+      {k:"d",html:"A post-processing step is required, because reformatting the model's output is what performs semantic retrieval.",correct:false,why:"Post-processing refines output; it is not the retrieval store."}
+    ]},
+  { n:30, lo:"GenAI-4.1.2", k:"K2", points:1, type:"single",
+    stem:"An LLM-based test assistant keeps recommending API endpoints that were removed two releases ago, even though the current behaviour is fully documented on the team's internal wiki. The team adds retrieval-augmented generation (RAG) so that, at query time, the most relevant up-to-date passages are fetched and supplied alongside the prompt. Which option BEST explains why this reduces the outdated recommendations?",
+    options:[
+      {k:"a",html:"Because the retrieved passages are added to the prompt context, so the model can ground its answer in current information instead of relying only on what it learned during training.",correct:true,why:"RAG supplies up-to-date context at query time, grounding the answer — without retraining."},
+      {k:"b",html:"Because RAG permanently rewrites the model's internal weights with the wiki content, so the deprecated endpoints are unlearned during a lightweight retraining pass.",correct:false,why:"RAG augments the prompt; it does not retrain or rewrite weights."},
+      {k:"c",html:"Because RAG raises the model's temperature whenever it detects uncertainty, nudging it to explore newer tokens that map to the current API.",correct:false,why:"RAG does not adjust temperature; that is unrelated."},
+      {k:"d",html:"Because retrieval removes the need for any prompt, letting the wiki act as a deterministic answer key the model reads verbatim.",correct:false,why:"A prompt is still required, and retrieval is not a verbatim answer key."}
+    ]},
+  { n:31, lo:"GenAI-4.1.3", k:"K2", points:1, type:"single",
+    stem:"A test solution wires together several specialised agents — one drafts cases, one selects data, one judges coverage — coordinating them toward a single goal. One colleague dismisses it as \"just one rule-based chatbot with extra prompts\"; another as \"basically a vector database with more tables.\" Which option BEST describes what the arrangement actually is?",
+    options:[
+      {k:"a",html:"It is an orchestrated multi-agent system: the coordination of multiple specialised agents toward a shared objective is precisely what orchestration means.",correct:true,why:"Orchestration is the coordination of multiple specialised agents."},
+      {k:"b",html:"It is merely a single rule-based chatbot that has been given some additional prompts to follow.",correct:false,why:"A single chatbot is not a coordinated multi-agent system."},
+      {k:"c",html:"It is essentially a vector database extended with a few extra tables to hold the agents' state.",correct:false,why:"A data store is not an agent architecture."},
+      {k:"d",html:"It is a fine-tuning dataset that has been assembled from the combined outputs of the agents.",correct:false,why:"Unrelated to coordinating agents."}
+    ]},
+  { n:32, lo:"GenAI-4.2.1", k:"K2", points:1, type:"single",
+    stem:"A team curates a set of their own historical test cases and fine-tunes a pre-trained model on it. A colleague claims this will \"overwrite the model's general knowledge so that only our data remains\" and will \"guarantee the model can never overfit.\" Which option BEST states what fine-tuning on that set is actually intended to achieve?",
+    options:[
+      {k:"a",html:"It adapts the pre-trained model to the team's specific domain by training it further on the targeted data, while retaining the general knowledge it already holds.",correct:true,why:"Fine-tuning specialises a model for a domain without erasing prior knowledge."},
+      {k:"b",html:"It overwrites and erases the model's general knowledge so that only the team's domain data remains usable.",correct:false,why:"It adapts rather than erases prior knowledge."},
+      {k:"c",html:"It removes the need to write prompts thereafter, because the fine-tuned model no longer requires instruction.",correct:false,why:"Prompts are still used after fine-tuning."},
+      {k:"d",html:"It makes overfitting impossible, because training on curated data eliminates that risk by construction.",correct:false,why:"Overfitting remains a risk to manage."}
+    ]},
+  { n:33, lo:"GenAI-4.2.2", k:"K2", points:1, type:"single",
+    stem:"An organisation is weighing three options for adopting GenAI in testing — a public chatbot, a vendor tool, and an in-house tool. A manager announces the team must \"standardise on exactly one of them forever, since they are mutually exclusive and, in any case, none of them can use RAG.\" Which option BEST corrects this?",
+    options:[
+      {k:"a",html:"The three approaches are not mutually exclusive — they can be combined as needs dictate, and any of them can incorporate RAG or fine-tuning.",correct:true,why:"They can be used together, and each can use RAG/fine-tuning."},
+      {k:"b",html:"Only a single approach may be adopted across the whole organisation, as they cannot operate alongside one another.",correct:false,why:"They are not mutually exclusive."},
+      {k:"c",html:"None of the three approaches is capable of incorporating RAG, so the manager is right on that point at least.",correct:false,why:"All of them can incorporate RAG."},
+      {k:"d",html:"Adopting the public chatbot specifically removes all cost and data-privacy considerations from the decision.",correct:false,why:"Chatbot use still carries cost and privacy considerations."}
+    ]},
+  { n:34, lo:"GenAI-5.1.1", k:"K1", points:1, type:"single",
+    stem:"A team member quietly uses an unapproved public AI tool to generate test data because \"it does the job and saves time,\" adding that unsanctioned tools \"actually reduce our legal obligations and guarantee compliance automatically.\" Which option BEST explains why shadow AI is nonetheless a COMPLIANCE risk?",
+    options:[
+      {k:"a",html:"Using tools that have not been vetted can breach the standards and regulations the organisation is bound by, creating legal exposure rather than removing it.",correct:true,why:"Unsanctioned tools tend to cause non-compliance and legal exposure."},
+      {k:"b",html:"Such tools automatically guarantee regulatory compliance, so the only real risk is the minor duplication of effort.",correct:false,why:"They tend to cause non-compliance, not guarantee it."},
+      {k:"c",html:"Such tools always encrypt data to the mandated standard, so the compliance risk is limited to performance rather than legality.",correct:false,why:"They often lack robust security controls."},
+      {k:"d",html:"Such tools lower the organisation's legal obligations, so the concern is purely about internal policy preferences.",correct:false,why:"They increase, not reduce, legal exposure."}
+    ]},
+  { n:35, lo:"GenAI-5.1.2", k:"K2", points:1, type:"single",
+    stem:"While drafting the governance section of a GenAI testing strategy, a team debates five proposed elements. Which combination lists ONLY the ones that genuinely belong in a sound strategy?\n\n  i. Guidelines for handling sensitive data when prompting models.\n  ii. Transparency about which artefacts were AI-generated.\n  iii. Feeding the model the maximum possible volume of data, regardless of its quality.\n  iv. Quality gates in which a human reviews AI-produced testware before it is used.\n  v. Removing all effectiveness metrics so that adoption is not slowed down.",
+    options:[
+      {k:"a",html:"i, ii and iv",correct:true,why:"Guidelines for sensitive data, transparency, and human quality gates are genuine elements; iii (volume over quality) and v (removing metrics) are not."},
+      {k:"b",html:"i, ii, iii and iv",correct:false,why:"iii is wrong — quality matters more than sheer volume."},
+      {k:"c",html:"ii, iii and v",correct:false,why:"iii and v are both wrong."},
+      {k:"d",html:"i, iv and v",correct:false,why:"v is wrong — effectiveness metrics should be collected, not removed."}
+    ]},
+  { n:36, lo:"GenAI-5.1.3", k:"K2", points:1, type:"single",
+    stem:"When choosing between candidate models, a team gives decisive weight to there being an active user community and thorough, current documentation, expecting this to ease implementation and speed up troubleshooting. At this stage they are explicitly setting aside licensing cost, benchmark performance, and how readily the model adapts to their own data. Which selection criterion are they applying?",
+    options:[
+      {k:"a",html:"Community and support — they are prioritising the ecosystem of users and documentation around the model.",correct:true,why:"An active community plus documentation is the community-and-support criterion."},
+      {k:"b",html:"Recurring cost — they are prioritising the licensing and operational expense of the model.",correct:false,why:"Cost is explicitly set aside here."},
+      {k:"c",html:"Model performance — they are prioritising the model's benchmarked quality on representative tasks.",correct:false,why:"Benchmark performance is explicitly set aside here."},
+      {k:"d",html:"Fine-tuning potential — they are prioritising how well the model can be adapted with their own data.",correct:false,why:"Adaptability is explicitly set aside here."}
+    ]},
+  { n:37, lo:"GenAI-5.1.4", k:"K1", points:1, type:"single",
+    stem:"An organisation has moved well beyond its first experiments with GenAI: it is now embedded across multiple teams, continuously monitored in day-to-day work, and being scaled further as ordinary business-as-usual. It is no longer merely discovering what tools exist, nor still deciding for the first time where to apply them. Which adoption phase does this BEST describe?",
+    options:[
+      {k:"a",html:"Utilization and iteration — the phase in which GenAI is fully integrated, continuously monitored, and progressively scaled.",correct:true,why:"This phase fully integrates GenAI with continuous monitoring and scaling."},
+      {k:"b",html:"Discovery — the early phase of building awareness and initial capability with the technology.",correct:false,why:"They are well past early discovery."},
+      {k:"c",html:"Initiation and usage definition — the phase in which an organisation first prioritises and defines its use cases.",correct:false,why:"They are past first defining use cases."},
+      {k:"d",html:"Retirement — the phase in which the technology is wound down and removed from use.",correct:false,why:"Not a recognised adoption phase here, and the opposite of scaling."}
+    ]},
+  { n:38, lo:"GenAI-5.2.1", k:"K2", points:1, type:"single",
+    stem:"Asked to name an ENVIRONMENTAL skill that testers should bring to their use of GenAI, a colleague floats three ideas: always select the largest available model \"to be safe,\" treat energy questions as \"someone else's problem,\" or deliberately right-size the model and optimise how it is used. Which option identifies the appropriate environmental skill and explains the others' weakness?",
+    options:[
+      {k:"a",html:"Selecting an appropriately sized model and optimising how it is used, so the benefit is balanced against the energy cost — defaulting to the largest model wastes energy, and ignoring energy abdicates the responsibility.",correct:true,why:"Right-sizing and optimising usage reduces energy overhead."},
+      {k:"b",html:"Always selecting the largest available model, because greater capacity is the safest environmental choice in every case.",correct:false,why:"Oversized models waste energy."},
+      {k:"c",html:"Treating energy consumption as outside the tester's remit, since model efficiency is solely the infrastructure team's concern.",correct:false,why:"Environmental awareness is part of the tester's role."},
+      {k:"d",html:"Personally building the model's training pipeline from scratch, because that is the tester's main environmental contribution.",correct:false,why:"That is an AI-developer task, not an environmental tester skill."}
+    ]},
+  { n:39, lo:"GenAI-5.2.2", k:"K1", points:1, type:"single",
+    stem:"A test organisation wants to keep steadily improving how everyone uses GenAI over time, spreading what works from one tester to the next — rather than relying on a single external course with no follow-up, or a one-off big-bang rollout into every task at once. Which option BEST supports this ongoing, internal knowledge sharing?",
+    options:[
+      {k:"a",html:"Establishing communities of practice that circulate shared prompt-pattern libraries and lessons learned, so improvements accumulate and spread across the team over time.",correct:true,why:"Internal communities of practice drive continuous improvement and sharing."},
+      {k:"b",html:"Commissioning a single external lecture with no follow-up, on the assumption that one thorough session transfers all the needed skill.",correct:false,why:"Over-relying on a one-off course is not recommended."},
+      {k:"c",html:"Forbidding any hands-on experimentation with the models, to keep usage consistent and prevent mistakes.",correct:false,why:"Hands-on practice is encouraged."},
+      {k:"d",html:"Performing a one-time big-bang rollout into every task simultaneously, so the whole organisation adopts at once.",correct:false,why:"Gradual adoption is recommended."}
+    ]},
+  { n:40, lo:"GenAI-5.2.3", k:"K1", points:1, type:"single",
+    stem:"In an AI-enabled test organisation, a hybrid team that mixes human testers with GenAI agents needs someone to coordinate its work. One colleague argues that \"no one needs to, because the agents are fully autonomous,\" while another insists \"each tester simply manages themselves.\" Which option BEST identifies who typically carries this coordinating responsibility?",
+    options:[
+      {k:"a",html:"The test manager, who coordinates the hybrid team of people and GenAI agents and remains accountable for its overall direction.",correct:true,why:"Test managers coordinate hybrid human+agent teams."},
+      {k:"b",html:"Each tester individually, since coordination is unnecessary when everyone manages their own work in isolation.",correct:false,why:"Coordinating the team is a management responsibility."},
+      {k:"c",html:"No one, because the GenAI agents operate fully autonomously and require no human oversight.",correct:false,why:"Oversight and coordination remain necessary."},
+      {k:"d",html:"The LLM itself, which assumes responsibility for managing and directing the team.",correct:false,why:"The model does not manage the team."}
+    ]}
+  ]
+};
+</script>
+<script src="exam-engine.js"></script>
+</body>
+</html>
